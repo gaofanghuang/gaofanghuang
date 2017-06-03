@@ -1,0 +1,41 @@
+//放大缩小
+.ani-pop {
+    position: relative;
+    overflow: hidden;
+    &::after,
+    &::before {
+        position: absolute;
+        content: '';
+        border: 1px solid;
+        border-radius: 50%; 
+        background: rgba(255, 255, 255, 0.2);
+    }
+    &::before {
+        border-color: lighten(@color, 10%);
+        animation: popGo 2s infinite;
+    }
+    &::after {
+        border-color: lighten(@color, 2%);
+        animation: popGo 1.6s infinite 0.8s;
+    }
+}
+@keyframes popGo {
+    0% {
+        top: 50%;
+        left: 50%;
+        width: 1%;
+        height: 1%;
+        margin: -0.5% 0 0 -0.5%;
+        opacity: 1;
+    }
+    
+    100% {
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
+        margin: -100% 0 0 -100%;
+        opacity: 0;
+    }
+
+}

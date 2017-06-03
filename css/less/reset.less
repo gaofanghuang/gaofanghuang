@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li,
+ul {
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
+}
+//字体
+html {
+    font-size: 10px;
+    font-family: 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Helvetica,Arial,'Lucida Grande','Microsoft YaHei',sans-serif,sans-serif;
+}
+
+body {
+    font-size: 1.4rem;
+    background: #f9f9f9;
+}
+
+h1 {
+    font-size: 2.4rem;
+}
+//布局
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after,
+.clearfix:before {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tr {
+    text-align: right;
+}
+
+.tc {
+    text-align: center;
+}
+
+.xy-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.x-center {
+    display: flex;
+    align-items: center;
+}
+
+.y-center {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    .clearfix;
+}
