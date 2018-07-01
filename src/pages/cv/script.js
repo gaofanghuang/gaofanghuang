@@ -2,12 +2,12 @@ export default {
   data () {
     return {
       list: [],
-      sns: [{
-        icon: '#icon-bijiben',
-        url: 'http://blog.huanggaofang.com'
-      }, {
+      sns: [ {
         icon: '#icon-github',
         url: 'https://github.com/gaofanghuang'
+      }, {
+        icon: '#icon-boke',
+        url: 'http://blog.huanggaofang.com'
       }, {
         icon: '#icon-behance-square-fill',
         url: 'https://www.behance.net/huanggaofang'
