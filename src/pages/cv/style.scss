@@ -1,0 +1,121 @@
+.about-wrap {
+  padding: px2rem(80) px2rem(40);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  a {
+    color: $gray2;
+    &:hover {
+      color: $primary;
+    }
+  }
+  .about-bar {
+    width: px2rem(480);
+    height: 100%;
+    background: linear-gradient(90deg, rgba($green, 0.75), rgba($primary, 0.75));
+    border-radius: px2rem(8);
+    padding: px2rem(6);
+    margin-right: px2rem(40);
+    position: relative;
+    .about-bar-con {
+      width: 100%;
+      height: 100%;
+      background: $light;
+      padding-top: px2rem(180);
+    }
+    .about-avatar {
+      width: px2rem(180);
+      height: px2rem(180);
+      background: url(/static/img/carrot.jpeg);
+      background-size: 100% 100%;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, px2rem(-40));
+      border: 4px solid $light;
+      overflow: hidden;
+      &:hover {
+        background: url(/static/img/carrot_hover.jpg);
+        background-size: 100% 100%;
+      }
+    }
+    .about-info {
+      font-size: px2rem(30);
+      text-align: center;
+      font-weight: normal;
+    }
+    .about-name {
+      font-size: px2rem(42);
+      margin-bottom: px2rem(18);
+    }
+    .about-local {
+      color: $gray2;
+      font-size: px2rem(18);
+      margin-top: px2rem(9);
+    }
+  }
+  .about-content {
+    width: 100%;
+  }
+  .about-tags {
+    font-size: px2rem(20);
+    padding: 0 px2rem(20);
+    .about-tag {
+      display: inline-block;
+      margin-right: px2rem(40);
+      margin-bottom: px2rem(20);
+      transition: 0.2s;
+    }
+  }
+  .about-contact {
+    position: absolute;
+    bottom: px2rem(30);
+    left: 0;
+    width: 100%;
+    font-size: px2rem(30);
+    text-align: center;
+    .about-email {
+      display: inline-block;
+      letter-spacing: 0;
+      margin-bottom: px2rem(24);
+      font-size: px2rem(20);
+    }
+    .about-sns-list {
+      display: flex;
+      justify-content: space-around;
+    }
+    .about-sns-item:last-of-type {
+      font-size: px2rem(34);
+      position: relative;
+      top: px2rem(-4);
+    }
+  }
+}
+
+.hr-line {
+  width: 90%;
+  margin: px2rem(40) auto;
+  height: 1px;
+  border: none;
+  border-bottom: 1px dashed rgba($primary, 0.25);
+}
+
+.about-last-project {
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  @include middle-all;
+}
+.about-tips {
+  text-align: center;
+  a {
+    display: block;
+    font-size: px2rem(36);
+    color: $primary;
+    margin-top: px2rem(18);
+    &:hover {
+      color: lighten($color: $primary, $amount: 10%);
+    }
+  }
+}

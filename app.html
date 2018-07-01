@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- SET -->
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,initial-scale=1.0,width=device-width">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="wap">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="static/img/favicon_24x24.png">
+    <link rel="apple-touch-icon" href="static/img/icon_150x150.png">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="true">
+    <meta name="x5-screen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <!-- SEO -->
+    <title>GaoFang Huang's Profile | Web Front-End Engineer · Make Something Fun</title>
+    <script src="/static/font/iconfont.js"></script>
+    <!-- 离线支持 -->
+    <link rel="manifest" href="/static/manifest.json">
+    <!-- 自适应 -->
+    <script type="text/javascript">
+      (function(doc, win) {
+        var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ?
+        'orientationchange' :
+        'resize',
+        recalc = function() {
+          var clientWidth = docEl.clientWidth
+          if (!clientWidth) {
+            return
+          }
+          if (clientWidth > 1200) {
+            docEl.style.fontSize = 20 + 'px'
+          } else {
+            docEl.style.fontSize = 20 * (clientWidth / 375) + 'px'
+          }
+        }
+        if (!doc.addEventListener) {
+          return
+        }
+        win.addEventListener(resizeEvt, recalc, false)
+        doc.addEventListener('DOMContentLoaded', recalc, false)
+      })(document, window)
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

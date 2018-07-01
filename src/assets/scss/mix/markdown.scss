@@ -1,0 +1,129 @@
+.markdown-view {
+  color: $gray;
+  word-wrap: break-word;
+  font-size: px2rem(24);
+  line-height: 1.68;
+  pre {
+    margin: 10px 0 30px 0;
+    padding: 10px;
+    background: $black;
+    border-radius: 8px;
+    overflow-x: auto;
+    word-wrap: break-word;
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: hsla(220, 4%, 58%, .5);
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+  li>code,
+  p>code {
+    max-width: 100%;
+    padding: 0 8px;
+    margin: 0 4px;
+    background: rgba($primary, 0.1);
+    border-radius: 0.2rem;
+  }
+  blockquote,
+  ol,
+  ul,
+  p,
+  table,
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-bottom: px2rem(24);
+  }
+  blockquote,
+  p,
+  ol,
+  ul,
+  table {
+    &+h4,
+    &+h3,
+    &+h2,
+    &+h1 {
+      margin-top: px2rem(36);
+    }
+  }
+  table {
+    thead tr {
+      font-weight: 600;
+    }
+  }
+  a {
+    color: $primary;
+    transition: 0.2s ease-in;
+    &:hover {
+      color: $active;
+    }
+  }
+  blockquote {
+    position: relative;
+    padding-left: px2rem(40);
+    background: rgba($primary, 0.1);
+    padding: px2rem(10) px2rem(20);
+    border-left: 3px solid $primary;
+    p {
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    &+ol,
+    &+ul {
+      margin-top: px2rem(24);
+    }
+  }
+  ol {
+    counter-reset: sectioncounter;
+    li {
+      padding-left: px2rem(40);
+      position: relative;
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: inherit;
+        content: counter(sectioncounter) ".";
+        counter-increment: sectioncounter;
+        font-size: px2rem(24);
+        color: $gray2;
+      }
+    }
+  }
+  h1 {
+    font-size: px2rem(48);
+  }
+  h2 {
+    font-size: px2rem(40);
+  }
+  h3 {
+    font-size: px2rem(32);
+  }
+  h4 {
+    font-size: px2rem(24);
+  }
+  hr {
+    margin: px2rem(40) 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, #23cca9, #23bed5);
+    opacity: 0.2;
+  }
+  img {
+    max-width: 100%;
+    margin: px2rem(24) auto;
+  }
+  em {
+    font-style: normal;
+    font-weight: 600;
+    color: $active;
+  }
+}

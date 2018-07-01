@@ -1,0 +1,13 @@
+@import "mix/var";
+@import "mix/mixins";
+@import "mix/reset";
+@import "mix/animation";
+@import "mix/layout";
+@import "mix/markdown";
+
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
