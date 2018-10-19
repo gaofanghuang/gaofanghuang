@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Nav from "./modules/nav"
+import Nav from './modules/nav'
 export default {
   components: {
     Nav
@@ -19,11 +19,5 @@ export default {
   height: 100%;
   background: linear-gradient(90deg, rgba($green, 0.75), rgba($primary, 0.75));
   color: #fff;
-  position: relative;
-  .nav {
-    position: absolute;
-    right: px2rem(20);
-    top: px2rem(20);
-  }
 }
 </style>
