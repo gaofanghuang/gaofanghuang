@@ -7,12 +7,12 @@
 </template>
 
 <script>
-//import CV from '@/pages/cv'
+// import CV from '@/pages/cv'
 import Home from '@/pages/home'
 export default {
   name: 'App',
   components: {
-    //CV
+    // CV
     Home
   }
 }
