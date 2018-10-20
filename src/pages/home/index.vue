@@ -39,6 +39,7 @@
       align-items: center;
       justify-content: center;
       text-shadow: 3px 6px 9px darken(rgba($primary, 0.75), 5%);
+      font-size: px2rem(36);
     }
 
     .home-about-me {

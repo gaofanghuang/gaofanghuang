@@ -13,19 +13,20 @@
 <style lang="scss">
   .sns-wrap {
     position: fixed;
-    bottom: 0;
-    left: px2rem(40);
+    bottom: px2rem(40);
+    left: px2rem(20);
     cursor: pointer;
 
     .sns-list {
       position: relative;
+      padding-bottom: px2rem(80);
 
       &::after,
       &::before {
         display: block;
         position: absolute;
         bottom: 0;
-        left: px2rem(40);
+        left: px2rem(60);
         content: "";
         width: 4px;
         height: px2rem(60);
@@ -50,20 +51,16 @@
       font-size: px2rem(20);
       border-radius: px2rem(40);
       text-align: center;
-      margin-bottom: 20px;
-
+      font-size: px2rem(24);
+      & + .sns-item {
+        margin-top: 20px;
+      }
       a {
         color: #fff;
       }
     }
 
     &:hover {
-      .sns-list {
-        &::after,
-        &::before {
-            opacity: 0;
-        }
-      }
       .sns-item {
         opacity: 0.45;
         &:hover {
