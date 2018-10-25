@@ -9,7 +9,7 @@
         <a href="http://blog.huanggaofang.com">Blog</a>
       </li>
       <li class="nav-item">
-        <a href="/">Project</a>
+        <a href="/project">Project</a>
       </li>
       <li class="nav-item">
         <a href="/cv">CV</a>
@@ -43,9 +43,8 @@
       padding: 0 px2rem(40) px2rem(40) px2rem(40);
       z-index: 98;
       text-align: center;
-      transition: transform .5s ease-in-out;
-      transform: scaleY(0);
-      transform-origin: 0 0;
+      transition: 0.2s ease-in-out;
+      opacity: 0;
     }
 
     a {
@@ -79,7 +78,7 @@
 
     &:hover {
       .nav-list {
-        transform: scaleY(1);
+        opacity: 1;
       }
     }
   }

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import '@/assets/scss/common.scss'
 import directive from './directive'
+import router from './router'
 
 Vue.use(directive)
 
@@ -21,5 +22,6 @@ if (process.env.NODE_ENV === 'production') {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })

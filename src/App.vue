@@ -1,20 +1,15 @@
 <template>
   <div id="app">
     <div class="layout-wrap">
-      <Home></Home>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-// import CV from '@/pages/cv'
-import Home from '@/pages/home'
+
 export default {
-  name: 'App',
-  components: {
-    // CV
-    Home
-  }
+  name: 'App'
 }
 </script>
 
