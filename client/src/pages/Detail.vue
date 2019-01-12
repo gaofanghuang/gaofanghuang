@@ -261,8 +261,8 @@
             margin-bottom: 80px;
             color: #999;
             font-size: 24px;
-            display: flex;
             align-items: center;
+            padding: 0 10px;
 
             .article-tag {
                 display: inline-block;
@@ -282,6 +282,7 @@
             align-items: center;
             color: #999;
             font-size: 24px;
+            padding: 0 10px;
 
             .icon-wrap {
                 margin-right: 24px;
