@@ -32,7 +32,7 @@
                 return !!this.$route.meta.isSearch
             },
             isAdd() {
-                return !!this.$route.meta.isAdd
+                return !!this.$route.meta.isAdd && process.env.NODE_ENV !== "development"
             },
             isSave() {
                 return !!this.$route.meta.isSave

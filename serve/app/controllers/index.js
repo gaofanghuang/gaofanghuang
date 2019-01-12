@@ -18,8 +18,7 @@ const getList = async (ctx, next) => {
     ctx.status = 200;
     let list = getFile('list')
     ctx.body = {
-        message: "获取成功",
-        list: list
+        ...list
     }
 }
 
@@ -29,7 +28,6 @@ const getInfo = async (ctx, next) => {
     ctx.status = 200;
     let info = getFile(req.id)
     ctx.body = {
-        message: "获取成功",
         ...info
     }
 }

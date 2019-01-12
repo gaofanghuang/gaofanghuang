@@ -19,7 +19,7 @@
                 api.getList().then(({
                     data
                 }) => {
-                    this.list = data.list
+                    this.list = data
                     callback(true);
                 })
             }
