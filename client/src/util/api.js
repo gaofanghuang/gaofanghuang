@@ -7,7 +7,7 @@ export const baseURL = baseURL;
 // 获取-文章列表
 export const getList = ((params = {}) => {
     if (process.env.NODE_ENV === "production") {
-        return axios.get("https://raw.githubusercontent.com/gaofanghuang/blog/master/serve/data/list.json", {
+        return axios.get("https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/list.json", {
             params
         })
     } else {
@@ -20,7 +20,7 @@ export const getList = ((params = {}) => {
 // 获取-文章
 export const getInfo = ((params = {}) => {
     if (process.env.NODE_ENV === "production") {
-        return axios.get(`https://raw.githubusercontent.com/gaofanghuang/blog/master/serve/data/${params.id}.json`, {
+        return axios.get(`https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/${params.id}.json`, {
             params
         })
     } else {

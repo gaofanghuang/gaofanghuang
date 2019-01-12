@@ -129,7 +129,7 @@
             insetImg(i) {
                 let imgPath = ''
                 if (process.env.NODE_ENV === "production") {
-                    imgPath = `https://github.com/gaofanghuang/blog/raw/master/server/public/uploads/${i}`
+                    imgPath = `https://github.com/gaofanghuang/gaofanghuang/raw/master/server/public/uploads/${i}`
                 } else {
                     imgPath = `${api.baseURL}/uploads/${i}`
                 }
