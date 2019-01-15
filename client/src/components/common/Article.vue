@@ -83,7 +83,12 @@
                             }).then(({
                                 data
                             }) => {
-                                this.isDelete = true
+                                let path = this.$router.path
+                                if (path.includes('detail')) {
+                                    this.$router.push("/home")
+                                } else{
+                                    this.isDelete = true
+                                }
                             })
                         }
                     });

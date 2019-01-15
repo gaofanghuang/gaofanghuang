@@ -25,6 +25,7 @@ const url = [{
     meta: {
         title: "List",
         isBack: true,
+        isMore: true,
         showHead: true
     }
 }, {
@@ -33,6 +34,7 @@ const url = [{
     meta: {
         title: "List",
         isBack: true,
+        isMore: true,
         showHead: true
     }
 }, {

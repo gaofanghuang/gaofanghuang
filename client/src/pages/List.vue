@@ -2,7 +2,7 @@
     <LoadMore ref="loadmore" class="list-wrap" :showBottom="false" @onRefresh="onRefresh">
         <div class="list-search">
             <Icon type="sousuo" />
-            <input type="text" v-model="keyword" @keyup.enter="handleSearch()" placeholder="输入文章标题或标签名称搜索">
+            <input type="text" v-model="keyword" @keyup.enter="handleSearch" placeholder="输入文章标题或标签名称搜索">
         </div>
         <!-- 当前状态 -->
         <div class="search-status" v-if="keyword">search for <span>{{ keyword }}</span>, {{ searchList.length }}
@@ -19,6 +19,7 @@
 
 <script>
     import * as api from "@/util/api"
+    import bus from "@/bus.js"
     const noop = () => {};
     export default {
         data() {
@@ -30,11 +31,6 @@
             }
         },
         watch: {
-            keyword() {
-                if (this.keyword) {
-                    this.handleSearch()
-                }
-            },
             tag() {
                 if (this.tag !== undefined) {
                     this.keyword = this.tag
@@ -44,6 +40,11 @@
                 if (newPath.path.includes("list")) {
                     this.keyword = ""
                 }
+            },
+            keyword() {
+                if (this.keyword && this.list.length > 0) {
+                    this.handleSearch()
+                }
             }
         },
         computed: {
@@ -52,12 +53,28 @@
             }
         },
         mounted() {
+            if (this.$store.state.list) {
+                this.list = this.$store.state.list
+            }
             if (this.tag !== undefined) {
                 this.keyword = this.tag
+                setTimeout(() => {
+                    this.handleSearch()
+                }, 300);
             }
+
+            bus.$on("handleMore", () => {
+                this.showMore()
+            })
+        },
+        destroyed() {
+            bus.$off('handleMore')
         },
         methods: {
             onRefresh(callback = noop) {
+                if (this.list.length > 0) {
+                    return
+                }
                 api.getList().then(({
                     data
                 }) => {
@@ -65,6 +82,7 @@
                         return b.lasttime - a.lasttime
                     })
                     this.list = data
+                    this.$store.commit("SaveList", this.list);
                     callback(true)
                 })
             },
@@ -86,6 +104,17 @@
                 setTimeout(() => {
                     this.canSearch = true
                 }, 1000);
+            },
+            showMore() {
+                const actions = [];
+                actions.push({
+                    text: "回到首页",
+                    method: () => {
+                        this.$router.push(`/home`)
+                    }
+                });
+
+                bus.$emit("actionSheet", actions, "取消");
             }
         }
     }

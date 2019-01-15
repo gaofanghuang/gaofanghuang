@@ -8,6 +8,9 @@ import '@/style/common.scss';
 import "./components/common";
 import DomPortal from 'vue-dom-portal';
 import * as filters from "./util/filters";
+import FastClick from 'fastclick';
+
+FastClick.attach(document.body);
 
 Vue.use(DomPortal);
 

@@ -1,0 +1,21 @@
+{
+  "name": "Blog of GaoFang Huang",
+  "short_name": "OF",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "description": "黄高芳的博客，在这里记录前端开发和UI设计笔记。",
+  "orientation": "portrait",
+  "theme_color": "#D01919",
+  "background_color": "#fff",
+  "icons": [{
+    "src": "./img/favicon_24x24.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },
+  {
+    "src": "./img/icon_150x150.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }
+  ]
+}

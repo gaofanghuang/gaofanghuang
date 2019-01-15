@@ -13,6 +13,11 @@
                 {{ item }}
             </li>
         </ul>
+        <!-- 文章上下篇 -->
+        <ul class="article-page">
+            <li class="article-page-prev"><span v-if="hasPrev" @click="goPrev">上一篇</span></li>
+            <li class="article-page-next"><span v-if="hasNext" @click="goNext">下一篇</span></li>
+        </ul>
         <!-- 文章菜单 -->
         <transition name="leftSwipe">
             <div class="detail-menu" v-dom-portal="`.app-content`" v-if="menuToggle" @click="menuToggle = false">
@@ -32,11 +37,11 @@
 </template>
 
 <script>
-    import Hljs from 'highlight.js';
-    import marked from 'marked';
-    import pinyin from 'pinyin';
-    import * as api from "@/util/api";
-    import bus from "@/bus.js";
+    import Hljs from 'highlight.js'
+    import marked from 'marked'
+    import pinyin from 'pinyin'
+    import * as api from "@/util/api"
+    import bus from "@/bus.js"
     const noop = () => {};
 
     export default {
@@ -49,7 +54,9 @@
                 lasttime: "",
                 fetching: false,
                 menuToggle: false,
-                path: this.$route.path
+                path: this.$route.path,
+                hasNext: true,
+                hasPrev: true
             }
         },
         computed: {
@@ -99,6 +106,9 @@
             },
             browser() {
                 return this.$store.state.browser
+            },
+            list() {
+                return this.$store.state.list
             }
         },
         watch: {
@@ -106,26 +116,25 @@
                 this.onRefresh()
             },
             menuToggle() {
-                if (this.menuToggle) {
+                if (this.menuToggle && this.browser.isMobile) {
                     document.querySelector('body').style = "overflow: hidden;"
-                } else{
+                } else {
                     document.querySelector('body').style = ""
                 }
             }
         },
         mounted() {
+
             bus.$on("handleMore", () => {
                 this.showMore()
             })
+
             bus.$on("handleMenu", () => {
                 this.showMenu()
             })
+
             this.onRefresh()
-            if (!this.browser.isMobile) {
-                this.menuToggle = true
-            } else {
-                this.menuToggle = false
-            }
+
             // 来必力评论
             setTimeout(() => {
                 (function (d, s) {
@@ -142,6 +151,24 @@
                     e.parentNode.insertBefore(j, e);
                 })(document, 'script');
             }, 600);
+
+            // 键盘方向键控制文章
+            window.addEventListener('keydown', (e) => {
+                // 键盘左键, 显示上一篇文章
+                if (e.keyCode === 37) {
+                    e.preventDefault()
+                    if (this.hasPrev) {
+                        this.goPrev()
+                    }
+                }
+                // 键盘右键, 显示下一篇文章
+                if (e.keyCode === 39) {
+                    e.preventDefault()
+                    if (this.hasNext) {
+                        this.goNext()
+                    }
+                }
+            }, false)
         },
         beforeDestroy() {
             if (this.menuToggle) {
@@ -183,6 +210,8 @@
                     this.lasttime = data.lasttime
                     document.title = this.title
                     callback(true);
+                }).catch(() => {
+                    this.$router.push(`/home`)
                 })
             },
             showMore() {
@@ -222,6 +251,38 @@
             handleTag(item) {
                 this.$router.push(`/tag/${item}`)
             },
+            goPrev() {
+                console.log('打开上一篇')
+                let prevId = ''
+                for (let i in this.list) {
+                    if (this.id === this.list[i].id) {
+                        let n = Number(i) - Number(1)
+                        if (n === 0) {
+                            this.hasPrev = false
+                        } else {
+                            this.hasNext = true
+                        }
+                        prevId = this.list[n].id
+                    }
+                }
+                this.$router.push(`/detail/${prevId}`)
+            },
+            goNext() {
+                console.log('打开下一篇')
+                let nextId = ''
+                for (let i in this.list) {
+                    if (this.id === this.list[i].id) {
+                        let n = Number(i) + Number(1)
+                        if (n === this.list.length - 1) {
+                            this.hasNext = false
+                        } else {
+                            this.hasPrev = true
+                        }
+                        nextId = this.list[n] === undefined ? '' : this.list[n].id
+                    }
+                }
+                this.$router.push(`/detail/${nextId}`)
+            }
         }
     }
 </script>
@@ -236,10 +297,9 @@
     .is-pc {
         .detail-menu {
             position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 0;
             left: 0;
-            width: 300px;
+            width: 320px;
             height: 100%;
             background: $white;
             font-size: 24px;
@@ -343,6 +403,33 @@
 
             .icon-wrap {
                 margin-right: 24px;
+            }
+        }
+
+        .article-page {
+            margin: 120px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .article-page-next,
+        .article-page-prev {
+            span {
+                display: block;
+                cursor: pointer;
+                border: 1px solid #999;
+                color: #666;
+                padding: 10px 20px;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    border: 1px solid $primary;
+                    color: $primary;
+                }
             }
         }
     }

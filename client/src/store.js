@@ -4,7 +4,8 @@ import { detectOS } from "@/util/detectOS";
 
 const state = {
     isProgress: false,
-    browser: detectOS()
+    browser: detectOS(),
+    list: []
 }
 
 const getters = {}
@@ -12,6 +13,9 @@ const getters = {}
 const mutations = {
     ToggleProgress(state, data) {
         state.isProgress = data
+    },
+    SaveList(state, data) {
+        state.list = data
     }
 }
 

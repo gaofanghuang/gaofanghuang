@@ -147,14 +147,14 @@
 
                 // 标题取自第一个 # 
                 let reg = /(#+)[^\n]*?\n/g;
-                let title = this.content.match(reg)[0] || '';
+                let title = this.content.match(reg) !== null ? this.content.match(reg)[0] : '';
                 if (title) {
                     title = title.substring(2).substring(-1)
                 }
 
                 // 简介取自第一个 >
                 let reg2 = /(>+)[^\n]*?\n/g;
-                let summary = this.content.match(reg2)[0] || '';
+                let summary = this.content.match(reg2) !== null ? this.content.match(reg2)[0] : '';
                 if (summary) {
                     summary = summary.substring(2).substring(-1)
                 }
@@ -179,6 +179,8 @@
                         this.$router.replace(`/edit/${data.id}`)
                     }
                     console.log(data)
+                }).catch(()=> {
+                    this.fetching = false
                 })
             }
         }
@@ -281,9 +283,10 @@
         }
 
         .edit-tags-list {
-            width: 300px;
+            max-width: 1200px;
             white-space: nowrap;
             overflow-x: auto;
+            @include scroll-bar($active);
         }
 
         .edit-tags-input {
@@ -351,6 +354,12 @@
             resize: none;
             letter-spacing: 1px;
             @include scroll-bar($active);
+        }
+    }
+
+    .is-mobile {
+        .edit-tags-list {
+            width: 300px;
         }
     }
 </style>

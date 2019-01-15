@@ -23,6 +23,7 @@
                         return b.lasttime - a.lasttime
                     })
                     this.list = data
+                    this.$store.commit("SaveList", this.list);
                     callback(true)
                 })
             }
