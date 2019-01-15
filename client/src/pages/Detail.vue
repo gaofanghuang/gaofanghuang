@@ -15,11 +15,11 @@
         </ul>
         <!-- 文章菜单 -->
         <transition name="leftSwipe">
-            <div class="detail-menu" v-dom-portal="`.app-content`" v-if="menuToggle">
+            <div class="detail-menu" v-dom-portal="`.app-content`" v-if="menuToggle" @click="menuToggle = false">
                 <p>目录</p>
                 <ul>
                     <li class="detail-menu-item" :class="`menu-${item.level}`" v-for="(item, index) in menu" :key="`menu-${item.text}-${index}`">
-                        <a :href="item.anchorName">
+                        <a :href="`${path}#${item.anchorName}`">
                             {{ item.text }}
                         </a>
                     </li>
@@ -48,7 +48,8 @@
                 menu: [],
                 lasttime: "",
                 fetching: false,
-                menuToggle: false
+                menuToggle: false,
+                path: this.$route.path
             }
         },
         computed: {
@@ -62,6 +63,7 @@
                         let anchorName = pinyin(text, {
                             style: pinyin.STYLE_NORMAL
                         }).join('')
+                        anchorName = anchorName.replace(/\//g, '-')
                         let item = {
                             text,
                             anchorName,
@@ -100,8 +102,15 @@
             }
         },
         watch: {
-            $route() {
+            id() {
                 this.onRefresh()
+            },
+            menuToggle() {
+                if (this.menuToggle) {
+                    document.querySelector('body').style = "overflow: hidden;"
+                } else{
+                    document.querySelector('body').style = ""
+                }
             }
         },
         mounted() {
@@ -245,6 +254,46 @@
                 margin-bottom: 20px;
 
                 a {
+                    transition: 0.2s;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+
+            .menu-4 {
+                padding-left: 40px;
+
+                &+.menu-2 {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    .is-mobile {
+        .detail-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: $white;
+            font-size: 36px;
+            padding: 120px 20px 20px 20px;
+
+            p {
+                margin-bottom: 20px;
+                font-weight: 600;
+            }
+
+            .detail-menu-item {
+                margin-bottom: 20px;
+
+                a {
+                    display: block;
+                    padding: 20px 0;
                     transition: 0.2s;
 
                     &:hover {
