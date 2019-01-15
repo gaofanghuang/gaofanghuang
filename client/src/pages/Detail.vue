@@ -85,11 +85,7 @@
                         return Hljs.highlightAuto(code).value
                     }
                 })
-                let _content = this.content;
-                if (process.env.NODE_ENV === 'production') {
-                    _content.replace(/http:\/\/localhost:9000/g, "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/public");
-                }
-                return marked(_content, {
+                return marked(this.content, {
                     sanitize: true
                 })
             },
@@ -167,10 +163,16 @@
                         this.fetching = false
                     }, 600);
                     this.title = data.title
-                    this.content = data.content
+                    let _content = data.content
+                    if (process.env.NODE_ENV === 'production') {
+                        _content = _content.replace(/http:\/\/localhost:9000/g,
+                            "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/public"
+                        );
+                    }
+                    this.content = _content
                     this.tags = data.tags
                     this.lasttime = data.lasttime
-                    document.title = this.title;
+                    document.title = this.title
                     callback(true);
                 })
             },
