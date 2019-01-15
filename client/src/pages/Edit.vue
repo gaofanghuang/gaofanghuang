@@ -10,6 +10,7 @@
             <div class="edit-upload-img">
                 <Upload @file="insetImg" />
             </div>
+            
             <div class="edit-tags">
                 <ul class="edit-tags-list" v-if="tags.length > 0">
                     <li class="edit-tags-item" @click="deleteTag(index)" v-for="(item, index) in tags" :key="`${item}-${index}`">
@@ -30,6 +31,7 @@
     import * as api from "@/util/api";
     import bus from "@/bus.js";
     import Upload from "@/components/Upload"
+    let autoSave = () => {}
 
     export default {
         data() {
@@ -98,10 +100,16 @@
             bus.$on("saveInfo", () => {
                 this.doSave()
             })
+
+            // 5s自动保存
+            autoSave = setInterval(()=> {
+                localStorage.setItem("content", this.content)
+            }, 5000)
         },
         destroyed() {
             bus.$off('changeTitle')
             bus.$off('saveInfo')
+            clearInterval(autoSave)
         },
         methods: {
             getInfo() {

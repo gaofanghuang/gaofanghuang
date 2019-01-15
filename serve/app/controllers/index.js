@@ -12,6 +12,12 @@ function postFile(path = 'list', req) {
     fs.writeFileSync(filePath, JSON.stringify(req));
 }
 
+// 删除文件
+function deleteFile(id) {
+    let filePath = 'data/' + id + '.json';
+    fs.unlinkSync(filePath);
+}
+
 // 获取列表
 const getList = async (ctx, next) => {
     const req = ctx.query;
@@ -78,8 +84,7 @@ const deleteItem = async (ctx, next) => {
     postFile('list', _list)
 
     // 删除文章
-    let filePath = 'data/' + req.id + '.json';
-    fs.unlinkSync(filePath);
+    deleteFile(req.id)
 
     ctx.status = 200;
     ctx.body = {

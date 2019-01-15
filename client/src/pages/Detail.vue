@@ -151,24 +151,6 @@
                     e.parentNode.insertBefore(j, e);
                 })(document, 'script');
             }, 600);
-
-            // 键盘方向键控制文章
-            window.addEventListener('keydown', (e) => {
-                // 键盘左键, 显示上一篇文章
-                if (e.keyCode === 37) {
-                    e.preventDefault()
-                    if (this.hasPrev) {
-                        this.goPrev()
-                    }
-                }
-                // 键盘右键, 显示下一篇文章
-                if (e.keyCode === 39) {
-                    e.preventDefault()
-                    if (this.hasNext) {
-                        this.goNext()
-                    }
-                }
-            }, false)
         },
         beforeDestroy() {
             if (this.menuToggle) {
@@ -322,6 +304,10 @@
                 }
             }
 
+            .menu-3 {
+                padding-left: 20px;
+            }
+
             .menu-4 {
                 padding-left: 40px;
 
@@ -362,6 +348,9 @@
                 }
             }
 
+            .menu-3 {
+                padding-left: 20px;
+            }
             .menu-4 {
                 padding-left: 40px;
 
