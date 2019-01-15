@@ -85,7 +85,11 @@
                         return Hljs.highlightAuto(code).value
                     }
                 })
-                return marked(this.content, {
+                let _content = this.content;
+                if (process.env.NODE_ENV === 'production') {
+                    _content.replace(/http:\/\/localhost:9000/g, "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/public");
+                }
+                return marked(_content, {
                     sanitize: true
                 })
             },
@@ -118,19 +122,21 @@
                 this.menuToggle = false
             }
             // 来必力评论
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
+            setTimeout(() => {
+                (function (d, s) {
+                    var j, e = d.getElementsByTagName(s)[0];
 
-                if (typeof LivereTower === 'function') {
-                    return;
-                }
+                    if (typeof LivereTower === 'function') {
+                        return;
+                    }
 
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
+                    j = d.createElement(s);
+                    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                    j.async = true;
 
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
+                    e.parentNode.insertBefore(j, e);
+                })(document, 'script');
+            }, 1000);
         },
         beforeDestroy() {
             if (this.menuToggle) {
@@ -211,7 +217,7 @@
 
 <style lang="scss">
     .detail-view {
-        min-height: 100vh;
+        // min-height: 100vh;
         background: #fff;
         padding: 20px;
     }
