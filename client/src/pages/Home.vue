@@ -17,14 +17,13 @@
         methods: {
             onRefresh(callback) {
                 api.getList().then(({
-                    data
+                    data = []
                 }) => {
-                    let _list = data
-                    _list.sort(function (a, b) {
+                    data.sort((a, b) => {
                         return b.lasttime - a.lasttime
                     })
-                    this.list = _list
-                    callback(true);
+                    this.list = data
+                    callback(true)
                 })
             }
         }

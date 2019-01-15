@@ -17,9 +17,7 @@ const getList = async (ctx, next) => {
     const req = ctx.query;
     ctx.status = 200;
     let list = getFile('list')
-    ctx.body = {
-        ...list
-    }
+    ctx.body = list
 }
 
 // 读取文章

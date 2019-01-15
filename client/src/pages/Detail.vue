@@ -132,7 +132,7 @@
 
                     e.parentNode.insertBefore(j, e);
                 })(document, 'script');
-            }, 1000);
+            }, 600);
         },
         beforeDestroy() {
             if (this.menuToggle) {

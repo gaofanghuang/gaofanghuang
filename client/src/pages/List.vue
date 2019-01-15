@@ -9,10 +9,10 @@
             result.</div>
         <!-- 文章列表 -->
         <template v-if="!keyword">
-            <Article v-for="item in list" :key="item.id" :info="item"/>
+            <Article v-for="item in list" :key="item.id" :info="item" />
         </template>
         <template v-else>
-            <Article v-for="item in searchList" :key="item.id" :info="item"/>
+            <Article v-for="item in searchList" :key="item.id" :info="item" />
         </template>
     </LoadMore>
 </template>
@@ -61,12 +61,11 @@
                 api.getList().then(({
                     data
                 }) => {
-                    let _list = data
-                    _list.sort(function (a, b) {
+                    data.sort((a, b) => {
                         return b.lasttime - a.lasttime
                     })
-                    this.list = _list
-                    callback(true);
+                    this.list = data
+                    callback(true)
                 })
             },
             handleSearch() {
