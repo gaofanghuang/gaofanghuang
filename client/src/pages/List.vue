@@ -61,7 +61,11 @@
                 api.getList().then(({
                     data
                 }) => {
-                    this.list = data.list
+                    let _list = data
+                    _list.sort(function (a, b) {
+                        return b.lasttime - a.lasttime
+                    })
+                    this.list = _list
                     callback(true);
                 })
             },
