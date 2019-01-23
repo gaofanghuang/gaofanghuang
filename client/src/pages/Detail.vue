@@ -20,7 +20,7 @@
         </ul>
         <!-- 文章菜单 -->
         <transition name="leftSwipe">
-            <div class="detail-menu" v-dom-portal="`.app-content`" v-if="menuToggle" @click="menuToggle = false">
+            <div class="detail-menu" v-dom-portal="`#app`" v-if="menuToggle" @click="menuToggle = false">
                 <p>目录</p>
                 <ul>
                     <li class="detail-menu-item" :class="`menu-${item.level}`" v-for="(item, index) in menu" :key="`menu-${item.text}-${index}`">
@@ -29,6 +29,17 @@
                         </a>
                     </li>
                 </ul>
+            </div>
+        </transition>
+        <!-- 显示大图 -->
+        <transition name="fadeIn">
+            <div class="big-img" v-dom-portal="`#app`" v-if="showBigImg">
+                <div class="big-img-mask" @click="showBigImg = ''"></div>
+                <div class="big-img-box">
+                    <span class="big-img_close" @click="showBigImg = ''">
+                        <Icon type="guanbi" /></span>
+                    <img :src="showBigImg" alt="big">
+                </div>
             </div>
         </transition>
         <!-- 来必力评论 -->
@@ -56,7 +67,8 @@
                 menuToggle: false,
                 path: this.$route.path,
                 hasNext: true,
-                hasPrev: true
+                hasPrev: true,
+                showBigImg: ""
             }
         },
         computed: {
@@ -121,6 +133,13 @@
                 } else {
                     document.querySelector('body').style = ""
                 }
+            },
+            showBigImg() {
+                if (this.showBigImg) {
+                    document.querySelector('body').style = "overflow: hidden;"
+                } else {
+                    document.querySelector('body').style = ""
+                }
             }
         },
         mounted() {
@@ -152,11 +171,28 @@
                 })(document, 'script');
             }, 600);
         },
+        updated() {
+            let imgs = document.querySelectorAll(".markdown-view img");
+            let self = this
+            for (let i in imgs) {
+                if (typeof imgs[i] === 'object') {
+                    imgs[i].onclick = function (e) {
+                        let path = e.target.currentSrc
+                        self.showBigImg = path
+                    }
+                }
+            }
+        },
         beforeDestroy() {
             if (this.menuToggle) {
                 console.log("销毁Menu")
                 let detailMenu = document.querySelector(".detail-menu")
                 detailMenu.parentNode.removeChild(detailMenu)
+            }
+            if (this.showBigImg) {
+                console.log("销毁大图")
+                let bigImg = document.querySelector(".big-img")
+                bigImg.parentNode.removeChild(bigImg)
             }
         },
         destroyed() {
@@ -351,6 +387,7 @@
             .menu-3 {
                 padding-left: 20px;
             }
+
             .menu-4 {
                 padding-left: 40px;
 
@@ -421,5 +458,66 @@
                 }
             }
         }
+    }
+
+    .big-img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9;
+
+        .big-img-box {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.08), 0 0 18px rgba(0, 0, 0, 0.16), 0 3px 9px rgba(0, 0, 0, 0.26);
+        }
+
+        .big-img_close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.26);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+            }
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.46);
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .big-img-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.46);
     }
 </style>

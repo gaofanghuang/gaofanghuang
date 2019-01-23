@@ -2,7 +2,8 @@
     <div class="edit-wrap">
         <!-- 编辑框 -->
         <transition-group name="fadeIn" tag="div" class="edit-content" :class="{'is-mobile': browser.isMobile}">
-            <textarea class="edit-input" key="编辑框" v-show="!browser.isMobile || !isPreview" v-model="content"></textarea>
+            <textarea class="edit-input" key="编辑框" v-show="!browser.isMobile || !isPreview" v-model="content"
+                v-on:paste="getCutImg()"></textarea>
             <div class="edit-view markdown-view" key="预览框" v-show="isPreview" v-html="compiledMarkdown"></div>
         </transition-group>
         <!-- 底部栏 -->
@@ -10,7 +11,7 @@
             <div class="edit-upload-img">
                 <Upload @file="insetImg" />
             </div>
-            
+
             <div class="edit-tags">
                 <ul class="edit-tags-list" v-if="tags.length > 0">
                     <li class="edit-tags-item" @click="deleteTag(index)" v-for="(item, index) in tags" :key="`${item}-${index}`">
@@ -40,7 +41,8 @@
                 tags: [],
                 tag: "",
                 isPreview: true,
-                fetching: false
+                fetching: false,
+                range: ""
             }
         },
         computed: {
@@ -102,7 +104,7 @@
             })
 
             // 5s自动保存
-            autoSave = setInterval(()=> {
+            autoSave = setInterval(() => {
                 localStorage.setItem("content", this.content)
             }, 5000)
         },
@@ -143,6 +145,51 @@
                 }
                 let mdCode = `![${i}](${imgPath})`
                 this.content += mdCode
+            },
+            getCutImg() {
+                // 添加到事件对象中的访问系统剪贴板的接口
+                let clipboardData = event.clipboardData,
+                    i = 0,
+                    items, item, types;
+                if (clipboardData) {
+                    items = clipboardData.items;
+                    if (!items) {
+                        return;
+                    }
+                    item = items[0];
+                    // 保存在剪贴板中的数据类型
+                    types = clipboardData.types || [];
+                    for (; i < types.length; i++) {
+                        if (types[i] === 'Files') {
+                            item = items[i];
+                            break;
+                        }
+                    }
+                    // 判断是否为图片数据
+                    if (item && item.kind === 'file' && item.type.match(/^image\//i)) {
+                        this.imgReader(item);
+                    }
+                }
+            },
+            imgReader(item) {
+                let self = this,
+                    file = item.getAsFile(),
+                    reader = new FileReader();
+                // 将图片2将转成 base64 格式
+                reader.readAsDataURL(file);
+                // 读取成功后的回调
+                reader.onloadend = function () {
+                    let result = this.result;
+                    let img = new Image();
+                    img.src = result;
+                    api.upload({
+                        base64: this.result
+                    }).then(({
+                        data
+                    }) => {
+                        self.insetImg(data.id)
+                    })
+                };
             },
             doSave() {
                 console.log('保存文章');
@@ -187,7 +234,7 @@
                         this.$router.replace(`/edit/${data.id}`)
                     }
                     console.log(data)
-                }).catch(()=> {
+                }).catch(() => {
                     this.fetching = false
                 })
             }
