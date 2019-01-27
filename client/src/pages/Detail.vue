@@ -24,7 +24,7 @@
                 <p>目录</p>
                 <ul>
                     <li class="detail-menu-item" :class="`menu-${item.level}`" v-for="(item, index) in menu" :key="`menu-${item.text}-${index}`">
-                        <a :href="`${path}#${item.anchorName}`">
+                        <a @click="goSwipe(item.anchorName)">
                             {{ item.text }}
                         </a>
                     </li>
@@ -65,7 +65,6 @@
                 lasttime: "",
                 fetching: false,
                 menuToggle: false,
-                path: this.$route.path,
                 hasNext: true,
                 hasPrev: true,
                 showBigImg: ""
@@ -302,6 +301,13 @@
                     }
                 }
                 this.$router.push(`/detail/${nextId}`)
+            },
+            goSwipe(name) {
+                let el = document.querySelector(`#${name}`)
+                window.scrollTo({
+                    top: el.offsetTop,
+                    behavior: "smooth"
+                })
             }
         }
     }
@@ -335,6 +341,7 @@
 
                 a {
                     transition: 0.2s;
+                    cursor: pointer;
 
                     &:hover {
                         color: $primary;
@@ -398,6 +405,7 @@
                 }
             }
         }
+
         .article-page {
             padding: 0 10px;
         }
