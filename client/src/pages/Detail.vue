@@ -20,7 +20,7 @@
         </ul>
         <!-- 文章菜单 -->
         <transition name="leftSwipe">
-            <div class="detail-menu" v-dom-portal="`#app`" v-if="menuToggle" @click="menuToggle = false">
+            <div class="detail-menu" v-dom-portal="`.app-content`" v-if="menuToggle" @click="menuToggle = false">
                 <p>目录</p>
                 <ul>
                     <li class="detail-menu-item" :class="`menu-${item.level}`" v-for="(item, index) in menu" :key="`menu-${item.text}-${index}`">
@@ -149,6 +149,7 @@
             })
 
             bus.$on("handleMenu", () => {
+                console.log(1)
                 this.showMenu()
             })
 
@@ -264,6 +265,7 @@
                 bus.$emit("actionSheet", actions, "取消");
             },
             showMenu() {
+                console.log(2)
                 this.menuToggle = !this.menuToggle
             },
             handleTag(item) {
