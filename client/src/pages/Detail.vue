@@ -396,6 +396,9 @@
                 }
             }
         }
+        .article-page {
+            padding: 0 10px;
+        }
     }
 
     .detail-wrap {
