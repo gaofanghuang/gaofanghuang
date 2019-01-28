@@ -1,3 +1,5 @@
+axios.defaults.baseURL = "http://localhost:9000";
+
 var project = new Vue({
     el: '#project',
     data: {
@@ -48,14 +50,14 @@ var project = new Vue({
             reader.readAsDataURL(_file);
             reader.onload = function (e) {
                 axios.post({
-                    url: "http://localhost:9000/upload",
+                    url: "/upload",
                     params: {
                         base64: this.result
                     }
                 }).then(({
                     data
                 }) => {
-                    this.curItem.cover = `http://localhost:9000/uploads/${data.id}`
+                    this.curItem.cover = `${axios.defaults.baseURL}/uploads/${data.id}`
                 })
             }
         },
