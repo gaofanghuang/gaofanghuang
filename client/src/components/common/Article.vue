@@ -41,7 +41,7 @@
             cover() {
                 let _cover = this.info.cover
                 if (process.env.NODE_ENV === 'production') {
-                    _cover = _content.replace(/http:\/\/localhost:9000/g,
+                    _cover = _cover.replace(/http:\/\/localhost:9000/g,
                         "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/public"
                     );
                 }
