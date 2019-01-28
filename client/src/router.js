@@ -6,6 +6,7 @@ import Home from '@/pages/Home'
 import List from '@/pages/List'
 import Detail from '@/pages/Detail'
 import Edit from '@/pages/Edit'
+import Project from '@/pages/Project'
 
 const url = [{
     path: '/',
@@ -27,6 +28,13 @@ const url = [{
         isBack: true,
         isMore: true,
         showHead: true
+    }
+}, {
+    path: '/project',
+    component: Project,
+    meta: {
+        title: "Project",
+        showHead: false
     }
 }, {
     path: '/tag/:tag',

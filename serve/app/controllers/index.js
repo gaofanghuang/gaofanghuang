@@ -94,7 +94,6 @@ const deleteItem = async (ctx, next) => {
 }
 
 // 上传图片
-
 const upload = async (ctx, next) => {
     const req = ctx.request.body;
     ctx.status = 200;
@@ -113,10 +112,45 @@ const upload = async (ctx, next) => {
     }
 }
 
+// 项目列表
+const getProject = async (ctx, next) => {
+    const req = ctx.query;
+    ctx.status = 200;
+    let project = getFile('project')
+    ctx.body = project
+}
+
+// 修改项目列表
+const saveProject = async (ctx, next) => {
+    const req = ctx.request.body;
+    let project = getFile('project')
+
+    let hasItem = false
+    for (let i in project) {
+        if (Number(project[i].id) === Number(req.id)) {
+            hasItem = true
+            project[i] = req
+        }
+    }
+    if (!hasItem) {
+        project.push(req)
+    }
+    postFile('project', project)
+    let res = {}
+    res.message = "修改成功"
+    if (req.id === req.lasttime) {
+        res.message = "添加成功"
+    }
+    ctx.status = 200;
+    ctx.body = res
+}
+
 module.exports = {
     getList,
     getInfo,
     saveItem,
     deleteItem,
-    upload
+    upload,
+    getProject,
+    saveProject
 }

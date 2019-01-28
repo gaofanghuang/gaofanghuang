@@ -46,3 +46,13 @@ export const deleteItem = ((params = {}) => {
 export const upload = ((params = {}) => {
     return axios.post("/upload", params)
 })
+
+// 获取-项目列表
+export const getProject = ((params = {}) => {
+    return axios.get("/get-project", params)
+})
+
+// 保存-项目
+export const saveProject = ((params = {}) => {
+    return axios.post("/save-project", params)
+})
