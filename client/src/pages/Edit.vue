@@ -214,10 +214,15 @@
                     summary = summary.substring(2).substring(-1)
                 }
 
+                // 封面图截取第一个img
+                let reg3 = /\!\[(.*?)\]\((.*)\)/i;
+                let cover = this.content.match(reg3) !== null && this.content.match(reg3).length == 3 ? this.content.match(reg3)[2] : '';
+
                 let params = {
                     id: this.isEdit ? this.id : dateTime,
                     title,
                     summary,
+                    cover,
                     tags: this.tags,
                     content: this.content,
                     lasttime: dateTime

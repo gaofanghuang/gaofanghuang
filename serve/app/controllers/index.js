@@ -44,6 +44,7 @@ const saveItem = async (ctx, next) => {
         lasttime: req.lasttime,
         title: req.title,
         tags: req.tags,
+        cover: req.cover,
         summary: req.summary
     }
     // 更新列表

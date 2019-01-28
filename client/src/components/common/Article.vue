@@ -39,7 +39,13 @@
         },
         computed: {
             cover() {
-                return ""
+                let _cover = this.info.cover
+                if (process.env.NODE_ENV === 'production') {
+                    _cover = _content.replace(/http:\/\/localhost:9000/g,
+                        "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/public"
+                    );
+                }
+                return _cover
             },
             title() {
                 return this.info.title
@@ -83,10 +89,10 @@
                             }).then(({
                                 data
                             }) => {
-                                let path = this.$router.path
+                                let path = this.$route.path
                                 if (path.includes('detail')) {
                                     this.$router.push("/home")
-                                } else{
+                                } else {
                                     this.isDelete = true
                                 }
                             })
@@ -110,6 +116,7 @@
     .article-wrap {
         background: #ffffff;
         position: relative;
+        box-shadow: 0 6px 12px rgba(#000, 0.08);
 
         .article-more {
             position: absolute;
@@ -117,19 +124,23 @@
             right: 10px;
             color: $gray2;
             cursor: pointer;
+
             &:hover {
                 color: $black;
             }
         }
 
         &+.article-wrap {
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .article-cover {
-            height: 300px;
+            height: 320px;
             overflow: hidden;
             background: $light;
+            text-align: center;
+            background: #e9e9e9;
+            cursor: pointer;
         }
 
         .article-title {
