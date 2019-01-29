@@ -9,7 +9,9 @@
             <li class="project-item" v-for="(item, key) in list" :key="`project-${key}`">
                 <div class="project-item-cover">
                     <img :src="item.cover" alt="cover">
-                    <span class="qrcode-box"></span>
+                    <span class="qrcode-box" v-if="qrcodeUrl && item.ios === qrcodeUrl"><canvas id="canvas"></canvas></span>
+                    <span class="qrcode-box" v-if="qrcodeUrl && item.android === qrcodeUrl"><canvas id="canvas"></canvas></span>
+                    <span class="qrcode-box" v-if="qrcodeUrl && item.wxapp === qrcodeUrl"><canvas id="canvas"></canvas></span>
                 </div>
                 <div class="project-item-info">
                     <p class="project-item-name">{{ item.name }}</p>
@@ -19,12 +21,14 @@
                         <li v-for="(tag, key2) in item.tags" :key="`project-tag-${key2}`">{{ tag }}</li>
                     </ul>
                     <ul class="project-item-platform">
-                        <li v-if="item.ios"><span class="platform-name">ios</span></li>
-                        <li v-if="item.android"><span class="platform-name">android</span></li>
-                        <li v-if="item.wxapp"><span class="platform-name">微信小程序</span></li>
-                        <li v-if="item.web"><span class="platform-name">web</span></li>
+                        <li :class="{'is-active': item.ios === qrcodeUrl}" v-if="item.ios" @mouseenter="showQrcode(item.ios)" @mouseleave="hiddenQrcode"><span class="platform-name">ios</span></li>
+                        <li :class="{'is-active': item.android === qrcodeUrl}" v-if="item.android" @mouseenter="showQrcode(item.android)" @mouseleave="hiddenQrcode"><span class="platform-name">android</span></li>
+                        <li :class="{'is-active': item.wxapp === qrcodeUrl}" v-if="item.wxapp" @mouseenter="showQrcode(item.wxapp)" @mouseleave="hiddenQrcode"><span class="platform-name">微信小程序</span></li>
+                        <li v-if="item.web" @click="showQrcode(item.ios)"><a class="platform-name" :href="item.web" target="_blank">web</a></li>
                     </ul>
                 </div>
+                <span class="project-item-edit" v-if="dev" @click="editProject(item)">Edit</span>
+                <span class="project-item-delete" v-if="dev" @click="deleteProject(item)">Delete</span>
             </li>
         </ul>
 
@@ -56,8 +60,14 @@
                         </div>
                         <div class="form-entry">
                             <span class="form-label">项目标签</span>
-                            <span class="form-input">
-                                <input type="text" v-model="curItem.tags" />
+                            <span class="form-input form-input-tag">
+                                <ul class="edit-tags-list" v-if="curItem.tags.length > 0">
+                                    <li class="edit-tags-item" @click="deleteTag(index)" v-for="(item, index) in curItem.tags"
+                                        :key="`${item}-${index}`">
+                                        {{ item }}
+                                    </li>
+                                </ul>
+                                <input type="text" @keyup.enter="addTag" placeholder="这里输入标签" v-model="tag" />
                             </span>
                         </div>
                         <div class="form-entry">
@@ -97,6 +107,7 @@
 
 <script>
     import * as api from "@/util/api";
+    import QRCode from "qrcode";
     export default {
         data() {
             return {
@@ -105,12 +116,14 @@
                     cover: "",
                     name: "",
                     describe: "",
-                    tags: "",
+                    tags: [],
                     ios: "",
                     android: "",
                     wxapp: "",
                     web: ""
                 },
+                qrcodeUrl: "",
+                tag: "",
                 showModal: false,
                 dev: process.env.NODE_ENV !== "production"
             }
@@ -124,13 +137,29 @@
                     cover: "",
                     name: "",
                     describe: "",
-                    tags: "",
+                    tags: [],
                     ios: "",
                     android: "",
                     wxapp: "",
                     web: ""
                 }
                 this.showModal = true
+            },
+            editProject(item) {
+                this.curItem = item
+                this.showModal = true
+            },
+            addTag() {
+                console.log('添加标签');
+                if (!this.tag) {
+                    return;
+                }
+                this.curItem.tags.push(this.tag);
+                this.tag = '';
+            },
+            deleteTag(i) {
+                console.log('删除标签');
+                this.curItem.tags.splice(i, 1);
             },
             getFile(file) {
                 let _file = file.target.files[0]
@@ -170,10 +199,39 @@
                 api.getProject().then(({
                     data
                 }) => {
-                    data.map((item) => {
-                        item.tags = item.tags.split(",")
-                    })
                     this.list = data
+                })
+            },
+            showQrcode(url) {
+                this.qrcodeUrl = url
+                setTimeout(() => {
+                    this.useqrcode(url)
+                }, 300);
+            },
+            hiddenQrcode() {
+                this.qrcodeUrl = ""
+            },
+            useqrcode(url) {
+                //生成的二维码内容，可以添加变量
+                let canvas = document.getElementById("canvas");
+                QRCode.toCanvas(canvas, url, {
+                    width: 100
+                }, function (error) {
+                    if (error) {
+                        console.error(error);
+                    } else {
+                        // console.log("success!");
+                    }
+                });
+            },
+            deleteProject(item) {
+                let params = {
+                    id: item.id
+                }
+                api.deleteProject(params).then(({
+                    data
+                }) => {
+                    this.getList()
                 })
             }
         }
@@ -182,10 +240,10 @@
 
 
 <style lang="scss">
-
-    .app-content.is-pc {
+    .app-content.is-project {
         width: 100%;
     }
+
     .project-banner {
         position: fixed;
         top: 0;
@@ -254,7 +312,6 @@
         break-inside: avoid;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         transition: 0.2s ease-in;
-        cursor: pointer;
         position: relative;
     }
 
@@ -312,26 +369,55 @@
         margin-right: 4px;
         transition: 0.2s ease-in;
         margin-bottom: 10px;
+        cursor: pointer;
     }
 
     .project-item-tags>li:hover {
-        border: 1px solid #d2d2d2;
+        border: 1px solid #c9c9c9;
     }
 
     .project-item-platform {
         margin-top: 10px;
-        display: flex;
-        justify-content: space-around;
         padding-bottom: 10px;
+        display: flex;
     }
 
     .project-item-platform>li {
         display: block;
         text-align: center;
+        cursor: pointer;
+        margin-right: 20px;
+        a:hover,
+        &.is-active {
+            color: #23bed5;
+        }
+    }
+
+    .project-item-delete,
+    .project-item-edit {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #23bed5;
+        color: #fff;
+        padding: 4px 10px;
+        cursor: pointer;
+        transition: 0.2s ease-in;
+        &:hover {
+            background: #30adbf;
+        }
+    }
+
+    .project-item-delete {
+        background: $active;
+        right: 70px;
+        &:hover {
+            background: darken($color: $active, $amount: 5%);
+        }
     }
 
     .qrcode-box {
-        display: none;
+        display: block;
         width: 200px;
         height: 200px;
         background: #e2e2e2;
@@ -430,5 +516,35 @@
     .form-input input,
     .form-input textarea {
         padding: 12px;
+    }
+
+    .form-input-tag {
+        display: flex;
+        .edit-tags-list {
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+        .edit-tags-item {
+            display: inline-block;
+            height: 48px;
+            line-height: 48px;
+            background: #f2f2f2;
+            color: #666;
+            padding: 0 10px;
+            font-size: 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            & + .edit-tags-item {
+                margin-left: 12px;
+            }
+        }
+        .edit-tags-item:hover {
+            background: #e5e5e5;
+        }
+        input {
+            width: 240px;
+            font-size: 20px;
+        }
     }
 </style>

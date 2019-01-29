@@ -9,5 +9,6 @@ router.delete('/delete', controller.deleteItem);
 router.post('/upload', controller.upload);
 router.get('/get-project', controller.getProject);
 router.post('/save-project', controller.saveProject);
+router.delete('/delete-project', controller.deleteProject);
 
 module.exports = router;

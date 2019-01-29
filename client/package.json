@@ -14,6 +14,7 @@
     "lodash": "^4.17.11",
     "marked": "^0.5.2",
     "pinyin": "^2.8.3",
+    "qrcode": "^1.3.3",
     "vue": "^2.5.17",
     "vue-dom-portal": "^0.1.6",
     "vue-router": "^3.0.2",

@@ -56,3 +56,8 @@ export const getProject = ((params = {}) => {
 export const saveProject = ((params = {}) => {
     return axios.post("/save-project", params)
 })
+
+// 删除-项目
+export const deleteProject = ((params = {}) => {
+    return axios.delete("/delete-project", params)
+})

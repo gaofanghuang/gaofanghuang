@@ -145,6 +145,22 @@ const saveProject = async (ctx, next) => {
     ctx.body = res
 }
 
+// 删除项目
+const deleteProject = async (ctx, next) => {
+    const req = ctx.query;
+    // 删除列表
+    let project = getFile('project')
+    let _project = project.filter((item) => {
+        return Number(item.id) !== Number(req.id)
+    })
+    postFile('project', _project)
+
+    ctx.status = 200;
+    ctx.body = {
+        message: "删除成功"
+    }
+}
+
 module.exports = {
     getList,
     getInfo,

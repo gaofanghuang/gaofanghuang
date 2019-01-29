@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header v-if="showHead" />
-    <main class="app-content" :class="{'show-header': showHead, 'is-pc': !browser.isMobile, 'is-mobile': browser.isMobile, 'is-edit': isEdit }">
+    <main class="app-content" :class="{'show-header': showHead, 'is-pc': !browser.isMobile, 'is-mobile': browser.isMobile, 'is-edit': isEdit, 'is-project': isProject }">
       <router-view />
     </main>
     <ActionSheet />
@@ -28,6 +28,9 @@
       isEdit() {
         return this.$route.path.includes('edit') || this.$route.path.includes('add')
       },
+      isProject() {
+        return this.$route.path.includes('project')
+      }
     }
   }
 </script>
