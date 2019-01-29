@@ -18,7 +18,7 @@
                     <p class="project-item-describe">{{ item.describe }}</p>
                     <time class="project-item-time">{{ item.update }}</time>
                     <ul class="project-item-tags">
-                        <li v-for="(tag, key2) in item.tags" :key="`project-tag-${key2}`">{{ tag }}</li>
+                        <li v-for="(tag, key2) in item.tags" @click="goToTag(tag)" :key="`project-tag-${key2}`">{{ tag }}</li>
                     </ul>
                     <ul class="project-item-platform">
                         <li :class="{'is-active': item.ios === qrcodeUrl}" v-if="item.ios" @mouseenter="showQrcode(item.ios)" @mouseleave="hiddenQrcode"><span class="platform-name">ios</span></li>
@@ -233,6 +233,9 @@
                 }) => {
                     this.getList()
                 })
+            },
+            goToTag(tag) {
+                this.$router.push(`/tag/${item}`)
             }
         }
     }
