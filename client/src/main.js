@@ -5,6 +5,7 @@ import store from './store';
 import "./util/rem";
 import "./assets/iconfont";
 import '@/style/common.scss';
+import 'highlight.js/styles/github.css';
 import "./components/common";
 import DomPortal from 'vue-dom-portal';
 import * as filters from "./util/filters";

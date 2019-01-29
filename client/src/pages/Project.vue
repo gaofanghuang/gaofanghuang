@@ -2,7 +2,7 @@
     <div class="project-wrap">
 
         <div class="project-banner">
-            <h1>GaoFang Huang's Project</h1>
+            <h1><a href="/">GaoFang Huang's Project</a></h1>
         </div>
 
         <ul class="project-list">
@@ -235,7 +235,7 @@
                 })
             },
             goToTag(tag) {
-                this.$router.push(`/tag/${item}`)
+                this.$router.push(`/tag/${tag}`)
             }
         }
     }
@@ -243,7 +243,7 @@
 
 
 <style lang="scss">
-    .app-content.is-project {
+    .app-content.is-fullpage {
         width: 100%;
     }
 

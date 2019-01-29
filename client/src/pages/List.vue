@@ -53,7 +53,7 @@
             }
         },
         mounted() {
-            if (this.$store.state.list) {
+            if (this.$store.state.list.length > 0) {
                 this.list = this.$store.state.list
             }
             if (this.tag !== undefined) {

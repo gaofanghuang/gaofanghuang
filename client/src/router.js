@@ -7,6 +7,7 @@ import List from '@/pages/List'
 import Detail from '@/pages/Detail'
 import Edit from '@/pages/Edit'
 import Project from '@/pages/Project'
+import Skill from '@/pages/Skill'
 
 const url = [{
     path: '/',
@@ -34,6 +35,13 @@ const url = [{
     component: Project,
     meta: {
         title: "Project",
+        showHead: false
+    }
+}, {
+    path: '/skill',
+    component: Skill,
+    meta: {
+        title: "Skill",
         showHead: false
     }
 }, {
