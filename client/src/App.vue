@@ -49,5 +49,9 @@
         width: 2400px
       }
     }
+
+    &.is-fullpage {
+        width: 100%;
+    }
   }
 </style>

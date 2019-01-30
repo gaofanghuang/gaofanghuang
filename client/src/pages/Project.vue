@@ -243,9 +243,6 @@
 
 
 <style lang="scss">
-    .app-content.is-fullpage {
-        width: 100%;
-    }
 
     .project-banner {
         position: fixed;

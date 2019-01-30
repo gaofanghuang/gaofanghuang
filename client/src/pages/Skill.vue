@@ -6,8 +6,8 @@
 
 <script>
     import * as api from "@/util/api"
-    let canvas;
-    let ctx;
+    import draw from "@/util/draw"
+
     export default {
         data() {
             return {
@@ -62,43 +62,17 @@
                 })
             },
             initCanvas() {
-                // console.log("初始化canvas")
-                canvas = document.getElementById('canvas');
-                ctx = canvas.getContext('2d');
-                canvas.width = window.innerWidth
-                canvas.height = window.innerHeight
-                this.draw()
-            },
-            draw() {
-                for (var i = 0; i < 4; i++) {
-                    for (var j = 0; j < 3; j++) {
-                        ctx.beginPath();
-                        var x = 25 + j * 50; // x 坐标值
-                        var y = 25 + i * 50; // y 坐标值
-                        var radius = 20; // 圆弧半径
-                        var startAngle = 0; // 开始点
-                        var endAngle = Math.PI + (Math.PI * j) / 2; // 结束点
-                        var anticlockwise = i % 2 == 0 ? false : true; // 顺时针或逆时针
-
-                        ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-
-                        if (i > 1) {
-                            ctx.fill();
-                        } else {
-                            ctx.stroke();
-                        }
-                    }
-                }
+                draw.init()
+                draw.ctx.beginPath();
+                draw.ctx.arc(50, 50, 30, 0, Math.PI * 2, true);
+                draw.ctx.arc(50, 50, 15, 0, Math.PI * 2, true);
+                draw.ctx.fill("evenodd");
             }
         }
     }
 </script>
 
 <style lang="scss">
-    .app-content.is-fullpage {
-        width: 100%;
-    }
-
     .skill-wrap {
         width: 100%;
         height: 100vh;
