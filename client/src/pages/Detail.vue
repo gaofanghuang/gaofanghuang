@@ -229,7 +229,7 @@
                     document.title = this.title
                     callback(true);
                 }).catch(() => {
-                    this.$router.push(`/home`)
+                    this.$router.push(`/`)
                 })
             },
             showMore() {
@@ -237,7 +237,7 @@
                 actions.push({
                     text: "回到首页",
                     method: () => {
-                        this.$router.push(`/home`)
+                        this.$router.push(`/`)
                     }
                 });
                 actions.push({

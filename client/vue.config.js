@@ -25,6 +25,16 @@ module.exports = {
             title: 'Not Found Page'
         }
     },
+    // configureWebpack: config => {
+    //     if (process.env.NODE_ENV === "production") {
+    //         config.externals = {
+    //             vue: 'Vue',
+    //             'vue-router': 'VueRouter',
+    //             vuex: 'Vuex',
+    //             axios: 'axios'
+    //         }
+    //     }
+    // },
     devServer: {
         open: false,
         disableHostCheck: true,

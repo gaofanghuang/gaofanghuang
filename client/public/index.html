@@ -7,12 +7,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon_24x24.png">
   <title>Blog of GaoFang Huang</title>
-  <!-- CDN文件，配置在config/index.js下 -->
-  <% for (var i in htmlWebpackPlugin.options.css) { %>
-  <link href="<%= htmlWebpackPlugin.options.css[i] %>" rel="stylesheet">
-  <% } %>
-  <% for (var i in htmlWebpackPlugin.options.js) { %>
-  <script src="<%= htmlWebpackPlugin.options.js[i] %>"></script>
+  <% if (process.env.NODE_ENV === "production") { %>
+  <script src="https://cdn.bootcss.com/vue/2.5.22/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue-router/3.0.2/vue-router.min.js"></script>
+  <script src="https://cdn.bootcss.com/vuex/3.1.0/vuex.min.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
   <% } %>
 </head>
 

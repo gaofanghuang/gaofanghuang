@@ -110,7 +110,7 @@
                 actions.push({
                     text: "回到首页",
                     method: () => {
-                        this.$router.push(`/home`)
+                        this.$router.push(`/`)
                     }
                 });
 
