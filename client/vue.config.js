@@ -16,13 +16,8 @@ module.exports = {
             entry: 'src/main.js',
             template: 'public/index.html',
             filename: 'index.html',
-            title: 'Index Page'
-        },
-        notfount: {
-            entry: 'src/main.js',
-            template: 'public/index.html',
             filename: '404.html',
-            title: 'Not Found Page'
+            title: 'Index Page'
         }
     },
     // configureWebpack: config => {
