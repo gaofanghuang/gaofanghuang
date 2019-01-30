@@ -16,20 +16,13 @@ module.exports = {
             entry: 'src/main.js',
             template: 'public/index.html',
             filename: 'index.html',
+            title: 'index'
+        },
+        notfound: {
+            entry: 'src/main.js',
+            template: 'public/index.html',
             filename: '404.html',
-            title: 'Index Page'
-        }
-    },
-    configureWebpack: config => {
-        if (process.env.NODE_ENV === "production") {
-            config.externals = {
-                vue: 'Vue',
-                'vue-router': 'VueRouter',
-                vuex: 'Vuex',
-                axios: 'axios',
-                fastclick: 'fastclick',
-                marked: 'marked'
-            }
+            title: '404'
         }
     },
     devServer: {
