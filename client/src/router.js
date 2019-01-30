@@ -88,7 +88,7 @@ const url = [{
 
 const router = new Router({
     base: process.env.BASE_URL,
-    mode: 'history',
+    mode: 'hash',
     routes: url,
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {

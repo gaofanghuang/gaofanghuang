@@ -59,5 +59,7 @@ export const saveProject = ((params = {}) => {
 
 // 删除-项目
 export const deleteProject = ((params = {}) => {
-    return axios.delete("/delete-project", params)
+    return axios.delete("/delete-project", {
+        params
+    })
 })

@@ -168,5 +168,6 @@ module.exports = {
     deleteItem,
     upload,
     getProject,
-    saveProject
+    saveProject,
+    deleteProject
 }
