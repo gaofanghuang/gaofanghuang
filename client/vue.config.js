@@ -1,6 +1,7 @@
 module.exports = {
     baseUrl: process.env.BASE_URL || "/",
-    outputDir: '../blog/',
+    outputDir: '../',
+    assetsDir: 'static',
     lintOnSave: true,
     productionSourceMap: false,
     css: {
@@ -10,16 +11,19 @@ module.exports = {
             }
         }
     },
-    configureWebpack: {
-        output: {
-            chunkFilename: "js/[name]-[chunkhash].js"
+    pages: {
+        index: {
+            entry: 'src/main.js',
+            template: 'public/index.html',
+            filename: 'index.html',
+            title: 'Index Page'
+        },
+        notfount: {
+            entry: 'src/main.js',
+            template: 'public/index.html',
+            filename: '404.html',
+            title: 'Not Found Page'
         }
-    },
-    chainWebpack: config => {
-        config.plugin("html").tap(args => {
-            args[0].chunksSortMode = "none";
-            return args;
-        });
     },
     devServer: {
         open: false,

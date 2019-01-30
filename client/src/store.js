@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import { detectOS } from "@/util/detectOS";
 
 const state = {

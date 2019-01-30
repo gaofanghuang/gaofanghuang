@@ -1,20 +1,26 @@
-import Vue from 'vue'
-import Router from 'vue-router'
 Vue.use(Router)
 
-import Home from '@/pages/Home'
+import Blog from '@/pages/Blog'
 import List from '@/pages/List'
 import Detail from '@/pages/Detail'
 import Edit from '@/pages/Edit'
 import Project from '@/pages/Project'
 import Skill from '@/pages/Skill'
+import Index from '@/pages/Index'
 
 const url = [{
     path: '/',
-    redirect: '/home'
+    redirect: '/index'
 }, {
-    path: '/home',
-    component: Home,
+    path: '/index',
+    component: Index,
+    meta: {
+        title: "Index",
+        showHead: false
+    }
+}, {
+    path: '/blog',
+    component: Blog,
     meta: {
         title: "OF",
         isSearch: true,
@@ -88,7 +94,7 @@ const url = [{
 
 const router = new Router({
     base: process.env.BASE_URL,
-    mode: 'hash',
+    mode: 'history',
     routes: url,
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {

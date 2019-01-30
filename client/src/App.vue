@@ -29,7 +29,7 @@
         return this.$route.path.includes('edit') || this.$route.path.includes('add')
       },
       isFullPage() {
-        return this.$route.path.includes('project') || this.$route.path.includes('skill')
+        return this.$route.path.includes('project') || this.$route.path.includes('skill') || this.$route.path.includes('index')
       }
     }
   }

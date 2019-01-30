@@ -7,11 +7,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon_24x24.png">
   <title>Blog of GaoFang Huang</title>
+  <!-- CDN文件，配置在config/index.js下 -->
+  <% for (var i in htmlWebpackPlugin.options.css) { %>
+  <link href="<%= htmlWebpackPlugin.options.css[i] %>" rel="stylesheet">
+  <% } %>
+  <% for (var i in htmlWebpackPlugin.options.js) { %>
+  <script src="<%= htmlWebpackPlugin.options.js[i] %>"></script>
+  <% } %>
 </head>
 
 <body>
   <noscript>
-    <strong>We're sorry but Blog of GaoFang Huang doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    <strong>We're sorry but Blog of GaoFang Huang doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->

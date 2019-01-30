@@ -1,5 +1,5 @@
 <template>
-    <div class="home-wrap">
+    <div class="blog-wrap">
         <LoadMore ref="loadmore" class="article-list" @onRefresh="onRefresh">
             <Article v-for="item in list" :key="item.id" :info="item" card />
         </LoadMore>
