@@ -3,13 +3,13 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Blog from '@/pages/Blog'
-import List from '@/pages/List'
-import Detail from '@/pages/Detail'
-import Edit from '@/pages/Edit'
-import Project from '@/pages/Project'
-import Skill from '@/pages/Skill'
-import Index from '@/pages/Index'
+const Blog = () => import(/* webpackChunkName: 'page-blog' */ "@/pages/Blog");
+const List = () => import(/* webpackChunkName: 'page-list' */ "@/pages/List");
+const Detail = () => import(/* webpackChunkName: 'page-detail' */ "@/pages/Detail");
+const Edit = () => import(/* webpackChunkName: 'page-edit' */ "@/pages/Edit");
+const Project = () => import(/* webpackChunkName: 'page-project' */ "@/pages/Project");
+const Skill = () => import(/* webpackChunkName: 'page-skill' */ "@/pages/Skill");
+const Index = () => import(/* webpackChunkName: 'page-index' */ "@/pages/Index");
 
 const url = [{
     path: '/',
