@@ -26,7 +26,9 @@ module.exports = {
                 vue: 'Vue',
                 'vue-router': 'VueRouter',
                 vuex: 'Vuex',
-                axios: 'axios'
+                axios: 'axios',
+                fastclick: 'fastclick',
+                marked: 'marked'
             }
         }
     },
