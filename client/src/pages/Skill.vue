@@ -11,6 +11,8 @@
     export default {
         data() {
             return {
+                x: 100,
+                y: 100,
                 list: []
             }
         },
@@ -48,6 +50,7 @@
             window.onresize = () => {
                 this.initCanvas()
             }
+            draw.canvas.addEventListener('mousemove', this.pick)
         },
         methods: {
             getList() {
@@ -63,10 +66,7 @@
             },
             initCanvas() {
                 draw.init()
-                draw.ctx.beginPath();
-                draw.ctx.arc(50, 50, 30, 0, Math.PI * 2, true);
-                draw.ctx.arc(50, 50, 15, 0, Math.PI * 2, true);
-                draw.ctx.fill("evenodd");
+                
             }
         }
     }
