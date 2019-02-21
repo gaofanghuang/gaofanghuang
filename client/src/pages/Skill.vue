@@ -50,7 +50,6 @@
             window.onresize = () => {
                 this.initCanvas()
             }
-            draw.canvas.addEventListener('mousemove', this.pick)
         },
         methods: {
             getList() {
@@ -66,7 +65,6 @@
             },
             initCanvas() {
                 draw.init()
-                
             }
         }
     }
