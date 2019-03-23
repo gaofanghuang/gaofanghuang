@@ -5,7 +5,7 @@
             <Icon type="fanhui" v-if="isBack" @click="goBack" />
             <Icon type="caidan" @click="handleMenu" v-if="isMenu" />
         </div>
-        <div class="header-title flex flex-bas flex-grow align-center justify-center">
+        <div class="header-title flex flex-bas flex-grow align-center justify-center" @click="goTop">
             {{ title || 'OF' }}
         </div>
         <div class="header-righte flex flex-base flex-grow justify-end">
@@ -84,6 +84,17 @@
                 console.log("新建")
                 this.$router.push("/add")
             },
+            goTop() {
+                let distance = document.documentElement.scrollTop || document.body.scrollTop; //获得当前高度
+                let step = distance / 50; //每步的距离
+                (function jump() {
+                    if (distance > 0) {
+                        distance -= step;
+                        window.scrollTo(0, distance);
+                        setTimeout(jump, 10)
+                    }
+                })();
+            },
             handleSave() {
                 bus.$emit("saveInfo")
             },
@@ -143,12 +154,13 @@
         .icon-wrap {
             cursor: pointer;
             transition: 0.2s;
+
             &:hover {
                 color: $primary;
             }
         }
 
-        .icon-wrap + .icon-wrap {
+        .icon-wrap+.icon-wrap {
             margin-left: 20px;
         }
     }

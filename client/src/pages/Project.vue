@@ -9,22 +9,33 @@
             <li class="project-item" v-for="(item, key) in list" :key="`project-${key}`">
                 <div class="project-item-cover">
                     <img :src="item.cover" alt="cover">
-                    <span class="qrcode-box" v-if="qrcodeUrl && item.ios === qrcodeUrl"><canvas id="canvas"></canvas></span>
-                    <span class="qrcode-box" v-if="qrcodeUrl && item.android === qrcodeUrl"><canvas id="canvas"></canvas></span>
-                    <span class="qrcode-box" v-if="qrcodeUrl && item.wxapp === qrcodeUrl"><canvas id="canvas"></canvas></span>
+                    <span class="qrcode-box" v-if="qrcodeUrl && item.ios === qrcodeUrl"><canvas
+                            id="canvas"></canvas></span>
+                    <span class="qrcode-box" v-if="qrcodeUrl && item.android === qrcodeUrl"><canvas
+                            id="canvas"></canvas></span>
+                    <span class="qrcode-box" v-if="qrcodeUrl && item.wxapp === qrcodeUrl"><canvas
+                            id="canvas"></canvas></span>
                 </div>
                 <div class="project-item-info">
                     <p class="project-item-name">{{ item.name }}</p>
                     <p class="project-item-describe">{{ item.describe }}</p>
                     <time class="project-item-time">{{ item.update }}</time>
                     <ul class="project-item-tags">
-                        <li v-for="(tag, key2) in item.tags" @click="goToTag(tag)" :key="`project-tag-${key2}`">{{ tag }}</li>
+                        <li v-for="(tag, key2) in item.tags" @click="goToTag(tag)" :key="`project-tag-${key2}`">
+                            {{ tag }}</li>
                     </ul>
                     <ul class="project-item-platform">
-                        <li :class="{'is-active': item.ios === qrcodeUrl}" v-if="item.ios" @mouseenter="showQrcode(item.ios)" @mouseleave="hiddenQrcode"><span class="platform-name">ios</span></li>
-                        <li :class="{'is-active': item.android === qrcodeUrl}" v-if="item.android" @mouseenter="showQrcode(item.android)" @mouseleave="hiddenQrcode"><span class="platform-name">android</span></li>
-                        <li :class="{'is-active': item.wxapp === qrcodeUrl}" v-if="item.wxapp" @mouseenter="showQrcode(item.wxapp)" @mouseleave="hiddenQrcode"><span class="platform-name">微信小程序</span></li>
-                        <li v-if="item.web" @click="showQrcode(item.ios)"><a class="platform-name" :href="item.web" target="_blank">web</a></li>
+                        <li :class="{'is-active': item.ios === qrcodeUrl}" v-if="item.ios"
+                            @mouseenter="showQrcode(item.ios)" @mouseleave="hiddenQrcode"><span
+                                class="platform-name">ios</span></li>
+                        <li :class="{'is-active': item.android === qrcodeUrl}" v-if="item.android"
+                            @mouseenter="showQrcode(item.android)" @mouseleave="hiddenQrcode"><span
+                                class="platform-name">android</span></li>
+                        <li :class="{'is-active': item.wxapp === qrcodeUrl}" v-if="item.wxapp"
+                            @mouseenter="showQrcode(item.wxapp)" @mouseleave="hiddenQrcode"><span
+                                class="platform-name">微信小程序</span></li>
+                        <li v-if="item.web" @click="showQrcode(item.ios)"><a class="platform-name" :href="item.web"
+                                target="_blank">web</a></li>
                     </ul>
                 </div>
                 <span class="project-item-edit" v-if="dev" @click="editProject(item)">Edit</span>
@@ -62,8 +73,8 @@
                             <span class="form-label">项目标签</span>
                             <span class="form-input form-input-tag">
                                 <ul class="edit-tags-list" v-if="curItem.tags.length > 0">
-                                    <li class="edit-tags-item" @click="deleteTag(index)" v-for="(item, index) in curItem.tags"
-                                        :key="`${item}-${index}`">
+                                    <li class="edit-tags-item" @click="deleteTag(index)"
+                                        v-for="(item, index) in curItem.tags" :key="`${item}-${index}`">
                                         {{ item }}
                                     </li>
                                 </ul>
@@ -243,7 +254,6 @@
 
 
 <style lang="scss">
-
     .project-banner {
         position: fixed;
         top: 0;
@@ -387,6 +397,7 @@
         text-align: center;
         cursor: pointer;
         margin-right: 20px;
+
         a:hover,
         &.is-active {
             color: #23bed5;
@@ -403,6 +414,7 @@
         padding: 4px 10px;
         cursor: pointer;
         transition: 0.2s ease-in;
+
         &:hover {
             background: #30adbf;
         }
@@ -411,6 +423,7 @@
     .project-item-delete {
         background: $active;
         right: 70px;
+
         &:hover {
             background: darken($color: $active, $amount: 5%);
         }
@@ -520,11 +533,13 @@
 
     .form-input-tag {
         display: flex;
+
         .edit-tags-list {
             display: flex;
             align-items: center;
             padding-left: 10px;
         }
+
         .edit-tags-item {
             display: inline-block;
             height: 48px;
@@ -535,13 +550,16 @@
             font-size: 24px;
             border-radius: 8px;
             cursor: pointer;
-            & + .edit-tags-item {
+
+            &+.edit-tags-item {
                 margin-left: 12px;
             }
         }
+
         .edit-tags-item:hover {
             background: #e5e5e5;
         }
+
         input {
             width: 240px;
             font-size: 20px;

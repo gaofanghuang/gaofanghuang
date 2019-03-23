@@ -9,6 +9,7 @@ const Detail = () => import(/* webpackChunkName: 'page-detail' */ "@/pages/Detai
 const Edit = () => import(/* webpackChunkName: 'page-edit' */ "@/pages/Edit");
 const Project = () => import(/* webpackChunkName: 'page-project' */ "@/pages/Project");
 const Skill = () => import(/* webpackChunkName: 'page-skill' */ "@/pages/Skill");
+const About = () => import(/* webpackChunkName: 'page-about' */ "@/pages/About");
 const Index = () => import(/* webpackChunkName: 'page-index' */ "@/pages/Index");
 
 const url = [{
@@ -51,6 +52,13 @@ const url = [{
     component: Skill,
     meta: {
         title: "Skill",
+        showHead: false
+    }
+}, {
+    path: '/about',
+    component: About,
+    meta: {
+        title: "About",
         showHead: false
     }
 }, {
