@@ -114,7 +114,7 @@
         font-size: 64px;
         letter-spacing: 2px;
         margin: 140px 0 14px 0;
-        background: linear-gradient(0deg, $green, $primary);
+        background: linear-gradient(45deg, $green, $primary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 600;
