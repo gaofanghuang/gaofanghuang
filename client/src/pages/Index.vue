@@ -133,12 +133,12 @@
         border-radius: 8px;
         padding: 6px 24px;
         box-shadow: 0 4px 8px #f2f2f2, 0 3px 3px #d9d9d9;
-    }
 
-    .index-btn-item:hover {
-        color: #999;
-        border: 1px solid #d2d2d2;
-        box-shadow: none;
+        &:hover {
+            color: #999;
+            border: 1px solid #d2d2d2;
+            box-shadow: none;
+        }
     }
 
     .index-btn-item+.index-btn-item {
