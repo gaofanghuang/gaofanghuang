@@ -8,7 +8,7 @@
                 <h2 v-if="tips" class="m-box m-text-box m-aln-center m-justify-center m-main m-acbtn-tips m-bb1">{{
                     tips }}</h2>
                 <ul class="m-acbtn-list">
-                    <li v-for="(btn, index) in lists" :key="btn.text" :style="btn.style" class="m-acbtn"
+                    <li v-for="(btn, index) in lists" :key="btn.text" :class="btn.class" class="m-acbtn"
                         @click="btn.methods(btn, index)"><a href="javascript:;">{{ btn.text }}</a></li>
                 </ul>
                 <ul class="m-acbtn-list">
@@ -99,6 +99,19 @@
 
         a {
             color: inherit;
+            transition: 0.2s;
+
+            &:hover {
+                color: $primary;
+            }
+
         }
+
+        .btn-delete-hover {
+            a:hover {
+                color: $active;
+            }
+        }
+
     }
 </style>

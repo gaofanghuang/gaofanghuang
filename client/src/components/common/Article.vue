@@ -82,6 +82,7 @@
                     });
                     actions.push({
                         text: "删除",
+                        class: 'btn-delete-hover',
                         method: () => {
                             console.log("删除这篇文章", this.id)
                             api.deleteItem({
@@ -131,7 +132,10 @@
         }
 
         &+.article-wrap {
-            margin-top: 24px;
+            margin-top: 36px;
+            @media screen and (max-width:375px) {
+                margin-top: 24px;
+            }
         }
 
         .article-cover {
@@ -144,8 +148,9 @@
         }
 
         .article-title {
-            padding: 20px 20px 0 20px;
+            padding: 20px 20px 20px 20px;
             font-size: 36px;
+            margin-bottom: 10px;
             cursor: pointer;
             transition: 0.2s;
 
@@ -155,7 +160,7 @@
         }
 
         .article-summary {
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             font-size: 28px;
             color: $gray2;
         }

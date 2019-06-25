@@ -3,6 +3,10 @@
         <LoadMore ref="loadmore" class="article-list" @onRefresh="onRefresh">
             <Article v-for="item in list" :key="item.id" :info="item" card />
         </LoadMore>
+        <div class="blog-foot flex">
+            <button class="btn" @click="goHome">← Back Home</button>
+            <button class="btn" @click="goTop">To Top ↑</button>
+        </div>
     </div>
 </template>
 
@@ -26,7 +30,38 @@
                     this.$store.commit("SaveList", this.list);
                     callback(true)
                 })
+            },
+            goTop() {
+                let distance = document.documentElement.scrollTop || document.body.scrollTop; //获得当前高度
+                let step = distance / 50; //每步的距离
+                (function jump() {
+                    if (distance > 0) {
+                        distance -= step;
+                        window.scrollTo(0, distance);
+                        setTimeout(jump, 10)
+                    }
+                })();
+            },
+            goHome() {
+                this.$router.push('/')
             }
         }
     }
 </script>
+
+<style lang="scss">
+.blog-foot {
+    padding-bottom: 40px;
+    text-align: center;
+    justify-content: space-between;
+    .btn {
+        color: #999;
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 24px;
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+</style>

@@ -124,6 +124,7 @@
 
         .header-title {
             height: 100%;
+            cursor: pointer;
         }
 
         .save-btn {

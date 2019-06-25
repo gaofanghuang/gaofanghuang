@@ -38,7 +38,7 @@
 <style lang="scss">
   .app-content {
     &.show-header {
-      margin-top: 90px;
+      margin-top: 120px;
     }
 
     &.is-pc {
