@@ -12,111 +12,98 @@
                 </div>
             </div>
             <div class="project-content">
-                <div class="project-category" v-for="(item, key) in project" :key="`project-${item.category}-${key}`">
-                    <div class="project-category-name">{{ item.category }}</div>
-                    <div class="project-list flex">
-                        <template v-if="item.type === 'pc'">
-                            <div class="project-item" v-for="(item2, key2) in item.list" :key="`project-item-${key2}`">
-                                <a :href="item2.url">
-                                    <div class="project-cover">
-                                        <img :src="item2.cover" alt="">
-                                        <time
-                                            class="project-date">{{ item2.lasttime | formatDate('yyyy/MM/dd') }}</time>
-                                    </div>
-                                    <p class="project-name">{{ item2.name }}</p>
-                                    <p class="project-descript">{{ item2.descript }}</p>
-                                </a>
+                <div class="project-list flex">
+                    <div class="project-item" v-for="(item, key) in list" :key="`project-${item.id}-${key}`">
+                        <a :href="item.url">
+                            <div class="project-cover">
+                                <img :src="item.cover" alt="">
+                                <div class="project-item-hover">
+                                    <canvas :id="`project-${item.id}`"></canvas>
+                                </div>
                             </div>
-                        </template>
-                        <template v-if="item.type === 'app'">
-                            <div class="project-item project-item-type-app" v-for="(item2, key2) in item.list"
-                                :key="`project-item-${key2}`">
-                                <a :href="item2.url">
-                                    <div class="project-cover">
-                                        <img :src="item2.cover" alt="">
-                                    </div>
-                                    <p class="project-name">{{ item2.name }}</p>
-                                    <p class="project-descript">{{ item2.descript }}</p>
-                                    <div class="project-item-hover">
-                                        <img src="" alt="">
-                                    </div>
-                                </a>
+                            <p class="project-name">{{ item.name }}</p>
+                            <p class="project-describe" v-if="item.describe">{{ item.describe }}</p>
+                            <div class="project-tags">
+                                <span v-for="tag in item.tags" :key="`item-${item.id}-${tag}`"
+                                    @click="goTo(`/tag/${tag}`)">{{ tag }}</span>
                             </div>
-                        </template>
+                            <a class="project-github" v-if="item.github" :href="item.github">Github</a>
+                        </a>
+                        <span class="project-item-edit" v-if="dev" @click="editProject(item)">Edit</span>
+                        <span class="project-item-delete" v-if="dev" @click="deleteProject(item)">Delete</span>
                     </div>
                 </div>
+
+                <button class="project-add" @click="addProject" v-if="dev"></button>
+
+                <transition name="fadeIn">
+                    <div v-if="showModal">
+                        <div class="modal-mask"></div>
+                        <div class="modal-box">
+                            <div class="modal-title">添加项目</div>
+                            <div class="modal-body">
+                                <div class="form-entry">
+                                    <span class="form-label">项目封面</span>
+                                    <span class="form-input">
+                                        <input type="file" @change="getFile" />
+                                    </span>
+                                </div>
+                                <div class="form-entry">
+                                    <span class="form-label">项目名称</span>
+                                    <span class="form-input">
+                                        <input type="text" v-model="curItem.name" />
+                                    </span>
+                                </div>
+                                <div class="form-entry">
+                                    <span class="form-label">项目简介</span>
+                                    <span class="form-input">
+                                        <textarea v-model="curItem.describe" cols="30" rows="3"></textarea>
+                                    </span>
+                                </div>
+                                <div class="form-entry">
+                                    <span class="form-label">项目标签</span>
+                                    <span class="form-input form-input-tag">
+                                        <ul class="edit-tags-list" v-if="curItem.tags.length > 0">
+                                            <li class="edit-tags-item" @click="deleteTag(index)"
+                                                v-for="(item, index) in curItem.tags" :key="`${item}-${index}`">
+                                                {{ item }}
+                                            </li>
+                                        </ul>
+                                        <input type="text" @keyup.enter="addTag" placeholder="这里输入标签" v-model="tag" />
+                                    </span>
+                                </div>
+                                <div class="form-entry">
+                                    <span class="form-label">项目类型</span>
+                                    <span class="form-input">
+                                        <select v-model="curItem.type" class="form-select">
+                                            <option :value="item.id" v-for="item in types" :key="`type-${item.id}`">
+                                                {{ item.name }}
+                                            </option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div class="form-entry">
+                                    <span class="form-label">项目链接</span>
+                                    <span class="form-input">
+                                        <input type="text" v-model="curItem.url" />
+                                    </span>
+                                </div>
+                                <div class="form-entry">
+                                    <span class="form-label">Github地址</span>
+                                    <span class="form-input">
+                                        <input type="text" v-model="curItem.github" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="modal-btn btn-cancel" @click="showModal = false">取消</button>
+                                <button class="modal-btn btn-confirm" @click="saveProject">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+
             </div>
-
-            <button class="project-add" @click="addProject" v-if="dev"></button>
-
-            <transition name="fadeIn">
-                <div v-if="showModal">
-                    <div class="modal-mask"></div>
-                    <div class="modal-box">
-                        <div class="modal-title">添加项目</div>
-                        <div class="modal-body">
-                            <div class="form-entry">
-                                <span class="form-label">项目封面</span>
-                                <span class="form-input">
-                                    <input type="file" @change="getFile" />
-                                </span>
-                            </div>
-                            <div class="form-entry">
-                                <span class="form-label">项目名称</span>
-                                <span class="form-input">
-                                    <input type="text" v-model="curItem.name" />
-                                </span>
-                            </div>
-                            <div class="form-entry">
-                                <span class="form-label">项目简介</span>
-                                <span class="form-input">
-                                    <textarea v-model="curItem.describe" cols="30" rows="3"></textarea>
-                                </span>
-                            </div>
-                            <div class="form-entry">
-                                <span class="form-label">项目标签</span>
-                                <span class="form-input form-input-tag">
-                                    <ul class="edit-tags-list" v-if="curItem.tags.length > 0">
-                                        <li class="edit-tags-item" @click="deleteTag(index)"
-                                            v-for="(item, index) in curItem.tags" :key="`${item}-${index}`">
-                                            {{ item }}
-                                        </li>
-                                    </ul>
-                                    <input type="text" @keyup.enter="addTag" placeholder="这里输入标签" v-model="tag" />
-                                </span>
-                            </div>
-                            <!-- <div class="form-entry">
-                                <span class="form-label">IOS</span>
-                                <span class="form-input">
-                                    <input type="text" v-model="curItem.ios" />
-                                </span>
-                            </div>
-                            <div class="form-entry">
-                                <span class="form-label">Android</span>
-                                <span class="form-input">
-                                    <input type="text" v-model="curItem.android" />
-                                </span>
-                            </div>
-                            <div class="form-entry">
-                                <span class="form-label">微信小程序</span>
-                                <span class="form-input">
-                                    <input type="text" v-model="curItem.wxapp" />
-                                </span>
-                            </div>
-                            <div class="form-entry">
-                                <span class="form-label">Web</span>
-                                <span class="form-input">
-                                    <input type="text" v-model="curItem.web" />
-                                </span>
-                            </div> -->
-                        </div>
-                        <div class="modal-footer">
-                            <button class="modal-btn btn-cancel" @click="showModal = false">取消</button>
-                            <button class="modal-btn btn-confirm" @click="saveProject">确定</button>
-                        </div>
-                    </div>
-                </div>
-            </transition>
 
         </div>
 
@@ -129,42 +116,28 @@
     export default {
         data() {
             return {
-                project: [{
-                    category: 'PC Web',
-                    type: 'pc',
-                    list: [{
-                        cover: '111.png',
-                        name: 'XXX',
-                        url: 'http://www.huanggaofang.com',
-                        descript: 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
-                        lasttime: 1546913540570
-                    }]
+                list: [],
+                curItem: {
+                    name: '',
+                    cover: '',
+                    describe: '',
+                    tags: [],
+                    type: '',
+                    url: '',
+                    github: ''
+                },
+                types: [{
+                    id: 1,
+                    name: 'pc'
                 }, {
-                    category: 'Mobile App',
-                    type: 'app',
-                    list: [{
-                        cover: '111.png',
-                        name: 'XXX',
-                        platform: [{
-                            client: 'h5',
-                            path: 'http://www.huanggaofang.com'
-                        }],
-                        url: 'http://www.huanggaofang.com',
-                        descript: 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
-                        lasttime: 1546913540570
-                    }]
+                    id: 2,
+                    name: 'app'
                 }, {
-                    category: 'Design',
-                    type: 'image',
-                    list: []
+                    id: 3,
+                    name: 'image'
                 }, {
-                    category: 'Paint',
-                    type: 'image',
-                    list: []
-                }, {
-                    category: 'Vlog',
-                    type: 'video',
-                    list: []
+                    id: 4,
+                    name: 'video'
                 }],
                 qrcodeUrl: "",
                 tag: "",
@@ -173,22 +146,35 @@
             }
         },
         mounted() {
-
+            this.getList()
         },
         methods: {
             goTo(path) {
                 this.$router.push(path)
             },
+            getList() {
+                api.getProject().then(({
+                    data
+                }) => {
+                    this.list = data
+                    setTimeout(() => {
+                        for(let item of data) {
+                            if (item.type == 2) {
+                                this.initQrcode(`project-${item.id}`, item.url)
+                            }
+                        }
+                    }, 600);
+                })
+            },
             addProject() {
                 this.curItem = {
-                    cover: "",
-                    name: "",
-                    describe: "",
+                    name: '',
+                    cover: '',
+                    describe: '',
                     tags: [],
-                    ios: "",
-                    android: "",
-                    wxapp: "",
-                    web: ""
+                    type: '',
+                    url: '',
+                    github: ''
                 }
                 this.showModal = true
             },
@@ -242,27 +228,11 @@
                     this.showModal = false
                 })
             },
-            getList() {
-                api.getProject().then(({
-                    data
-                }) => {
-                    this.list = data
-                })
-            },
-            showQrcode(url) {
-                this.qrcodeUrl = url
-                setTimeout(() => {
-                    this.useqrcode(url)
-                }, 300);
-            },
-            hiddenQrcode() {
-                this.qrcodeUrl = ""
-            },
-            useqrcode(url) {
+            initQrcode(id, url) {
                 //生成的二维码内容，可以添加变量
-                let canvas = document.getElementById("canvas");
+                let canvas = document.getElementById(id);
                 QRCode.toCanvas(canvas, url, {
-                    width: 100
+                    width: 150
                 }, function (error) {
                     if (error) {
                         console.error(error);
@@ -303,7 +273,7 @@
 
         .project-nav {
             position: absolute;
-            bottom: 32px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0.68;
@@ -350,6 +320,7 @@
         }
 
         .project-item {
+            position: relative;
             background: #ffffff;
             width: 400px;
             padding: 10px;
@@ -374,44 +345,99 @@
         .project-cover {
             width: 380px;
             height: 320px;
-            background: #EFEFEF;
+            background: #333333;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                transition: 0.2s;
+            }
+        }
+
+        .project-item-hover {
+            position: absolute;
+            top: 10px;
+            left: 40px;
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+            transition: 0.2s;
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
         }
 
         .project-name {
-            font-size: 28px;
+            font-size: 32px;
             margin-top: 10px;
             margin-bottom: 10px;
         }
 
-        .project-descript {
-            font-size: 24px;
+        .project-describe {
+            font-size: 28px;
             word-wrap: wrap;
             word-break: break-all;
+            color: #999999;
         }
 
-        .project-item-type-app {
-
-            position: relative;
-
-            .project-item-hover {
-                display: none;
-            }
+        .project-cover {
 
             &:hover {
+                & > img {
+                    opacity: 0.2;
+                }
+
                 .project-item-hover {
-                    position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    width: 380px;
-                    height: 320px;
-                    background: rgba($color: #000000, $alpha: 0.2);
-                    display: block;
+                    opacity: 1;
                 }
             }
         }
 
         .project-date {
             font-size: 24px;
+        }
+
+        .project-tags {
+            margin-top: 16px;
+
+            span {
+                display: inline-block;
+                height: 48px;
+                line-height: 48px;
+                background: #f2f2f2;
+                color: #666;
+                padding: 0 10px;
+                font-size: 24px;
+                border-radius: 8px;
+                cursor: pointer;
+
+                &+span {
+                    margin-left: 12px;
+                }
+
+                &:hover {
+                    background: #f9f9f9;
+                }
+            }
+        }
+
+        .project-github {
+            position: absolute;
+            right: 10px;
+            top: 289px;
+            background: #23bed5;
+            color: #fff;
+            padding: 4px 10px;
+            cursor: pointer;
+            transition: 0.2s ease-in;
+            font-size: 26px;
+            border-top-left-radius: 8px;
+
+            &:hover {
+                background: #30adbf;
+            }
         }
 
         .project-add {
@@ -589,6 +615,39 @@
             input {
                 width: 240px;
                 font-size: 20px;
+            }
+        }
+
+        .form-select {
+            width: 100%;
+            height: 100%;
+            background: none;
+            border: none;
+        }
+
+        .project-item-delete,
+        .project-item-edit {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #23bed5;
+            color: #fff;
+            padding: 4px 10px;
+            cursor: pointer;
+            transition: 0.2s ease-in;
+            font-size: 24px;
+
+            &:hover {
+                background: #30adbf;
+            }
+        }
+
+        .project-item-delete {
+            background: $active;
+            right: 80px;
+
+            &:hover {
+                background: darken($color: $active, $amount: 5%);
             }
         }
     }

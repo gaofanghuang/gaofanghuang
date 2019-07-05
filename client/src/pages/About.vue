@@ -50,9 +50,6 @@
                     <p>可以在这里找到我：</p>
                     <p>Email：<a href="mailto:gaofanghuang@vip.qq.com">gaofanghuang@vip.qq.com</a></p>
                     <p>Github：<a href="https://github.com/gaofanghuang">https://github.com/gaofanghuang</a></p>
-                    <p>Huaban：<a href="http://huaban.com/unclefang/">http://huaban.com/unclefang/</a></p>
-                    <p>Weibo：<a href="https://weibo.com/3384570100/" target="_blank">https://weibo.com/3384570100/</a>
-                    </p>
                 </div>
             </section>
             <section class="about-section">
