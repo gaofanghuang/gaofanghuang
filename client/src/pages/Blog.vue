@@ -1,8 +1,6 @@
 <template>
     <div class="blog-wrap">
-        <LoadMore ref="loadmore" class="article-list" @onRefresh="onRefresh">
-            <Article v-for="item in list" :key="item.id" :info="item" card />
-        </LoadMore>
+        <Article v-for="item in list" :key="item.id" :info="item" card />
         <div class="blog-foot flex">
             <button class="btn" @click="goHome">← Back Home</button>
             <button class="btn" @click="goTop">To Top ↑</button>
@@ -18,8 +16,11 @@
                 list: []
             }
         },
+        created() {
+            this.getList()
+        },
         methods: {
-            onRefresh(callback) {
+            getList() {
                 api.getList().then(({
                     data = []
                 }) => {
@@ -28,7 +29,6 @@
                     })
                     this.list = data
                     this.$store.commit("SaveList", this.list);
-                    callback(true)
                 })
             },
             goTop() {
@@ -54,6 +54,7 @@
     padding-bottom: 40px;
     text-align: center;
     justify-content: space-between;
+    margin-top: 40px;
     .btn {
         color: #999;
         cursor: pointer;

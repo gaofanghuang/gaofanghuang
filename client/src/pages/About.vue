@@ -12,7 +12,7 @@
                 <h2>
                     <Icon type="ditu" />Location</h2>
                 <div class="content">
-                    <p>深圳·桂林</p>
+                    <p class="location-name">深圳 · 桂林</p>
                 </div>
             </section>
             <section class="about-section">
@@ -195,6 +195,9 @@
                     background: darken($color: #eaeaef, $amount: 5%);
                 }
             }
+        }
+        .location-name {
+            font-size: 36px;
         }
     }
 </style>

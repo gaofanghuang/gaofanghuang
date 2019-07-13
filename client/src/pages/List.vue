@@ -1,5 +1,5 @@
 <template>
-    <LoadMore ref="loadmore" class="list-wrap" :showBottom="false" @onRefresh="onRefresh">
+    <div class="list-wrap">
         <div class="list-search">
             <Icon type="sousuo" />
             <input type="text" v-model="keyword" @keyup.enter="handleSearch" placeholder="输入文章标题或标签名称搜索">
@@ -14,13 +14,12 @@
         <template v-else>
             <Article v-for="item in searchList" :key="item.id" :info="item" />
         </template>
-    </LoadMore>
+    </div>
 </template>
 
 <script>
     import * as api from "@/util/api"
     import bus from "@/bus.js"
-    const noop = () => {};
     export default {
         data() {
             return {
@@ -52,6 +51,9 @@
                 return this.$route.params.tag
             }
         },
+        created() {
+            this.getList()
+        },
         mounted() {
             if (this.$store.state.list.length > 0) {
                 this.list = this.$store.state.list
@@ -71,7 +73,7 @@
             bus.$off('handleMore')
         },
         methods: {
-            onRefresh(callback = noop) {
+            getList() {
                 if (this.list.length > 0) {
                     return
                 }
@@ -83,7 +85,6 @@
                     })
                     this.list = data
                     this.$store.commit("SaveList", this.list);
-                    callback(true)
                 })
             },
             handleSearch() {

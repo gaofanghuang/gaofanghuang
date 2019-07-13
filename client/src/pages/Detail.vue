@@ -1,5 +1,5 @@
 <template>
-    <LoadMore ref="loadmore" :showBottom="false" class="detail-wrap" @onRefresh="onRefresh">
+    <div class="detail-wrap">
         <article class="detail-view markdown-view" v-html="compiledMarkdown"></article>
         <!-- 更新日期 -->
         <time class="detail-update">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </transition>
-    </LoadMore>
+    </div>
 </template>
 
 <script>
@@ -122,7 +122,7 @@
         },
         watch: {
             id() {
-                this.onRefresh()
+                this.getDetail()
             },
             menuToggle() {
                 if (this.menuToggle && this.browser.isMobile) {
@@ -139,6 +139,9 @@
                 }
             }
         },
+        created() {
+            this.getDetail()
+        },
         mounted() {
 
             bus.$on("handleMore", () => {
@@ -149,8 +152,6 @@
                 console.log(1)
                 this.showMenu()
             })
-
-            this.onRefresh()
         },
         updated() {
             let imgs = document.querySelectorAll(".markdown-view img");
@@ -181,7 +182,7 @@
             bus.$off('handleMenu')
         },
         methods: {
-            onRefresh(callback = noop) {
+            getDetail() {
                 if (this.fetching) {
                     return
                 }
@@ -208,7 +209,6 @@
                     this.tags = data.tags
                     this.lasttime = data.lasttime
                     document.title = this.title
-                    callback(true);
                 }).catch(() => {
                     this.$router.push(`/`)
                 })
