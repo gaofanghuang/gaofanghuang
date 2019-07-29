@@ -1,57 +1,97 @@
 <template>
-  <div id="app">
-    <Header v-if="showHead" />
-    <main class="app-content" :class="{'show-header': showHead, 'is-pc': !browser.isMobile, 'is-mobile': browser.isMobile, 'is-edit': isEdit, 'is-fullpage': isFullPage}">
-      <router-view />
+  <div id="app" class="app-wrap" :class="`${path}-layout`">
+    <Header />
+    <main class="app-content">
+      <Transition enter-active-class="fadeIn-enter-active" leave-active-class="fadeIn-leave-active">
+        <router-view />
+      </Transition>
     </main>
-    <ActionSheet />
+    <Footer />
   </div>
 </template>
 
 <script>
   import Header from "@/components/Header"
-  import ActionSheet from "@/components/ActionSheet"
+  import Footer from "@/components/Footer"
 
   export default {
     name: 'app',
     components: {
       Header,
-      ActionSheet
+      Footer
     },
     computed: {
-      browser() {
-        return this.$store.state.browser
-      },
-      showHead() {
-        return !!this.$route.meta.showHead
-      },
-      isEdit() {
-        return this.$route.path.includes('edit') || this.$route.path.includes('add')
-      },
-      isFullPage() {
-        return this.$route.path.includes('project') || this.$route.path.includes('skill') || this.$route.path.includes('index')
+      path() {
+        let meta = this.$route.meta
+        return meta ? meta.name : ''
       }
     }
   }
 </script>
 
 <style lang="scss">
-  .app-content {
-    &.show-header {
-      margin-top: 120px;
-    }
+  .app-wrap {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(-45deg, $primary, $green);
 
-    &.is-pc {
-      width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      &.is-edit {
-        width: 2400px
+    .app-content {
+      padding-top: 50px;
+      min-height: calc(100vh - 30px);
+
+      @media screen and (max-width:1024px) {
+        padding-top: 80px;
       }
     }
+  }
 
-    &.is-fullpage {
-        width: 100%;
+  .list-layout,
+  .about-layout {
+    height: auto;
+    min-height: calc(100vh - 47px);
+    overflow-y: auto;
+    background: $background-color;
+
+    .header-wrap {
+      background: $white;
+      border-bottom: 1px solid $border-color;
+      box-shadow: 0 3px 8px rgba($black, 0.08);
+    }
+
+    .header-logo {
+      background: url("./assets/GAOFANG_c.png") no-repeat;
+      background-size: auto 100%;
+    }
+
+    .footer-wrap {
+      color: $light;
+    }
+  }
+
+  .info-layout,
+  .list-layout {
+    .footer-wrap {
+      position: static;
+    }
+  }
+
+  .info-layout {
+    padding-top: 180px;
+    position: relative;
+
+    .app-content {
+      padding-top: 0;
+      min-height: 100%;
+      background: $background-color;
+      padding-bottom: 180px;
+    }
+
+    .footer-wrap {
+      position: relative;
+      height: 0;
+      top: -30px;
+      color: $light;
     }
   }
 </style>

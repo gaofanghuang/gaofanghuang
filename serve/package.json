@@ -1,19 +1,18 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "description": "gaofang's blog",
+  "name": "serve",
+  "version": "4.0.0",
+  "description": "huanggaofang'site serve",
   "main": "index.js",
+  "scripts": {
+    "serve": "node ./index.js"
+  },
+  "author": "Gaofang Huang",
+  "license": "ISC",
   "dependencies": {
-    "koa": "^2.6.2",
+    "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "serve": "node ./index.js"
-  },
-  "author": "GaoFang Huang",
-  "license": "ISC"
+  }
 }

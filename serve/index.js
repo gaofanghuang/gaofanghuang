@@ -5,7 +5,7 @@ const port = 9000;
 const cors = require('koa2-cors');
 const bodyParser = require('koa-bodyparser');
 const static = require("koa-static");
-app.use(static(path.join(__dirname)+'/public/'));
+app.use(static(path.join(__dirname)+'/data/'));
 
 app.use(bodyParser());
 app.use(cors());

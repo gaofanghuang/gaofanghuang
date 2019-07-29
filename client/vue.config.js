@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: process.env.BASE_URL || "/",
+    publicPath: process.env.BASE_URL || "/",
     outputDir: '../',
     assetsDir: 'static',
     lintOnSave: true,
@@ -8,6 +8,11 @@ module.exports = {
         loaderOptions: {
             sass: {
                 data: `@import "@/style/mixins.scss";`
+            },
+            postcss: {
+                plugins: [
+                    require('postcss-px2rem')({remUnit: 30}), // 换算的基数
+                ]
             }
         }
     },

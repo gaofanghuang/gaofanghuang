@@ -1,9 +1,37 @@
-#### huanggaofang的个人网站
+# Gaofang's Site
 
-自己开发的静态博客，目前网站托管在github上。前台使用vue开发，axios请求数据。后台使用koa2开发，用于处理数据。
+黄高芳的小站，在这里记录开发日志。
 
-原理是通过接口存储把数据存储在json文件中，这样，前后台都可以通过json文件获取到相对应的数据。
+## 技术架构
 
-更多内容，请访问：
+后端：Node.js + Koa + Json
+中后台：Vue全家桶 + Element UI + Axios
+前台：Vue全家桶 + Axios
 
-https://www.huanggaofang.com
+## 实现原理
+
+使用Koa来储存Json数据、储存图片，前台使用Axios来读取json数据。
+
+## 操作方式
+
+在本地dev模式下可以登陆后台编辑内容、查看统计数据，在production模式下只能查看前台内容。
+
+## 运行方式
+
+```
+// 1.打开后端服务，命令行
+$ cd serve
+$ npm i
+$ npm run serve
+
+// 2. 打开中后台服务，命令行
+$ cd admin
+$ npm i
+$ npm run serve
+
+// 3. 编译前台SPA，将在根目录自动生成index.html和404.html
+$ cd client
+$ npm i
+$ npm run build
+```
+

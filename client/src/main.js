@@ -1,15 +1,17 @@
-import Vue from "vue";
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import "./util/rem";
-import "./assets/iconfont";
-import '@/style/common.scss';
-import 'highlight.js/styles/github.css';
-import "./components/common";
-import DomPortal from 'vue-dom-portal';
-import * as filters from "./util/filters";
-import FastClick from 'fastclick';
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import "./utils/rem"
+import '@/style/common.scss'
+import 'highlight.js/styles/github.css'
+// import "./components/common"
+import DomPortal from 'vue-dom-portal'
+import * as filters from "./utils/filters"
+import FastClick from 'fastclick'
+import Storage from "./utils/Storage";
+
+Vue.config.productionTip = false
 
 FastClick.attach(document.body);
 
@@ -19,10 +21,10 @@ for (const k in filters) {
   Vue.filter(k, filters[k]);
 }
 
-Vue.config.productionTip = false;
+Vue.prototype.$db = Storage;
 
 new Vue({
   render: h => h(App),
   router,
   store,
-}).$mount('#app');
+}).$mount('#app')

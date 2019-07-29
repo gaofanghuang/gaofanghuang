@@ -3,14 +3,10 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Blog = () => import(/* webpackChunkName: 'page-blog' */ "@/pages/Blog");
-const List = () => import(/* webpackChunkName: 'page-list' */ "@/pages/List");
-const Detail = () => import(/* webpackChunkName: 'page-detail' */ "@/pages/Detail");
-const Edit = () => import(/* webpackChunkName: 'page-edit' */ "@/pages/Edit");
-const Project = () => import(/* webpackChunkName: 'page-project' */ "@/pages/Project");
-const Skill = () => import(/* webpackChunkName: 'page-skill' */ "@/pages/Skill");
-const About = () => import(/* webpackChunkName: 'page-about' */ "@/pages/About");
-const Index = () => import(/* webpackChunkName: 'page-index' */ "@/pages/Index");
+const Index = () => import(/* webpackChunkName: 'page-index' */ "@/pages/home/Index")
+const ProjectList = () => import(/* webpackChunkName: 'page-project' */ "@/pages/project/List")
+const ProjectInfo = () => import(/* webpackChunkName: 'page-project' */ "@/pages/project/Info")
+const About = () => import(/* webpackChunkName: 'page-about' */ "@/pages/about/About")
 
 const url = [{
     path: '/',
@@ -19,85 +15,30 @@ const url = [{
     path: '/index',
     component: Index,
     meta: {
-        title: "Index",
-        showHead: false
-    }
-}, {
-    path: '/blog',
-    component: Blog,
-    meta: {
-        title: "OF",
-        isSearch: true,
-        isAdd: true,
-        showHead: true
+        name: 'index',
+        title: "首页"
     }
 }, {
     path: '/list',
-    component: List,
+    component: ProjectList,
     meta: {
-        title: "List",
-        isBack: true,
-        isMore: true,
-        showHead: true
+        name: 'list',
+        title: "列表"
     }
 }, {
-    path: '/project',
-    component: Project,
+    path: '/info/:id',
+    component: ProjectInfo,
     meta: {
-        title: "Project",
-        showHead: false
-    }
-}, {
-    path: '/skill',
-    component: Skill,
-    meta: {
-        title: "Skill",
-        showHead: false
+        name: 'info',
+        title: "详情"
     }
 }, {
     path: '/about',
     component: About,
     meta: {
-        title: "About",
-        showHead: false
+        name: 'about',
+        title: "关于"
     }
-}, {
-    path: '/tag/:tag',
-    component: List,
-    meta: {
-        title: "List",
-        isBack: true,
-        isMore: true,
-        showHead: true
-    }
-}, {
-    path: '/detail/:id',
-    component: Detail,
-    meta: {
-        title: "Detail",
-        isBack: true,
-        isMore: true,
-        isMenu: true,
-        showHead: true
-    }
-}, {
-    path: '/edit/:id',
-    meta: {
-        isBack: true,
-        isSave: true,
-        showHead: true,
-        title: "Edit"
-    },
-    component: Edit
-}, {
-    path: '/add',
-    meta: {
-        isBack: true,
-        isSave: true,
-        showHead: true,
-        title: ""
-    },
-    component: Edit
 }, {
     path: '/*',
     redirect: '/'
@@ -107,7 +48,7 @@ const router = new Router({
     base: process.env.BASE_URL,
     mode: 'history',
     routes: url,
-    scrollBehavior(to, from, savedPosition) {
+    scrollBehavior(to) {
         if (to.hash) {
             return {
                 selector: to.hash
@@ -119,23 +60,6 @@ const router = new Router({
             }
         }
     }
-})
-
-router.beforeEach(({
-    meta,
-    path
-}, from, next) => {
-    let {
-        production = true
-    } = meta
-    let isProduction = process.env.NODE_ENV === 'production'
-
-    if (!production && isProduction && path.includes('edit')) {
-        return next({
-            path: '/home'
-        })
-    }
-    next()
 })
 
 export default router
