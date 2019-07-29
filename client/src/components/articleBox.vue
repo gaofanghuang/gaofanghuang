@@ -8,7 +8,7 @@
 <script>
     import md from "@/utils/markdown"
     export default {
-        data () {
+        data() {
             return {
                 more: false
             }
@@ -16,38 +16,47 @@
         props: ['content'],
         methods: {
             viewContent(content) {
-                return content ? md(content) : ''
+                let _content = content
+                if (process.env.NODE_ENV === 'production') {
+                    _content = _content.replace(/http:\/\/localhost:9000/g,
+                        "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/img/"
+                    );
+                }
+                return _content ? md(_content) : ''
             }
         }
     }
 </script>
 
 <style lang="scss">
-.article-box-wrap {
-    .markdown-view {
-        padding: 0 20px;
-        height: 350px;
-        overflow: hidden;
-        &.show {
-            height: auto;
+    .article-box-wrap {
+        .markdown-view {
+            padding: 0 20px;
+            height: 350px;
+            overflow: hidden;
+
+            &.show {
+                height: auto;
+            }
+        }
+
+        .article-box-more {
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            color: $light;
+
+            &::before {
+                position: absolute;
+                top: -20px;
+                left: 0;
+                content: "";
+                width: 100%;
+                height: 20px;
+                background: linear-gradient(0deg, rgba($white, 1) 0%, rgba($white, 0) 100%);
+            }
         }
     }
-    .article-box-more {
-        height: 36px;
-        line-height: 36px;
-        text-align: center;
-        cursor: pointer;
-        position: relative;
-        color: $light;
-        &::before {
-            position: absolute;
-            top: -20px;
-            left: 0;
-            content: "";
-            width: 100%;
-            height: 20px;
-            background: linear-gradient(0deg, rgba($white, 1) 0%, rgba($white, 0) 100%);
-        }
-    }
-}
 </style>
