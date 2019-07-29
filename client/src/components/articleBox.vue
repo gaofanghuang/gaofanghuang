@@ -19,7 +19,7 @@
                 let _content = content
                 if (process.env.NODE_ENV === 'production') {
                     _content = _content.replace(/http:\/\/localhost:9000/g,
-                        "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/img/"
+                        "https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data"
                     );
                 }
                 return _content ? md(_content) : ''
