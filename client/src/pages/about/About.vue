@@ -263,7 +263,7 @@
             }
 
             .icon {
-                width: 16px;
+                width: 18px;
                 height: 16px;
                 position: relative;
                 top: 3px;

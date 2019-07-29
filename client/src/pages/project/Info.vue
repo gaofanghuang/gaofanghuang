@@ -198,7 +198,7 @@
         }
 
         .icon-tag-w {
-            width: 18px;
+            width: 20px;
             height: 20px;
             margin-right: 5px;
         }
