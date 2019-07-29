@@ -33,13 +33,13 @@
                 const isJPG = file.type === 'image/jpeg';
                 const isPNG = file.type === 'image/png';
                 const isGIF = file.type === 'image/gif';
-                const isLt2M = file.size / 1024 / 1024 < 2;
+                const isLt2M = file.size / 1024 / 1024 / 1024 < 2;
 
                 if (!isJPG && !isPNG && !isGIF) {
                     this.$message.error('上传图片只能是 JPG/PNG/GIF 格式!');
                 }
                 if (!isLt2M) {
-                    this.$message.error('上传图片大小不能超过 2MB!');
+                    this.$message.error('上传图片大小不能超过 200KB!');
                 }
                 return isJPG && isLt2M;
             },
