@@ -4,7 +4,9 @@ import $db from "./utils/Storage";
 
 const state = {
     list: $db.getData('list') || [],
-    tags: $db.getData('tags') || []
+    tags: $db.getData('tags') || [],
+    showBig: false,
+    bigPath: ''
 }
 
 const getters = {}
@@ -17,6 +19,10 @@ const mutations = {
     SaveTags(state, data) {
         state.tags = data
         $db.setData('tags', data)
+    },
+    toggleBig(state, data) {
+        state.showBig = data.showBig
+        state.bigPath = data.bigPath
     }
 }
 

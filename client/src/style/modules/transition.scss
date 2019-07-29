@@ -1,10 +1,10 @@
 // 渐入渐隐
 .fadeIn-enter-active {
-    animation: fadeIn .4s;
+    animation: fadeIn .4s ease;
 }
 
 .fadeIn-leave-active {
-    animation: fadeIn .4s reverse;
+    animation: fadeIn .4s ease reverse;
 }
 
 // 向上滑出

@@ -34,15 +34,26 @@
                     </div>
 
                     <template v-if="item.type == 1">
-                        <div>
-                            需求
+                        <div class="info-log-box">
+                            <div class="info-log-title" v-if="item.title">{{ item.title }}</div>
+                            <div class="info-log-todo-list">
+                                <div class="info-log-todo-item flex flex-y" v-for="(todo, index) in item.todo"
+                                    :key="`todo-${todo.id}`">
+                                    <span class="info-log-todo-sort">{{ index+1 }}.</span>
+                                    <span class="info-log-todo-content"
+                                        :class="{'is-checked': todo.checked}">{{ todo.content }}</span>
+                                    <span class="info-log-todo-status"><em v-if="todo.checked"></em></span>
+                                </div>
+                            </div>
                         </div>
                     </template>
 
                     <template v-if="item.type == 2">
                         <div class="info-log-box">
                             <div class="info-log-title" v-if="item.title">{{ item.title }}</div>
-                            <div class="info-log-article markdown-view" v-html="viewContent(item.content)"></div>
+                            <div class="info-log-article">
+                                <articleBox :content="item.content" />
+                            </div>
                         </div>
                     </template>
 
@@ -50,7 +61,7 @@
                         <div class="info-log-box">
                             <div class="info-log-title" v-if="item.title">{{ item.title }}</div>
                             <div class="info-log-imglist">
-                                <img :src="img.path | getImg" v-for="img in item.imgs" :key="`img-${img.id}`">
+                               <imgList :list="item.imgs" />
                             </div>
                         </div>
                     </template>
@@ -74,7 +85,8 @@
 <script>
     import * as api from "@/utils/api"
     import QRCode from "qrcode"
-    import md from "@/utils/markdown"
+    import imgList from "@/components/imgList"
+    import articleBox from "@/components/articleBox"
 
     import {
         mapState
@@ -102,10 +114,15 @@
         updated() {
             if (this.info.qrcode) {
                 let canvas = document.getElementById("qrcode")
-                QRCode.toCanvas(canvas, '232323', {
+                let qrcodeUrl = this.info.qrcode
+                QRCode.toCanvas(canvas, qrcodeUrl, {
                     width: 120
                 })
             }
+        },
+        components: {
+            imgList,
+            articleBox
         },
         methods: {
             mapTag(id) {
@@ -139,9 +156,6 @@
                     res = true
                 }
                 return res
-            },
-            viewContent(content) {
-                return content ? md(content) : ''
             }
         },
     }
@@ -231,6 +245,7 @@
             box-shadow: 0 3px 9px rgba(#000000, 0.08);
             opacity: 0;
             transition: 0.2s;
+            z-index: 9;
 
             &::before {
                 position: absolute;
@@ -347,16 +362,61 @@
             text-align: center;
         }
 
-        .info-log-article {
-            max-height: 500px;
-            overflow-y: auto;
-            padding: 10px;
-            @include scroll-bar($light);
+        .info-log-todo-list {
+            padding: 0 20px;
         }
 
-        .info-log-imglist {
-            max-height: 500px;
-            overflow: hidden;
+        .info-log-todo-item {
+            font-size: 14px;
+            height: 20px;
+            margin-bottom: 20px;
+
+            .is-checked {
+                color: $light;
+                text-decoration: line-through;
+            }
+        }
+
+        .info-log-todo-status {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            color: $light;
+
+            em {
+                display: inline-block;
+                position: relative;
+                width: 20px;
+                height: 20px;
+
+                &::before {
+                    position: absolute;
+                    top: 10px;
+                    left: 6px;
+                    content: "";
+                    width: 1px;
+                    height: 8px;
+                    background: $light;
+                    transform: rotate(-45deg);
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 4px;
+                    left: 14px;
+                    content: "";
+                    width: 1px;
+                    height: 14px;
+                    background: $light;
+                    transform: rotate(45deg);
+                }
+            }
+        }
+
+        .info-log-todo-sort {
+            width: 20px;
+            color: $light;
         }
     }
 </style>

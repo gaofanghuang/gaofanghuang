@@ -7,18 +7,21 @@
       </Transition>
     </main>
     <Footer />
+    <BigImg />
   </div>
 </template>
 
 <script>
   import Header from "@/components/Header"
   import Footer from "@/components/Footer"
+  import BigImg from "@/components/BigImg"
 
   export default {
     name: 'app',
     components: {
       Header,
-      Footer
+      Footer,
+      BigImg
     },
     computed: {
       path() {
