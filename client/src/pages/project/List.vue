@@ -224,6 +224,7 @@
             flex-wrap: wrap;
             overflow: hidden;
             height: 26px;
+            line-height: 1.4;
 
             @media screen and (max-width:1024px) {
                 height: 46px;
@@ -335,6 +336,7 @@
             @media screen and (max-width:1024px) {
                 width: 40px;
                 height: 36px;
+                top: 14px;
             }
         }
 
@@ -356,8 +358,8 @@
 
                 @media screen and (max-width:1024px) {
                     top: 4px;
-                    width: 26px;
-                    height: 24px;
+                    width: 30px;
+                    height: 28px;
                 }
             }
         }
@@ -387,6 +389,10 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-size: 16px;
+            @media screen and (max-width:1024px) {
+                font-size: 30px;
+            }
         }
 
         .list-item-time {
@@ -402,8 +408,8 @@
 
                 @media screen and (max-width:1024px) {
                     top: 4px;
-                    width: 26px;
-                    height: 24px;
+                    width: 30px;
+                    height: 28px;
                 }
             }
         }
