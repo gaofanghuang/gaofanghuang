@@ -61,7 +61,7 @@
                         <div class="info-log-box">
                             <div class="info-log-title" v-if="item.title">{{ item.title }}</div>
                             <div class="info-log-imglist">
-                               <imgList :list="item.imgs" />
+                                <imgList :list="item.imgs" />
                             </div>
                         </div>
                     </template>
@@ -170,6 +170,11 @@
             height: 180px;
             padding-top: 40px;
             color: $white;
+
+            @media screen and (max-width:1024px) {
+                width: 100%;
+                height: 220px;
+            }
         }
 
         .info-name {
@@ -201,6 +206,11 @@
             width: 20px;
             height: 20px;
             margin-right: 5px;
+
+            @media screen and (max-width:1024px) {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         .info-urls {
@@ -211,16 +221,33 @@
                 height: 24px;
                 position: relative;
                 top: -2px;
+
+                @media screen and (max-width:1024px) {
+                    width: 48px;
+                    height: 48px;
+                }
             }
 
             .icon-url-w {
                 width: 20px;
                 height: 20px;
+
+                @media screen and (max-width:1024px) {
+                    position: relative;
+                    top: 2px;
+                    width: 38px;
+                    height: 38px;
+                }
             }
 
             .icon-github-w {
                 width: 20px;
                 height: 20px;
+
+                @media screen and (max-width:1024px) {
+                    width: 40px;
+                    height: 40px;
+                }
             }
         }
 
@@ -272,7 +299,7 @@
 
             @media screen and (max-width:1024px) {
                 width: 100vw;
-                padding: 0 10px;
+                padding: 20px 10px 0;
             }
         }
 
@@ -344,6 +371,13 @@
                     border: 3px solid transparent;
                     border-right-width: 0;
                     border-left-color: $background-color;
+                }
+
+                @media screen and (max-width:1024px) {
+                    width: 90px;
+                    height: 36px;
+                    line-height: 36px;
+                    left: -120px;
                 }
             }
         }

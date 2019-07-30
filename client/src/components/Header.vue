@@ -75,7 +75,7 @@
 
         .header-logo {
             display: block;
-            width: 164px;
+            width: 170px;
             height: 24px;
             background: url("../assets/GAOFANG.png") no-repeat;
             background-size: auto 100%;

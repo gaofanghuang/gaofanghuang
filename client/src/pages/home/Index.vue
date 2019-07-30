@@ -12,7 +12,7 @@
 
 <style lang="scss">
     .home-wrap {
-        height: calc(100vh - 80px);
+        height: calc(100vh - 140px);
 
         .home-summary {
             height: 30vh;

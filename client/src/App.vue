@@ -41,7 +41,6 @@
 
     .app-content {
       padding-top: 50px;
-      min-height: calc(100vh - 30px);
 
       @media screen and (max-width:1024px) {
         padding-top: 80px;
@@ -83,18 +82,21 @@
     padding-top: 180px;
     position: relative;
 
+    @media screen and (max-width:1024px) {
+      padding-top: 220px;
+    }
+
     .app-content {
       padding-top: 0;
-      min-height: 100%;
+      min-height: calc(100vh - 220px);
       background: $background-color;
-      padding-bottom: 180px;
+      padding-bottom: 220px;
     }
 
     .footer-wrap {
-      position: relative;
-      height: 0;
-      top: -30px;
+      background: $background-color;
       color: $light;
+      padding-bottom: 12px;
     }
   }
 </style>
