@@ -1,37 +1,12 @@
 # Gaofang's Site
 
-黄高芳的小站，在这里记录开发日志。
+黄高芳的个人主页
 
-## 技术架构
+## 关于v5.0
 
-后端：Node.js + Koa + Json
-中后台：Vue全家桶 + Element UI + Axios
-前台：Vue全家桶 + Axios
+新年新版本，平均每年更新一版的个人网站，在2020年即将到来之际，已经更新到第5个版本了。
 
-## 实现原理
+2019年发生了超多的事情，技术栈也从vue换成了angular和react，因此这个版本我将不再使用vue开发，而是换成react。
 
-使用Koa来储存Json数据、储存图片，前台使用Axios来读取json数据。
-
-## 操作方式
-
-在本地dev模式下可以登陆后台编辑内容、查看统计数据，在production模式下只能查看前台内容。
-
-## 运行方式
-
-```
-// 1.打开后端服务，命令行
-$ cd serve
-$ npm i
-$ npm run serve
-
-// 2. 打开中后台服务，命令行
-$ cd admin
-$ npm i
-$ npm run serve
-
-// 3. 编译前台SPA，将在根目录自动生成index.html和404.html
-$ cd client
-$ npm i
-$ npm run build
-```
+前3个版本都是定位为blog的形式，第4个版本则做了项目管理与记录的功能，在这第5个版本，希望界面视觉上更轻，功能上定位为个人与项目展示的单页。
 
