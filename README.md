@@ -1,12 +1,24 @@
-# Gaofang's Site
+# huanggaofang
 
-黄高芳的个人主页
+## Project setup
+```
+yarn install
+```
 
-## 关于v5.0
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
 
-新年新版本，平均每年更新一版的个人网站，在2020年即将到来之际，已经更新到第5个版本了。
+### Compiles and minifies for production
+```
+yarn build
+```
 
-2019年发生了超多的事情，技术栈也从vue换成了angular和react，因此这个版本我将不再使用vue开发，而是换成react。
+### Lints and fixes files
+```
+yarn lint
+```
 
-前3个版本都是定位为blog的形式，第4个版本则做了项目管理与记录的功能，在这第5个版本，希望界面视觉上更轻，功能上定位为个人与项目展示的单页。
-
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
