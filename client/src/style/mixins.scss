@@ -1,0 +1,153 @@
+// ======颜色变量==== //
+
+// 主色
+$primary: #23bed5;
+$r: 35;
+$g: 190;
+$b: 213;
+
+// 透明色
+$a: 0.08;
+$shadow: rgba(0, 0, 0, $a);
+
+// 辅助色
+$white: #ffffff;
+$black: #333333;
+$alpha: rgba(255, 255, 255, 0);
+$green: #23cca9;
+$active: #de5585;
+
+// 中性色
+$light: #999999;
+$gray: #666666;
+
+// 背景色
+$background-color: #f9f9f9;
+
+// 线条色
+$border-color: #EFEFEF;
+
+
+// 滚动条
+@mixin scroll-bar($color) {
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($color: $color, $alpha: 0.2);
+        transition: 0.2s;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $alpha;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: rgba($color: $color, $alpha: 0.6);
+    }
+}
+
+/*
+  0.5px细线 mixin
+  $direction：border方向，'all'、'left'、'right'、'top'、'bottom'
+  $color：border颜色，默认全局分隔线颜色
+  $type：border实虚线，默认solid
+  $border-z-index: 边框z-index，默认1
+  $content-z-index: 内容z-index，默认2
+*/
+@mixin thin-border(
+  $direction: $direction,
+  $color: $border-color,
+  $type: solid,
+  $border-z-index: 1,
+  $content-z-index: 2
+) {
+  position: relative;
+
+  & > * {
+    z-index: $content-z-index;
+  }
+
+  &:after {
+    z-index: $border-z-index;
+    // 点击穿透
+    pointer-events: none;
+    @if $direction == all {
+      border: 1px $type $color;
+    } @else {
+      border: 0;
+      border-#{$direction}: 1px $type $color;
+    }
+  }
+
+  // 非iOS系统采用伪元素的方法实现0.5px
+  @supports not (-webkit-overflow-scrolling: touch) {
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+      &:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: -25%;
+        right: -25%;
+        -webkit-transform: scale(0.8);
+        -webkit-transform-origin: 0 0;
+        transform: scale(0.8);
+        transform-origin: 0 0;
+      }
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+      &:after {
+        content: ' ';
+        position: absolute;
+        left: -50%;
+        bottom: -50%;
+        top: -50%;
+        right: -50%;
+        -webkit-transform: scale(0.5);
+        -webkit-transform-origin: 50% 50%;
+        transform: scale(0.5);
+        transform-origin: 50% 50%;
+      }
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+      &:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: -150%;
+        right: -150%;
+        -webkit-transform: scale(0.4);
+        -webkit-transform-origin: 0 0;
+        transform: scale(0.4);
+        transform-origin: 0 0;
+      }
+    }
+  }
+
+  // iOS系统直接使用小数点px
+  @supports (-webkit-overflow-scrolling: touch) {
+    z-index: $border-z-index;
+    @if $direction == all {
+      border: 0.5px $type $color;
+    } @else {
+      border: 0;
+      border-#{$direction}: 0.5px $type $color;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+      @if $direction == all {
+        border: 0.33px $type $color;
+      } @else {
+        border: 0;
+        border-#{$direction}: 0.33px $type $color;
+      }
+    }
+  }
+}
