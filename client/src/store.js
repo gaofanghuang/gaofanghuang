@@ -5,9 +5,14 @@ import $db from './utils/Storage';
 const state = {
   list: $db.getData('list') || [],
   tags: $db.getData('tags') || [],
+  darkMode: $db.getData('darkMode') || false,
 };
 
-const getters = {};
+const getters = {
+  darkMode: () => {
+    return state.darkMode
+  }
+};
 
 const mutations = {
   SaveList(state, data) {
@@ -18,6 +23,10 @@ const mutations = {
     state.tags = data;
     $db.setData('tags', data);
   },
+  ToggleDarkMode(state, data) {
+    state.darkMode = data;
+    $db.setData('darkMode', data);
+  }
 };
 
 const actions = {};

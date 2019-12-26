@@ -19,11 +19,6 @@ module.exports = {
     },
     'postcss-viewport-units': {
       filterRule: rule => rule.selector.includes('::after') && rule.selector.includes('::before') && rule.selector.includes(':after') && rule.selector.includes(':before')
-    },
-    cssnano: {
-      preset: 'advanced',
-      autoprefixer: false,
-      'postcss-zindex': false,
-    },
+    }
   },
 };

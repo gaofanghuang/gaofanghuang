@@ -3,8 +3,6 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
-const Index = () => import(/* webpackChunkName: 'page-index' */ '@/pages/Index');
-
 const url = [
   {
     path: '/',
@@ -12,10 +10,35 @@ const url = [
   },
   {
     path: '/index',
-    component: Index,
+    component: () => import(/* webpackChunkName: 'page-index' */ '@/pages/Index'),
     meta: {
       name: 'index',
       title: '首页',
+    },
+  },
+  {
+    path: '/project',
+    component: () => import(/* webpackChunkName: 'page-project' */ '@/pages/Project'),
+    meta: {
+      name: 'project',
+      title: '项目',
+    },
+  },
+  {
+    path: '/about',
+    component: () => import(/* webpackChunkName: 'page-about' */ '@/pages/About'),
+    meta: {
+      name: 'about',
+      title: '关于我',
+    },
+  },
+  {
+    path: '/set',
+    component: () => import(/* webpackChunkName: 'page-set' */ '@/pages/Set'),
+    meta: {
+      name: 'set',
+      title: '设置',
+      back: true,
     },
   },
   {

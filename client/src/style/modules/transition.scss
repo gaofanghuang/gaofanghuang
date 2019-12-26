@@ -44,3 +44,11 @@
 .leftSwipe-leave-active {
   animation: leftSwipe .4s reverse;
 }
+
+// 右侧展开
+.rightSwipe-enter-active {
+  animation: rightSwipe .4s;
+}
+.rightSwipe-leave-active {
+  animation: rightSwipe .4s reverse;
+}
