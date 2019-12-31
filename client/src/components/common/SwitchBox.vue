@@ -1,5 +1,5 @@
 <template>
-  <div class="switchbox-wrap" @click="toggleSwitch" :class="{ 'is-open': isStatus }">
+  <div class="switchbox-wrap ignore" @click="toggleSwitch" :class="{ 'is-open': isStatus }">
     <div class="swithbox-dot"></div>
   </div>
 </template>
@@ -48,6 +48,7 @@ export default {
   background-color: #f2f2f2;
   box-shadow: 0 0 12px rgba($color: #000000, $alpha: 0.08) inset;
   transition: background-color 0.4s;
+  cursor: pointer;
   &.is-open {
     background-color: $primary;
     border: none;
@@ -68,5 +69,32 @@ export default {
   background: #ffffff;
   box-shadow: 0 3px 18px rgba($color: #000000, $alpha: 0.08);
   transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+}
+.is-dark {
+  .switchbox-wrap {
+    background-color: $gray;
+    border: none;
+    box-shadow: 0 0 12px rgba($color: $gray, $alpha: 0.08) inset;
+  }
+  .swithbox-dot {
+    background: $primary;
+    box-shadow: 0 3px 18px rgba($color: $light, $alpha: 0.08);
+  }
+}
+.is-pc {
+  .switchbox-wrap.ignore {
+    width: 46px;
+    height: 16px;
+    border-radius: 8px;
+    &.is-open {
+      .swithbox-dot {
+        transform: translate(30px, -50%);
+      }
+    }
+    .swithbox-dot {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 </style>

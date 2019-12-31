@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import App from '@/App.vue';
-import router from '@/router';
-import store from '@/store';
+import router from '@/services/router';
+import store from '@/services/store';
 import '@/style/common.scss';
 import 'highlight.js/styles/github.css';
 import DomPortal from 'vue-dom-portal';
-import * as filters from '@/utils/filters';
+import * as filters from '@/services/filters';
 import FastClick from 'fastclick';
-import Storage from '@/utils/Storage';
+import Storage from '@/services/Storage';
 import '@/assets/iconfont.js';
 import components from '@/components/common';
 

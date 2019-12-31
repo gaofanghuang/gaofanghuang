@@ -4,7 +4,7 @@ function GetDateDiff(DiffTime) {
   return Time;
 }
 
-export function formatDate(date, fmt = 'yyyy/MM/dd hh:mm') {
+export const formatDate = (date, fmt = 'yyyy/MM/dd hh:mm') => {
   date = new Date(GetDateDiff(date));
 
   const o = {
@@ -30,7 +30,7 @@ export function formatDate(date, fmt = 'yyyy/MM/dd hh:mm') {
   return fmt;
 }
 
-export function getImg(path) {
+export const getImg = (path) => {
   let res = process.env.VUE_APP_API_HOST + '/img/' + path;
   if (process.env.NODE_ENV === 'production') {
     res =

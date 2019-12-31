@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import mLogo from '@/assets/logo.png';
 
 export default {
@@ -21,6 +22,9 @@ export default {
       logoPath: mLogo,
       showBack: false,
     };
+  },
+  computed: {
+    ...mapGetters(['darkMode']),
   },
   watch: {
     $route() {
@@ -39,7 +43,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header-wrap {
   position: fixed;
   top: 0;
@@ -48,7 +52,7 @@ export default {
   width: 100%;
   height: 120px;
   background: #fff;
-  box-shadow: 0 0 9px rgba($color: #000000, $alpha: 0.18);
+  box-shadow: 0 0 9px rgba($color: #000000, $alpha: 0.08);
 }
 .header-logo {
   width: 120px;
@@ -67,5 +71,14 @@ export default {
 }
 .header-nav {
   @include thin-border(left, $border-color);
+}
+.is-dark {
+  .header-wrap {
+    background: $black;
+    box-shadow: 0 0 9px rgba($color: $light, $alpha: 0.18);
+  }
+  .header-nav {
+    @include thin-border(left, $gray);
+  }
 }
 </style>

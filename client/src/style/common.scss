@@ -56,3 +56,10 @@ body {
   fill: currentColor;
   overflow: hidden;
 }
+
+
+// 深色模式
+.is-dark {
+  background: $black;
+  color: $gray;
+}

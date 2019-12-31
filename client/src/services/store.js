@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import $db from './utils/Storage';
+import $db from './Storage';
 
 const state = {
   list: $db.getData('list') || [],
@@ -10,8 +10,8 @@ const state = {
 
 const getters = {
   darkMode: () => {
-    return state.darkMode
-  }
+    return state.darkMode;
+  },
 };
 
 const mutations = {
@@ -26,7 +26,7 @@ const mutations = {
   ToggleDarkMode(state, data) {
     state.darkMode = data;
     $db.setData('darkMode', data);
-  }
+  },
 };
 
 const actions = {};

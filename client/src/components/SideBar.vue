@@ -138,4 +138,9 @@ export default {
   height: calc(100% - 120px);
   overflow-y: auto;
 }
+.is-dark {
+  .sidebar-box {
+    background: $black;
+  }
+}
 </style>
