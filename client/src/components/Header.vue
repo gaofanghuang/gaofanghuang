@@ -80,5 +80,11 @@ export default {
   .header-nav {
     @include thin-border(left, $gray);
   }
+  .header-logo {
+    img {
+      filter: grayscale(100%);
+      filter: gray;
+    }
+  }
 }
 </style>

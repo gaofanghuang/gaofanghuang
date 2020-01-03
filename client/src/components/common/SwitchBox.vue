@@ -1,5 +1,5 @@
 <template>
-  <div class="switchbox-wrap ignore" @click="toggleSwitch" :class="{ 'is-open': isStatus }">
+  <div class="switchbox-wrap" @click="toggleSwitch" :class="{ 'is-open': isStatus }">
     <div class="swithbox-dot"></div>
   </div>
 </template>
@@ -81,8 +81,8 @@ export default {
     box-shadow: 0 3px 18px rgba($color: $light, $alpha: 0.08);
   }
 }
-.is-pc {
-  .switchbox-wrap.ignore {
+.is-pc.ignore {
+  .switchbox-wrap {
     width: 46px;
     height: 16px;
     border-radius: 8px;

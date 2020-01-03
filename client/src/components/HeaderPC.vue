@@ -52,9 +52,6 @@ export default {
     ...mapGetters(['darkMode']),
   },
   methods: {
-    goTo(path) {
-      this.$router.push(path);
-    },
     isCurPath(path) {
       return this.$route.fullPath.includes(path);
     },
@@ -113,6 +110,12 @@ export default {
     .header-pc-box {
       background: $black;
       box-shadow: 0 0 9px rgba($color: $light, $alpha: 0.18);
+    }
+    .header-pc-logo {
+      img {
+        filter: grayscale(100%);
+        filter: gray;
+      }
     }
   }
 }

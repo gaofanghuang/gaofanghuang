@@ -1,5 +1,5 @@
 <template>
-  <div class="about-wrap ignore">
+  <div class="about-wrap">
     <div class="about-left">
       <div class="about-side">
         <section>
@@ -8,22 +8,24 @@
             <div class="about-summary-avatar">
               <img :src="avatar" alt="avatar" />
             </div>
-            <div class="about-summary-word ml15 tl">
-              <div class="about-summary-name">黄高芳</div>
+            <div class="about-summary-word flex ml15 tl">
+              <div class="about-summary-name tc">黄高芳</div>
               <div class="about-summary-enname">Gaofang Huang</div>
-              <div class="about-summary-local"><Icon name="location" class="mr5" />桂林</div>
+              <div class="about-summary-local flex flex-x">
+                <Icon name="location" class="mr5" />桂林
+              </div>
             </div>
           </div>
         </section>
         <section>
           <div class="about-title">CONTACT ME</div>
           <div class="about-contact">
-            <div class="about-mail">
-              <Icon name="mail" class="mr10" />
+            <div class="about-mail flex flex-y">
+              <Icon name="mail" class="mr5" />
               <a href="mailto:gaofanghuang@vip.qq.com" class="a">gaofanghuang@vip.qq.com</a>
             </div>
-            <div class="about-github mt10">
-              <Icon name="github-fill" class="mr10" />
+            <div class="about-github flex flex-y mt10">
+              <Icon name="github-fill" class="mr5" />
               <a href="https://github.com/gaofanghuang" class="a"
                 >https://github.com/gaofanghuang</a
               >
@@ -41,7 +43,7 @@
     <div class="about-right">
       <div class="about-content">
         <section class="about-exp">
-          <div class="about-title"><i class="icon icon-exp"></i> 工作经历</div>
+          <div class="about-title"><Icon name="block" class="mr5" /> 工作经历</div>
           <div class="about-exp-list">
             <dl class="about-exp-item" v-for="(item, key) in exp" :key="`exp-${key}`">
               <dt class="mb10">
@@ -58,22 +60,6 @@
                 </span>
               </dd>
             </dl>
-          </div>
-        </section>
-        <section class="about-project">
-          <div class="about-title flex flex-both">
-            <span><i class="icon icon-project"></i> 业余项目</span>
-            <router-link class="about-project-more" to="/list">更多>></router-link>
-          </div>
-          <div class="about-project-list flex flex-both">
-            <div class="about-project-item" v-for="item in list" :key="`project-${item.id}`">
-              <a :href="`/info/${item.id}`">
-                <div class="about-project-cover">
-                  <img v-if="item.cover" :src="item.cover.path | getImg" alt="item.name" />
-                </div>
-                <div class="about-project-name">{{ item.name }}</div>
-              </a>
-            </div>
           </div>
         </section>
       </div>
@@ -146,11 +132,11 @@ export default {
 
 <style lang="scss">
 // pc端
-.is-pc {
-  .about-wrap.ignore {
+.is-pc.ignore {
+  .about-wrap {
     justify-content: space-between;
     display: flex;
-    max-width: 900px;
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
     background: $white;
@@ -160,63 +146,14 @@ export default {
       display: flex;
       padding-top: 24px;
       background: $white;
+      .icon {
+        font-size: 20px;
+      }
     }
 
     .about-content {
       width: 60%;
       padding-right: 20px;
-    }
-
-    .about-project-more {
-      font-size: 14px;
-      color: $light;
-
-      &:hover {
-        color: $primary;
-      }
-    }
-
-    .about-project-item {
-      width: 32%;
-      height: 28%;
-      position: relative;
-      cursor: pointer;
-
-      &:hover img {
-        filter: none;
-      }
-    }
-
-    .about-project-name {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 30px;
-      line-height: 30px;
-      color: $white;
-      text-align: center;
-      text-shadow: 0 0 1px rgba($black, 0.8);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      background: linear-gradient(0deg, rgba($black, 0.4) 0%, rgba($black, 0) 100%);
-    }
-
-    .about-project-cover {
-      width: 100%;
-      height: 80%;
-      border-radius: 4px;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.6s;
-        filter: grayscale(100%);
-        filter: gray;
-      }
     }
 
     section {
@@ -254,7 +191,7 @@ export default {
     }
 
     .about-left {
-      width: 38%;
+      width: 32%;
       padding-top: 24px;
       background: $black;
       color: #ffffff;
@@ -272,6 +209,7 @@ export default {
     }
 
     .about-summary-avatar {
+      flex-shrink: 0;
       width: 80px;
       height: 80px;
       overflow: hidden;
@@ -284,7 +222,7 @@ export default {
     }
 
     .about-summary-word {
-      display: flex;
+      flex-wrap: wrap;
     }
 
     .about-summary-local {
@@ -293,7 +231,6 @@ export default {
 
     .about-summary-name {
       font-size: 18px;
-      margin-bottom: 10px;
       line-height: 1;
     }
 
@@ -304,6 +241,106 @@ export default {
 
     .about-contact {
       font-size: 12px;
+      .icon {
+        font-size: 20px;
+      }
+    }
+  }
+  &.is-dark {
+    .about-wrap.ignore {
+      background: lighten($color: $black, $amount: 3%);
+      .about-left {
+        background: darken($color: $black, $amount: 3%);
+      }
+      .about-right {
+        background: lighten($color: $black, $amount: 3%);
+      }
+      .about-exp-tag {
+        background: darken($color: $black, $amount: 3%);
+      }
+      .about-contact,
+      .about-title,
+      .about-summary-local,
+      .about-summary-name {
+        color: $gray;
+      }
+    }
+  }
+}
+// 移动端
+.is-mobile {
+  .about-left {
+    padding: 40px;
+    background: #f2f2f2;
+  }
+  .about-summary-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .about-side {
+    text-align: center;
+  }
+  .about-summary {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .about-summary-word {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .about-summary-name,
+  .about-summary-local {
+    width: 100%;
+  }
+  .about-summary-enname {
+    color: $light;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .about-summary-local {
+    align-items: center;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .about-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+  .about-contact {
+    margin-bottom: 60px;
+    .about-github,
+    .about-mail {
+      justify-content: center;
+    }
+  }
+  .about-right {
+    padding: 40px;
+  }
+  .about-exp-item {
+    margin-bottom: 20px;
+  }
+  .about-exp-tag {
+    font-size: 24px;
+    display: inline-block;
+    background: #eaeaef;
+    color: $gray;
+    padding: 4px 12px;
+    margin-right: 6px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  &.is-dark {
+    .about-left {
+      background: darken($color: $black, $amount: 3%);
+    }
+    .about-exp-tag {
+      background: darken($color: $black, $amount: 3%);
     }
   }
 }

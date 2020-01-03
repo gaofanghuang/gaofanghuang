@@ -22,7 +22,16 @@ const url = [
     component: () => import(/* webpackChunkName: 'page-project' */ '@/pages/Project'),
     meta: {
       name: 'project',
-      title: '项目',
+      title: '项目列表',
+    },
+  },
+  {
+    path: '/project/:id',
+    component: () => import(/* webpackChunkName: 'page-detail' */ '@/pages/Detail'),
+    meta: {
+      name: 'project_detail',
+      title: '项目详情',
+      back: true,
     },
   },
   {
@@ -56,6 +65,14 @@ const url = [
     meta: {
       name: 'pc_project',
       title: '项目',
+    },
+  },
+  {
+    path: '/pc/project/:id',
+    component: () => import(/* webpackChunkName: 'page-detail' */ '@/pages/Detail'),
+    meta: {
+      name: 'pc_project_detail',
+      title: '项目详情',
     },
   },
   {

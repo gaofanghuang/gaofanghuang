@@ -1,5 +1,5 @@
 <template>
-  <div class="set-wrap ignore">
+  <div class="set-wrap">
     <div class="set-group">
       <div class="set-group-title">基本设置</div>
       <div class="set-group-item">
@@ -72,10 +72,10 @@ export default {
   }
 }
 // pc端
-.is-pc {
-  .set-wrap.ignore {
+.is-pc.ignore {
+  .set-wrap {
     padding: 20px;
-    max-width: 900px;
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
     .set-group {
