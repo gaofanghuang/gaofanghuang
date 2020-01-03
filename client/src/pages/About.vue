@@ -247,7 +247,7 @@ export default {
     }
   }
   &.is-dark {
-    .about-wrap.ignore {
+    .about-wrap {
       background: lighten($color: $black, $amount: 3%);
       .about-left {
         background: darken($color: $black, $amount: 3%);

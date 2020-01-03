@@ -53,7 +53,7 @@ const url = [
   },
   {
     path: '/pc/index',
-    component: () => import(/* webpackChunkName: 'page-pc' */ '@/pages/pc/Index'),
+    component: () => import(/* webpackChunkName: 'page-mobile' */ '@/pages/Index'),
     meta: {
       name: 'pc_index',
       title: '首页',
