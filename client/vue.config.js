@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: process.env.BASE_URL || '/',
-  outputDir: '../',
+  outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: true,
   productionSourceMap: false,
