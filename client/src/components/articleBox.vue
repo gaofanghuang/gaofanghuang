@@ -99,8 +99,8 @@ export default {
 .is-dark {
   .article-box-more {
     &::before {
-        background: linear-gradient(0deg, rgba($black, 1) 0%, rgba($black, 0) 100%) !important;
-      }
+      background: linear-gradient(0deg, rgba($black, 1) 0%, rgba($black, 0) 100%) !important;
+    }
   }
 }
 </style>

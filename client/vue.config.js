@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: process.env.BASE_URL || '/',
-  outputDir: 'dist',
+  outputDir: './dist',
   assetsDir: 'static',
   lintOnSave: true,
   productionSourceMap: false,
@@ -30,7 +30,7 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       '/api': {
-        target: process.env.VUE_APP_API_HOST,
+        target: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API_HOST_PROD : process.env.VUE_APP_API_HOST_DEV,
         changeOrigin: true,
       },
     },

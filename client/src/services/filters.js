@@ -28,13 +28,12 @@ export const formatDate = (date, fmt = 'yyyy/MM/dd hh:mm') => {
     }
   }
   return fmt;
-}
+};
 
-export const getImg = (path) => {
-  let res = process.env.VUE_APP_API_HOST + '/img/' + path;
+export const getImg = path => {
+  let baseUrl = process.env.VUE_APP_API_HOST_DEV;
   if (process.env.NODE_ENV === 'production') {
-    res =
-      'https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/img/' + path;
+    baseUrl = process.env.VUE_APP_API_HOST_PROD;
   }
-  return res;
-}
+  return baseUrl + '/img/' + path;
+};
