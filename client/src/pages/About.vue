@@ -319,6 +319,17 @@ export default {
       justify-content: center;
     }
   }
+  .about-qrcode {
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
   .about-right {
     padding: 40px;
   }

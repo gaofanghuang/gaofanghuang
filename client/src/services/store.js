@@ -7,7 +7,7 @@ const state = {
   tags: $db.getData('tags') || [],
   darkMode: $db.getData('darkMode') || false,
   showBigImg: false,
-  bigPath: ''
+  bigPath: '',
 };
 
 const getters = {
@@ -30,9 +30,9 @@ const mutations = {
     $db.setData('darkMode', data);
   },
   toggleBigImg(state, data) {
-      state.showBigImg = data.showBigImg
-      state.bigPath = data.bigPath
-  }
+    state.showBigImg = data.showBigImg;
+    state.bigPath = data.bigPath;
+  },
 };
 
 const actions = {};

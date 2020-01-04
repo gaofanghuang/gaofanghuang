@@ -6,6 +6,7 @@
         @click="viewBig(img.path)"
         v-for="img in list"
         :key="`img-${img.id}`"
+        :style="`width: ${itemW}px`"
       >
         <img :src="img.path | getImg" />
       </div>
@@ -21,16 +22,16 @@
 </template>
 
 <script>
+import { clientOS } from '@/services/utils';
 export default {
   data() {
     return {
+      isMobile: clientOS().isMobile,
       curIndex: 0,
+      itemW: 0,
     };
   },
   computed: {
-    itemW() {
-      return document.querySelector('.imglist-wrap') ? document.querySelector('.imglist-wrap').clientWidth : 315;
-    },
     allW() {
       return this.itemW * this.list.length;
     },
@@ -40,6 +41,9 @@ export default {
         transform: `translateX(-${this.itemW * this.curIndex}px)`,
       };
     },
+  },
+  mounted() {
+    this.itemW = this.isMobile ? document.querySelector('.imglist-wrap').clientWidth : 900;
   },
   props: ['list'],
   methods: {
@@ -93,6 +97,7 @@ export default {
 
     .imglist-item {
       width: 900px;
+      flex-shrink: 0;
       img {
         margin-left: auto;
         margin-right: auto;
@@ -157,6 +162,7 @@ export default {
 
     .imglist-item {
       width: 100%;
+      flex-shrink: 0;
       img {
         margin-left: auto;
         margin-right: auto;

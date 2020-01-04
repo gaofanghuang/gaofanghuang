@@ -520,7 +520,7 @@ export default {
       position: absolute;
       left: -100px;
       top: 0;
-      font-size: 18px;
+      font-size: 24px;
       text-align: right;
       width: 100px;
       padding-right: 20px;
@@ -528,7 +528,7 @@ export default {
       color: $light;
       .year {
         display: block;
-        font-size: 12px;
+        font-size: 18px;
         font-weight: 600;
       }
     }

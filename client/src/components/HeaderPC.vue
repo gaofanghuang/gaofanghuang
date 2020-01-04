@@ -1,5 +1,5 @@
 <template>
-  <div class="header-pc ignore">
+  <div class="header-pc">
     <div class="header-pc-box">
       <div class="header-pc-logo">
         <img :src="logoPath" alt="logo" />
@@ -60,53 +60,55 @@ export default {
 </script>
 
 <style lang="scss">
-.header-pc.ignore {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 14px;
-  z-index: 9;
-  .header-pc-box {
+.is-pc.ignore {
+  .header-pc {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 48px;
-    background: #fff;
-    box-shadow: 0 0 9px rgba($color: #000000, $alpha: 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 24px;
-    overflow: hidden;
-  }
-  .header-pc-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
-    overflow: hidden;
-  }
-  .header-pc-nav {
-    display: flex;
-  }
-  .header-pc-nav-item {
-    padding: 0 20px;
-    line-height: 48px;
-    color: $gray;
-    cursor: pointer;
-    &:hover {
-      color: $active;
-      text-shadow: 0 0 3px rgba($color: darken($active, 5%), $alpha: 0.28);
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+    z-index: 9;
+    .header-pc-box {
+      width: 100%;
+      height: 48px;
+      background: #fff;
+      box-shadow: 0 0 9px rgba($color: #000000, $alpha: 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 24px;
+      overflow: hidden;
     }
-  }
-  .active {
-    color: $primary;
-    text-shadow: 0 0 3px rgba($color: darken($primary, 5%), $alpha: 0.28);
+    .header-pc-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .header-pc-nav {
+      display: flex;
+    }
+    .header-pc-nav-item {
+      padding: 0 20px;
+      line-height: 48px;
+      color: $gray;
+      cursor: pointer;
+      &:hover {
+        color: $active;
+        text-shadow: 0 0 3px rgba($color: darken($active, 5%), $alpha: 0.28);
+      }
+    }
+    .active {
+      color: $primary;
+      text-shadow: 0 0 3px rgba($color: darken($primary, 5%), $alpha: 0.28);
+    }
   }
 }
 .is-dark {
-  .header-pc.ignore {
+  .header-pc {
     .header-pc-box {
       background: $black;
       box-shadow: 0 0 9px rgba($color: $light, $alpha: 0.18);

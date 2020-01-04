@@ -8,7 +8,7 @@ export const baseURL = axios.defaults.baseURL;
 export const getList = (params = {}) => {
   if (process.env.NODE_ENV === 'production') {
     return axios.get(
-      'https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/json/list.json',
+      'https://raw.githubusercontent.com/gaofanghuang/gaofanghuang-site-serve/master/serve/data/json/list.json',
       {
         params,
       }
@@ -24,7 +24,7 @@ export const getList = (params = {}) => {
 export const getLogs = (params = {}) => {
   if (process.env.NODE_ENV === 'production') {
     return axios.get(
-      `https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/json/${params.id}.json`,
+      `https://raw.githubusercontent.com/gaofanghuang/gaofanghuang-site-serve/master/serve/data/json/${params.id}.json`,
       {
         params,
       }
@@ -40,7 +40,7 @@ export const getLogs = (params = {}) => {
 export const getTags = (params = {}) => {
   if (process.env.NODE_ENV === 'production') {
     return axios.get(
-      `https://raw.githubusercontent.com/gaofanghuang/gaofanghuang/master/serve/data/json/tags.json`,
+      `https://raw.githubusercontent.com/gaofanghuang/gaofanghuang-site-serve/master/serve/data/json/tags.json`,
       {
         params,
       }

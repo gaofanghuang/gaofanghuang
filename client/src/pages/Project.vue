@@ -300,6 +300,7 @@ export default {
     position: relative;
     overflow: hidden;
     color: $gray;
+    background: #f2f2f2;
 
     &::after {
       position: absolute;
@@ -431,7 +432,6 @@ export default {
     .list-container {
       padding: 20px;
       margin-top: 20px;
-      padding: 20px;
     }
 
     .list-filter-tags {
@@ -458,7 +458,7 @@ export default {
     }
 
     .list-item {
-      width: 325px;
+      width: 345px;
       border-radius: 8px;
       margin-bottom: 20px;
       margin-right: 20px;
@@ -477,7 +477,7 @@ export default {
     }
 
     .list-item-tag {
-      font-size: 24px;
+      font-size: 20px;
       padding: 4px 6px;
       border-radius: 4px;
       margin-right: 10px;
@@ -495,14 +495,14 @@ export default {
       padding-top: 10px;
       padding-left: 10px;
       padding-right: 10px;
-      font-size: 18px;
+      font-size: 32px;
     }
 
     .list-item-time {
-      font-size: 12px;
+      font-size: 20px;
       padding: 10px;
       .icon {
-        font-size: 15px;
+        font-size: 20px;
         margin-right: 5px;
       }
     }
