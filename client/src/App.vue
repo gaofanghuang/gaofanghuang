@@ -1,58 +1,28 @@
 <template>
-  <div id="app" :class="{ 'is-dark': darkMode, 'is-mobile': isMobile, 'is-pc': !isMobile, 'ignore': !isMobile }">
-    <Header v-if="isMobile" />
-    <HeaderPC v-if="!isMobile" />
-    <Transition enter-active-class="fadeIn-enter-active" leave-active-class="fadeIn-leave-active">
-      <main class="app-content">
-        <router-view />
-      </main>
-    </Transition>
-    <SideBar v-if="isMobile" />
-    <BigImg />
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import Header from '@/components/Header';
-import HeaderPC from '@/components/HeaderPC';
-import SideBar from '@/components/SideBar';
-import BigImg from '@/components/BigImg';
-import { clientOS } from '@/services/utils';
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  data() {
-    return {
-      isMobile: clientOS().isMobile,
-    };
-  },
-  computed: {
-    ...mapGetters(['darkMode']),
-  },
   components: {
-    Header,
-    HeaderPC,
-    SideBar,
-    BigImg,
-  },
-};
-</script>
-
-<style lang="scss">
-.is-mobile {
-  .app-content {
-    width: 100vw;
-    min-height: 100vh;
-    padding-top: 120px;
+    HelloWorld
   }
 }
-.is-pc.ignore {
-  .app-content {
-    width: 100%;
-    min-height: 100vh;
-    font-size: 14px;
-    padding-top: 90px;
-  }
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
