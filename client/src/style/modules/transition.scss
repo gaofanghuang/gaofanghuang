@@ -1,0 +1,54 @@
+// 渐入渐隐
+.fadeIn-enter-active {
+    animation: fadeIn .4s ease;
+}
+
+.fadeIn-leave-active {
+    animation: fadeIn .4s ease reverse;
+}
+
+// 向上滑出
+.pop-enter-active,
+.pop-leave-active,
+.popr-enter-active,
+.popr-leave-active {
+  transition: all 0.4s ease;
+}
+.pop-enter,
+.pop-leave-active {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.popr-enter,
+.popr-leave-active {
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+// 渐入渐隐2
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.2s ease;
+}
+.toast-enter,
+.toast-leave-active {
+  opacity: 0;
+}
+
+// 左侧展开
+.leftSwipe-enter-active {
+  animation: leftSwipe .4s;
+}
+.leftSwipe-leave-active {
+  animation: leftSwipe .4s reverse;
+}
+
+// 右侧展开
+.rightSwipe-enter-active {
+  animation: rightSwipe .4s;
+}
+.rightSwipe-leave-active {
+  animation: rightSwipe .4s reverse;
+}

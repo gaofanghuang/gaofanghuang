@@ -1,0 +1,65 @@
+@import 'modules/reset';
+@import 'modules/animate';
+@import 'modules/transition';
+@import 'modules/layout';
+@import 'modules/markdown';
+@import 'modules/icon';
+
+body {
+  font-size: 16px;
+}
+
+// 弹层
+.m-pop-box {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 8;
+}
+
+.m-pop-open {
+  overflow-y: hidden;
+}
+
+// 顶部进度条
+.is-progress {
+  &::before {
+    content: '';
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, $green, $primary);
+    animation: toProgress 1s;
+  }
+}
+
+@keyframes toProgress {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+// iconfont图标
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+
+// 深色模式
+.is-dark {
+  background: $black;
+  color: $gray;
+}
