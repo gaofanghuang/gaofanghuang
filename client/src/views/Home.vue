@@ -28,6 +28,11 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
 .home-wrap {
   width: 100%;
   min-height: 100vh;
@@ -42,7 +47,7 @@ export default {
 }
 .home-container {
   width: 100%;
-  height: 500px;
+  height: 2500px;
   background: #ffffff;
 }
 </style>

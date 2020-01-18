@@ -6,8 +6,35 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+  },
+  {
+    path: '/projects',
+    component: () => import(/* webpackChunkName: "projects" */ '@/views/ProjectList.vue'),
+  },
+  {
+    path: '/project/:id',
+    component: () => import(/* webpackChunkName: "projects" */ '@/views/ProjectDetail.vue'),
+  },
+  {
+    path: '/checklist',
+    component: () => import(/* webpackChunkName: "checklist" */ '@/views/Checklist.vue'),
+  },
+  {
+    path: '/client',
+    component: () => import(/* webpackChunkName: "client" */ '@/views/Client.vue'),
+  },
+  {
+    path: '/comments',
+    component: () => import(/* webpackChunkName: "comments" */ '@/views/Comments.vue'),
+  },
+  {
+    path: '/about',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
+  },
+  {
+    path: '/search',
+    component: () => import(/* webpackChunkName: "search" */ '@/views/Search.vue'),
   },
 ];
 
