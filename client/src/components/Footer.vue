@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-wrap">
-    footer
+    CopyRight© 2020 <Icon name="heart" /> Gaofang Huang
   </footer>
 </template>
 
@@ -14,5 +14,8 @@ export default {};
   height: 120px;
   background: #f2f2f2;
   border-top: 1px solid #e9e9e9;
+  text-align: center;
+  padding: 40px 0;
+  color: #999999;
 }
 </style>

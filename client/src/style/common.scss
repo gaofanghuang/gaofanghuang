@@ -5,8 +5,21 @@
 @import 'modules/markdown';
 @import 'modules/icon';
 
+@font-face{
+  font-family: 'moon-light'; 
+  src: url('../assets/MoonLight.otf') format('truetype')
+}
+@font-face{
+  font-family: 'moon-regular'; 
+  src: url('../assets/MoonRegular.otf') format('truetype')
+}
+@font-face{
+  font-family: 'moon-bold'; 
+  src: url('../assets/MoonBold.otf') format('truetype')
+}
+
 body {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 // 弹层

@@ -4,7 +4,7 @@
       <img src="../assets/GAOFANG_c.png" alt="logo" />
     </div>
     <div class="header-nav">
-      <router-link v-for="item in navs" class="header-nav-item" :to="item.path">
+      <router-link v-for="item in navs" class="header-nav-item" :key="item.name" :to="item.path">
         <Icon :name="item.icon" />
         <span class="header-nav-name">{{ item.name }}</span>
       </router-link>
@@ -12,9 +12,6 @@
     <div class="header-btns">
       <div class="header-search-btn" @click="goToSearch">
         <Icon name="search" />
-      </div>
-      <div class="header-account-btn">
-        <Icon name="smile" />
       </div>
     </div>
   </header>
@@ -58,17 +55,6 @@ export default {
       ],
     };
   },
-  mounted() {
-    window.onscroll = function() {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const Header = document.querySelector('#header');
-      if (scrollTop >= window.screen.availHeight) {
-        Header.style = 'top: 0px;';
-      } else {
-        Header.style = 'top: -48px;';
-      }
-    };
-  },
   methods: {
     goToSearch() {
       this.$router.push('/search');
@@ -80,7 +66,7 @@ export default {
 <style lang="scss">
 .header-wrap {
   position: fixed;
-  top: -48px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 48px;
@@ -93,12 +79,13 @@ export default {
   align-items: center;
   padding: 0 20px;
   box-shadow: 0 9px 16px rgba($color: $primary, $alpha: 0.08);
+  font-family: 'moon-regular';
   &:hover {
     opacity: 1;
   }
   .header-logo {
-    width: 164px;
-    height: 24px;
+    width: 123px;
+    height: 18px;
     img {
       width: 100%;
       height: 100%;
@@ -122,20 +109,15 @@ export default {
   .header-search-btn {
     cursor: pointer;
     .icon {
-      font-size: 30px;
+      font-size: 24px;
     }
     transition: 0.6s;
     &:hover {
       color: $active;
     }
   }
-
-  .header-account-btn {
-    margin-left: 20px;
-    cursor: pointer;
-    .icon {
-      font-size: 28px;
-    }
-  }
+}
+.main-wrap {
+  padding-top: 48px;
 }
 </style>

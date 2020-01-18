@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <div class="main-wrap">
+      <router-view />
+    </div>
     <Footer />
   </div>
 </template>
@@ -26,4 +28,5 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>
