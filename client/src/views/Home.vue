@@ -7,27 +7,24 @@
     </div>
     <div class="home-layout">
       <div class="home-container">
-        <div class="home-module">
-          <div class="home-module-title">近期项目</div>
-          <div class="home-module-list home-project-list">
-            <div class="home-project-item">
-              <div class="home-project-cover"></div>
-              <div class="home-project-word">
-                <div class="home-project-name">ddd</div>
-                <div class="home-project-describe">
-                  sadasdasdsd
-                </div>
-                <div class="home-project-info">
-                  <div class="home-project-time">2020-01-18</div>
-                  <div class="home-project-tags">
-                    <div class="home-project-tag">sdsdsd</div>
-                    <div class="home-project-tag">sdsdsd</div>
-                    <div class="home-project-tag">sdsdsd</div>
-                  </div>
-                </div>
-              </div>
+        <div class="home-left">
+          <div class="home-module home-project" v-if="projects.length > 0">
+            <div class="home-module-title">- The Latest Project -</div>
+            <div class="home-module-list home-project-list">
+              <ProjectCard v-for="item in projects" :item="item" :key="item._id" />
             </div>
           </div>
+
+          <div class="home-module home-checklist" v-if="projects.length > 0">
+            <div class="home-module-title">- The Latest Checklist -</div>
+            <div class="home-module-list home-checklist-list">
+              <ChecklistCard v-for="item in projects" :item="item" :key="item._id" />
+            </div>
+          </div>
+        </div>
+
+        <div class="home-right">
+          ssss
         </div>
       </div>
     </div>
@@ -36,6 +33,9 @@
 
 <script>
 import bg from '@/assets/bg/bg.jpg';
+import ProjectCard from '@/components/ProjectCard';
+import ChecklistCard from '@/components/ChecklistCard';
+import { mapState } from 'vuex';
 
 export default {
   name: 'home',
@@ -45,10 +45,22 @@ export default {
       bgStyle: {},
     };
   },
+  components: {
+    ProjectCard,
+    ChecklistCard
+  },
   created() {
     this.bgStyle = {
       'background-image': `url(${this.bgImg})`,
     };
+    if (this.projects.length === 0) {
+      this.getProjects();
+    }
+  },
+  computed: {
+    ...mapState({
+      projects: state => state.projects || [],
+    }),
   },
   mounted() {
     window.onscroll = function() {
@@ -61,7 +73,11 @@ export default {
       }
     };
   },
-  components: {},
+  methods: {
+    getProjects() {
+      this.$store.dispatch('GetProjects');
+    },
+  },
 };
 </script>
 
@@ -82,7 +98,7 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: 100vw 100vh;
+  background-size: auto 100vh;
   background-attachment: fixed;
 }
 .home-banner {
@@ -91,7 +107,7 @@ body {
   height: 100vh;
   .home-arrow {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     .icon {
@@ -109,9 +125,27 @@ body {
   background: #ffffff;
 }
 .home-container {
-  width: 1024px;
+  display: flex;
+  width: 1080px;
   margin-left: auto;
   margin-right: auto;
   padding: 40px 0;
+}
+.home-left {
+  width: 900px;
+}
+.home-right {
+  width: 260px;
+  margin-left: 20px;
+  background: $background-color;
+  border-radius: 4px;
+}
+.home-module {
+  margin-bottom: 40px;
+}
+.home-module-title {
+  font-size: 16px;
+  font-family: 'moon-regular';
+  margin-bottom: 20px;
 }
 </style>

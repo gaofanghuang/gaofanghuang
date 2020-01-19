@@ -1,30 +1,45 @@
-import axios from 'axios';
+import * as http from './http';
+import * as CryptoJS from 'crypto-js';
 
-if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = process.env.VUE_APP_API_HOST_PROD;
-} else {
-  axios.defaults.baseURL = process.env.VUE_APP_API_HOST_DEV;
-}
+export const baseURL = http.baseURL;
 
-export const baseURL = axios.defaults.baseURL;
-
-// 获取-项目列表
-export const getList = (params = {}) => {
-  return axios.get('/getList', {
-    params,
-  });
+// 登录
+export const login = (params = {}) => {
+  params.password = passwordDigest(params.password, params.username);
+  return http.post('/login', params);
 };
 
-// 获取-项目记录列表
-export const getLogs = (params = {}) => {
-  return axios.get('/getLogs', {
-    params,
-  });
+// 注册用户
+export const register = (params = {}) => {
+  params.password = passwordDigest(params.password, params.username);
+  return http.post('/register', params);
 };
 
-// 获取-标签列表
-export const getTags = (params = {}) => {
-  return axios.get('/getTags', {
-    params,
-  });
+const passwordDigest = (password, username) => {
+  return CryptoJS.HmacSHA1(password, CryptoJS.SHA1(username)).toString();
+};
+
+// 获取标签列表
+export const getTags = () => {
+  return http.get('/tags');
+};
+
+// 获取项目列表
+export const getProjects = () => {
+  return http.get('/projects');
+};
+
+// 获取项目详情
+export const getProjectInfo = (id = '', params = {}) => {
+  return http.get(`/project/${id}`, params);
+};
+
+// 获取记录列表
+export const getLogs = (pid = '') => {
+  return http.get(`/project/${pid}/logs`);
+};
+
+// 获取TODO列表
+export const getTODO = (pid = '') => {
+  return http.get(`/project/${pid}/todo`);
 };

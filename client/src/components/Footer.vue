@@ -1,7 +1,5 @@
 <template>
-  <footer class="footer-wrap">
-    CopyRight© 2020 <Icon name="heart" /> Gaofang Huang
-  </footer>
+  <footer class="footer-wrap">CopyRight© 2020 <Icon name="heart" /> Gaofang Huang</footer>
 </template>
 
 <script>

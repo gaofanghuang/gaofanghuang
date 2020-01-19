@@ -16,6 +16,21 @@ export default {
   data() {
     return {};
   },
+  created() {
+    // 每天自动清一次缓存
+    const cacheTime = this.$store.state.cacheTime;
+    const curTime = new Date().getTime();
+    if (cacheTime) {
+      if (cacheTime < curTime - 1 * 24 * 60 * 60 * 1000) {
+        this.$db.clearData();
+      }
+    } else {
+      this.$db.setData('cacheTime', curTime);
+    }
+    if (this.$store.state.tags.length === 0) {
+      this.$store.dispatch('GetTags');
+    }
+  },
   mounted() {
     const body = document.querySelector('body');
     const loadingApp = document.querySelector('#loadingApp');
@@ -28,5 +43,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
