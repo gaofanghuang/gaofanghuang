@@ -21,6 +21,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "checklist" */ '@/views/Checklist.vue'),
   },
   {
+    path: '/checklist/:id',
+    component: () => import(/* webpackChunkName: "checklist" */ '@/views/ChecklistDetail.vue'),
+  },
+  {
     path: '/client',
     component: () => import(/* webpackChunkName: "client" */ '@/views/Client.vue'),
   },

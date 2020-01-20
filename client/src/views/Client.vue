@@ -1,5 +1,8 @@
 <template>
   <div class="client-wrap">
-    APP下载
+    移动端开发中...
   </div>
 </template>
+
+<style lang="scss">
+</style>

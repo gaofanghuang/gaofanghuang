@@ -43,4 +43,15 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+.main-wrap {
+  width: 100%;
+  padding-top: 48px;
+}
+</style>

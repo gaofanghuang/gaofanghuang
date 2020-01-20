@@ -73,7 +73,7 @@ export default {
   background: #ffffff;
   color: $primary;
   transition: 0.6s;
-  opacity: 0.68;
+  opacity: 0.48;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,8 +116,5 @@ export default {
       color: $active;
     }
   }
-}
-.main-wrap {
-  padding-top: 48px;
 }
 </style>

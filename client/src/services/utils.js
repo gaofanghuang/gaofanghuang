@@ -66,3 +66,36 @@ export const clientOS = () => {
     language: (navigator.browserLanguage || navigator.language).toLowerCase(),
   };
 };
+
+
+/**
+ * 计算倒计时
+ * @param {*} endTime 结束时间
+ * @param {*} startTime 开始时间
+ */
+export const distanceTime = (endTime, startTime) => {
+  let distance = endTime - startTime;
+  if (distance > 0) {
+    let res = '';
+    const day = Math.floor(distance / 86400000);
+    distance -= 86400000 * day;
+    const hour = Math.floor(distance / 3600000);
+    distance -= 3600000 * hour;
+    const minute = Math.floor(distance / 60000);
+    distance -= 60000 * minute;
+    const second = Math.floor(distance / 1000);
+    if (day > 0) {
+      res = String(day).padStart(2, '0') + ' 天 ';
+    }
+    if (hour > 0) {
+      res = res + String(hour).padStart(2, '0') + ' 时 ';
+    }
+    if (minute > 0) {
+      res = res + String(minute).padStart(2, '0') + ' 分 ';
+    }
+    res = res + String(second).padStart(2, '0') + ' 秒';
+    return res;
+  } else {
+    return ''
+  }
+}

@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     cacheTime: $db.getData('cacheTime') || '',
     projects: $db.getData('projects') || [],
+    checklist: $db.getData('checklist') || [],
     tags: $db.getData('tags') || [],
     user: $db.getData('user') || {},
     token: $db.getData('token') || '',
@@ -18,6 +19,10 @@ export default new Vuex.Store({
     SaveProjects(state, data) {
       state.projects = data;
       $db.setData('projects', data);
+    },
+    SaveChecklist(state, data) {
+      state.checklist = data;
+      $db.setData('checklist', data);
     },
     SaveTags(state, data) {
       state.tags = data;
@@ -45,6 +50,15 @@ export default new Vuex.Store({
         commit('SaveProjects', _data);
       });
     },
+    GetChecklist({ commit }) {
+      api.getChecklist().then(({ data }) => {
+        let _data = [];
+        if (data.data.length > 0) {
+          _data = fix.sort(data.data, 'sort');
+        }
+        commit('SaveChecklist', _data);
+      });
+    },
     GetTags({ commit }) {
       api.getTags().then(({ data }) => {
         let _data = [];
@@ -53,7 +67,7 @@ export default new Vuex.Store({
         }
         commit('SaveTags', _data);
       });
-    }
+    },
   },
   modules: {},
 });

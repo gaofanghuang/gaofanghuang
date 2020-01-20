@@ -1,5 +1,5 @@
 <template>
-  <div class="project-item">
+  <div class="project-item" @click="goToProject">
     <div class="project-cover" v-if="item.cover">
       <img :src="item.cover.path | getImg" :alt="item.name" />
     </div>
@@ -24,7 +24,11 @@
 <script>
 export default {
   props: ['item'],
-  methods: {},
+  methods: {
+    goToProject() {
+      this.$router.push(`/project/${this.item._id}`);
+    },
+  },
 };
 </script>
 
@@ -34,6 +38,7 @@ export default {
   padding: 20px;
   transition: 0.6s;
   border-radius: 4px;
+  cursor: pointer;
   &:hover {
     background: $background-color;
   }
@@ -73,8 +78,12 @@ export default {
 .project-time {
   font-size: 12px;
   color: $light;
+  font-family: 'moon-regular';
+  letter-spacing: 1px;
   .icon {
     font-size: 13px;
+    position: relative;
+    top: 1px;
   }
 }
 .project-tags {

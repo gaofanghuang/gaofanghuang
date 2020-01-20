@@ -43,3 +43,18 @@ export const getLogs = (pid = '') => {
 export const getTODO = (pid = '') => {
   return http.get(`/project/${pid}/todo`);
 };
+
+// 获取清单列表
+export const getChecklist = () => {
+  return http.get('/checklist');
+};
+
+// 获取清单详情
+export const getCheckDetail = (id = '', params = {}) => {
+  return http.get(`/checklist/${id}`, params);
+};
+
+// 获取关于我的信息
+export const getAbout = () => {
+  return http.get(`/about`);
+};

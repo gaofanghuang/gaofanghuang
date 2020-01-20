@@ -6,7 +6,6 @@ function GetDateDiff(DiffTime) {
 
 export const formatDate = (date, fmt = 'yyyy/MM/dd hh:mm') => {
   date = new Date(GetDateDiff(date));
-
   const o = {
     'M+': date.getMonth() + 1,
     'd+': date.getDate(),
