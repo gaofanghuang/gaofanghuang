@@ -58,3 +58,8 @@ export const getCheckDetail = (id = '', params = {}) => {
 export const getAbout = () => {
   return http.get(`/about`);
 };
+
+// 获取评论列表
+export const getComments = () => {
+  return http.get(`/comments`);
+}

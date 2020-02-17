@@ -67,7 +67,6 @@ export const clientOS = () => {
   };
 };
 
-
 /**
  * 计算倒计时
  * @param {*} endTime 结束时间
@@ -96,6 +95,6 @@ export const distanceTime = (endTime, startTime) => {
     res = res + String(second).padStart(2, '0') + ' 秒';
     return res;
   } else {
-    return ''
+    return '';
   }
-}
+};

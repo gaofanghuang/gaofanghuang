@@ -64,7 +64,7 @@ export default {
     We,
     LastestComments,
     MusicBar,
-    TagsRank
+    TagsRank,
   },
   created() {
     this.bgStyle = {

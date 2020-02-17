@@ -93,6 +93,7 @@ export default {
   }
   .header-nav-item {
     transition: 0.6s;
+    letter-spacing: 1px;
     .icon {
       margin-right: 6px;
     }

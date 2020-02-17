@@ -1,6 +1,8 @@
 <template>
   <footer class="footer-wrap">
-    <p class="copyright">CopyRight© 2020 <Icon name="heart" /> <a href="http://www.huanggaofang.com">Gaofang Huang</a></p>
+    <p class="copyright">
+      CopyRight© 2020 <Icon name="heart" /> <a href="http://www.huanggaofang.com">Gaofang Huang</a>
+    </p>
     <p class="powered">Powered by GaofangHuang • Theme by GaofangHuang | All Rights Reserved</p>
   </footer>
 </template>
