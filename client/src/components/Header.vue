@@ -73,13 +73,14 @@ export default {
   background: #ffffff;
   color: $primary;
   transition: 0.6s;
-  opacity: 0.48;
+  opacity: 0.68;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   box-shadow: 0 9px 16px rgba($color: $primary, $alpha: 0.08);
   font-family: 'moon-regular';
+  z-index: 9;
   &:hover {
     opacity: 1;
   }

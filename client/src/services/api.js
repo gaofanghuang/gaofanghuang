@@ -62,4 +62,4 @@ export const getAbout = () => {
 // 获取评论列表
 export const getComments = () => {
   return http.get(`/comments`);
-}
+};
