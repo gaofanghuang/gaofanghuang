@@ -17,7 +17,7 @@ const format = {
   },
   // 检查是否为邮箱
   isEmail(value) {
-    const reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+    const reg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
     return reg.test(value);
   },
   // 检查是否为手机号

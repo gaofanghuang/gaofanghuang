@@ -1,6 +1,6 @@
 import axios from 'axios';
 import router from '@/services/router';
-import { Message } from 'element-ui';
+import Message from '@/plugins/message';
 import $db from '@/services/Storage';
 
 let cancel;
@@ -103,10 +103,7 @@ instance.interceptors.response.use(
       }
       console.log('err', err.tips);
     }
-    Message({
-      message: err.tips || err,
-      type: 'error',
-    });
+    Message.error(err.tips || err);
     return Promise.reject(err);
   }
 );

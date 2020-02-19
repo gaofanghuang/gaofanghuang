@@ -18,7 +18,7 @@ export default {
   methods: {
     getList() {
       api.getComments().then(({ data }) => {
-        
+        console.log(data);
       });
     },
   },

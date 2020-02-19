@@ -1,40 +1,37 @@
-import Vue from "vue";
-import Message from "./MessageList";
+import Vue from 'vue';
+import Message from './MessageList';
 
 Message.newInstance = props => {
-    const _props = props || {};
+  const propsTemp = props || {};
 
-    const MessageInstance = new Vue({
-        data: _props,
-        render(h) {
-            return h(Message, {
-                props: _props
-            });
-        }
-    });
+  const MessageInstance = new Vue({
+    data: propsTemp,
+    render(h) {
+      return h(Message, {
+        props: propsTemp,
+      });
+    },
+  });
 
-    const component = MessageInstance.$mount();
+  const component = MessageInstance.$mount();
+  document.body.appendChild(component.$el);
+  const messages = MessageInstance.$children[0];
 
-    document.body.appendChild(component.$el);
-    const msgs = MessageInstance.$children[0];
-
-    return {
-        notice(msgProps) {
-            msgs.add(msgProps);
-        },
-        remove(name) {
-            msgs.close(name);
-        },
-        component: msgs,
-        destroy(element) {
-            msgs.closeAll();
-            setTimeout(function() {
-                document.body.removeChild(
-                    document.getElementsByClassName(element)[0]
-                );
-            }, 500);
-        }
-    };
+  return {
+    notice(msgProps) {
+      messages.add(msgProps);
+    },
+    remove(name) {
+      messages.close(name);
+    },
+    component: messages,
+    destroy(element) {
+      messages.closeAll();
+      setTimeout(function() {
+        document.body.removeChild(document.getElementsByClassName(element)[0]);
+      }, 500);
+    },
+  };
 };
 
 export default Message;

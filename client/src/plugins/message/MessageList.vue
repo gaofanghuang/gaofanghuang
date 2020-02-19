@@ -1,61 +1,77 @@
 <template>
-  <div class="v-msg-list">
+  <div id="messageList" class="message-list">
     <Message
-      v-for="msg in msgs"
-      :key="msg.name"
-      :type="msg.type"
-      :icon="msg.icon"
-      :content="msg.content"
-      :duration="msg.duration"
-      :closable="msg.closable"
-      :name="msg.name"
-      :transition-name="msg.transitionName"
-      :on-close="msg.onClose"/>
+      v-for="item in msgList"
+      :type="item.type"
+      :key="item.name"
+      :content="item.content"
+      :duration="item.duration"
+      :closable="item.closable"
+      :name="item.name"
+      :on-close="item.onClose"
+      :icon="item.icon"
+    />
   </div>
 </template>
+
 <script>
-import Message from "./Message";
+import Message from './Message';
 
 let seed = 0;
 const getUuid = () => {
-    return "v_msg_" + Date.now() + "_" + seed++;
+  return 'message_' + Date.now() + '_' + seed++;
 };
+
 export default {
-    name: "MessageList",
-    components: {
-        Message
-    },
-    data() {
-        return {
-            msgs: []
-        };
-    },
-    methods: {
-        add(msg) {
-            const name = msg.name || getUuid();
-            let newMsg = Object.assign(
-                {
-                    content: '',
-                    duration: 3,
-                    closable: false,
-                    name: name
-                },
-                msg
-            );
-            this.msgs.push(newMsg);
+  name: 'MessageList',
+  data() {
+    return {
+      msgList: [],
+    };
+  },
+  components: {
+    Message,
+  },
+  methods: {
+    add(msg) {
+      const name = msg.name || getUuid();
+      let newMsg = Object.assign(
+        {
+          content: '',
+          closable: false,
+          name: name,
         },
-        close(name) {
-            const oldMsgs = this.msgs;
-            for (let i = 0; i < oldMsgs.length; i++) {
-                if (oldMsgs[i].name === name) {
-                    this.msgs.splice(i, 1);
-                    break;
-                }
-            }
-        },
-        closeAll() {
-            this.msgs = [];
+        msg
+      );
+      this.msgList.push(newMsg);
+    },
+    close(name) {
+      setTimeout(() => {
+        const oldMsgs = this.msgList;
+        for (let i = 0; i < oldMsgs.length; i++) {
+          if (oldMsgs[i].name === name) {
+            this.msgList.splice(i, 1);
+            break;
+          }
         }
-    }
+      }, 500);
+    },
+    closeAll() {
+      this.msgList = [];
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.message-list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  pointer-events: none;
+}
+</style>

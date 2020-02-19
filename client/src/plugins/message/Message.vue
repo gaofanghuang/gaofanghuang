@@ -1,55 +1,57 @@
 <template>
-  <transition :name="transitionName" @enter="handleEnter" @leave="handleLeave">
-    <div :class="classes">
-      <svg :class="[`${prefixCls}-icon`]">
-        <use :xlink:href="`#${icon}`" xmlns:xlink="http://www.w3.org/1999/xlink" />
-      </svg>
-      <span class="ellipsis">{{ content }}</span>
+  <transition name="move-down-in" @enter="handleEnter" @leave="handleLeave">
+    <div class="message-item" v-show="show" :class="msgTypleClass">
+      <Icon v-if="msgTypeIcon" :name="msgTypeIcon" />
+      <span class="message-content">{{ content || defaultContent }}</span>
     </div>
   </transition>
 </template>
+
 <script>
-const prefixCls = 'v-msg';
 export default {
-  props: {
-    type: { type: String, default: 'message' },
-    duration: { type: Number, default: 3 },
-    closable: { type: Boolean, default: false },
-    transitionName: { type: String, default: '' },
-    icon: { type: String, default: 'msg-info' },
-    content: { type: String, required: true },
-    onClose: { type: Function, default: () => {} },
-    name: { type: String, required: true },
-  },
   data() {
     return {
-      prefixCls,
+      show: false,
     };
   },
+  props: {
+    icon: { type: String, default: '' },
+    type: { type: String, default: 'default' },
+    duration: { type: Number, default: 3000 },
+    content: { type: String, default: '' },
+    onClose: { type: Function, default: () => {} },
+    closable: { type: Boolean, default: false },
+    name: { type: String, required: true },
+  },
   computed: {
-    classes() {
-      return [prefixCls, `${prefixCls}__${this.type}`];
+    msgTypleClass() {
+      return `message-item_${this.type}`;
     },
-    /**
-     *  Default message.
-     *
-     * @return {string}
-     * @author Seven Du <shiweidu@outlook.com>
-     */
-    defaultMessage() {
+    msgTypeIcon() {
+      const icons = {
+        info: 'info-circle',
+        success: 'check-circle',
+        warning: 'warning-circle',
+        error: 'close-circle',
+        default: '',
+      };
+      return this.icon || icons[this.type];
+    },
+    defaultContent() {
       if (this.type === 'success') {
-        return '成功！';
+        return '操作成功。';
       }
-
-      return '发生错误了，请刷新重试！';
+      return '发生未知错误，请尝试刷新。';
     },
   },
   mounted() {
+    this.show = true;
     this.clearCloseTimer();
     if (this.duration !== 0) {
       this.closeTimer = setTimeout(() => {
+        this.show = false;
         this.close();
-      }, this.duration * 1000);
+      }, this.duration);
     }
   },
   beforeDestroy() {
@@ -72,150 +74,48 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
-.v-msg-list {
-  font-size: 12px;
+.message-item {
   position: fixed;
-  z-index: 1010;
-  width: 100%;
   top: 0;
   left: 0;
-  pointer-events: none;
-}
-
-.v-msg {
+  width: 100%;
+  height: 48px;
   display: flex;
   align-items: center;
-  font-size: 30px;
-  color: #000;
-  &-icon {
-    margin: 0 10px;
-    width: 32px;
-    height: 32px;
+  justify-content: flex-start;
+  padding-left: 20px;
+  background: #ffffff;
+  box-shadow: 0 9px 16px rgba($color: $primary, $alpha: 0.02);
+  .icon {
+    flex-shrink: 0;
+    margin-right: 10px;
   }
-  &-notice {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 30px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 5px 0 #ededed;
-    border-radius: 8px;
-  }
-  &__message {
-    svg {
-      flex: 0 0 auto;
-    }
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    text-overflow: ellipsis;
+  .message-content {
+    white-space: nowrap;
     overflow: hidden;
-    padding: 0 20px;
-    width: 100%;
-    height: 90px;
-    background-color: #fff;
-    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.12);
+    text-overflow: ellipsis;
   }
-}
-
-.move-up-appear,
-.move-up-enter-active,
-.move-up-leave-active,
-.move-down-appear,
-.move-down-enter-active,
-.move-down-leave-active {
-  animation-duration: 0.3s;
-  animation-fill-mode: both;
-  animation-play-state: paused;
-}
-
-.move-up-appear,
-.move-up-enter-active {
-  animation-name: moveUpIn;
-  animation-play-state: running;
-}
-
-.move-up-leave-active {
-  animation-name: moveUpOut;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-}
-
-.move-up-appear,
-.move-up-enter-active,
-.move-down-appear,
-.move-down-enter-active {
-  opacity: 0;
-  animation-timing-function: ease-in-out;
-}
-
-.move-down-appear,
-.move-down-enter-active {
-  animation-name: moveDownIn;
-  animation-play-state: running;
-}
-
-.move-down-leave-active {
-  animation-name: moveDownOut;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes moveUpIn {
-  0% {
-    transform-origin: 0 0;
-    transform: translateY(-100%);
-    opacity: 0;
+  &_info {
+    background: lighten($color: $info, $amount: 48%);
+    color: darken($color: $info, $amount: 15%);
+    box-shadow: 0 9px 16px rgba($color: $info, $alpha: 0.02);
   }
-  100% {
-    transform-origin: 0 0;
-    transform: translateY(0%);
-    opacity: 1;
+  &_success {
+    background: lighten($color: $success, $amount: 42%);
+    color: darken($color: $success, $amount: 15%);
+    box-shadow: 0 9px 16px rgba($color: $success, $alpha: 0.02);
   }
-}
-
-@keyframes moveUpOut {
-  0% {
-    transform-origin: 0 0;
-    transform: translateY(0%);
-    opacity: 1;
+  &_warning {
+    background: lighten($color: $warning, $amount: 38%);
+    color: darken($color: $warning, $amount: 15%);
+    box-shadow: 0 9px 16px rgba($color: $warning, $alpha: 0.02);
   }
-  100% {
-    transform-origin: 0 0;
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes ivuMoveDownIn {
-  0% {
-    transform-origin: 0 0;
-    transform: translateY(100%);
-    opacity: 0;
-  }
-
-  to {
-    transform-origin: 0 0;
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes ivuMoveDownOut {
-  0% {
-    transform-origin: 0 0;
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  to {
-    transform-origin: 0 0;
-    transform: translateY(100%);
-    opacity: 0;
+  &_error {
+    background: lighten($color: $error, $amount: 36%);
+    color: darken($color: $error, $amount: 15%);
+    box-shadow: 0 9px 16px rgba($color: $error, $alpha: 0.02);
   }
 }
 </style>

@@ -63,3 +63,8 @@ export const getAbout = () => {
 export const getComments = () => {
   return http.get(`/comments`);
 };
+
+// 提交评论
+export const submitComment = (params = {}) => {
+  return http.post(`/comment`, params);
+};

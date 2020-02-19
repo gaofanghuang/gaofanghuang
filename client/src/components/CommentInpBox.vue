@@ -24,8 +24,12 @@
         v-model="content"
       >
       </textarea>
-      <div class="comment-input-submit flex flex-x flex-y" @click="submitComment">
-        提交评论
+      <div
+        class="comment-input-submit flex flex-x flex-y"
+        v-loading="!canSubmit"
+        @click="submitComment"
+      >
+        <span>提交评论</span>
       </div>
     </div>
   </div>
@@ -34,7 +38,7 @@
 <script>
 import * as api from '@/services/api';
 import format from '@/services/format';
-import Message from "@/plugins/message";
+import Message from '@/plugins/message';
 
 export default {
   data() {
@@ -44,11 +48,16 @@ export default {
       userSite: '',
       userUrl: '',
       content: '',
+      canSubmit: true,
     };
   },
   methods: {
     submitComment() {
       if (this.checkForm()) {
+        if (!this.canSubmit) {
+          return;
+        }
+        this.canSubmit = false;
         const params = {
           userName: this.userName,
           userEmail: this.userEmail,
@@ -64,6 +73,8 @@ export default {
             this.userUrl = '';
             this.content = '';
             this.$emit('refresh');
+            Message.success('提交评论成功');
+            this.canSubmit = true;
           }
         });
       }
@@ -81,7 +92,7 @@ export default {
         Message.error('请输入您的邮箱');
         return false;
       }
-      if (!format.isUrl(this.userEmail)) {
+      if (!format.isEmail(this.userEmail)) {
         Message.error('邮箱格式不正确');
         return false;
       }
@@ -91,6 +102,10 @@ export default {
       }
       if (this.userUrl && !format.isUrl(this.userUrl)) {
         Message.error('站址格式不正确');
+        return false;
+      }
+      if (!this.content) {
+        Message.error('请输入评论内容');
         return false;
       }
       return true;
@@ -127,6 +142,8 @@ export default {
       color: #ffffff;
       font-size: 12px;
       border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
     }
   }
   .comment-user-info {
@@ -143,6 +160,8 @@ export default {
     margin-bottom: 10px;
     input {
       padding: 0 16px;
+      font-family: 'PingFang SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei';
+      color: #999999;
       &::placeholder {
         color: #dddddd;
       }

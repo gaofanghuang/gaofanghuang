@@ -10,6 +10,7 @@ import store from '@/services/store';
 import components from '@/components/common';
 import * as filters from '@/services/filters';
 import Storage from '@/services/Storage';
+import loading from '@/directives/loading';
 
 Vue.use(DomPortal);
 
@@ -22,6 +23,8 @@ for (const k in filters) {
 components.forEach(component => {
   Vue.component(component.name, component);
 });
+
+Vue.use(loading);
 
 Vue.prototype.$db = Storage;
 Vue.prototype.$bus = new Vue();

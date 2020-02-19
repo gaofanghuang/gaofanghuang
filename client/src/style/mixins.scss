@@ -1,7 +1,13 @@
 // ======颜色变量==== //
 
+// 状态色
+$info: hsl(190, 67%, 48%);
+$success: hsl(165, 71%, 55%);
+$warning: hsl(44, 77%, 58%);
+$error: hsl(350, 88%, 62%);
+
 // 主色
-$primary: #23bed5;
+$primary: $info;
 $r: 35;
 $g: 190;
 $b: 213;
@@ -14,8 +20,8 @@ $shadow: rgba(0, 0, 0, $a);
 $white: #ffffff;
 $black: #333333;
 $alpha: rgba(255, 255, 255, 0);
-$green: #23cca9;
-$active: #de5585;
+$green: $success;
+$active: $error;
 
 // 中性色
 $light: #999999;
@@ -26,7 +32,6 @@ $background-color: #f9f9f9;
 
 // 线条色
 $border-color: #EFEFEF;
-
 
 // 滚动条
 @mixin scroll-bar($color) {
