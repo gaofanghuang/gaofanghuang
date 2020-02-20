@@ -163,8 +163,10 @@ body {
   border-bottom: 1px solid #efefef;
 }
 .tags-rank-wrap,
-.latest-comments-wrap,
 .we-wrap {
-  margin-top: 20px;
+  margin-top: 40px;
+}
+.latest-comments-wrap {
+  margin-top: 50px;
 }
 </style>

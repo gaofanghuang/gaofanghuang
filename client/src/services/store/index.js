@@ -14,6 +14,12 @@ export default new Vuex.Store({
     tags: $db.getData('tags') || [],
     user: $db.getData('user') || {},
     token: $db.getData('token') || '',
+    config: $db.getData('config') || {},
+  },
+  getters: {
+    canComment(state) {
+      return state.config.canComment;
+    },
   },
   mutations: {
     SaveProjects(state, data) {
@@ -39,33 +45,50 @@ export default new Vuex.Store({
       state.user = {};
       $db.clearData();
     },
+    SaveConfig(state, data) {
+      state.config = data;
+      $db.setData('config', data);
+    },
   },
   actions: {
     GetProjects({ commit }) {
       api.getProjects().then(({ data }) => {
-        let _data = [];
-        if (data.data.length > 0) {
-          _data = fix.sort(data.data, 'sort');
+        if (data.code) {
+          let _data = [];
+          if (data.data.length > 0) {
+            _data = fix.sort(data.data, 'sort');
+          }
+          commit('SaveProjects', _data);
         }
-        commit('SaveProjects', _data);
       });
     },
     GetChecklist({ commit }) {
       api.getChecklist().then(({ data }) => {
-        let _data = [];
-        if (data.data.length > 0) {
-          _data = fix.sort(data.data, 'sort');
+        if (data.code) {
+          let _data = [];
+          if (data.data.length > 0) {
+            _data = fix.sort(data.data, 'sort');
+          }
+          commit('SaveChecklist', _data);
         }
-        commit('SaveChecklist', _data);
       });
     },
     GetTags({ commit }) {
       api.getTags().then(({ data }) => {
-        let _data = [];
-        if (data.data.length > 0) {
-          _data = fix.sort(data.data, 'sort');
+        if (data.code) {
+          let _data = [];
+          if (data.data.length > 0) {
+            _data = fix.sort(data.data, 'sort');
+          }
+          commit('SaveTags', _data);
         }
-        commit('SaveTags', _data);
+      });
+    },
+    GetConfig({ commit }) {
+      api.getConfig().then(({ data }) => {
+        if (data.code) {
+          commit('SaveConfig', data.data);
+        }
       });
     },
   },

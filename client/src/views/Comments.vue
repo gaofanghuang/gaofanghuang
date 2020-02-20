@@ -5,11 +5,15 @@
     </div>
 
     <div class="comment-container">
-      <CommentInpBox @refresh="getList" />
+      <CommentInpBox v-if="canComment" @refresh="onRefresh()" />
 
       <div class="comment-list">
         <div class="comment-list-title">Lastest Comments</div>
-        <CommentItem v-for="item in list" :item="item" />
+        <LoadMore @onRefresh="onRefresh" @onLoadMore="onLoadMore">
+          <transition-group name="fadeIn">
+            <CommentItem v-for="item in list" :item="item" :key="item._id" />
+          </transition-group>
+        </LoadMore>
       </div>
     </div>
   </div>
@@ -19,33 +23,52 @@
 import * as api from '@/services/api';
 import CommentInpBox from '@/components/CommentInpBox';
 import CommentItem from '@/components/CommentItem';
-import fix from '@/services/fix';
+import LoadMore from '@/components/LoadMore';
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
     return {
       list: [],
-      lastId: 0,
-      showSize: 20,
+      page: 1,
+      showSize: 10,
     };
   },
   components: {
     CommentInpBox,
     CommentItem,
+    LoadMore,
   },
-  created() {
-    this.getList();
+  computed: {
+    ...mapGetters(['canComment']),
   },
   methods: {
-    getList() {
-      // TODO: 分页加载
-      api.getComments().then(({ data }) => {
+    onRefresh(callback = () => {}) {
+      const params = {
+        page: 1,
+        showSize: this.showSize,
+      };
+      api.getComments(params).then(({ data }) => {
         if (data.code) {
-          let _data = [];
-          if (data.data.length > 0) {
-            _data = fix.sort(data.data, 'updated_time', 'des');
-          }
-          this.list = _data;
+          const dataTemp = data.data;
+          this.list = dataTemp;
+          this.lastId = dataTemp[dataTemp.length - 1]._id;
+          callback(dataTemp.length, this.showSize);
+        }
+      });
+    },
+    onLoadMore(callback = () => {}) {
+      const params = {
+        page: this.page + 1,
+        showSize: this.showSize,
+      };
+      api.getComments(params).then(({ data }) => {
+        if (data.code) {
+          this.page = this.page + 1;
+          const dataTemp = data.data;
+          this.list = [...this.list, ...dataTemp];
+          this.lastId = dataTemp[dataTemp.length - 1]._id;
+          callback(dataTemp.length, this.showSize);
         }
       });
     },

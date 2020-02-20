@@ -16,7 +16,7 @@
     </div>
     <div class="comment-input-box">
       <textarea
-        placeholder="请输入评论内容*"
+        placeholder="请输入评论内容*（支持markdown格式）"
         spellcheck="false"
         autocapitalize="off"
         autocomplete="off"

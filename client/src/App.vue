@@ -31,6 +31,9 @@ export default {
       this.$store.dispatch('GetTags');
     }
   },
+  created() {
+    this.$store.dispatch('GetConfig');
+  },
   mounted() {
     const body = document.querySelector('body');
     const loadingApp = document.querySelector('#loadingApp');

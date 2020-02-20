@@ -19,6 +19,11 @@ const passwordDigest = (password, username) => {
   return CryptoJS.HmacSHA1(password, CryptoJS.SHA1(username)).toString();
 };
 
+// 获取系统配置
+export const getConfig = () => {
+  return http.get('/config');
+};
+
 // 获取标签列表
 export const getTags = () => {
   return http.get('/tags');
@@ -60,8 +65,8 @@ export const getAbout = () => {
 };
 
 // 获取评论列表
-export const getComments = () => {
-  return http.get(`/comments`);
+export const getComments = (params = {}) => {
+  return http.get(`/comments`, params);
 };
 
 // 提交评论
