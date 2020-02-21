@@ -2,7 +2,7 @@
   <div class="home-wrap">
     <div class="home-banner" :style="bgStyle">
       <div class="home-arrow">
-        <Icon name="menu" />
+        <Icon name="down" />
       </div>
     </div>
     <div class="home-layout">
@@ -30,8 +30,8 @@
         </div>
 
         <div class="home-right">
-          <MusicBar />
           <TagsRank />
+          <MusicBar />
         </div>
       </div>
     </div>
@@ -145,10 +145,10 @@ body {
   margin-right: 4%;
 }
 .home-main {
-  width: calc(92% - 260px - 200px);
+  width: calc(92% - 260px - 260px);
 }
 .home-right {
-  width: 200px;
+  width: 260px;
   margin-left: 4%;
 }
 .home-module {
@@ -162,7 +162,7 @@ body {
   padding-bottom: 10px;
   border-bottom: 1px solid #efefef;
 }
-.tags-rank-wrap,
+.music-bar-wrap,
 .we-wrap {
   margin-top: 40px;
 }

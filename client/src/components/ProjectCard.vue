@@ -1,5 +1,5 @@
 <template>
-  <div class="project-item" @click="goToProject">
+  <router-link :to="`/project/${item._id}`" class="project-item">
     <div class="project-cover" v-if="item.cover">
       <img :src="item.cover.path | getImg" :alt="item.name" />
     </div>
@@ -18,17 +18,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
   props: ['item'],
-  methods: {
-    goToProject() {
-      this.$router.push(`/project/${this.item._id}`);
-    },
-  },
 };
 </script>
 
@@ -48,6 +43,7 @@ export default {
   height: 140px;
   border-radius: 4px;
   overflow: hidden;
+  flex-shrink: 0;
   img {
     width: 100%;
     height: 100%;
@@ -58,6 +54,7 @@ export default {
   padding-left: 20px;
   display: flex;
   flex-wrap: wrap;
+  width: calc(100% -140px);
 }
 .project-name {
   width: 100%;
@@ -69,6 +66,13 @@ export default {
   font-size: 14px;
   color: $light;
   margin-bottom: 20px;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  max-height: 60px;
 }
 .project-info {
   align-self: flex-end;

@@ -1,46 +1,32 @@
 <template>
-  <div class="comments-wrap">
-    <div class="comments-banner flex flex-x flex-y">
-      Comments
-    </div>
-
-    <div class="comment-container">
-      <CommentInpBox v-if="canComment" @refresh="onRefresh()" />
-
-      <div class="comment-list">
-        <div class="comment-list-title">Lastest Comments</div>
-        <LoadMore @onRefresh="onRefresh" @onLoadMore="onLoadMore">
-          <transition-group name="fadeIn">
-            <CommentItem v-for="item in list" :item="item" :key="item._id" />
-          </transition-group>
-        </LoadMore>
-      </div>
+  <div class="projects-wrap">
+    <div class="projects-banner flex flex-x flex-y">Projects</div>
+    <div class="projects-container">
+      <LoadMore @onRefresh="onRefresh" @onLoadMore="onLoadMore">
+        <transition-group tag="div" class="project-list" name="fadeIn">
+          <ProjectItem v-for="item in list" :item="item" :key="item._id" />
+        </transition-group>
+      </LoadMore>
     </div>
   </div>
 </template>
 
 <script>
 import * as api from '@/services/api';
-import CommentInpBox from '@/components/CommentInpBox';
-import CommentItem from '@/components/CommentItem';
 import LoadMore from '@/components/LoadMore';
-import { mapGetters } from 'vuex';
+import ProjectItem from '@/components/ProjectItem';
 
 export default {
   data() {
     return {
-      list: [],
       page: 1,
       showSize: 10,
+      list: [],
     };
   },
   components: {
-    CommentInpBox,
-    CommentItem,
     LoadMore,
-  },
-  computed: {
-    ...mapGetters(['canComment']),
+    ProjectItem,
   },
   methods: {
     onRefresh(callback = () => {}) {
@@ -48,7 +34,7 @@ export default {
         page: 1,
         showSize: this.showSize,
       };
-      api.getComments(params).then(({ data }) => {
+      api.getProjects(params).then(({ data }) => {
         if (data.code) {
           const dataTemp = data.data;
           this.list = dataTemp;
@@ -61,7 +47,7 @@ export default {
         page: this.page + 1,
         showSize: this.showSize,
       };
-      api.getComments(params).then(({ data }) => {
+      api.getProjects(params).then(({ data }) => {
         if (data.code) {
           this.page = this.page + 1;
           const dataTemp = data.data;
@@ -75,8 +61,8 @@ export default {
 </script>
 
 <style lang="scss">
-.comments-wrap {
-  .comments-banner {
+.projects-wrap {
+  .projects-banner {
     width: 100%;
     height: 320px;
     background: #f2f2f2;
@@ -85,23 +71,24 @@ export default {
     letter-spacing: 3px;
     font-size: 48px;
   }
-  .comment-container {
+  .projects-container {
     width: 100%;
-    max-width: 640px;
+    max-width: 1024px;
     margin-left: auto;
     margin-right: auto;
     padding: 40px 0;
   }
-  .comment-list {
-    margin-top: 60px;
+  .project-list {
+    display: flex;
+    flex-wrap: wrap;
   }
-  .comment-list-title {
-    font-size: 16px;
-    font-family: 'moon-bold';
+  .project-item-wrap {
+    width: calc((100% - 40px) / 3);
     margin-bottom: 20px;
-    letter-spacing: 1px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #efefef;
+    margin-right: 20px;
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
   }
 }
 </style>

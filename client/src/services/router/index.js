@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: '/projects',
-    component: () => import(/* webpackChunkName: "projects" */ '@/views/ProjectList.vue'),
+    component: () => import(/* webpackChunkName: "projects" */ '@/views/Projects.vue'),
   },
   {
     path: '/project/:id',

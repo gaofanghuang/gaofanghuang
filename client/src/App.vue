@@ -30,9 +30,9 @@ export default {
     if (this.$store.state.tags.length === 0) {
       this.$store.dispatch('GetTags');
     }
-  },
-  created() {
-    this.$store.dispatch('GetConfig');
+    if (this.$store.state.config === null) {
+      this.$store.dispatch('GetConfig');
+    }
   },
   mounted() {
     const body = document.querySelector('body');

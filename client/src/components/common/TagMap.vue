@@ -46,9 +46,7 @@ export default {
     border-radius: 4px;
     padding: 2px 8px;
     border: 1px solid #faf4f1;
-    & + .tag-map-item {
-      margin-left: 5px;
-    }
+    margin-right: 5px;
   }
 }
 </style>

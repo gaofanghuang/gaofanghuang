@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import $db from '@/services/Storage';
 import * as api from '@/services/api';
-import fix from '@/services/fix';
 
 Vue.use(Vuex);
 
@@ -12,13 +11,13 @@ export default new Vuex.Store({
     projects: $db.getData('projects') || [],
     checklist: $db.getData('checklist') || [],
     tags: $db.getData('tags') || [],
-    user: $db.getData('user') || {},
+    user: $db.getData('user') || null,
     token: $db.getData('token') || '',
-    config: $db.getData('config') || {},
+    config: $db.getData('config') || null,
   },
   getters: {
     canComment(state) {
-      return state.config.canComment;
+      return state.config && state.config.canComment;
     },
   },
   mutations: {
@@ -54,33 +53,21 @@ export default new Vuex.Store({
     GetProjects({ commit }) {
       api.getProjects().then(({ data }) => {
         if (data.code) {
-          let _data = [];
-          if (data.data.length > 0) {
-            _data = fix.sort(data.data, 'sort');
-          }
-          commit('SaveProjects', _data);
+          commit('SaveProjects', data.data);
         }
       });
     },
     GetChecklist({ commit }) {
       api.getChecklist().then(({ data }) => {
         if (data.code) {
-          let _data = [];
-          if (data.data.length > 0) {
-            _data = fix.sort(data.data, 'sort');
-          }
-          commit('SaveChecklist', _data);
+          commit('SaveChecklist', data.data);
         }
       });
     },
     GetTags({ commit }) {
       api.getTags().then(({ data }) => {
         if (data.code) {
-          let _data = [];
-          if (data.data.length > 0) {
-            _data = fix.sort(data.data, 'sort');
-          }
-          commit('SaveTags', _data);
+          commit('SaveTags', data.data);
         }
       });
     },

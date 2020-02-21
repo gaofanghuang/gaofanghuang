@@ -1,6 +1,6 @@
 <template>
   <div class="about-wrap">
-    <div class="about-banner flex flex-x flex-y">about</div>
+    <div class="about-banner flex flex-x flex-y">About</div>
     <div class="about-container">
       <div class="about-content" v-html="content"></div>
     </div>

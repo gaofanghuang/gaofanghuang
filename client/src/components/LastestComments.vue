@@ -21,7 +21,7 @@ export default {
     return {
       list: [],
       lastId: '',
-      showSize: 10,
+      showSize: 9,
     };
   },
   created() {
@@ -79,6 +79,7 @@ export default {
     margin-bottom: 10px;
   }
   .latest-comment-content {
+    word-break: break-all;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

@@ -105,6 +105,9 @@ export default {
       margin-left: 20px;
     }
   }
+  .router-link-exact-active {
+    color: $active;
+  }
   .header-btns {
     display: flex;
   }

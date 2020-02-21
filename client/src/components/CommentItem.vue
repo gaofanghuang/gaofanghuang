@@ -23,11 +23,11 @@ import md from '@/services/markdown';
 export default {
   computed: {
     content() {
-      return this.item && this.item.content ? md(this.item.content) : ''
+      return this.item && this.item.content ? md(this.item.content) : '';
     },
     reply() {
-      return this.item && this.item.reply ? md(this.item.reply) : ''
-    }
+      return this.item && this.item.reply ? md(this.item.reply) : '';
+    },
   },
   props: {
     item: {

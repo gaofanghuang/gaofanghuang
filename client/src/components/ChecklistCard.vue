@@ -1,5 +1,5 @@
 <template>
-  <div class="checklist-item" @click="goToChecklist">
+  <router-link :to="`/checklist/${item._id}`" class="checklist-item">
     <div class="checklist-cover" v-if="item.cover">
       <img :src="item.cover.path | getImg" :alt="item.name" />
     </div>
@@ -18,17 +18,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
   props: ['item'],
-  methods: {
-    goToChecklist() {
-      this.$router.push(`/checklist/${this.item._id}`);
-    },
-  },
 };
 </script>
 
