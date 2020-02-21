@@ -1,6 +1,13 @@
 <template>
   <div class="tag-map-list">
-    <span class="tag-map-item" v-for="item in tag" :key="`${item._id}`">{{ item.name }}</span>
+    <router-link
+      class="tag-map-item"
+      :to="`/tag/${item._id}`"
+      v-for="item in tag"
+      :key="`${item._id}`"
+    >
+      {{ item.name }}
+    </router-link>
   </div>
 </template>
 

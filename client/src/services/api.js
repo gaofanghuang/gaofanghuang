@@ -30,8 +30,8 @@ export const getTags = () => {
 };
 
 // 获取项目列表
-export const getProjects = () => {
-  return http.get('/projects');
+export const getProjects = (params = {}) => {
+  return http.get('/projects', params);
 };
 
 // 获取项目详情
@@ -40,18 +40,18 @@ export const getProjectInfo = (id = '', params = {}) => {
 };
 
 // 获取记录列表
-export const getLogs = (pid = '') => {
-  return http.get(`/project/${pid}/logs`);
+export const getLogs = (pid = '', params = {}) => {
+  return http.get(`/project/${pid}/logs`, params);
 };
 
 // 获取TODO列表
-export const getTODO = (pid = '') => {
-  return http.get(`/project/${pid}/todo`);
+export const getTODO = (pid = '', params = {}) => {
+  return http.get(`/project/${pid}/todo`, params);
 };
 
 // 获取清单列表
-export const getChecklist = () => {
-  return http.get('/checklist');
+export const getChecklist = (params = {}) => {
+  return http.get('/checklist', params);
 };
 
 // 获取清单详情

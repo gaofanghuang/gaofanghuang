@@ -101,7 +101,7 @@ export default {
         color: #dddddd;
       }
       &:focus + .search-input-btn {
-        background: linear-gradient(45deg, $error, hsl(20, 90%, 60%));
+        background: linear-gradient(45deg, $error, hsl(20, 100%, 60%));
       }
     }
   }

@@ -40,6 +40,10 @@ const routes = [
     path: '/search',
     component: () => import(/* webpackChunkName: "search" */ '@/views/Search.vue'),
   },
+  {
+    path: '/tag/:id',
+    component: () => import(/* webpackChunkName: "search" */ '@/views/Search.vue'),
+  },
 ];
 
 const router = new VueRouter({
