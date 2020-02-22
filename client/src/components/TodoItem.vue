@@ -5,7 +5,9 @@
         item.sort | sortMap
       }}</span>
       <span class="todo-state-tips">{{ item.status | statusMap }}</span>
-      <span class="todo-item-version">{{ item.version }} · {{ item.updated_time | formatDate('yyyy-MM-dd') }}</span>
+      <span class="todo-item-version"
+        >{{ item.version }} · {{ item.updated_time | formatDate('yyyy-MM-dd') }}</span
+      >
     </div>
     <div class="todo-item-cotent">
       {{ item.content }}

@@ -1,5 +1,5 @@
 <template>
-  <transition name="move-down-in" @enter="handleEnter" @leave="handleLeave">
+  <transition name="moveDownIn" @enter="handleEnter" @leave="handleLeave">
     <div class="message-item" v-show="show" :class="msgTypleClass">
       <Icon v-if="msgTypeIcon" :name="msgTypeIcon" />
       <span class="message-content">{{ content || defaultContent }}</span>

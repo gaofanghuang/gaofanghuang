@@ -59,6 +59,11 @@ export const getCheckDetail = (id = '', params = {}) => {
   return http.get(`/checklist/${id}`, params);
 };
 
+// 获取条目列表
+export const getEntries = (pid = '', params = {}) => {
+  return http.get(`/checklist/${pid}/entries`, params);
+};
+
 // 获取关于我的信息
 export const getAbout = () => {
   return http.get(`/about`);

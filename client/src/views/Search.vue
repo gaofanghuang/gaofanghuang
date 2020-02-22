@@ -23,7 +23,10 @@
         <ChecklistItem v-for="item in checklist" :item="item" :key="item._id" />
       </transition-group>
 
-      <div class="no-data-tips flex flex-x flex-y" v-if="projects.length === 0 && checklist.length === 0">
+      <div
+        class="no-data-tips flex flex-x flex-y"
+        v-if="projects.length === 0 && checklist.length === 0"
+      >
         <div class="no-data-tips_content">
           <img :src="carrot" alt="no data" class="no-data-tips_icon" />
           <div class="no-data-tips_word">Sorry, 什么也没找到，请尝试更换关键词~</div>
