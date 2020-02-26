@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.e6cc0e0931a025b4df9060ddbf75e923.js"
+  "/precache-manifest.fb3151cd70fbfcee09244ed158cf2614.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "client_for_gaofanghuang"});
