@@ -124,7 +124,7 @@ body {
       top: 0;
       color: #ffffff;
       text-shadow: 0 0 3px #000000;
-      animation: arrowDown 2.48s reverse infinite;
+      animation: arrowDown 2.48s infinite;
     }
   }
 }

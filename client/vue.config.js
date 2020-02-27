@@ -30,7 +30,10 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       '/api': {
-        target: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API_HOST_PROD : process.env.VUE_APP_API_HOST_DEV,
+        target:
+          process.env.NODE_ENV === 'production'
+            ? process.env.VUE_APP_API_HOST_PROD
+            : process.env.VUE_APP_API_HOST_DEV,
         changeOrigin: true,
       },
     },

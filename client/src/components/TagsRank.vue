@@ -1,6 +1,6 @@
 <template>
   <div class="tags-rank-wrap">
-    <div class="tags-rank-title">Tags Rank</div>
+    <div class="tags-rank-title">Hot Tags</div>
     <div class="tags-rank-list">
       <span class="tags-rank-item" v-for="item in tags" :key="`${item._id}`">{{ item.name }}</span>
     </div>
@@ -8,6 +8,9 @@
 </template>
 
 <script>
+import fix from '@/services/fix.js';
+import { mapState } from 'vuex';
+
 export default {
   data() {
     return {
@@ -17,11 +20,33 @@ export default {
   created() {
     this.getTags();
   },
+  computed: {
+    ...mapState({
+      projects: state => state.projects || [],
+      checklist: state => state.checklist || [],
+    }),
+  },
   methods: {
     getTags() {
-      const tags = this.$store.state.tags;
-      // TODO: 标签使用次数排序
-      this.tags = tags;
+      let tags = this.$store.state.tags;
+      let projectTags = [];
+      this.projects.map(item => {
+        projectTags = [...projectTags, ...item.tag];
+      });
+      let checklistTags = [];
+      this.checklist.map(item => {
+        checklistTags = [...checklistTags, ...item.tag];
+      });
+      const allUseTags = [...projectTags, ...checklistTags];
+      tags.forEach((tag, index) => {
+        tags[index].count = 0;
+        for (let item of allUseTags) {
+          if (item === tag._id) {
+            tags[index].count += 1;
+          }
+        }
+      });
+      this.tags = fix.sort(tags, 'count', 'des').slice(0, 20);
     },
   },
 };

@@ -29,18 +29,9 @@ export default {
       cIndex: 0,
     };
   },
-  props: {
-    list: {
-      type: Array,
-      default: [],
-    },
-    index: {
-      type: Number,
-      default: 0,
-    },
-  },
+  props: ['list', 'index'],
   created() {
-    this.cIndex = this.index;
+    this.cIndex = this.index || 0;
   },
   methods: {
     toPrev() {

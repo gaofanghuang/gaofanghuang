@@ -1,7 +1,7 @@
 <template>
   <router-link :to="`/project/${item._id}`" class="project-item-wrap">
     <div class="project-item-cover">
-      <img :src="item.cover.path | getImg" :alt="item.name" />
+      <img v-if="item.cover" :src="item.cover.path | getImg" :alt="item.name" />
     </div>
     <div class="project-item-info">
       <div class="project-item-name">{{ item.name }}</div>
@@ -44,6 +44,7 @@ export default {
     width: 140px;
     height: 140px;
     flex-shrink: 0;
+    background: url('/img/cover-default.png');
     img {
       width: 100%;
       height: 100%;

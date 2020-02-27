@@ -21,7 +21,9 @@
       >
       </iframe>
     </div>
-    <div class="log-item-time">{{ item.version }} · {{ item.updated_time | formatDate('yyyy-MM-dd') }}</div>
+    <div class="log-item-time">
+      {{ item.version }} · {{ item.updated_time | formatDate('yyyy-MM-dd') }}
+    </div>
   </div>
 </template>
 

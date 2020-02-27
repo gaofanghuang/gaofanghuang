@@ -96,7 +96,6 @@ export default {
     font-size: 12px;
     color: $light;
     margin-bottom: 20px;
-    
   }
   .entry-item-score {
     margin-bottom: 20px;

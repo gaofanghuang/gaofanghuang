@@ -69,6 +69,11 @@ export const getAbout = () => {
   return http.get(`/about`);
 };
 
+// 获取音乐列表
+export const getMusic = (params = {}) => {
+  return http.get(`/music`, params);
+};
+
 // 获取评论列表
 export const getComments = (params = {}) => {
   return http.get(`/comments`, params);
