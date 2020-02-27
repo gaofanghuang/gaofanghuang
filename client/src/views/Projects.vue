@@ -2,7 +2,7 @@
   <div class="projects-wrap">
     <div class="projects-banner flex flex-x flex-y">Projects</div>
     <div class="projects-container">
-      <LoadMore @onRefresh="onRefresh" @onLoadMore="onLoadMore">
+      <LoadMore @onRefresh="getList" @onLoadMore="getList">
         <transition-group tag="div" class="project-list" name="fadeIn">
           <ProjectItem v-for="item in list" :item="item" :key="item._id" />
         </transition-group>
@@ -29,29 +29,16 @@ export default {
     ProjectItem,
   },
   methods: {
-    onRefresh(callback = () => {}) {
+    getList(callback = () => {}, refresh = false) {
       const params = {
-        page: 1,
+        page: refresh ? 1 : this.page + 1,
         showSize: this.showSize,
       };
       api.getProjects(params).then(({ data }) => {
         if (data.code) {
+          this.page = params.page;
           const dataTemp = data.data;
-          this.list = dataTemp;
-          callback(dataTemp.length, this.showSize);
-        }
-      });
-    },
-    onLoadMore(callback = () => {}) {
-      const params = {
-        page: this.page + 1,
-        showSize: this.showSize,
-      };
-      api.getProjects(params).then(({ data }) => {
-        if (data.code) {
-          this.page = this.page + 1;
-          const dataTemp = data.data;
-          this.list = [...this.list, ...dataTemp];
+          this.list = refresh ? dataTemp : [...this.list, ...dataTemp];
           callback(dataTemp.length, this.showSize);
         }
       });
