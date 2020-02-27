@@ -14,7 +14,7 @@
         </div>
       </transition>
     </div>
-    <div class="music-bar-iframe" v-if="play">
+    <div class="music-bar-iframe" v-if="play && list.length > 0">
       <iframe
         frameborder="no"
         border="0"
