@@ -1,9 +1,7 @@
-node_modules
-client/node_modules
-admin/node_modules
-serve/node_modules
-client/yarn.lock
-admin/yarn.lock
-serve/yarn.lock
 .DS_Store
-yarn.lock
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
