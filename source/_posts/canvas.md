@@ -26,6 +26,8 @@ svg 适合用于渲染图标 logo；Canvas 是逐像素进行渲染的，适合�
 
 **svg**: 一种使用 XML 描述 2D 图形的语言。
 
+<!--more-->
+
 ```html
 <svg width="100%" height="100%">
   <rect width="100%" height="100%" x="0" y="0" fill="red" />
@@ -192,6 +194,8 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 ### 1.1. 设置绘图环境和样式
 
+- `ctx.canvas` 上下文关联的 HTMLCanvasElement 对象。如果没有 `<canvas>` 元素与之对应，对象值为 null 。可以使用`ctx.canvas.width`来获取canvas宽度，或者`ctx.canvas.width='500px'`来重设新置canvas宽度。
+
 #### 1.1.1. 设置填充和描边颜色
 
 - `ctx.fillStyle` 设置填充颜色, 接受三种类型参数：color（颜色字符串）、gradient（渐变对象）、pattern（图案对象）
@@ -222,29 +226,27 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 #### 1.1.4. 设置阴影样式
 
-- ctx.shadowColor 设置阴影颜色，只能接受 color 类型的颜色字符串。注意，阴影颜色可以通过颜色类型 rgba 或 hsla 设置阴影的透明度，但当透明度完全为 0 时，阴影不会被绘制。
+- `ctx.shadowColor` 设置阴影颜色，只能接受 color 类型的颜色字符串。注意，阴影颜色可以通过颜色类型 rgba 或 hsla 设置阴影的透明度，但当透明度完全为 0 时，阴影不会被绘制。
 
-- ctx.shadowBlur 阴影模糊
+- `ctx.shadowBlur` 设置阴影模糊程度，默认为 0。float 类型，即负数、 Infinity 或者 NaN 都会被忽略。当 blur = 0，且 offsetX 或 offsetY 的值不为 0 时，阴影仍然会被绘制，只是没有模糊效果。
 
-- ctx.shadowBlur 设置阴影模糊程度，默认为 0。float 类型，即负数、 Infinity 或者 NaN 都会被忽略。当 blur = 0，且 offsetX 或 offsetY 的值不为 0 时，阴影仍然会被绘制，只是没有模糊效果。
+- `ctx.shadowOffsetX` 设置阴影水平偏移距离，默认为 0。float 类型。
 
-- ctx.shadowOffsetX 设置阴影水平偏移距离，默认为 0。float 类型。
-
-- ctx.shadowOffsetY 设置阴影垂直偏移距离，默认为 0。float 类型。
+- `ctx.shadowOffsetY` 设置阴影垂直偏移距离，默认为 0。float 类型。
 
 #### 1.1.5. 设置全局透明度
 
-- ctx.globalAlpha 设置图形和图片透明度的属性。 数值的范围从 0.0 （完全透明）到 1.0 （完全不透明）。 默认值是 1.0。 如果数值不在范围内，包括 Infinity 和 NaN ，无法赋值，并且 globalAlpha 会保持原有的数值。
+- `ctx.globalAlpha` 设置图形和图片透明度的属性。 数值的范围从 0.0 （完全透明）到 1.0 （完全不透明）。 默认值是 1.0。 如果数值不在范围内，包括 Infinity 和 NaN ，无法赋值，并且 globalAlpha 会保持原有的数值。
 
 #### 1.1.6. 设置图层混合模式
 
-- ctx.globalCompositeOperation 设置合成操作的类型。类型可选：source-over、source-in、source-out、source-atop、destination-over、destination-in、destination-out、destination-atop、lighter、copy、xor（差集）、multiply、screen、overlay、darken、lighten、color-dodge、color-burn、hard-light、soft-light、difference、exclusion、hue、saturation、color、luminosity。可理解为 PS 中的图层混合模式 + AI 中的路径查找器。
+- `ctx.globalCompositeOperation` 设置合成操作的类型。类型可选：source-over、source-in、source-out、source-atop、destination-over、destination-in、destination-out、destination-atop、lighter、copy、xor（差集）、multiply、screen、overlay、darken、lighten、color-dodge、color-burn、hard-light、soft-light、difference、exclusion、hue、saturation、color、luminosity。可理解为 PS 中的图层混合模式 + AI 中的路径查找器。
 
   ![](/images/canvas/composite.png)
 
 #### 1.1.7. 设置图案样式
 
-- ctx.createPattern(image, repetition) 根据传入的图片，创建一个可重复的图案。返回**\*CanvasPattern**对象，不透明。创建完成后，可以使用 CanvasPattern.setTransform()方法对图案进行变形。
+- `ctx.createPattern(image, repetition)` 根据传入的图片，创建一个可重复的图案。返回**CanvasPattern**对象，不透明。创建完成后，可以使用 `CanvasPattern.setTransform()`方法对图案进行变形。
 
   image：作为重复图像源的 **CanvasImageSource** 对象。可以是下列之一
 
@@ -263,93 +265,93 @@ const ctx = canvas.getContext(contextType, contextAttributes)
   - "repeat-y" (vertical only),
   - "no-repeat" (neither).
 
-- pattern.setTransform(matrix) 使用 SVGMatrix 对象作为图案的变换矩阵，并在此图案上调用它。
+- `pattern.setTransform(matrix)` 使用 SVGMatrix 对象作为图案的变换矩阵，并在此图案上调用它。
 
 #### 1.1.8. 设置渐变样式
 
-- ctx.createLinearGradient(x0, y0, x1, y1) 创建一个沿参数坐标指定的直线的渐变。起点（x0, y0），终点（x1, y1）。返回**CanvasGradient**对象，透明。
+- `ctx.createLinearGradient(x0, y0, x1, y1)` 创建一个沿参数坐标指定的直线的渐变。起点（x0, y0），终点（x1, y1）。返回**CanvasGradient**对象，透明。
   改变线性渐变的方向有两种方式：1️⃣ 调换 addColorStop 0 和 1 对应的值；2️⃣ 调换 createLinearGradient 创建的起点和终点，即（x1, y1, x0, y0）。
   我们知道，通过两不同点的直线有且只有一条。所以一般来说，我们只要改变 x0, y0, x1, y1 这四个值就可以轻松的改变渐变方向。这点可以结合 PS 里的线性渐变理解。
 
   ![](/images/canvas/gradient_line.png)
 
-- CanvasGradient 描述渐变的不透明对象。CanvasGradient 有一个方法：`CanvasGradient.addColorStop()`
+**CanvasGradient** 描述渐变的不透明对象。CanvasGradient 有一个方法：`CanvasGradient.addColorStop()`
 
-- CanvasGradient.addColorStop(offset, color) 添加一个由偏移值和颜色值指定的断点到渐变。offset: 0 到 1 之间的值，超出范围将抛出 INDEX_SIZE_ERR 错误; color: CSS 颜色值 `<color>`。如果颜色值不能被解析为有效的 CSS 颜色值 `<color>`，将抛出 SYNTAX_ERR 错误。
+- `CanvasGradient.addColorStop(offset, color)` 添加一个由偏移值和颜色值指定的断点到渐变。offset: 0 到 1 之间的值，超出范围将抛出 INDEX_SIZE_ERR 错误; color: CSS 颜色值 `<color>`。如果颜色值不能被解析为有效的 CSS 颜色值 `<color>`，将抛出 SYNTAX_ERR 错误。
 
-- ctx.createRadialGradient(x0, y0, r0, x1, y1, r1) 根据参数确定两个圆的坐标，绘制放射性渐变。起点圆，圆心(x0, y0)，半径（r0）; 结束圆，圆心(x1, y1)，半径（r1）。返回**CanvasGradient**对象。
+- `ctx.createRadialGradient(x0, y0, r0, x1, y1, r1)` 根据参数确定两个圆的坐标，绘制放射性渐变。起点圆，圆心(x0, y0)，半径（r0）; 结束圆，圆心(x1, y1)，半径（r1）。返回**CanvasGradient**对象。
 
   注意: 1️⃣ 当两个圆的半径相同时，r0 = r1 时，渐变不可见。2️⃣ 当两个圆的圆心坐标不同时，渐变效果则无法填充满路径。
 
 ### 1.2. 绘制矩形
 
-- ctx.clearRect(x, y, w, h) 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的透明矩形，此矩形将擦除所在区域的所有内容。
+- `ctx.clearRect(x, y, w, h)` 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的透明矩形，此矩形将擦除所在区域的所有内容。
 
-- ctx.fillRect(x, y, w, h) 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的实心矩形。
+- `ctx.fillRect(x, y, w, h)` 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的实心矩形。
 
-- ctx.strokeRect(x, y, w, h) 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的描边矩形。此方法直接绘制到画布而不会修改当前路径。
+- `ctx.strokeRect(x, y, w, h)` 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的描边矩形。此方法直接绘制到画布而不会修改当前路径。
 
 ### 1.3. 绘制虚线
 
-- ctx.setLineDash([length, spacing]) 传入一组数组设置线段和间距的值，以绘制虚线。如果数组元素的数量是奇数，数组元素会被复制并重复。如果数组为空，将会变为实线。
+- `ctx.setLineDash([length, spacing])` 传入一组数组设置线段和间距的值，以绘制虚线。如果数组元素的数量是奇数，数组元素会被复制并重复。如果数组为空，将会变为实线。
 
-- ctx.getLineDash() 获取当前线段样式，得到一组数组为线段和间距的值，例：[5, 10], 长度为 5px 的线段, 间隔为 10px。
+- `ctx.getLineDash()` 获取当前线段样式，得到一组数组为线段和间距的值，例：[5, 10], 长度为 5px 的线段, 间隔为 10px。
 
-- ctx.lineDashOffset 设置虚线偏移量，默认 0
+- `ctx.lineDashOffset` 设置虚线偏移量，默认 0
 
 ### 1.4. 绘制路径
 
-- ctx.beginPath() 创建一个新的路径
+- `ctx.beginPath()` 创建一个新的路径
 
-- ctx.moveTo() 将笔触起点移动到 (x, y)
+- `ctx.moveTo()` 将笔触起点移动到 (x, y)
 
-- ctx.closePath() 封闭当前路径，当存在起点和终点，并且图形为封闭时讲创建一个连接起点和终点的直线。
+- `ctx.closePath()` 封闭当前路径，当存在起点和终点，并且图形为封闭时讲创建一个连接起点和终点的直线。
 
-- ctx.stroke() 给当前路径描边
+- `ctx.stroke()` 给当前路径描边
 
-- ctx.lineTo(x, y) 绘制一个从起点到指定点 (x, y) 的直线
+- `ctx.lineTo(x, y)` 绘制一个从起点到指定点 (x, y) 的直线
 
-- ctx.rect(x, y, w, h) 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的矩形路径
+- `ctx.rect(x, y, w, h)` 绘制一个起点在 (x, y) 、宽度为 w 、高度为 h 的矩形路径
 
-- ctx.fill() 填充当前或已存在的路径，可选传 fillRule。
+- `ctx.fill()` 填充当前或已存在的路径，可选传 fillRule, 或选传 (Path2d, fillRule)。
 
-  ** fillRule **是一种算法，决定点是在路径内还是在路径外。"nonzero": 非零环绕规则（默认），"evenodd": 奇偶环绕规则。利用这一特性，我们可以做出非常复杂的镂空图形。
+  **fillRule** 是一种算法，决定点是在路径内还是在路径外。"nonzero": 非零环绕规则（默认），"evenodd": 奇偶环绕规则。利用这一特性，我们可以做出非常复杂的镂空图形。
 
-  ** 非零环绕填充规则 **：如果想知道某一区域是否被填充，就从这一区域画一条直线向外，在与其他线的交点处，如果其他线是顺时针方向画的，就+1，逆时针则-1，如果最后总和为 0，则不会填充，非零则填充。
+  **非零环绕填充规则**：如果想知道某一区域是否被填充，就从这一区域画一条直线向外，在与其他线的交点处，如果其他线是顺时针方向画的，就+1，逆时针则-1，如果最后总和为 0，则不会填充，非零则填充。
 
   ![](/images/canvas/fillrule.png)
 
-  ** 奇偶环绕填充规则 **：在路径包围的区域中，随便找一点，向外发射一条射线，和所有围绕它的边相交，查看相交线的个数，如果为奇数，就填充，如果是偶数，就不填充。
+  **奇偶环绕填充规则**：在路径包围的区域中，随便找一点，向外发射一条射线，和所有围绕它的边相交，查看相交线的个数，如果为奇数，就填充，如果是偶数，就不填充。
 
-- ctx.stroke() 给当前或已经存在的路径创建描边
+  **path2D()** 转换 svg 格式的路径, 用法见 demo [查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo1)
 
-- path2D() 转换 svg 格式的路径, 用法见 demo [查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo1)
+- `ctx.stroke()` 给当前或已经存在的路径创建描边
 
-- ctx.drawFocusIfNeeded(element) 如果传入的元素是聚焦的，就给当前路径绘制焦点。也可传入(path, element)。 注意该元素必须写在 canvas 标签内。(这个 api 不知道有什么应用场景，因为写在 canvas 里的标签是不可见也不可点击的，感觉这个 api 是多余的)
+- `ctx.drawFocusIfNeeded(element)` 如果传入的元素是聚焦的，就给当前路径绘制焦点。也可传入(path, element)。 注意该元素必须写在 canvas 标签内。(这个 api 不知道有什么应用场景，因为写在 canvas 里的标签是不可见也不可点击的，感觉这个 api 是多余的)
 
-- ctx.clip() 将当前创建的路径设置为当前剪切路径，之后创建的所有信息都只会出现在此路径内部。可选传 fillRule
+- `ctx.clip()` 将当前创建的路径设置为当前剪切路径，之后创建的所有信息都只会出现在此路径内部。可选传 fillRule, 或选传 (Path2d, fillRule)。
 
-- ctx.isPointInPath(x, y, fillRule) 判断当前路径内部是否包含指定的点
+- `ctx.isPointInPath(x, y, fillRule)` 判断当前路径内部是否包含指定的点
 
-- ctx.isPointInStroke(x, y) 判断当前路径描边是否包含指定的点
+- `ctx.isPointInStroke(x, y)` 判断当前路径描边是否包含指定的点
 
 ### 1.5. 绘制文本
 
-- ctx.fillText(text, x, y [, maxWidth]) 绘制一个位于 (x, y) 的文本，并填充颜色。text 为文本内容。maxWidth 为文本最大宽度，可选项。
+- `ctx.fillText(text, x, y [, maxWidth])` 绘制一个位于 (x, y) 的文本，并填充颜色。text 为文本内容。maxWidth 为文本最大宽度，可选项。
 
-- ctx.strokeText(text, x, y [, maxWidth]) 绘制一个位于 (x, y) 的文本，并描边颜色。text 为文本内容。maxWidth 为文本最大宽度，可选项。
+- `ctx.strokeText(text, x, y [, maxWidth])` 绘制一个位于 (x, y) 的文本，并描边颜色。text 为文本内容。maxWidth 为文本最大宽度，可选项。
 
-- ctx.measureText(text) 返回 text 的信息，如文字宽度等内容.
+- `ctx.measureText(text)` 返回 text 的信息，如文字宽度等内容.
 
 ### 1.6. 绘制圆和弧
 
 圆周率 π：`Math.PI ≈ 3.14 = 180°`
 
-- ctx.arc(x, y, radius, startAngle, endAngle[, anticlockwise]) 圆弧路径的圆心在 (x, y) 位置，半径为 r ，根据 anticlockwise （默认为顺时针， true）指定的方向从 startAngle (x 轴方向开始计算) 开始绘制，到 endAngle (圆弧终点) 结束。
+- `ctx.arc(x, y, radius, startAngle, endAngle[, anticlockwise])` 圆弧路径的圆心在 (x, y) 位置，半径为 r ，根据 anticlockwise （默认为顺时针， true）指定的方向从 startAngle (x 轴方向开始计算) 开始绘制，到 endAngle (圆弧终点) 结束。
 
-- ctx.arcTo(x1, y1, x2, y2, radius) 根据当前描点(前一个 moveTo 或 lineTo 等函数的止点)与给定的控制点 1 连接的直线，和控制点 1 与控制点 2 连接的直线，作为使用指定半径的圆的切线，画出两条切线之间的弧线路径。
+- `ctx.arcTo(x1, y1, x2, y2, radius)` 根据当前描点(前一个 moveTo 或 lineTo 等函数的止点)与给定的控制点 1 连接的直线，和控制点 1 与控制点 2 连接的直线，作为使用指定半径的圆的切线，画出两条切线之间的弧线路径。
 
-** 开始角度 ** 及 ** 结束角度 **：
+**开始角度** 及 **结束角度**：
 
 开始角度和结束角度都是以 x 轴为起点，顺时针环绕。
 
@@ -359,13 +361,13 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 [必须要理解掌握的贝塞尔曲线](https://www.jianshu.com/p/0c9b4b681724)
 
-- ctx.quadraticCurveTo(cpx, cpy, x, y) 二次贝塞尔曲线。 需要传入 2 个点，第一个点是控制点，第二个点是终点。起始点是当前路径最新的点，当创建二次贝赛尔曲线之前，可以使用 moveTo() 方法进行改变。即以 3 个点产生一段曲线。
+- `ctx.quadraticCurveTo(cpx, cpy, x, y)` 二次贝塞尔曲线。 需要传入 2 个点，第一个点是控制点，第二个点是终点。起始点是当前路径最新的点，当创建二次贝赛尔曲线之前，可以使用 moveTo() 方法进行改变。即以 3 个点产生一段曲线。
 
-- ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) 三次贝塞尔曲线。需要传入 3 个点。 第一、第二个点是控制点，第三个点是结束点。起始点是当前路径的最后一个点，绘制贝赛尔曲线前，可以通过调用 moveTo() 进行修改。即以 4 个点产生一段曲线。
+- `ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)` 三次贝塞尔曲线。需要传入 3 个点。 第一、第二个点是控制点，第三个点是结束点。起始点是当前路径的最后一个点，绘制贝赛尔曲线前，可以通过调用 moveTo() 进行修改。即以 4 个点产生一段曲线。
 
 ### 1.8. 绘制图像
 
-- ctx.drawImage(image[, sx, sy, sWidth, sHeight], dx, dy[, dWidth, dHeight]) 在 Canvas 上绘制图像。
+- `ctx.drawImage(image[, sx, sy, sWidth, sHeight], dx, dy[, dWidth, dHeight])` 在 Canvas 上绘制图像。
 
   image: 允许 CanvasImageSource 对象，同上。
 
@@ -397,19 +399,19 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 ### 1.9. 变换
 
-- ctx.rotate(angle) 传入一个角度，用来旋转画布。旋转方向是顺时针的。旋转中心点是 canvas 的起始点, 默认 x = 0, y = 0。
+- `ctx.rotate(angle)` 传入一个角度，用来旋转画布。旋转方向是顺时针的。旋转中心点是 canvas 的起始点, 默认 x = 0, y = 0。
 
   ![](https://mdn.mozillademos.org/files/233/Canvas_grid_rotate.png)
 
-- ctx.scale(x, y) 传入缩放比例来控制画布中的像素单位，x 为水平方向的缩放因子，y 垂直方向的缩放因子。默认情况下，x = 1, y = 1。可以使用 ctx.scale(-1, 1) 水平翻转上下文，使用 ctx.scale(1, -1) 垂直翻转上下文。
+- `ctx.scale(x, y)` 传入缩放比例来控制画布中的像素单位，x 为水平方向的缩放因子，y 垂直方向的缩放因子。默认情况下，x = 1, y = 1。可以使用 `ctx.scale(-1, 1)` 水平翻转上下文，使用 `ctx.scale(1, -1)` 垂直翻转上下文。
 
-- ctx.translate(x, y) 偏移画布原点。x 水平方向的移动距离, y 垂直方向的移动距离。
+- `ctx.translate(x, y)` 偏移画布原点。x 水平方向的移动距离, y 垂直方向的移动距离。
 
   ![](https://mdn.mozillademos.org/files/234/Canvas_grid_translate.png)
 
-- ctx.transform(a, b, c, d, e, f) 多次叠加当前变换, 即可以缩放、旋转、移动和倾斜上下文。a，水平缩放。b，垂直倾斜。c，水平倾斜。d，垂直缩放。e，水平移动。f，垂直移动。会叠加之前的变换。默认画布配置参数为(1, 0, 0, 1, 0, 0)。即 ad 参数等同 ctx.scale(x, y)，当 ab 参数同时为 0 时，之后的内容不可见；ef 测试等同 ctx.translate(x, y)。bc 参数为 **ctx.transform** 特有，当 bc 参数同时为 1 时，之后的内容不可见。
+- `ctx.transform(a, b, c, d, e, f)` 多次叠加当前变换, 即可以缩放、旋转、移动和倾斜上下文。a，水平缩放。b，垂直倾斜。c，水平倾斜。d，垂直缩放。e，水平移动。f，垂直移动。会叠加之前的变换。默认画布配置参数为(1, 0, 0, 1, 0, 0)。即 ad 参数等同 ctx.scale(x, y)，当 ab 参数同时为 0 时，之后的内容不可见；ef 测试等同 ctx.translate(x, y)。bc 参数为 **ctx.transform** 特有，当 bc 参数同时为 1 时，之后的内容不可见。
 
-  **倾斜角度**：bc 参数数值换算方式，即 tan45° = 1。例如当 b = 1, c = 0 时，将 x 轴方向上倾斜 45 度。Math.sqrt() 计算平方根。tan90° 不存在。
+  **倾斜角度**：bc 参数数值换算方式，即 tan45° = 1。例如当 b = 1, c = 0 时，将 x 轴方向上倾斜 45 度。`Math.sqrt()` 计算平方根。tan90° 不存在。
 
   | 角度   |   值 | 约等于 |
   | ------ | ---: | :----: |
@@ -420,11 +422,11 @@ const ctx = canvas.getContext(contextType, contextAttributes)
   | tan75° | 2+√3 |  3.73  |
   | tan90° |    0 |   0    |
 
-- ctx.setTransform(a, b, c, d, e, f) 重设当前变换，会覆盖之前的变换。
+- `ctx.setTransform(a, b, c, d, e, f)` 重设当前变换，会覆盖之前的变换。
 
 ### 1.10. 像素控制
 
-- ctx.createImageData(width, height) 创建一个新的、空白的、指定大小的 ImageData 对象。 所有的像素在新对象中都是透明的。也可传参 `imageData`。返回一个指定了宽度和高度的，新的 ImageData 对象， 新对象使用透明的像素进行填充。
+- `ctx.createImageData(width, height)` 创建一个新的、空白的、指定大小的 ImageData 对象。 所有的像素在新对象中都是透明的。也可传参 `imageData`。返回一个指定了宽度和高度的，新的 ImageData 对象， 新对象使用透明的像素进行填充。
 
   width：ImageData 新对象的宽度。
 
@@ -432,9 +434,9 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
   imageData：从现有的 ImageData 对象中，复制一个和其宽度和高度相同的对象。图像自身不允许被复制。
 
-- ctx.getImageData(sx, sy, sw, sh) 返回一个 ImageData 对象，用来描述 canvas 区域隐含的像素数据，这个区域通过矩形表示，起始点为(sx, sy)、宽为 sw、高为 sh。返回一个 ImageData 对象，包含 canvas 给定的矩形图像数据。
+- `ctx.getImageData(sx, sy, sw, sh)` 返回一个 ImageData 对象，用来描述 canvas 区域隐含的像素数据，这个区域通过矩形表示，起始点为(sx, sy)、宽为 sw、高为 sh。返回一个 ImageData 对象，包含 canvas 给定的矩形图像数据。
 
-- ctx.putImageData(imageData, dx, dy[, dirtyX, dirtyY, dirtyWidth, dirtyHeight]) 将数据从已有的 ImageData 对象绘制到位图的方法。 如果提供了一个绘制过的矩形，则只绘制该矩形的像素。此方法不受画布转换矩阵的影响。
+- `ctx.putImageData(imageData, dx, dy[, dirtyX, dirtyY, dirtyWidth, dirtyHeight])` 将数据从已有的 ImageData 对象绘制到位图的方法。 如果提供了一个绘制过的矩形，则只绘制该矩形的像素。此方法不受画布转换矩阵的影响。
 
   imageData: ImageData ，包含像素值的数组对象。
 
@@ -452,13 +454,11 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 ### 1.11. 状态
 
-- ctx.save() 将当前状态放入栈中，保存 canvas 全部的状态。
+- `ctx.save()` 将当前状态放入栈中，保存 canvas 全部的状态。
 
   **被保存的值**：当前的变换矩阵。当前的剪切区域。当前的虚线列表. 以下属性当前的值： strokeStyle, fillStyle, globalAlpha, lineWidth, lineCap, lineJoin, miterLimit, lineDashOffset, shadowOffsetX, shadowOffsetY, shadowBlur, shadowColor, globalCompositeOperation, font, textAlign, textBaseline, direction, imageSmoothingEnabled.
 
-- ctx.restore() 将 canvas 恢复到最近的保存状态的方法。 如果没有保存状态，此方法不做任何改变。
-
-- ctx.canvas 上下文关联的 HTMLCanvasElement 对象的只读引用。如果没有 `<canvas>` 元素与之对应，对象值为 null 。
+- `ctx.restore()` 将 canvas 恢复到最近的保存状态的方法。 如果没有保存状态，此方法不做任何改变。
 
 ## 离屏 canvas
 
@@ -484,9 +484,9 @@ canvas 动画实现原理：使用`window.setInterval()`或`window.setTimeout()`
 
 1. 在离屏 canvas 上预渲染相似的图形或重复的对象。
 
-2. 避免浮点数的坐标点，用整数取而代之。用 Math.floor()函数对所有的坐标点取整。
+2. 避免浮点数的坐标点，用整数取而代之。用 Math.floor() 函数对所有的坐标点取整。
 
-3. 不要在用 drawImage 时缩放图像。在离屏 canvas 中缓存图片的不同尺寸，而不要用 drawImage()去缩放它们。
+3. 不要在用 drawImage 时缩放图像。在离屏 canvas 中缓存图片的不同尺寸，而不要用 drawImage() 去缩放它们。
 
 4. 使用多层画布去画一个复杂的场景。
 
