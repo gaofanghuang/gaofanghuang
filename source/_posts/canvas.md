@@ -56,7 +56,7 @@ canvas 的**默认**原点在画布的左上角。x = 0, y = 0。
 
 X 轴向右延伸，Y 轴向下延伸。
 
-![](/images/20200309/coordinate.png)
+![](/images/canvas/coordinate.png)
 
 改变 Y 轴方向：
 
@@ -66,7 +66,7 @@ context.translate(0, offsetY)
 context.scale(1, -1)
 ```
 
-![](/images/20200309/coordinate2.png)
+![](/images/canvas/coordinate2.png)
 
 ### 2. HTMLCanvasElement
 
@@ -208,7 +208,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
   线宽对齐方式参考 PS：
 
-  ![](/images/20200309/line_style.jpg)
+  ![](/images/canvas/line_style.jpg)
 
 - `ctx.miterLimit` 斜接面限制比例的的数字。 0、负数、Infinity 和 NaN 都会被忽略。只当 `ctx.lineJoin='miter'`时才有效。
 
@@ -240,7 +240,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 - ctx.globalCompositeOperation 设置合成操作的类型。类型可选：source-over、source-in、source-out、source-atop、destination-over、destination-in、destination-out、destination-atop、lighter、copy、xor（差集）、multiply、screen、overlay、darken、lighten、color-dodge、color-burn、hard-light、soft-light、difference、exclusion、hue、saturation、color、luminosity。可理解为 PS 中的图层混合模式 + AI 中的路径查找器。
 
-  ![](/images/20200309/composite.png)
+  ![](/images/canvas/composite.png)
 
 #### 1.1.7. 设置图案样式
 
@@ -271,7 +271,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
   改变线性渐变的方向有两种方式：1️⃣ 调换 addColorStop 0 和 1 对应的值；2️⃣ 调换 createLinearGradient 创建的起点和终点，即（x1, y1, x0, y0）。
   我们知道，通过两不同点的直线有且只有一条。所以一般来说，我们只要改变 x0, y0, x1, y1 这四个值就可以轻松的改变渐变方向。这点可以结合 PS 里的线性渐变理解。
 
-  ![](/images/20200309/gradient_line.png)
+  ![](/images/canvas/gradient_line.png)
 
 - CanvasGradient 描述渐变的不透明对象。CanvasGradient 有一个方法：`CanvasGradient.addColorStop()`
 
@@ -317,7 +317,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
   ** 非零环绕填充规则 **：如果想知道某一区域是否被填充，就从这一区域画一条直线向外，在与其他线的交点处，如果其他线是顺时针方向画的，就+1，逆时针则-1，如果最后总和为 0，则不会填充，非零则填充。
 
-  ![](/images/20200309/fillrule.png)
+  ![](/images/canvas/fillrule.png)
 
   ** 奇偶环绕填充规则 **：在路径包围的区域中，随便找一点，向外发射一条射线，和所有围绕它的边相交，查看相交线的个数，如果为奇数，就填充，如果是偶数，就不填充。
 
@@ -353,7 +353,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 开始角度和结束角度都是以 x 轴为起点，顺时针环绕。
 
-![](/images/20200309/arc_angle.png)
+![](/images/canvas/arc_angle.png)
 
 ### 1.7. 贝塞尔曲线
 
