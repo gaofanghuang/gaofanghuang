@@ -1,10 +1,10 @@
 ---
-title: promise
+title: Promise
 date: 2020-03-09 09:15:46
 tags:
-  - promise
-  - es6
-  - javascript
+  - Promise
+  - ES6
+  - Javascript
 categories: 前端笔记
 ---
 
@@ -46,7 +46,7 @@ async/await 的目的是简化使用多个 promise 时的同步行为，并对�
 
 把一个函数 A 传给另一个函数 B 调用，并在函数 B 完成后执行，那么 A 就是回调函数。
 
-[查看 demo](https://github.com/gaofanghuang/demo/blob/master/api/promise/demo4)
+[查看 demo](https://gaofanghuang.github.io/demo/api/promise/demo4)
 
 ### 4. bluebird
 
@@ -72,6 +72,16 @@ async function name([param[, param[, ... param]]]) { statements }
 返回的 Promise 对象会运行**执行**(resolve)异步函数的返回结果，或者运行**拒绝**(reject)——如果异步函数抛出异常的话。
 
 ### 2. Await
+
+`[return_value] = await expression;`
+
+**expression** 表达式:
+
+一个 Promise 对象或者任何要等待的值。
+
+**return_value** 返回值:
+
+返回 Promise 对象的处理结果。如果等待的不是 Promise 对象，则返回该值本身。
 
 ### 3. Promise
 
@@ -125,19 +135,19 @@ Tips:
 
 ### 1. 创建一个 promise
 
-[查看 demo](https://github.com/gaofanghuang/demo/blob/master/api/promise/demo1)
+[查看 demo](https://gaofanghuang.github.io/demo/api/promise/demo1)
 
 ### 2. 使用 async 函数重写 promise 链
 
-[查看 demo](https://github.com/gaofanghuang/demo/blob/master/api/promise/demo2)
+[查看 demo](https://gaofanghuang.github.io/demo/api/promise/demo2)
 
 ### 3. 多个 promise 同时执行
 
-[查看 demo](https://github.com/gaofanghuang/demo/blob/master/api/promise/demo3)
+[查看 demo](https://gaofanghuang.github.io/demo/api/promise/demo3)
 
 ### 4. Promise 和 this 指向
 
-[查看 demo](https://github.com/gaofanghuang/demo/blob/master/api/promise/demo5)
+[查看 demo](https://gaofanghuang.github.io/demo/api/promise/demo5)
 
 ## 常见错误
 
