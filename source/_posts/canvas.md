@@ -194,7 +194,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 ### 1.1. 设置绘图环境和样式
 
-- `ctx.canvas` 上下文关联的 HTMLCanvasElement 对象。如果没有 `<canvas>` 元素与之对应，对象值为 null 。可以使用`ctx.canvas.width`来获取canvas宽度，或者`ctx.canvas.width='500px'`来重设新置canvas宽度。
+- `ctx.canvas` 上下文关联的 HTMLCanvasElement 对象。如果没有 `<canvas>` 元素与之对应，对象值为 null 。可以使用`ctx.canvas.width`来获取 canvas 宽度，或者`ctx.canvas.width='500px'`来重设新置 canvas 宽度。
 
 #### 1.1.1. 设置填充和描边颜色
 
@@ -246,9 +246,9 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 #### 1.1.7. 设置图案样式
 
-- `ctx.createPattern(image, repetition)` 根据传入的图片，创建一个可重复的图案。返回**CanvasPattern**对象，不透明。创建完成后，可以使用 `CanvasPattern.setTransform()`方法对图案进行变形。
+- `ctx.createPattern(image, repetition)` 根据传入的图片，创建一个可重复的图案。返回 **CanvasPattern** 对象，不透明。创建完成后，可以使用 `CanvasPattern.setTransform()`方法对图案进行变形。
 
-  image：作为重复图像源的 **CanvasImageSource** 对象。可以是下列之一
+  **image**：作为重复图像源的 **CanvasImageSource** 对象。可以是下列之一
 
   - HTMLImageElement (`<img>`),
   - HTMLVideoElement (`<video>`),
@@ -258,7 +258,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
   - ImageData,
   - Blob.
 
-  repetition：DOMString，指定如何重复图像。如果为空字符串 ('') 或 null (但不是 undefined)，repetition 将被当作"repeat"。允许的值有：
+  **repetition**：DOMString，指定如何重复图像。如果为空字符串 ('') 或 null (但不是 undefined)，repetition 将被当作"repeat"。允许的值有：
 
   - "repeat" (both directions),
   - "repeat-x" (horizontal only),
@@ -269,7 +269,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 #### 1.1.8. 设置渐变样式
 
-- `ctx.createLinearGradient(x0, y0, x1, y1)` 创建一个沿参数坐标指定的直线的渐变。起点（x0, y0），终点（x1, y1）。返回**CanvasGradient**对象，透明。
+- `ctx.createLinearGradient(x0, y0, x1, y1)` 创建一个沿参数坐标指定的直线的渐变。起点（x0, y0），终点（x1, y1）。返回 **CanvasGradient** 对象。
   改变线性渐变的方向有两种方式：1️⃣ 调换 addColorStop 0 和 1 对应的值；2️⃣ 调换 createLinearGradient 创建的起点和终点，即（x1, y1, x0, y0）。
   我们知道，通过两不同点的直线有且只有一条。所以一般来说，我们只要改变 x0, y0, x1, y1 这四个值就可以轻松的改变渐变方向。这点可以结合 PS 里的线性渐变理解。
 
@@ -369,32 +369,32 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 - `ctx.drawImage(image[, sx, sy, sWidth, sHeight], dx, dy[, dWidth, dHeight])` 在 Canvas 上绘制图像。
 
-  image: 允许 CanvasImageSource 对象，同上。
+  **image**: 允许 CanvasImageSource 对象，同上。
 
   ![](https://mdn.mozillademos.org/files/225/Canvas_drawimage.jpg)
 
-  dx：
+  **dx**：
   image 的左上角在目标 canvas 上 X 轴坐标。
 
-  dy：
+  **dy**：
   image 的左上角在目标 canvas 上 Y 轴坐标。
 
-  sx 可选：
+  **sx**： 可选参
   需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的左上角 X 轴坐标。
 
-  sy 可选：
+  **sy**： 可选参
   需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的左上角 Y 轴坐标。
 
-  sWidth 可选：
+  **sWidth**： 可选参
   需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的宽度。如果不说明，整个矩形（裁剪）从坐标的 sx 和 sy 开始，到 image 的右下角结束。
 
-  sHeight 可选：
+  **sHeight**：可选参
   需要绘制到目标上下文中的，image 的矩形（裁剪）选择框的高度。
 
-  dWidth 可选：
+  **dWidth**：可选
   image 在目标 canvas 上绘制的宽度。 允许对绘制的 image 进行缩放。 如果不说明， 在绘制时 image 宽度不会缩放。
 
-  dHeight 可选：
+  **dHeight**：可选参
   image 在目标 canvas 上绘制的高度。 允许对绘制的 image 进行缩放。 如果不说明， 在绘制时 image 高度不会缩放。
 
 ### 1.9. 变换
@@ -414,7 +414,7 @@ const ctx = canvas.getContext(contextType, contextAttributes)
   **倾斜角度**：bc 参数数值换算方式，即 tan45° = 1。例如当 b = 1, c = 0 时，将 x 轴方向上倾斜 45 度。`Math.sqrt()` 计算平方根。tan90° 不存在。
 
   | 角度   |   值 | 约等于 |
-  | ------ | ---: | :----: |
+  | :--- | :---: | ---: |
   | tan15° | 2-√3 |  0.27  |
   | tan30° | √3/3 |  0.58  |
   | tan45° |    1 |   1    |
@@ -460,11 +460,15 @@ const ctx = canvas.getContext(contextType, contextAttributes)
 
 - `ctx.restore()` 将 canvas 恢复到最近的保存状态的方法。 如果没有保存状态，此方法不做任何改变。
 
-## 离屏 canvas
+## 离屏渲染
+
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo5)
 
 ## 简单动画
 
 canvas 动画实现原理：使用`window.setInterval()`或`window.setTimeout()`或`window.requestAnimationFrame()`，来清空画布并重绘新一帧的画面。由于肉眼在看超过 24 帧每秒的静态图片就会认为是连续动态视频，所以在这里 1 秒内连续生成 24 帧画面，就会产生连续的动画效果。
+
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo3)
 
 **帧数**：帧数(Frames)，为帧生成数量的简称。由于口语习惯上的原因，我们通常将帧数与帧率混淆。每一帧都是静止的图象，快速连续地显示帧便形成了运动的假象，因此高的帧率可以得到更流畅、更逼真的动画。
 
@@ -472,13 +476,108 @@ canvas 动画实现原理：使用`window.setInterval()`或`window.setTimeout()`
 
 **性能**：`window.requestAnimationFrame()`提供了更加平缓并更加有效率的方式来执行动画，当系统准备好了重绘条件的时候，才调用绘制动画帧。一般使用这个方法来执行动画，比 setInterval、setTimeout 效果更好。
 
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo4)
+
 ## 设备交互
+
+### 1. 鼠标事件
+
+Canvas 对象支持所有的 JavaScript 的鼠标事件，包括鼠标点击(MouseClick), 鼠标按下(Mouse Down), 鼠标抬起(Mouse Up), 鼠标移动( Mouse Move)。
+
+添加鼠标事件的两种方式：
+
+1.1. 给 canvas 增加事件监听（推荐）：
+
+```javascript
+// 鼠标移动
+canvas.addEventListener('mousemove', doMouseMove, false)
+
+// 鼠标按下
+canvas.addEventListener('mousedown', doMouseDown, false)
+
+// 鼠标抬起
+canvas.addEventListener('mouseup', doMouseUp, false)
+
+// 鼠标点击
+canvas.addEventListener('mouseclick', doMouseClick, false)
+```
+
+1.2. 调用canvas自身鼠标事件（反模式，不推荐）
+
+```javascript
+// 鼠标移动
+canvas.onmouseup = function(e){}
+
+// 鼠标按下
+canvas.onmousedown = function(e){}
+
+// 鼠标抬起
+canvas.onmousemove = function(e){}
+
+// 鼠标点击
+canvas.onclick = function(e){}
+```
+
+1.3. 获取鼠标在canvas上的坐标
+
+```javascript
+const getPointOnCanvas = (x, y) => {
+  const canvasBox = canvas.getBoundingClientRect()
+  console.log('canvasBox', canvasBox)
+  return {
+    x: x - canvasBox.left * (canvas.width / canvasBox.width),
+    y: y - canvasBox.top * (canvas.height / canvasBox.height)
+  }
+}
+
+canvas.addEventListener('click', (e) => {
+  const mousePoint = getPointOnCanvas(e.x, e.y)
+  console.log('获取鼠标在canvas对象上的坐标', e, mousePoint)
+}, false)
+```
+
+### 2. 键盘事件
+
+HTML5 Canvas 本身不支持键盘事件监听与获取，常用的有两种方法来解决这个问题:
+
+2.1 监听window对象的键盘事件
+
+```javascript
+window.addEventListener('keydown', doKeyDown, true)
+```
+
+2.2 在Canvas标签上增加支持键盘事件的DOM元素
+
+```html
+<canvas id="event_canvas" tabindex="0"></canvas>
+```
+
+```javascript
+canvas.addEventListener('keydown', doKeyDown, true)
+canvas.focus()
+```
+
+其中 **tabindex** 为 HTML5 DOM 元素，支持键盘事件。
+
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo6)
 
 ## 高级动画
 
-### 1. 物理碰撞和加速度
+### 1. 边界
 
-[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo3)
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo7)
+
+### 2. 加速度
+
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo8)
+
+### 3. 长尾效果
+
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo9)
+
+### 4. 物理碰撞
+
+[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo10)
 
 ## 性能优化
 
@@ -514,6 +613,8 @@ canvas 动画实现原理：使用`window.setInterval()`或`window.setTimeout()`
 
 ## 应用示例
 
+1. [音乐播放器](/)
+
 ## 常见错误
 
 1. 标签需要闭合，`<canvas>` 元素需要有闭合标签 (`</canvas>`)。
@@ -528,10 +629,8 @@ canvas 动画实现原理：使用`window.setInterval()`或`window.setTimeout()`
 
 ```html
 <canvas id="canvas" width="300" height="300">
-  抱歉，您的浏览器不支持canvas元素 （这些内容将会在不支持<canvas
-    >元素的浏览器或是禁用了JavaScript的浏览器内渲染并展现）
-  </canvas></canvas
->
+  抱歉，您的浏览器不支持canvas元素 （这些内容将会在不支持 canvas 元素的浏览器或是禁用了 JavaScript 的浏览器内渲染并展现）
+</canvas>
 ```
 
 4. canvas 画布清空问题
@@ -557,3 +656,11 @@ var img = new Image()
 img.setAttribute('crossOrigin', 'anonymous')
 img.src = url
 ```
+
+## 扩展知识
+
+1. [tabindex](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex)
+
+  > tabindex 全局属性 指示其元素是否可以聚焦，以及它是否/在何处参与顺序键盘导航（通常使用Tab键，因此得名）。
+
+2. [keycode键位表](https://huanggaofang.com/2020/keycode/)

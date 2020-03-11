@@ -101,3 +101,18 @@ theme: ayer
 deploy:
   type: git
   repo: https://github.com/gaofanghuang/gaofanghuang-blog-hexo.git
+
+# douban
+douban:
+  user: promise_0o
+  builtin: false
+  book:
+    title: 'This is my book title'
+    quote: 'This is my book quote'
+  movie:
+    title: 'This is my movie title'
+    quote: 'This is my movie quote'
+  game:
+    title: 'This is my game title'
+    quote: 'This is my game quote'
+  timeout: 10000 

@@ -167,6 +167,29 @@ $(function() {
   })
 })
 
+// music
+const musicWrap = $('#music')
+const musicFrame = $('#musicFrame')
+let musicPlay = false
+musicWrap.on('click', function () {
+  if (musicPlay) {
+    musicFrame.empty()
+  } else {
+    const musicId = musicWrap.attr('attr-music-id')
+    const musicFrame = `<iframe
+                            frameborder="no"
+                            border="0"
+                            marginwidth="0"
+                            marginheight="0"
+                            width="200"
+                            height="52"
+                            src="//music.163.com/outchain/player?type=2&id=${musicId}&auto=1&height=32"
+                          ></iframe>`
+    musicFrame.html(musicFrame)
+  }
+  musicPlay = !musicPlay
+})
+
 const distanceTime = (endTime, startTime) => {
   let distance = endTime - startTime;
   if (distance > 0) {
