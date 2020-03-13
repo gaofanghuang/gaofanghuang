@@ -101,6 +101,7 @@ theme: ayer
 deploy:
   type: git
   repo: https://github.com/gaofanghuang/gaofanghuang-blog-hexo.git
+  branch: master
 
 # douban
 douban:
