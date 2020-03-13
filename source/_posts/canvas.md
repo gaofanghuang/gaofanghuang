@@ -564,6 +564,8 @@ canvas.focus()
 
 ## 高级动画
 
+高级动画和简单动画的区别，就是我们需要增加一些现实特性，如物理碰撞、加速度、摩擦力、重力作用等等因素，使动画的元素，运动过程中更贴合现实。
+
 [查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo7)
 
 ### 1. 边界
@@ -609,7 +611,7 @@ if (ball.y > bottom) {
 
 原理：生成若干小球 push 到数组里，当某小球超出边界时，通过 id 删除数组中该小球的数据，即下次渲染帧时，不会再渲染该小球。
 
-[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo8)
+[查看 demo 超出边界移除](https://gaofanghuang.github.io/demo/api/canvas/demo8)
 
 #### 1.3. 超出边界重新形成
 
@@ -617,7 +619,7 @@ if (ball.y > bottom) {
 
 原理：生成若干小球 push 到数组里，当某小球超出边界时，重置数组中该小球的位置即可。
 
-[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo9)
+[查看 demo 超出边界重新形成](https://gaofanghuang.github.io/demo/api/canvas/demo9)
 
 #### 1.4. 边界环绕
 
@@ -625,7 +627,7 @@ if (ball.y > bottom) {
 
 原理：生成若干小球 push 到数组里，当某小球超出任意边界时，数组中该小球的位置取边界的反值即可。
 
-[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo10)
+[查看 demo 边界环绕](https://gaofanghuang.github.io/demo/api/canvas/demo10)
 
 #### 1.5. 边界反弹
 
@@ -633,21 +635,86 @@ if (ball.y > bottom) {
 
 原理：生成若干小球 push 到数组里，当某小球超出任意边界时，数组中该小球的加速度取反即可。如果需要模拟现实中的重力加速度，则使 vy 衰减即可。
 
-[查看 demo](https://gaofanghuang.github.io/demo/api/canvas/demo11)
+[查看 demo 边界反弹](https://gaofanghuang.github.io/demo/api/canvas/demo11)
 
-### 2. 速度与加速度
+### 2. 速度、加速度和重力加速度
+
+**速度**，描述物体运动快慢和方向的物理量。在 canvas 中速度是矢量的，既有大小又有方向，而方向的体现就是其值的正负。任何一个速度都可以分解为 x 轴和 y 轴上的速度。
+
+**加速度**，即速率，是描述物体速度变化快慢的物理量。加速度的方向与速度相同即加速，方向相反即减速，如果加速度为零，速度将恒定，物体做匀速直线运动。
+
+![](/images/canvas/speed.png)
+
+`vx = speed * Math.cos(angle)`
+
+`vy = speed * Math.sin(angle)`
+
+[查看 demo 匀速运动和加速度运动](https://gaofanghuang.github.io/demo/api/canvas/demo16)
+
+**重力加速度**，重力对自由下落的物体产生的加速度。
+
+[查看 demo 重力加速度](https://gaofanghuang.github.io/demo/api/canvas/demo17)
 
 ### 3. 摩擦力
 
-### 4. 长尾效果
+两个相互接触并挤压的物体，当它们发生相对运动或具有相对运动趋势时，就会在接触面上产生阻碍相对运动或相对运动趋势的力，这种力叫做**摩擦力**。通常我们用字母 `f` 来表示摩擦力。
+
+通俗的说，就是一个物体的速度，因为摩擦力的影响，会不断的发生衰减，直到速度为 0 时，物体也停止了运动。
+
+- 计算物体运动的角度 `angle = Math.atan2(vy, vx)`
+
+- 计算物体运动的速度 `speed = Math.sqrt(vx*vx + vy*vy)`
+
+当速度大于摩擦力时，将速度减去摩擦力，得到一个衰减后的速度值，然后再使用加速度计算公式，算出新速度的 vx 和 vy 的值。
+
+```javascript
+if (speed > f) {
+  speed -= f
+  vx = Math.cos(angle) * speed
+  vy = Math.sin(angle) * speed
+} else {
+  speed = 0
+}
+```
+
+[查看 demo 摩擦力](https://gaofanghuang.github.io/demo/api/canvas/demo18)
+
+### 4. 拖尾效果
+
+拖尾效果常用于绘制流星和烟花等动画。顾名思义，就是物体运动时会有一个尾巴跟随。
+
+最简单的拖尾效果实现方案，使用以下代码代替 `clear`:
+
+```javascript
+ctx.fillStyle="rgba(0,0,0,0.2)"
+ctx.rect(0,0,w,h);
+ctx.fill();
+```
+原理是每帧画面加上一个透明度为0.2的蒙层，随着蒙层叠加的层数越多，较底层的图层也被覆盖到看不见了，以此而形成了拖尾效果。
 
 ### 5. 物理碰撞
+
+#### 5.1 分离轴定理
+
+#### 5.2 最小平移向量
+
+[查看 demo 拖拽抛扔](https://gaofanghuang.github.io/demo/api/canvas/demo18)
+
+### 6. 缓动动画
+
+物体由以低速开始，然后加快，在结束前变慢的滑行到目标位置，然后停止。类似于**CSS**中的`animation-timing-function: ease`效果。
+
+### 7. 弹性动画
+
+物体运动到目标位置之后，并不会立刻停止，而是以目标位置为中心点做一个类似弹簧的往复运动，其速度不断衰减，最终会停止在目标位置。
 
 ## 数值计算
 
 在绘制 canvas 时，经常需要进行各种数值计算，除了简单的加减乘除，要实现更复杂的效果往往需要使用到三角函数、圆周率等数学概念，还需要理解摩擦力、加速度等物理概念。
 
 ### 1. 三角函数
+
+`π = Math.PI ≈ 3.14 = 180°`
 
 常见的三角函数包括正弦函数、余弦函数和正切函数。
 
@@ -669,7 +736,7 @@ if (ball.y > bottom) {
 
 - **θ = arctan(X / Y)** → `Math.atan(X / Y) * (180 / Math.PI)`
 
-**Math.atan** 有一个问题，就是无法获取角度的方向。我们指定坐标轴有四个象限：`X / Y = -X / -Y`，`-X / Y = X / Y`。
+**Math.atan** 有一个缺陷，就是无法获取角度的方向。我们指定坐标轴有四个象限：`X / Y = -X / -Y`，`-X / Y = X / Y`。
 
 ![](/images/canvas/atant.png)
 
@@ -715,9 +782,19 @@ console.log(A2, B2, C2, D2)
 
 凡质地柔软的物体由于力的作用，从受力点一端向另一端推移，就产生波形的曲线运动，曲线运动都是反复循环的。波形图像，又叫做正弦曲线。
 
-即使用 `Math.sin(angle)` 计算，我们可以绘制出十分自然的波形运动动画。
+即使用 `Math.sin(angle)` 计算，我们可以绘制出十分自然的波形运动动画。计算出的值，在[-1, 1]的区间中逐步递增或逐步衰减，一直循环下去。
 
-[查看 demo 鼠标跟随](https://gaofanghuang.github.io/demo/api/canvas/demo13)
+例：[0.1, 0.2, …… 0.8, 0.9, 0.8 …… 0.2, 0.1, -0.1, -0.2 …… -0.9, -0.8 …… -0.1, 0.1, 0.2]
+
+因此，当我们需要绘制一个循环反复的动画运动效果时，可以使用 `Math.sin(angle)` 来计算动画变换的值。
+
+[查看 demo 曲线球](https://gaofanghuang.github.io/demo/api/canvas/demo14)
+
+[查看 demo 脉冲球](https://gaofanghuang.github.io/demo/api/canvas/demo15)
+
+[查看 demo 水草摆动](https://gaofanghuang.github.io/demo/api/canvas/demo13)
+
+## 运动规律
 
 ## 性能优化
 
