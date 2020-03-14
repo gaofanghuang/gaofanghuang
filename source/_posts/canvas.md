@@ -704,6 +704,18 @@ ctx.fill();
 
 物体由以低速开始，然后加快，在结束前变慢的滑行到目标位置，然后停止。类似于**CSS**中的`animation-timing-function: ease`效果。
 
+实现原理：目标位置减去当前位置再乘以缓动系数，即可得到缓动动画的加速度效果。
+
+[查看 demo 定点缓动](https://gaofanghuang.github.io/demo/api/canvas/demo20)
+
+缓动动画的应用使元素**变换**的过程**过渡**得十分自然，避免了生硬和突兀的感觉。缓动动画不止应用于位移中，在旋转、变色、透明度等方面也可以得到很好的效果。
+
+[查看 demo 旋转](https://gaofanghuang.github.io/demo/api/canvas/demo21)
+
+[查看 demo 变色](https://gaofanghuang.github.io/demo/api/canvas/demo22)
+
+[查看 demo 渐入渐隐](https://gaofanghuang.github.io/demo/api/canvas/demo23)
+
 ### 7. 弹性动画
 
 物体运动到目标位置之后，并不会立刻停止，而是以目标位置为中心点做一个类似弹簧的往复运动，其速度不断衰减，最终会停止在目标位置。
