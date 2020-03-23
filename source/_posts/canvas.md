@@ -704,9 +704,15 @@ ctx.fill();
 
 #### 5.1 分离轴定理
 
+分离轴定理（英文简称SAT）是一项用于检测圆或凸多边形碰撞的技术（无法检测凹多边形的碰撞）。
+
 #### 5.2 最小平移向量
 
-[查看 demo 拖拽抛扔](https://gaofanghuang.github.io/demo/api/canvas/demo18)
+两个物品碰撞之后，使他们分开需要的最小平移向量。
+
+[查看 demo 拖拽抛扔](https://gaofanghuang.github.io/demo/api/canvas/demo19)
+
+[查看 demo 碰撞检测](https://gaofanghuang.github.io/demo/api/canvas/demo25)
 
 ### 6. 缓动动画
 
@@ -914,3 +920,7 @@ img.src = url
 2. [keycode 键位表](https://huanggaofang.com/2020/keycode/)
 
 3. [interpolator](http://inloop.github.io/interpolator/)
+
+4. [碰撞检测之分离轴定理算法讲解](https://blog.csdn.net/yorhomwang/article/details/54869018)
+
+5. [常见的2D碰撞检测](https://www.cnblogs.com/sevenyuan/p/7125642.html)
