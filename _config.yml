@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 黄高芳 Gaofang Huang
+title: Gaofang Huang
 subtitle: ''
 description: 'Developer & Designer'
 keywords: '编程, 游戏, 设计'
@@ -108,12 +108,12 @@ douban:
   user: promise_0o
   builtin: false
   book:
-    title: 'This is my book title'
-    quote: 'This is my book quote'
+    title: '读书'
+    quote: ''
   movie:
-    title: 'This is my movie title'
-    quote: 'This is my movie quote'
+    title: '电影'
+    quote: ''
   game:
-    title: 'This is my game title'
-    quote: 'This is my game quote'
+    title: '游戏'
+    quote: ''
   timeout: 10000 
