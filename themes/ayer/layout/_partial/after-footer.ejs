@@ -35,7 +35,6 @@
     onClick: (e) => {
       $('.toc-link').removeClass('is-active-link');
       $(`a[href=${e.target.hash}]`).addClass('is-active-link');
-      $(e.target.hash).scrollIntoView();
       return false;
     }
   });

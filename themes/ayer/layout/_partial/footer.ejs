@@ -1,22 +1,19 @@
 <footer class="footer">
   <div class="outer">
-    <div class="footer-link">
-      <ul class="footer-mark-link">
-        <li>
-          <a href="/books">读书</a>
-        </li>
-        <li>
-          <a href="/movies">电影</a>
-        </li>
-        <li>
-          <a href="/games">游戏</a>
-        </li>
-      </ul>
-    </div>
     <div class="footer-plugin" style="display: flex; justify-content: space-between;">
-      <% if (theme.music&&theme.music.enable){ %>
-      <%- partial('_partial/music') %>
-      <% } %>
+      <div class="footer-link">
+        <ul class="footer-mark-link">
+          <li>
+            <a href="/books">读书</a>
+          </li>
+          <li>
+            <a href="/movies">电影</a>
+          </li>
+          <li>
+            <a href="/games">游戏</a>
+          </li>
+        </ul>
+      </div>
       <div class="we-wrap">
         <div class="we-avatars">
           <div class="we-avatar-i"><img src="/images/ia.jpg" alt="i"></div>
