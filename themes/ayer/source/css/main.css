@@ -6676,7 +6676,7 @@ a.toc-link {
   overflow: hidden;
 }
 .articles .article-entry .article-more-link {
-  display: inline-block;
+  display: block;
   float: right;
   background-color: #5d5a5a;
   padding: 0.5rem 1rem;
@@ -6684,6 +6684,7 @@ a.toc-link {
   color: #fff !important;
   text-decoration: none;
   transition: 0.6s;
+  font-size: 80%;
 }
 .articles .article-entry .article-gallery {
   margin-top: 1.5rem;
@@ -6753,6 +6754,15 @@ a.toc-link {
 .archive-article-header h2 .archive-article-title {
   text-decoration: none;
   font-size: 1.8rem;
+  color: #5d5a5a;
+  transition: 0.2s;
+}
+.archive-type-post:hover .archive-article-header h2 .archive-article-title {
+  color: #22c3c3;
+}
+.archive-type-post:hover .archive-article-date:before {
+  background-color: #22c3c3;
+  border: 1px solid #22c3c3;
 }
 .archive-article-footer {
   margin-top: 1.5rem;
@@ -6772,6 +6782,7 @@ a.toc-link {
   border-radius: 1rem;
   background-color: #fff;
   border: 1px solid #999;
+  transition: 0.2s;
 }
 .page-type-title {
   margin: 0;
@@ -6830,13 +6841,16 @@ a.toc-link {
 }
 .footer .outer > ul li {
   display: inline-block;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1px;
 }
 .footer .outer > ul li a {
   text-decoration: none;
 }
 .footer .outer > ul span {
   margin-right: 6px;
+}
+.footer .outer > ul i {
+  font-style: normal;
 }
 .float-left {
   float: left !important;
@@ -6949,6 +6963,12 @@ a.toc-link {
 .article-entry .highlight .line {
   color: #dedede;
   min-height: 19px;
+}
+.article-entry .highlight .meta {
+  color: #999999;
+}
+.article-entry .highlight .bash {
+  color: #999999;
 }
 .article-entry .gist {
   margin: 0 -20px;
@@ -7591,10 +7611,9 @@ pre .id {
 }
 #weTogather {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 0;
   bottom: -30px;
-  width: 160px;
+  width: 200px;
   display: none;
   text-align: center;
   color: #999999;
