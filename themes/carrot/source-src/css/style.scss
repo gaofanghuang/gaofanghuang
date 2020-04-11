@@ -1,0 +1,66 @@
+@import '_modules/mixins';
+@import '_modules/reset';
+@import '_modules/animate';
+@import '_modules/transition';
+@import '_modules/layout';
+@import '_modules/highlight';
+@import '_modules/markdown';
+@import '_modules/icon';
+@import '_partical/header';
+@import '_partical/footer';
+@import '_partical/index';
+@import '_partical/archive';
+@import '_partical/article';
+@import '_partical/article-entry';
+@import '_modules/auto';
+
+.layout {
+  transition: 0.2s;
+}
+
+.transform-layout {
+  transform: translateX(4rem);
+}
+
+.page-nav {
+  margin: 2rem 0;
+  text-align: center;
+  overflow: hidden;
+  .page-number {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #efefef;
+    &.current {
+      background: $primary;
+      border-color: $primary;
+      color: #fff;
+    }
+    & + .page-number {
+      margin-left: 1rem;
+    }
+  }
+  .prev {
+    float: left;
+  }
+  .next {
+    float: right;
+  }
+  .prev,
+  .next {
+    color: #999999;
+    &:hover {
+      color: $primary;
+    }
+  }
+  a {
+    &:hover {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

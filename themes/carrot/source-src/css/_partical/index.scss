@@ -1,0 +1,225 @@
+.index-wrap {
+  padding: 1rem 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.index-sidebar {
+  width: 30%;
+}
+
+.index-main {
+  width: 68%;
+  margin-right: 2%;
+}
+
+.index-box {
+  background: #fff;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.08);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  .index-box-title {
+    border-bottom: 1px solid #efefef;
+    width: 100%;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/** author */
+.index-author-wrap {
+  .index-author-banner {
+    width: 100%;
+    height: 3rem;
+    background: #efefef;
+    position: relative;
+  }
+  .index-author-avatar {
+    position: absolute;
+    bottom: -1.6rem;
+    left: 1.6rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .index-author-info {
+    position: absolute;
+    bottom: -1.8rem;
+    left: 6.4rem;
+    height: 3.4rem;
+  }
+  .index-author-name {
+    font-size: 1rem;
+  }
+  .index-author-describe {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: #cdcdcd;
+    font-weight: 300;
+  }
+  .index-author-sns {
+    margin-top: 2.6rem;
+    padding: 0 1rem 1rem 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+/** 标签 */
+.tag-cloud-wrap {
+  .tag-cloud-list {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tag-cloud-item {
+    margin-right: 0.6rem;
+    margin-bottom: 0.6rem;
+    background: #f9f9f9;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    transition: 0.2s;
+    &:hover {
+      background: #f2f2f2;
+    }
+  }
+  .tag-cloud-item-link {
+    display: block;
+    color: #666666;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.8rem;
+
+    &:hover {
+      &::after {
+        display: none;
+      }
+    }
+    i {
+      font-style: normal;
+    }
+  }
+}
+
+/** 分类 */
+.category-menu-wrap {
+  .category-menu-list {
+    padding: 1rem;
+  }
+  .category-menu-list-link {
+    color: #666666;
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $primary;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .category-menu-list-item {
+    display: flex;
+    &::before {
+      display: inline-block;
+      content: "-";
+      margin-right: 0.5rem;
+      color: #eaeaea;
+    }
+    i {
+      font-style: normal;
+      margin-left: 0.5rem;
+      background: #efefef;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #999999;
+    }
+    & + .category-menu-list-item {
+      margin-top: 1rem;
+    }
+  }
+}
+
+/** we */
+.we-wrap {
+  position: relative;
+  padding: 1rem;
+  .we-avatars {
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .we-avatar-you,
+  .we-avatar-i {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f9f9f9;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  }
+  .we-avatar-you img,
+  .we-avatar-i img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .we-avatar-and {
+    color: rgb(255, 100, 130);
+    animation: beat 1.33s ease-in-out infinite;
+  }
+  @keyframes beat {
+    0% {
+      opacity: 0.88;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(0.88);
+    }
+    100% {
+      opacity: 0.88;
+      transform: scale(1);
+    }
+  }
+  #weTogether {
+    text-align: center;
+    color: #999999;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/** 移动端 */
+@media only screen and (max-width: 1024px) {
+  .index-wrap {
+    .container {
+      display: block;
+    }
+  }
+  .index-sidebar,
+  .index-main {
+    width: 100%;
+  }
+  .index-box {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -1,0 +1,28 @@
+<footer class="footer-wrap">
+  <div class="container">
+      <div class="left">
+        <div class="footer-copyright">
+          &copy;
+          <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-heart1"></use>
+          </svg>
+          <%= config.author || config.title %>
+        </div>
+        <div class="footer-count">
+          <% if (theme.busuanzi && theme.busuanzi.enable){ %>
+            <%# "不蒜子统计" %>
+            <%- partial('post/busuanzi') %>
+          <% } %>
+        </div>
+      </div>
+      <div class="right">
+        <% if (theme.pageFooter){ %>
+          <% var hexoLink = '<a href="https://hexo.io" target="_blank">Hexo</a>'; %>
+          <% var themeLink = '<a href="https://github.com/gaofanghuang/gaofanghuang" target="_blank">Carrot</a>'; %>
+          <div class="footer-powered">Powered by <%- hexoLink %></div>
+          <div class="footer-theme">Theme by <%- themeLink %></div>
+        <% } %>
+      </div>
+  </div>
+</footer>

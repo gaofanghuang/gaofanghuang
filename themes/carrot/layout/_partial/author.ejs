@@ -1,0 +1,44 @@
+<div class="index-author-wrap index-box">
+  <div class="index-author-banner">
+    <div class="index-author-avatar">
+      <% if (theme.avatar){ %>
+      <img src="<%- theme.avatar %>" alt="<%- theme.author %>" />
+      <% } %>
+    </div>
+    <div class="index-author-info">
+      <div class="index-author-name"><%- theme.author %></div>
+      <div class="index-author-describe"><%- theme.describe %></div>
+    </div>
+  </div>
+  <div class="index-author-sns">
+    <ul class="index-author-sns-list flex flex-y flex-gap">
+      <% if (theme.github){ %>
+      <div class="index-author-sns-link">
+        <a href="<%- theme.github %>">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-github-fill"></use>
+          </svg>
+        </a>
+      </div>
+      <% } %>
+      <% if (theme.bilibili){ %>
+      <div class="index-author-sns-link">
+        <a href="<%- theme.bilibili %>">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-bilibili-line"></use>
+          </svg>
+        </a>
+      </div>
+      <% } %>
+      <% if (theme.email){ %>
+      <div class="index-author-sns-link">
+        <a href="<%- theme.email %>">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-mail"></use>
+          </svg>
+        </a>
+      </div>
+      <% } %>
+    </ul>
+  </div>
+</div>

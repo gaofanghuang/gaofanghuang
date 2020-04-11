@@ -1,0 +1,43 @@
+.article-entry {
+  .article-more-link {
+    display: inline-block;
+    background: linear-gradient(135deg, $primary, $green);
+    color: #fff;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    font-weight: 400;
+    box-shadow: 0 3px 9px rgba($color: #000000, $alpha: 0.1);
+    transition: 0.2s;
+    font-size: 0.8rem;
+    &:hover {
+      &::after {
+        display: none;
+      }
+      box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.1) inset;
+    }
+  }
+
+  table {
+    width: 100%;
+    max-width: 70rem;
+    border: 1px solid #dedede;
+    margin: 15px auto;
+    border-collapse: collapse;
+    empty-cells: show;
+    table-layout: fixed;
+    th,
+    td {
+      border: 1px solid #dedede;
+      padding: 5px 10px;
+      word-break: break-all;
+    }
+    th {
+      font-weight: 700;
+      text-align: center !important;
+      background: rgba($primary, 0.1);
+      white-space: nowrap;
+    }
+  }
+}

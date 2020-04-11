@@ -1,0 +1,13 @@
+<% if (post.categories && post.categories.length){ %>
+  <div class="article-category flex flex-y">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-file-text"></use>
+    </svg>
+    <%- list_categories(post.categories, {
+      show_count: false,
+      class: 'article-category',
+      style: 'none',
+      separator: ' / '
+    }) %>
+  </div>
+<% } %>

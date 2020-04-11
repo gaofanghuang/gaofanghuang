@@ -1,0 +1,48 @@
+.highlight {
+  background: #333;
+  font-size: 0.8rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  table {
+    margin: 0 !important;
+    width: auto !important;
+    border: none !important;
+    td {
+      border: none !important;
+      padding: 0 !important;
+    }
+  }  
+  figcaption {
+    color: #8e908c;
+    line-height: 1em;
+    margin-bottom: 1em;
+  }
+  .gutter {
+    .line {
+      font-size: 0.6rem;
+    }
+  }
+  .code {
+    color: #bababa;
+    .line {
+      .keyword {
+        color: #569CD6;
+      }
+      .comment {
+        color: #555;
+      }
+      .tag {
+        color: #999;
+      }
+      .name {
+        color: #e2276b;
+      }
+      .attr {
+        color: #56d6b4;
+      }
+      .string {
+        color: #d6b056;
+      }
+    }
+  }
+}

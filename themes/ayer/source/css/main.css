@@ -7647,3 +7647,40 @@ pre .id {
   background: #fcfcfc;
   border-radius: 4px;
 }
+
+.articles-category {
+  padding-top: 3rem;
+}
+
+.articles-category-title {
+  font-size: 120%;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.articles-category-list {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.articles-category-list-link {
+  margin-right: 2rem;
+  color: #545454;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.articles-category-list-link i {
+  font-style: normal;
+  width: 1.4em;
+  height: 1.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eaeaea;
+  color: #fff;
+  margin-left: 0.5rem;
+  font-size: 80%;
+}

@@ -1,0 +1,42 @@
+html {
+  font-size: 14px;
+  /* 平滑渐变 */
+  -webkit-transition: font-size 0.2s ease-out;
+}
+
+/** 自适应 */
+
+/** 桌面端 */
+@media only screen and (min-width: 1025px) {
+  html {
+    font-size: 14px !important;
+  }
+  .header-menu {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1367px) {
+  html {
+    font-size: 16px !important;
+  }
+}
+/** 移动端 */
+@media only screen and (max-width: 1024px) {
+  .header-wrap {
+    display: none;
+  }
+  .footer-wrap {
+    height: 6rem;
+    font-size: 0.8rem;
+    .container {
+      padding: 0 2rem;
+    }
+  }
+  .main-wrap {
+    padding-top: 0;
+    min-height: calc(100vh - 6rem);
+  }
+  .container {
+    max-width: 100%;
+  }
+}

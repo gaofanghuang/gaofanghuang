@@ -1,0 +1,31 @@
+<header id="header" class="header-wrap">
+  <% if (theme.logo){ %>
+  <a class="header-logo" href="<%- url_for() %>">
+    <img src="<%- theme.logo %>" alt="<%= config.title %>" />
+  </a>
+  <% } %>
+  <nav id="siteMenu" class="header-nav-wrap container">
+    <ul class="header-nav-list">
+      <% for (var i in theme.menu){ %>
+      <li class="header-nav-item">
+        <a class="header-nav-link" href="<%- url_for(theme.menu[i]) %>">
+          <%= i %>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+  <div class="header-search">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-search"></use>
+    </svg>
+  </div>
+</header>
+<div class="header-menu" onclick="toggleMenu()">
+  <svg class="icon icon-menu" aria-hidden="true">
+    <use xlink:href="#icon-menu"></use>
+  </svg>
+  <svg class="icon icon-close" aria-hidden="true">
+    <use xlink:href="#icon-close"></use>
+  </svg>
+</div>
