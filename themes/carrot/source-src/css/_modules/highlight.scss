@@ -11,7 +11,7 @@
       border: none !important;
       padding: 0 !important;
     }
-  }  
+  }
   figcaption {
     color: #8e908c;
     line-height: 1em;
@@ -25,8 +25,9 @@
   .code {
     color: #bababa;
     .line {
+      .attribute,
       .keyword {
-        color: #569CD6;
+        color: #569cd6;
       }
       .comment {
         color: #555;
@@ -37,11 +38,24 @@
       .name {
         color: #e2276b;
       }
+      .title,
       .attr {
         color: #56d6b4;
       }
-      .string {
+      .selector-tag,
+      .string,
+      .selector-class {
         color: #d6b056;
+      }
+      .number {
+        color: #b5ce89;
+      }
+      .built_in {
+        color: rgb(223, 105, 115);
+      }
+      .bash,
+      .meta {
+        color: #669c78;
       }
     }
   }

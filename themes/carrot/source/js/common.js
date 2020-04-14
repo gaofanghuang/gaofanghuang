@@ -1,6 +1,6 @@
 $(function () {
   // 隐藏移动端菜单
-  $(document).on('click', '.mobile-header', function () {
+  $(document).on('click', '.mobile-header .header-nav-link', function () {
     $('#header').removeClass('mobile-header')
   })
 
@@ -9,7 +9,87 @@ $(function () {
   setInterval(() => {
     weCount(startTime)
   }, 1000)
+
+  // 显示分享弹框
+  $('#shareBar .share-btn').click(function () {
+    $('#shareBar .share-list').toggle()
+  })
+
+  // 打赏
+  $('#reward-btn').on('click', function () {
+    $('#reward').fadeIn(150)
+    $('#rewardMask').fadeIn(150)
+  })
+  $('#reward .modal-close, #rewardMask').on('click', function () {
+    $('#rewardMask').fadeOut(100)
+    $('#reward').fadeOut(100)
+  })
+
+  // 回到顶部
+  let upperLimit = 1000
+  let scrollElem = $('#toTop')
+  scrollElem.hide()
+  $(document).scroll(function () {
+    let scrollTop = $(document).scrollTop()
+    if (scrollTop > upperLimit) {
+      $(scrollElem).fadeIn()
+    } else {
+      $(scrollElem).fadeOut()
+    }
+  })
+  $(scrollElem).click(function () {
+    $(document).scrollTop(0)
+  })
   
+  // 显示文章目录
+  $('#tocBotBtn').click(function() {
+    $('#tocBotWrap').fadeIn(150)
+  })
+  $('#tocBotClose').click(function() {
+    $('#tocBotWrap').fadeOut(100)
+  })
+
+  // 搜索
+  var $searchWrap = $('.search-form-wrap'),
+    isSearchAnim = false,
+    searchAnimDuration = 200
+
+  var startSearchAnim = function () {
+    isSearchAnim = true
+    
+  }
+
+  var stopSearchAnim = function (callback) {
+    setTimeout(function () {
+      isSearchAnim = false
+      callback && callback()
+    }, searchAnimDuration)
+  }
+
+  $('.header-search').on('click', function () {
+    if (isSearchAnim) {
+      return
+    }
+    $('#app').removeClass('body-no-scroll').addClass('body-no-scroll')
+    startSearchAnim()
+    $searchWrap.addClass('on')
+    stopSearchAnim(function () {
+      $('.local-search-input').focus()
+    })
+  })
+
+  $(document).mouseup(function (e) {
+    var _con = $('.local-search')
+    if (!_con.is(e.target) && _con.has(e.target).length === 0) {
+      $searchWrap.removeClass('on')
+      $('#app').removeClass('body-no-scroll')
+    }
+  })
+
+  // 生成search.xml
+  $.getScript('/js/search.js', function () {
+    searchFunc('/search.xml', 'local-search-input', 'local-search-result')
+  })
 })
 
 // we 计时器

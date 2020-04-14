@@ -24,6 +24,9 @@ html {
 @media only screen and (max-width: 1024px) {
   .header-wrap {
     display: none;
+    .header-search {
+      border-left: none;
+    }
   }
   .footer-wrap {
     height: 6rem;
@@ -38,5 +41,55 @@ html {
   }
   .container {
     max-width: 100%;
+  }
+  #reward {
+    width: 80%;
+  }
+  .wx-share-modal {
+    .wx-qrcode {
+      width: 10rem;
+    }
+  }
+  .toc-bot-wrap {
+    width: 60vw;
+  }
+  .to-top,
+  .toc-bot-btn {
+    width: 2.4rem;
+    height: 2.4rem;
+    line-height: 2rem;
+    .icon {
+      font-size: 1rem;
+    }
+  }
+  .to-top {
+    bottom: 2.4rem;
+  }
+  .toc-bot-btn {
+    bottom: 6rem;
+  }
+  .page-archive-wrap,
+  .page-tag-wrap,
+  .page-category-wrap {
+    .container {
+      padding: 0 1rem;
+    }
+  }
+  .page-banner {
+    height: 14rem;
+  }
+  .local-search {
+    padding: 1rem;
+    background-color: rgba($color: $primary, $alpha: 0.28);
+  }
+  .search-form-wrap.on {
+    top: 0;
+  }
+  .local-search-close {
+    top: 1.6rem;
+    right: 2rem;
+  }
+  .search-result-list li .search-result-title {
+    font-size: 1.2rem;
   }
 }

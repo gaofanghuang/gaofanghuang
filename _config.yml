@@ -8,7 +8,7 @@ subtitle: ''
 description: 'Developer & Designer'
 keywords: '编程, 游戏, 设计'
 author: Gaofang Huang
-language: zh-cn
+language: zh-Hans
 timezone: ''
 
 # URL
@@ -94,7 +94,6 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-# theme: ayer
 theme: carrot
 
 # Deployment
@@ -109,12 +108,12 @@ douban:
   user: promise_0o
   builtin: false
   book:
-    title: '读书'
-    quote: ''
+    title: '读书清单'
+    quote: '好好学习，天天向上(☄⊙ω⊙)☄'
   movie:
-    title: '电影'
-    quote: ''
+    title: '电影清单'
+    quote: '观影记录(๑ºั╰╯ºั๑) '
   game:
-    title: '游戏'
-    quote: ''
+    title: '游戏清单'
+    quote: '我的快乐源泉~♡ʚ♡ɞ(ू• ̮ •ू❁)'
   timeout: 10000 

@@ -1,16 +1,26 @@
 <% if (post.link){ %>
-  <h2 itemprop="name">
-    <a class="<%= class_name %>" href="<%- url_for(post.link) %>" itemprop="url"
-      ><%= post.title %></a
-    >
-  </h2>
-  <% } else if (post.title){ %> <% if (index){ %>
-  <h2 itemprop="name">
-    <a class="<%= class_name %>" href="<%- url_for(post.path) %>"
-      ><%= post.title %><%- partial('topping') %></a> 
-  </h2>
-  <% } else { %>
-  <h1 class="<%= class_name %>" style="border-left:0" itemprop="name">
-    <%= post.title %>
-  </h1>
-  <% } %> <% } %>
+<h2 itemprop="name" class="flex flex-y">
+  <a class="<%= class_name %>" href="<%- url_for(post.link) %>" itemprop="url">
+    <span><%= post.title %></span>
+  </a>
+  <% if (post.state){ %>
+  <span class="title-state-<%- post.state %>"></span>
+  <% } %>
+</h2>
+<% } else if (post.title){ %> <% if (index){ %>
+<h2 itemprop="name" class="flex flex-y">
+  <a class="<%= class_name %>" href="<%- url_for(post.path) %>">
+    <span><%= post.title %><%- partial('topping') %></span>
+  </a>
+  <% if (post.state){ %>
+  <span class="title-state-<%- post.state %>"></span>
+  <% } %>
+</h2>
+<% } else { %>
+<h1 class="<%= class_name %> flex flex-y" style="border-left: 0;" itemprop="name">
+  <span><%= post.title %></span>
+  <% if (post.state){ %>
+  <span class="title-state-<%- post.state %>"></span>
+  <% } %>
+</h1>
+<% } %> <% } %>

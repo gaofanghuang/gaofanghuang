@@ -20,8 +20,7 @@
           </svg>
         </a>
       </div>
-      <% } %>
-      <% if (theme.bilibili){ %>
+      <% } %> <% if (theme.bilibili){ %>
       <div class="index-author-sns-link">
         <a href="<%- theme.bilibili %>">
           <svg class="icon" aria-hidden="true">
@@ -29,8 +28,7 @@
           </svg>
         </a>
       </div>
-      <% } %>
-      <% if (theme.email){ %>
+      <% } %> <% if (theme.email){ %>
       <div class="index-author-sns-link">
         <a href="<%- theme.email %>">
           <svg class="icon" aria-hidden="true">
@@ -41,4 +39,14 @@
       <% } %>
     </ul>
   </div>
+  <% if (theme.rss){ %>
+  <div class="index-author-rss flex-y flex-x flex">
+    <a target="_blank" href="<%- url_for(theme.rss) %>">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-rss"></use>
+      </svg>
+      <span>订阅RSS</span>
+    </a>
+  </div>
+  <% } %>
 </div>

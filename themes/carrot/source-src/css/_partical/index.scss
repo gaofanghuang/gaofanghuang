@@ -1,8 +1,13 @@
 .index-wrap {
-  padding: 1rem 0;
   .container {
     display: flex;
     justify-content: space-between;
+  }
+  .index-banner {
+    width: 100%;
+    height: 20rem;
+    background: #f2f2f2;
+    margin-bottom: 1rem;
   }
 }
 
@@ -34,7 +39,7 @@
 .index-author-wrap {
   .index-author-banner {
     width: 100%;
-    height: 3rem;
+    height: 3.6rem;
     background: #efefef;
     position: relative;
   }
@@ -72,6 +77,25 @@
     padding: 0 1rem 1rem 1rem;
     font-size: 1.2rem;
   }
+  .index-author-rss {
+    border-top: 1px solid #f5f5f5;
+    padding: 0.6rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    .icon {
+      font-size: 1.2rem;
+      margin-right: 0.4rem;
+    }
+    a {
+      color: #cdcdcd;
+      &:hover {
+        color: #999;
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 /** 标签 */
@@ -94,8 +118,8 @@
   }
   .tag-cloud-item-link {
     display: block;
-    color: #666666;
-    padding: 0.2rem 0.8rem;
+    color: #999;
+    padding: 0.36rem 0.8rem;
     font-size: 0.8rem;
 
     &:hover {
@@ -115,11 +139,11 @@
     padding: 1rem;
   }
   .category-menu-list-link {
-    color: #666666;
+    color: #999;
     display: flex;
     align-items: center;
     &:hover {
-      color: $primary;
+      color: #666;
       &::after {
         display: none;
       }
@@ -129,7 +153,7 @@
     display: flex;
     &::before {
       display: inline-block;
-      content: "-";
+      content: '-';
       margin-right: 0.5rem;
       color: #eaeaea;
     }
@@ -203,6 +227,18 @@
     color: #999999;
     margin-top: 1rem;
     font-size: 0.8rem;
+  }
+}
+
+/** douban */
+.index-douban-wrap {
+  .index-douban-list {
+    padding: 1rem;
+  }
+  .index-douban-item {
+    & + .index-douban-item {
+      margin-top: 0.4rem;
+    }
   }
 }
 

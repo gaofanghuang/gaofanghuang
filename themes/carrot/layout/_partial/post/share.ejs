@@ -1,51 +1,51 @@
-<%
-  var sUrl = url.replace(/index\.html$/, '');
-  sUrl = /^(http:|https:)\/\//.test(sUrl) ? sUrl : 'http:' + sUrl;
-%>
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        <%- theme.share_text %>
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          <% if( theme.share_china ){ %>
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          <% } %>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
+<% var sUrl = url.replace(/index\.html$/, ''); sUrl = /^(http:|https:)\/\//.test(sUrl) ? sUrl : 'http:' + sUrl; %>
+<div class="share-wrap flex flex-y" id="shareBar">
+  <span class="share-btn flex flex-y">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-fenxiang"></use>
+    </svg>
+    <%- theme.share_text %>
+  </span>
+  <div class="share-list flex flex-y">
+    <a class="weibo share-sns-btn" href="javascript:;" data-type="weibo">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-weibo"></use>
+      </svg>
+    </a>
+    <a class="douban share-sns-btn" href="javascript:;" data-type="douban">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-douban"></use>
+      </svg>
+    </a>
+    <a class="qq share-sns-btn" href="javascript:;" data-type="qq">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-qq"></use>
+      </svg>
+    </a>
+    <a
+      class="weixin share-sns-btn wxFab"
+      href="javascript:;"
+      data-type="weixin"
+    >
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-weixin"></use>
+      </svg>
+    </a>
+  </div>
 </div>
 
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="<%- 'qrcode' in locals ? qrcode(sUrl) : '//api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + sUrl  %>" alt="微信分享二维码">
-    </div>
+<div id="shareMask" class="mask-wrap"></div>
+<div class="modal-wrap wx-share-modal">
+  <div class="share-weixin-title">扫一扫，分享到微信</div>
+  <div class="wx-qrcode">
+    <img
+      src="<%- 'qrcode' in locals ? qrcode(sUrl) : '//api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + sUrl  %>"
+      alt="微信分享二维码"
+    />
+  </div>
+  <div class="modal-close" id="wxClose">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-close"></use>
+    </svg>
+  </div>
 </div>
-
-<div id="share-mask"></div>

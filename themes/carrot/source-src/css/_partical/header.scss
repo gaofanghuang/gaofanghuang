@@ -57,13 +57,17 @@
   height: 4rem;
   line-height: 4rem;
   text-align: center;
+  z-index: 99;
   .icon {
     font-size: 1.6rem;
   }
 }
 
 .mobile-header {
+  position: fixed;
   display: flex !important;
+  top: 0;
+  left: 0;
   width: 4rem;
   height: 100vh;
   box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.18) inset;

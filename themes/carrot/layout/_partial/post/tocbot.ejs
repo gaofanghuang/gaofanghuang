@@ -1,6 +1,13 @@
-<% if (post.toc != false && toc(page.content).length!==0){ %>
-    <div class="tocbot"></div>
-<% } %>
-
-
-
+<div class="toc-bot-btn" id="tocBotBtn">
+  <svg class="icon" aria-hidden="true">
+    <use xlink:href="#icon-menu"></use>
+  </svg>
+</div>
+<div class="toc-bot-wrap" id="tocBotWrap">
+  <div class="toc-bot-close" id="tocBotClose">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-close"></use>
+    </svg>
+  </div>
+  <div id="tocBot"></div>
+</div>

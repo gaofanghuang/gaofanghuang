@@ -1,0 +1,44 @@
+.hexo-douban-active {
+  background: $primary !important;
+  &:hover {
+    color: #fff;
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.hexo-douban-tabs {
+  margin-top: 2rem !important;
+  .hexo-douban-tab {
+    margin-right: 1rem;
+  }
+}
+
+.hexo-douban-item {
+  display: flex;
+  padding: 2rem 0 !important;
+  min-height: 16rem !important;
+  border-bottom: 1px #efefef solid !important;
+}
+
+.hexo-douban-info {
+  padding-left: 4rem !important;
+}
+
+.hexo-douban-picture {
+  position: unset !important;
+  img {
+    margin: 0 !important;
+  }
+}
+
+.hexo-douban-pagination a {
+  &:hover {
+    background: $primary !important;
+    color: #fff;
+    &::after {
+      display: none;
+    }
+  }
+}

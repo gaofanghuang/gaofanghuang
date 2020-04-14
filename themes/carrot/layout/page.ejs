@@ -1,1 +1,11 @@
-<%- partial('_partial/article', {post: page, index: false}) %>
+<div class="page-wrap">
+  <div class="page-banner flex flex-x flex-y">
+    <canvas id="bannerAni"></canvas>
+    <h1 class="page-type-title">
+      <%= page.title %>
+    </h1>
+  </div>
+  <div class="container">
+    <%- partial('_partial/article', {post: page, index: false}) %>
+  </div>
+</div>

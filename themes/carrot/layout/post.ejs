@@ -1,3 +1,8 @@
-<div class="post-wrap container">
-  <%- partial('_partial/article', {post: page, index: false}) %>
+<div class="post-wrap">
+  <div class="page-banner flex flex-x flex-y">
+    <canvas id="bannerAni"></canvas>
+  </div>
+  <div class="container">
+    <%- partial('_partial/article', {post: page, index: false}) %>
+  </div>
 </div>

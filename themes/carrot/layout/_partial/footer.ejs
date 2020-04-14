@@ -1,7 +1,7 @@
 <footer class="footer-wrap">
   <div class="container">
       <div class="left">
-        <div class="footer-copyright">
+        <div class="footer-copyright flex flex-y">
           &copy;
           <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %>
           <svg class="icon" aria-hidden="true">

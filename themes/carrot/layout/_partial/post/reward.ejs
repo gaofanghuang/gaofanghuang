@@ -1,0 +1,30 @@
+<div id="rewardMask" class="mask-wrap"></div>
+
+<!-- #reward -->
+<div id="reward" class="modal-wrap">
+  <div class="reward-title flex flex-y flex-x">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-smile"></use>
+    </svg>
+    <span><%= theme.reward_wording%></span>
+  </div>
+  <div class="reward-box flex flex-y">
+    <% if(theme.alipay) {%>
+    <div class="reward-item">
+      <img class="reward-img" src="<%- url_for(theme.alipay) %>">
+      <span class="reward-type">支付宝</span>
+    </div>
+    <% } %>
+    <% if(theme.weixin) {%>
+    <div class="reward-item">
+      <img class="reward-img" src="<%- url_for(theme.weixin) %>">
+      <span class="reward-type">微信</span>
+    </div>
+    <% } %>
+  </div>
+  <div class="modal-close">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-close"></use>
+    </svg>
+  </div>
+</div>

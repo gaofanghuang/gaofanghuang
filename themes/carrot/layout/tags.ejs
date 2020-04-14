@@ -1,0 +1,22 @@
+<div class="page-tags-wrap">
+  <% if (site.tags.length){ %>
+  <div class="page-banner flex flex-x flex-y">
+    <canvas id="bannerAni"></canvas>
+    <h1 class="page-type-title"><%= __('tags') %></h1>
+  </div>
+  <div class="container">
+    <ul class="tag-list">
+      <% site.tags.sort('name').each(function(item){ %>
+        <% if(item.posts.length){%>
+          <li class="tag-list-item tag-count-type-<%= item.posts.length %>">
+            <a href="<%- config.root %><%- item.path %>" class="tag-list-link">
+              <%= item.name %>
+              <span class="tag-list-count"><%= item.posts.length %></span>
+            </a>
+          </li>
+        <% } %>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+</div>

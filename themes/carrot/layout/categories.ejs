@@ -1,0 +1,27 @@
+<div class="page-category-wrap">
+  <% if (site.categories.length){ %>
+  <div class="page-banner flex flex-x flex-y">
+    <canvas id="bannerAni"></canvas>
+    <h1 class="page-type-title"><%= __('categories') %></h1>
+  </div>
+  <div class="container">
+    <ul class="category-list">
+      <% site.categories.sort('name').each(function(item){ %> <%
+      if(item.posts.length){ %>
+
+      <li class="category-item">
+        <a
+          class="category-item-link"
+          href="<%- config.root %><%- item.path %>"
+          title="<%= item.name %>"
+        >
+          <%= item.name %>
+          <span class="category-item-count"><%= item.posts.length %></span>
+        </a>
+      </li>
+
+      <% } %> <% }); %>
+    </ul>
+  </div>
+  <% } %>
+</div>

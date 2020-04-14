@@ -36,10 +36,8 @@ excerpt_all: false
 
 # 是否开启文章分享按钮
 share_enable: true
-# 国内的社交平台(If you are not in China, maybe you prefer to set:false)
-share_china: true
 # 文章分享文字
-share_text: 分享
+share_text: 分享到
 
 # 分页文字
 nav_text:
@@ -75,10 +73,6 @@ weixin: /images/wechat.jpg
 # 版权声明
 # 版权声明type设定：0-关闭版权声明； 1-文章对应的md文件里有copyright: true属性，才有版权声明； 2-所有文章均有版权声明
 copyright_type: 2
-
-# 是否启用搜索
-# 需要安装hexo-generator-searchdb(https://github.com/theme-next/hexo-generator-searchdb)
-search: true
 
 # RSS订阅(先安装hexo-generator-feed插件，再去博客根目录config进行配置)
 rss: /atom.xml
