@@ -38,6 +38,36 @@ git config --global user.email "email@example.com"
 
 ## Git 常用命令
 
+clone远程仓库
+
+```shell
+git clone git@github.com:xxx/xxx.git
+```
+
+
+更新提交命令:
+
+```shell
+git fetch origin develop
+git checkout develop
+git merge origin/develop
+```
+
+更新子模块：
+
+```shell
+git submodule update --remote
+```
+
+放弃本地修改强制更新:
+
+```shell
+git fetch --all
+git reset --hard origin/develop
+```
+
+## Git 命令列表
+
 ```shell
 # 初始化仓库
 git init
@@ -86,25 +116,4 @@ git push origin master
 
 # 拉取远程仓库中的某个分支的最新代码，并合并到本地的指定分支上
 git pull <远程库名> <远程分支名>:<本地分支名>
-```
-
-常用的更新提交命令:
-
-```shell
-git fetch origin develop
-git checkout develop
-git merge origin/develop
-```
-
-更新子模块：
-
-```shell
-git submodule update --remote
-```
-
-放弃本地修改强制更新:
-
-```shell
-git fetch --all
-git reset --hard origin/develop
 ```

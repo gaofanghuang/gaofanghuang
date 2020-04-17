@@ -27,7 +27,23 @@
   }
   .header-nav-item {
     margin-right: 2rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+  .header-nav-link {
+    display: block;
+    position: relative;
+    padding: 0.2rem 1.4rem;
+    border-radius: 1.2rem;
+    &:hover {
+      &::after {
+        display: none;
+      }
+    }
+    &.active {
+      background: linear-gradient(135deg, $primary, $green);
+      color: #fff;
+      box-shadow: 0 0 6px rgba($color: #000000, $alpha: 0.1) inset;
+    }
   }
 
   .header-search {

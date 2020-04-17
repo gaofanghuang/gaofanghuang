@@ -125,6 +125,8 @@ Promise 原型方法：
 
 - `Promise.prototype.finally(onFinally)`：不管最终返回的是 resolve 还是 reject, finally 里的代码都会执行，一般写在 catch 后面。
 
+- `Promise.allSettled()` 返回一个在所有给定的promise已被决议或被拒绝后决议的promise，并带有一个对象数组，每个对象表示对应的promise结果。
+
 Tips:
 
 1. 写 promise 最好加上 catch。

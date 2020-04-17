@@ -121,3 +121,61 @@ header {
   padding-top: constant(safe-area-inset-top);
 }
 ```
+
+## 应用场景
+
+在移动端项目里推荐使用`vm`做单位
+
+需要同时兼容PC端和移动端时使用`rem`做单位
+
+## 当前方案
+
+本博客使用的自适应方案
+
+```javascript
+;((doc, win) => {
+  const docEl = doc.documentElement
+  const resizeEvt =
+    'orientationchange' in window ? 'orientationchange' : 'resize'
+  const recalc = () => {
+    let clientWidth = docEl.clientWidth
+    if (!clientWidth) {
+      return
+    }
+    clientWidth = clientWidth > 750 ? 750 : clientWidth
+    const rem = 30 * (clientWidth / 750)
+    win.$REM = rem
+    docEl.style.fontSize = `${rem}px`
+  }
+  if (!doc.addEventListener) {
+    return
+  }
+  win.addEventListener(resizeEvt, recalc, false)
+  doc.addEventListener('DOMContentLoaded', recalc, false)
+})(document, window)
+```
+
+```scss
+html {
+  font-size: 14px;
+  /* 平滑渐变 */
+  -webkit-transition: font-size 0.2s ease-out;
+}
+
+/** 自适应 */
+/** 桌面端 */
+@media only screen and (min-width: 1025px) {
+  html {
+    font-size: 14px !important;
+  }
+}
+@media only screen and (min-width: 1367px) {
+  html {
+    font-size: 16px !important;
+  }
+}
+/** 移动端 */
+@media only screen and (max-width: 1024px) {
+  // 个别模块兼容性处理
+}
+```

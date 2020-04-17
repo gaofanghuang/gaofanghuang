@@ -46,7 +46,9 @@
   table,
   h2,
   h3,
-  h4 {
+  h4,
+  h6,
+  h5 {
     margin-bottom: 1rem;
   }
 
@@ -97,11 +99,9 @@
   blockquote {
     position: relative;
     padding-left: 2rem;
-    background: rgba($primary, 0.1);
+    background: rgba($warning, 0.1);
     padding: 1rem;
-    border-left: 3px solid $primary;
-    margin-left: -1rem;
-    margin-right: -1rem;
+    border-left: 3px solid $warning;
 
     p {
       &:last-of-type {
@@ -118,19 +118,41 @@
   ol {
     counter-reset: sectioncounter;
 
-    li {
-      padding-left: 2rem;
+    & > li {
+      padding-left: 1.2rem;
       position: relative;
       list-style: none;
 
       &:before {
         position: absolute;
-        top: 0;
+        top: 0.16rem;;
         left: 0;
         font-size: inherit;
         content: counter(sectioncounter) '.';
         counter-increment: sectioncounter;
         font-size: 0.8rem;
+        color: $black;
+        z-index: 1;
+      }
+    }
+  }
+
+  ul {
+    & > li {
+      padding-left: 1.2rem;
+      position: relative;
+      list-style: none;
+
+      &:before {
+        position: absolute;
+        top: 0.6rem;
+        left: 0;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        border: 1px solid #dfdfdf;
+        font-size: inherit;
+        content: '';
         color: $black;
         z-index: 1;
       }
@@ -144,12 +166,17 @@
 
   h2 {
     font-size: 1.4rem;
+    margin-left: -1rem;
+    padding-left: 1rem;
+    border-left: 3px solid $primary;
   }
 
   h3 {
     font-size: 1.2rem;
   }
 
+  h6,
+  h5,
   h4 {
     font-size: 1rem;
   }
@@ -177,8 +204,26 @@
 
   em {
     font-style: normal;
+    position: relative;
+    z-index: 1;
     font-weight: 600;
-    color: $active;
+    &::before {
+      position: absolute;
+      left: 4px;
+      top: -4px;
+      z-index: -1;
+      display: inline-block;
+      transform: rotate(-2deg);
+      background-color: rgba($error, 0.16);
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 0.4rem;
+    }
+  }
+
+  del {
+    color: #dadada;
   }
 
   p {

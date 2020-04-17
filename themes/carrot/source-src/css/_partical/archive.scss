@@ -12,9 +12,6 @@
 }
 
 .page-tags-wrap {
-  .page-type-title {
-    font-size: 1.4rem;
-  }
   .tag-list {
     display: flex;
     flex-wrap: wrap;
@@ -117,9 +114,6 @@
 }
 
 .page-category-wrap {
-  .page-type-title {
-    font-size: 1.4rem;
-  }
   .category-list {
     display: flex;
     flex-wrap: wrap;
@@ -158,13 +152,6 @@
 }
 
 .page-archive-wrap {
-  .page-type-title {
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
-    .icon {
-      margin-right: 0.4rem;
-    }
-  }
   .archive-year-wrap {
     margin-bottom: 1rem;
   }

@@ -23,6 +23,9 @@
   border-bottom-left-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
   @include scroll-bar($primary);
+  .container {
+    position: relative;
+  }
 }
 .local-search-input {
   font-size: 1rem;
@@ -38,8 +41,8 @@
 }
 .local-search-close {
   position: absolute;
-  top: 1.85rem;
-  right: 4.25rem;
+  top: 0.6rem;
+  right: 0.8rem;
   height: 2rem;
   width: 2rem;
   padding: 0;

@@ -13,49 +13,43 @@ $(function () {
     canvas.width = $('.index-banner, .page-banner').width()
     canvas.height = $('.index-banner, .page-banner').height()
 
-    let balls = []
+    let blocks = []
 
-    let ballNumber = 25
+    let blockNumber = Math.random() * 30 + 5
 
-    // 重力加速度
-    const speed = 0.2
-    // 反弹系数
-    const bounce = -0.8
-
-    // 生成n个不同形状和颜色的小球
-    for (let i = 0; i < ballNumber; i++) {
-      let size = 4 + Math.random() * 2 // 大小
-      let color = 'rgba(0, 0, 0, 0.2)' // 颜色
-      ball = new Ball(size, color)
-      ball.id = `ball_${i}`
-      ball.x = Math.random() * border.right
-      ball.y = 0
-      ball.vx = Math.random() * 2 + 1
-      ball.vy = Math.random() * 2 + 1
-
-      balls.push(ball)
+    // 生成n个不同形状和颜色的方块
+    for (let i = 0; i < blockNumber; i++) {
+      let size = Math.random() * 10 // 大小
+      let alpha = Math.random() + 0.1
+      let color = `rgba(255, 255, 255, ${alpha})` // 颜色
+      block = new Block(size, color)
+      block.id = `block_${i}`
+      block.x = Math.random() * border.right
+      block.y = Math.random() * 10 + border.bottom
+      block.vx = Math.random()
+      block.vy = Math.random() * Math.random()
+      blocks.push(block)
     }
 
     // 绘制图形
-    function drawBall(ball, pos) {
-      ball.vy += speed
-      ball.y += ball.vy
+    function drawBlock(block, pos) {
+      block.y -= block.vy
 
-      // 边界反弹
-      if (ball.y + ball.radius > border.bottom) {
-        ball.y = border.bottom - ball.radius
-        ball.vy *= bounce
+      // 边界循环
+      if (block.y < border.top + block.length) {
+        block.y = Math.random() * 10 + border.bottom
+        block.x = Math.random() * border.right
       }
 
-      ball.draw(ctx)
+      block.draw(ctx)
     }
 
     function drawFrame() {
       clear()
       raf = window.requestAnimationFrame(drawFrame)
-      let i = balls.length
+      let i = blocks.length
       while (i--) {
-        drawBall(balls[i], i)
+        drawBlock(blocks[i], i)
       }
     }
 
@@ -70,9 +64,9 @@ $(function () {
   }
 })
 
-// 定义一个小球的类
-class Ball {
-  constructor(radius = 25, color = 'blue') {
+// 定义一个块的类
+class Block {
+  constructor(length = 5, color = 'blue') {
     this.x = 100
     this.y = 100
     this.vx = 5
@@ -80,7 +74,7 @@ class Ball {
     this.ax = 0
     this.ay = 0
     this.scale = 1
-    this.radius = radius
+    this.length = length
     this.color = color
     this.id = ''
     this.angle = 0
@@ -88,20 +82,19 @@ class Ball {
   }
   draw(ctx) {
     ctx.save()
-    ctx.beginPath()
-    ctx.arc(this.x, this.y, this.radius * this.scale, 0, Math.PI * 2, true)
-    ctx.closePath()
     ctx.globalAlpha = this.opacity
     ctx.fillStyle = this.color
-    ctx.fill()
+    ctx.fillRect(this.x, this.y, this.length, this.length)
+    ctx.shadowColor = this.color
+    ctx.shadowBlur = 3
     ctx.restore()
   }
   getBounds() {
     return {
-      left: this.x - this.radius,
-      top: this.y - this.radius,
-      right: this.x + this.radius,
-      bottom: this.y + this.radius,
+      left: this.x,
+      top: this.y,
+      right: this.x + this.length,
+      bottom: this.y + this.length,
     }
   }
 }

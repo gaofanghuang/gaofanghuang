@@ -27,6 +27,10 @@ html {
     .header-search {
       border-left: none;
     }
+    .header-nav-link {
+      border-radius: 0;
+      padding: 0.6rem 0;
+    }
   }
   .footer-wrap {
     height: 6rem;

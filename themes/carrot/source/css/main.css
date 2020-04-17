@@ -315,8 +315,8 @@ a {
 .highlight {
   background: #333;
   font-size: 0.8rem;
-  margin-left: -1rem;
-  margin-right: -1rem; }
+  border-radius: 0.4rem;
+  overflow: hidden; }
   .highlight table {
     margin: 0 !important;
     width: auto !important;
@@ -389,7 +389,9 @@ a {
   .markdown-view table,
   .markdown-view h2,
   .markdown-view h3,
-  .markdown-view h4 {
+  .markdown-view h4,
+  .markdown-view h6,
+  .markdown-view h5 {
     margin-bottom: 1rem; }
   .markdown-view h1 {
     margin-top: 1.4rem;
@@ -439,11 +441,9 @@ a {
   .markdown-view blockquote {
     position: relative;
     padding-left: 2rem;
-    background: rgba(40, 197, 194, 0.1);
+    background: rgba(255, 198, 26, 0.1);
     padding: 1rem;
-    border-left: 3px solid #28C5C2;
-    margin-left: -1rem;
-    margin-right: -1rem; }
+    border-left: 3px solid #ffc61a; }
     .markdown-view blockquote p:last-of-type {
       margin-bottom: 0; }
     .markdown-view blockquote + ol,
@@ -451,13 +451,13 @@ a {
       margin-top: 0.8rem; }
   .markdown-view ol {
     counter-reset: sectioncounter; }
-    .markdown-view ol li {
-      padding-left: 2rem;
+    .markdown-view ol > li {
+      padding-left: 1.2rem;
       position: relative;
       list-style: none; }
-      .markdown-view ol li:before {
+      .markdown-view ol > li:before {
         position: absolute;
-        top: 0;
+        top: 0.16rem;
         left: 0;
         font-size: inherit;
         content: counter(sectioncounter) ".";
@@ -465,13 +465,34 @@ a {
         font-size: 0.8rem;
         color: #333333;
         z-index: 1; }
+  .markdown-view ul > li {
+    padding-left: 1.2rem;
+    position: relative;
+    list-style: none; }
+    .markdown-view ul > li:before {
+      position: absolute;
+      top: 0.6rem;
+      left: 0;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      border: 1px solid #dfdfdf;
+      font-size: inherit;
+      content: '';
+      color: #333333;
+      z-index: 1; }
   .markdown-view h1 {
     font-size: 1.6rem;
     text-align: center; }
   .markdown-view h2 {
-    font-size: 1.4rem; }
+    font-size: 1.4rem;
+    margin-left: -1rem;
+    padding-left: 1rem;
+    border-left: 3px solid #28C5C2; }
   .markdown-view h3 {
     font-size: 1.2rem; }
+  .markdown-view h6,
+  .markdown-view h5,
   .markdown-view h4 {
     font-size: 1rem; }
   .markdown-view hr {
@@ -491,8 +512,23 @@ a {
     margin: 0.8rem auto; }
   .markdown-view em {
     font-style: normal;
-    font-weight: 600;
-    color: #ff6685; }
+    position: relative;
+    z-index: 1;
+    font-weight: 600; }
+    .markdown-view em::before {
+      position: absolute;
+      left: 4px;
+      top: -4px;
+      z-index: -1;
+      display: inline-block;
+      transform: rotate(-2deg);
+      background-color: rgba(255, 102, 133, 0.16);
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 0.4rem; }
+  .markdown-view del {
+    color: #dadada; }
   .markdown-view p {
     margin-bottom: 1rem;
     font-size: 1rem; }
@@ -590,22 +626,31 @@ a {
   .toc-bot-btn:hover {
     box-shadow: none; }
 
+.index-banner,
 .page-banner {
   margin-bottom: 1rem;
   width: 100%;
-  height: 20rem;
-  background: #f2f2f2; }
-
-.page-banner,
-.index-banner {
+  height: 12rem;
+  background: #999;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1; }
-  .page-banner #bannerAni,
-  .index-banner #bannerAni {
+  .index-banner #bannerAni,
+  .page-banner #bannerAni {
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1; }
+
+.page-banner .page-type-title {
+  font-size: 1.6rem;
+  margin-bottom: 2rem; }
+  .page-banner .page-type-title .icon {
+    margin-right: 0.4rem; }
+
+.index-banner {
+  height: 24rem; }
 
 .body-no-scroll {
   height: 100vh;
@@ -652,7 +697,18 @@ a {
     height: 100%; }
   .header-wrap .header-nav-item {
     margin-right: 2rem;
-    font-size: 1.1rem; }
+    font-size: 1rem; }
+  .header-wrap .header-nav-link {
+    display: block;
+    position: relative;
+    padding: 0.2rem 1.4rem;
+    border-radius: 1.2rem; }
+    .header-wrap .header-nav-link:hover::after {
+      display: none; }
+    .header-wrap .header-nav-link.active {
+      background: linear-gradient(135deg, #28C5C2, #79E2B7);
+      color: #fff;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1) inset; }
   .header-wrap .header-search {
     width: 4rem;
     height: 4rem;
@@ -742,12 +798,6 @@ a {
   display: flex;
   justify-content: space-between; }
 
-.index-wrap .index-banner {
-  width: 100%;
-  height: 20rem;
-  background: #f2f2f2;
-  margin-bottom: 1rem; }
-
 .index-sidebar {
   width: 30%; }
 
@@ -766,12 +816,12 @@ a {
     width: 100%;
     height: 3rem;
     padding-left: 1rem;
-    font-size: 1.1rem; }
+    font-size: 1rem; }
 
 /** author */
 .index-author-wrap .index-author-banner {
   width: 100%;
-  height: 3.6rem;
+  height: 4.8rem;
   background: #efefef;
   position: relative; }
 
@@ -889,7 +939,7 @@ a {
   position: relative;
   padding: 1rem; }
   .we-wrap .we-avatars {
-    width: 160px;
+    width: 12rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -897,6 +947,7 @@ a {
     align-items: center; }
   .we-wrap .we-avatar-you,
   .we-wrap .we-avatar-i {
+    flex-shrink: 0;
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 50%;
@@ -953,9 +1004,6 @@ a {
 
 .post-wrap .article-wrap .article-meta {
   margin-bottom: 2.4rem; }
-
-.page-tags-wrap .page-type-title {
-  font-size: 1.4rem; }
 
 .page-tags-wrap .tag-list {
   display: flex;
@@ -1036,9 +1084,6 @@ a {
     background: rgba(255, 102, 133, 0.2);
     border-color: rgba(255, 102, 133, 0.2); }
 
-.page-category-wrap .page-type-title {
-  font-size: 1.4rem; }
-
 .page-category-wrap .category-list {
   display: flex;
   flex-wrap: wrap; }
@@ -1066,12 +1111,6 @@ a {
     padding: 0.6rem 1rem; }
     .page-category-wrap .category-item .category-item-link:hover::after {
       display: none; }
-
-.page-archive-wrap .page-type-title {
-  font-size: 1.6rem;
-  margin-bottom: 2rem; }
-  .page-archive-wrap .page-type-title .icon {
-    margin-right: 0.4rem; }
 
 .page-archive-wrap .archive-year-wrap {
   margin-bottom: 1rem; }
@@ -1514,6 +1553,8 @@ a {
     background-color: rgba(255, 255, 255, 0); }
   .local-search:hover::-webkit-scrollbar-thumb {
     background-color: rgba(40, 197, 194, 0.6); }
+  .local-search .container {
+    position: relative; }
 
 .local-search-input {
   font-size: 1rem;
@@ -1529,8 +1570,8 @@ a {
 
 .local-search-close {
   position: absolute;
-  top: 1.85rem;
-  right: 4.25rem;
+  top: 0.6rem;
+  right: 0.8rem;
   height: 2rem;
   width: 2rem;
   padding: 0;
@@ -1636,6 +1677,9 @@ html {
     display: none; }
     .header-wrap .header-search {
       border-left: none; }
+    .header-wrap .header-nav-link {
+      border-radius: 0;
+      padding: 0.6rem 0; }
   .footer-wrap {
     height: 6rem;
     font-size: 0.8rem; }

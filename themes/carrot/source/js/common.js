@@ -26,26 +26,28 @@ $(function () {
   })
 
   // 回到顶部
-  let upperLimit = 1000
+  let upperLimit = 600
   let scrollElem = $('#toTop')
   scrollElem.hide()
   $(document).scroll(function () {
     let scrollTop = $(document).scrollTop()
     if (scrollTop > upperLimit) {
+      $('#header').fadeOut()
       $(scrollElem).fadeIn()
     } else {
+      $('#header').fadeIn()
       $(scrollElem).fadeOut()
     }
   })
   $(scrollElem).click(function () {
     $(document).scrollTop(0)
   })
-  
+
   // 显示文章目录
-  $('#tocBotBtn').click(function() {
+  $('#tocBotBtn').click(function () {
     $('#tocBotWrap').fadeIn(150)
   })
-  $('#tocBotClose').click(function() {
+  $('#tocBotClose').click(function () {
     $('#tocBotWrap').fadeOut(100)
   })
 
@@ -56,7 +58,6 @@ $(function () {
 
   var startSearchAnim = function () {
     isSearchAnim = true
-    
   }
 
   var stopSearchAnim = function (callback) {
@@ -89,6 +90,16 @@ $(function () {
   // 生成search.xml
   $.getScript('/js/search.js', function () {
     searchFunc('/search.xml', 'local-search-input', 'local-search-result')
+  })
+
+  // 高亮导航
+  let curPath = location.pathname.replace(/\//g, '')
+  $('#siteMenu .header-nav-link').each(i => {
+    let thePath = $('#siteMenu .header-nav-link').eq(i).attr('href').replace(/\//g, '')
+    $('#siteMenu .header-nav-link').eq(i).removeClass('active')
+    if (curPath === thePath) {
+      $('#siteMenu .header-nav-link').eq(i).addClass('active')
+    }
   })
 })
 
