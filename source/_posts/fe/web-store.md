@@ -1,5 +1,5 @@
 ---
-title: web-store
+title: 浏览器数据存储方案
 date: 2020-04-07 15:18:52
 tags:
   - javascript

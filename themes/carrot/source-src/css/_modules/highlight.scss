@@ -59,4 +59,67 @@
       }
     }
   }
+  &.html {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'html';
+    }
+  }
+  &.javascript {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'javascript';
+    }
+  }
+  &.shell {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'shell';
+    }
+  }
+  &.css {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'css';
+    }
+  }
+  &.scss {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'scss';
+    }
+  }
+  &.node {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'node';
+    }
+  }
+  &.vue {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'vue';
+    }
+  }
 }

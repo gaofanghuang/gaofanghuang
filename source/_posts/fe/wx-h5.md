@@ -10,6 +10,8 @@ categories: 前端笔记
 
 [微信公众号JS-SDK开放文档](https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html)
 
+<!--more-->
+
 ## 环境搭建
 
 ### npm库
@@ -19,5 +21,9 @@ categories: 前端笔记
 ```shell
 npm install weixin-js-sdk --save
 ```
+
+## 应用
+
+### 用户消息推送
 
 ## 常见问题

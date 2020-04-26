@@ -1,5 +1,5 @@
 ---
-title: Promise
+title: Promise 基础入门
 date: 2020-03-09 09:15:46
 tags:
   - Promise
