@@ -158,7 +158,7 @@
   .archive-year {
     color: #666;
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 2rem;
     &:hover {
       color: $primary;
       &::after {
@@ -167,11 +167,12 @@
     }
   }
   .archive-article-date {
+    position: absolute;
+    top: 0.2rem;
+    left: -1.4rem;
     display: inline-block;
     background: $primary;
     color: #fff;
-    margin-left: -1.4rem;
-    margin-bottom: 1rem;
     font-size: 0.8rem;
     padding: 0.1rem 0.4rem;
     &:hover {
@@ -181,10 +182,12 @@
     }
   }
   .archive-article-header {
+    position: relative;
     .archive-article-title {
       display: block;
       color: #666;
       font-size: 1.4rem;
+      padding-left: 2.4rem;
       &:hover {
         color: $primary;
         &::after {

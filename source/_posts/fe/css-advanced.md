@@ -1,5 +1,5 @@
 ---
-title: CSS 进阶应用 -- 纯 CSS 绘图
+title: CSS 进阶应用
 date: 2020-04-26 11:10:00
 tags:
   - css
@@ -10,7 +10,7 @@ categories: 前端笔记
 
 ## 纯 css 绘图
 
-[查看 DEMO 纯 css 绘制图形](https://gaofanghuang.github.io/demo/api/css/demo1)
+[查看DEMO 纯css绘制图形](https://gaofanghuang.github.io/demo/api/css/demo1)
 
 当我们需要三角形、圆形、半圆等简单图形时，用 css 直接绘制会比加载图片更好，通常可以使用 border 属性方法来绘制，目前主流的浏览器还可以使用 clip-path 属性来绘制图形。
 
@@ -203,3 +203,20 @@ clip-path: unset;
 除了绘制简单图形，还可以使用clip-path制作变形动画，得到更自然的过渡效果。
 
 [查看DEMO clip-path 动画](https://gaofanghuang.github.io/demo/api/css/demo2)
+
+### 变形动画
+
+使用 polygon 制作变形动画需要注意，变形开始和结束的点，数量需要一致，点之间的坐标是可以重复的。
+
+例：
+
+```css
+@keyframes animation3 {
+  0% {
+    clip-path: polygon(0 0%, 50% 0, 100% 0, 100% 50%, 100% 80%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 38%);
+  }
+  100% {
+    clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0 38%, 37% 38%);
+  }
+}
+```

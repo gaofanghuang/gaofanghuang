@@ -17,7 +17,8 @@
 .index-box {
   background: #fff;
   border-radius: 0.4rem;
-  box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.08);
+  border: 1px solid #ececec;
+  box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.04);
   overflow: hidden;
   margin-bottom: 1rem;
   .index-box-title {

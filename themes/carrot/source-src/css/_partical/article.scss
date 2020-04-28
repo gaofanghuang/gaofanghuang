@@ -366,3 +366,11 @@
     color: lighten($color: $error, $amount: 5%);
   }
 }
+
+.post-wrap {
+  .article-wrap {
+    background-image: linear-gradient(rgba(#f9f9f9, 0.8) 1px, transparent 0),
+      linear-gradient(90deg, rgba(#f9f9f9, 0.8) 1px, transparent 0);
+    background-size: 15px 15px, 15px 15px, 15px 15px, 15px 15px;
+  }
+}

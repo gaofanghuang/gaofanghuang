@@ -35,7 +35,7 @@
     max-width: 100%;
     padding: 0 8px;
     margin: 0 4px;
-    background: rgba($primary, 0.1);
+    background: rgba(69, 123, 122, 0.1);
     border-radius: 4px;
   }
 
@@ -237,16 +237,16 @@
     font-weight: 600;
     &::before {
       position: absolute;
-      left: 4px;
+      left: -3%;
       top: -4px;
       z-index: -1;
       display: inline-block;
       transform: rotate(-2deg);
       background-color: rgba($warning, 0.2);
       content: '';
-      width: 100%;
+      width: 103%;
       height: 100%;
-      border-radius: 0.4rem;
+      border-radius: 0.8rem;
     }
   }
 
