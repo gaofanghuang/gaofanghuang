@@ -430,7 +430,8 @@ a {
     padding: 0 8px;
     margin: 0 4px;
     background: rgba(69, 123, 122, 0.1);
-    border-radius: 4px; }
+    border-radius: 4px;
+    line-height: 1.5; }
   .markdown-view blockquote,
   .markdown-view ol,
   .markdown-view ul,
@@ -473,7 +474,8 @@ a {
     margin: 15px auto;
     border-collapse: collapse;
     empty-cells: show;
-    table-layout: fixed; }
+    table-layout: fixed;
+    background: #fff; }
     .markdown-view table thead tr {
       font-weight: 600; }
     .markdown-view table th,

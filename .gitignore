@@ -7,4 +7,3 @@ public/
 .deploy*/
 yarn.lock
 package-lock.json
-themes/carrot/.cache
