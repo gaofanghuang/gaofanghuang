@@ -77,6 +77,15 @@
       content: 'javascript';
     }
   }
+  &.typescript {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'typescript';
+    }
+  }
   &.shell {
     position: relative;
     &::before {

@@ -84,7 +84,29 @@ vue-cli 3+ 版本已默认集成 SCSS，在创建项目的时候选择相应配�
 
 ### GithubPage中的配置
 
-有一段时间我用vue来开发这个，
+可以利用 vue 生成的静态文件，作为 GithubPage 中的网页。
+
+在 GithubPage 中除了生成 index.html 外，还需要生成一个 404.html。
+
+```javascript
+// vue.config.js
+module.exports = {
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: 'index.html',
+      title: 'index',
+    },
+    notfound: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: '404.html',
+      title: '404',
+    },
+  },
+}
+```
 
 ## Vuex
 

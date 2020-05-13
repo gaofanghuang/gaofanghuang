@@ -4,7 +4,7 @@ date: 2020-04-26 11:00:00
 tags:
   - css
   - css3
-  - 待填坑
+  - css函数
 categories: 前端笔记
 ---
 
@@ -1082,14 +1082,194 @@ categories: 前端笔记
 
 - **steps()**
 
+  如果说 `cubic-bezier` 是连续动画, 那么 `steps` 就是断续动画。通常应用在 loading 动画，逐帧动画之中。
+
+  `steps(number, position)`
+
+  *number*: 表示把动画分成了多少段。
+
+  *position*: 接受两个值 start、end。start：表示直接开始。end：表示戛然而止。默认值。
+
+  <style>
+  .steps,
+  .cubic-bezier {
+    width: 300px;
+    height: 40px;
+    background: #f2f2f2;
+    position: relative;
+  }
+  .steps::before,
+  .cubic-bezier::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+  }
+  .cubic-bezier.show::before {
+    animation: process 10s forwards cubic-bezier(0, 0, 1, 1);
+  }
+  .steps.show::before {
+    animation: process 10s forwards steps(3, start);
+  }
+  @keyframes process {
+    0% {
+      background: lightblue;
+      width: 0;
+    }
+    30% {
+      background: darkslateblue;
+      width: 30%;
+    }
+    70% {
+      background: pink;
+      width: 70%;
+    }
+    100% {
+      background: lightblue;
+      width: 100%;
+    }
+  }
+  </style>
+
+  <button onclick="showCBAni()" class="btn btn-primary">点击播放动画↓</button>
+
+  | cubic-bezier | steps |
+  | :---: | :---: |
+  | <div class="cubic-bezier"></div> | <div class="steps"></div> |
+
+  <script>
+    function showCBAni() {
+      $('.cubic-bezier, .steps').removeClass('show')
+      setTimeout(function(){ 
+        $('.cubic-bezier, .steps').addClass('show')
+      }, 300)
+    }
+  </script>
+
+  从以上 Demo 可以看出，`steps` 的动画是跳动着执行的，每个关键帧之间没有过渡。而 `cubic-bezier` 会自动给每个关键帧之间创建补间动画。
+
+  ```css
+  .cubic-bezier.show::before {
+    animation: process 10s forwards cubic-bezier(0, 0, 1, 1);
+  }
+  .steps.show::before {
+    animation: process 10s forwards steps(3, start);
+  }
+  ```
+
 ## 9. 其他函数
 
 - **counter()**
 
+  将计数器的值添加到元素
+
+  counter 和 counters 要配合以下几个属性使用：
+
+  1. `counter-reset`：计数器声明及初始值设置
+  2. `counter-increment`：递增规则
+
+    <style>
+    .counter {
+      margin-bottom: 20px;
+      counter-reset: item;
+    }
+    .counter-item::before {
+      counter-increment: item;
+      content: counter(item)".";
+      color: lightblue;
+    }
+  </style>
+
+  <div class="counter">
+    <div class="counter-item"> apple</div>
+    <div class="counter-item"> bear</div>
+    <div class="counter-item">
+      cat
+      <div class="counter">
+      <div class="counter-item"> animal</div>
+      <div class="counter-item"> cute</div>
+      </div>
+    </div>
+  </div>
+
+  ```css
+  .counter {
+    margin-bottom: 20px;
+    counter-reset: item;
+  }
+  .counter-item::before {
+    counter-increment: item;
+    content: counter(item)".";
+    color: lightblue;
+  }
+  ```
+
 - **counters()**
 
-- **toggle()**
+  将计数器的值添加到元素
+
+  `counters` 和 `counter` 的区别在于，counters 可以嵌套计数，counter 只能计算到第一层。
+
+  *Tips*: counters 和 counter 的值只能添加到 `content`。
+
+    <style>
+    .counter2 {
+      margin-bottom: 20px;
+      counter-reset: section;
+    }
+    .counter-item2::before {
+      counter-increment: section;
+      content: counters(section, ".") " ";
+      color: lightblue;
+    }
+  </style>
+
+  <div class="counter2">
+    <div class="counter-item2"> apple</div>
+    <div class="counter-item2"> bear</div>
+    <div class="counter-item2">
+      cat
+      <div class="counter2">
+      <div class="counter-item2"> animal</div>
+      <div class="counter-item2"> cute</div>
+      </div>
+    </div>
+  </div>
+
+  ```css
+  .counter2 {
+      margin-bottom: 20px;
+      counter-reset: section;
+  }
+  .counter-item2::before {
+    counter-increment: section;
+    content: counters(section, ".") " ";
+    color: lightblue;
+  }
+  ```
 
 - **var()**
 
-- **symbols()**
+  引用`:root`中定义的变量，css中原生的引用变量方法，类似于 scss 中的 `$primary`。
+
+  ```scss
+  $primary: #28C5C2;
+
+  .box {
+    color: $primary;
+  }
+  ```
+
+  ```css
+  :root {
+    --primary: #28C5C2;
+  }
+
+  .box {
+    color: var(--primary);
+    /* 这里 bgColor 这个变量没有被定义，因此会使用备用的 #f2f2f2 作为背景色 */
+    background-color: var(--bgColor, #f2f2f2);
+  }
+  ```

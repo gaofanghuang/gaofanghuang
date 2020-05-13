@@ -312,6 +312,19 @@ a {
 .hidden {
   display: none !important; }
 
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); }
+
+.btn-primary {
+  background: linear-gradient(135deg, #28C5C2, #79E2B7);
+  color: #fff; }
+  .btn-primary:hover {
+    box-shadow: none; }
+
 .highlight {
   background: #333;
   font-size: 0.8rem;
@@ -369,6 +382,13 @@ a {
       top: 0.5rem;
       right: 0.8rem;
       content: 'javascript'; }
+  .highlight.typescript {
+    position: relative; }
+    .highlight.typescript::before {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      content: 'typescript'; }
   .highlight.shell {
     position: relative; }
     .highlight.shell::before {
@@ -470,13 +490,13 @@ a {
     margin-top: 1.2rem; }
   .markdown-view table {
     width: 100%;
-    max-width: 70rem;
     border: 1px solid #dedede;
     margin: 15px auto;
     border-collapse: collapse;
     empty-cells: show;
     table-layout: fixed;
-    background: #fff; }
+    background: #fff;
+    overflow: hidden; }
     .markdown-view table thead tr {
       font-weight: 600; }
     .markdown-view table th,
@@ -491,6 +511,9 @@ a {
       white-space: nowrap;
       padding: 10px 10px;
       color: rgba(66, 97, 96, 0.68); }
+    .markdown-view table tbody {
+      max-width: 100%;
+      overflow-x: scroll; }
   .markdown-view blockquote {
     position: relative;
     padding-left: 2rem;
