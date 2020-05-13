@@ -38,6 +38,7 @@
     background: rgba(69, 123, 122, 0.1);
     border-radius: 4px;
     line-height: 1.5;
+    color: rgba(66, 97, 96, 0.68);
   }
 
   blockquote,
@@ -92,9 +93,10 @@
     th {
       font-weight: 700;
       text-align: center !important;
-      background: rgba($primary, 0.1);
+      background: rgba(28, 134, 132, 0.1);
       white-space: nowrap;
       padding: 10px 10px;
+      color: rgba(66, 97, 96, 0.68);
     }
   }
 
@@ -209,23 +211,18 @@
     position: relative;
     z-index: 1;
     font-weight: 600;
-    &::before {
+    color: rgba(154, 3, 34, 0.36);
+    &::after {
       position: absolute;
-      left: 4px;
-      top: -4px;
+      left: 0;
+      bottom: 0;
       z-index: -1;
       display: inline-block;
-      transform: rotate(-2deg);
-      background-color: rgba($error, 0.16);
+      border-bottom: 2px dotted rgba(154, 3, 34, 0.08);
       content: '';
       width: 100%;
-      height: 100%;
-      border-radius: 0.4rem;
+      height: 1px;
     }
-  }
-
-  del {
-    color: #dadada;
   }
 
   p {
@@ -237,6 +234,7 @@
     position: relative;
     z-index: 1;
     font-weight: 600;
+    color: #927828;
     &::before {
       position: absolute;
       left: -3%;
@@ -259,6 +257,22 @@
         margin-left: 0;
         margin-right: 0;
       }
+    }
+  }
+
+  del {
+    text-decoration: none;
+    position: relative;
+    color: #dadada;
+    font-weight: normal;
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 1px;
+      border-bottom: 1px solid #dadada;
     }
   }
 }

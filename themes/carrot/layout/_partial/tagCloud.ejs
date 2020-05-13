@@ -2,7 +2,10 @@
 <div class="tag-cloud-wrap index-box">
   <div class="index-box-title flex flex-y">标签</div>
   <ul class="tag-cloud-list">
-    <% site.tags.sort('name').each(function(item){ %>
+    <% var tagsTemp; %>
+    <% tagsTemp = site.tags.sort('posts.length') %>
+    <% tagsTemp = tagsTemp.reverse() %>
+    <% tagsTemp.each(function(item){ %>
       <% if(item.posts.length){%>
         <li class="tag-cloud-item">
           <a href="<%- config.root %><%- item.path %>" class="tag-cloud-item-link">
