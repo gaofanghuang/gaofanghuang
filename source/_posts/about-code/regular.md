@@ -169,25 +169,60 @@ console.log(str.split(rule))
 
 ### 位置边界
 
-1. `\b`: 单词边界
+在ES5中，共有6个锚字符：`^ $ \b \B (?=p) (?!p)`
 
-```javascript
-const str = `sdcatd cat catsfad`
-const rule = /\bcat\b/
-console.log(str.search(rule)) // 7
-```
+1. `^`: 匹配开头，在多行匹配中匹配行开头。
 
-2. `\B`: 非单词边界
+  ```javascript
+  const rule = /^|$/g
+  const str = "hello"
+  console.log(str.replace(rule, '#')); // #hello#
+  ```
 
-```javascript
-const str = `sdcatd cat catsfad`
-const rule = /\Bcat\B/
-console.log(str.search(rule)) // 2
-```
+2. `$`: 匹配结尾，在多行匹配中匹配行结尾。
 
-`^`: 字符串开头
+  ```javascript
+  const rule = /^|$/gm
+  const str = "I\nlove\njavascript"
+  console.log(str.replace(rule, '#'));
+  /*
+    #I#
+    #love#
+    #javascript#
+  */
+  ```
 
-`$`: 字符串结尾
+3. `\b`: 单词边界
+
+  ```javascript
+  const rule = /\bcat\b/
+  const str = `sdcatd cat catsfad`
+  console.log(str.search(rule)) // 7
+  ```
+
+4. `\B`: 非单词边界
+
+  ```javascript
+  const rule = /\Bcat\B/
+  const str = `sdcatd cat catsfad`
+  console.log(str.search(rule)) // 2
+  ```
+
+5. `(?=p)`: 其中 p 是一个子模式，表示 p 前面的位置。
+
+  ```javascript
+  const rule = /(?=f)/g
+  const str = `sdcatd cat catsfad`
+  console.log(str.replace(rule, '#')); // sdcatd cat cats#fad
+  ```
+
+6. `(?!p)`: 其中 p 是一个子模式，表示 p 反面的位置。即除了 p 前面的所有位置。 
+
+  ```javascript
+  const rule = /(?!f)/g
+  const str = `sdcatd cat catsfad`
+  console.log(str.replace(rule, '#')); // #s#d#c#a#t#d# #c#a#t# #c#a#t#sf#a#d#
+  ```
 
 ## 匹配
 
@@ -243,6 +278,121 @@ const str = "123 1234 12345 123456 1234567 12345678";
 console.log(str.match(rule)); // ["12", "12", "34", "12", "34", "12", "34", "56", "12", "34", "56", "12", "34", "56", "78"]
 ```
 
+### 多选分支
+
+用 `|`（管道符）分隔，表示其中任何之一。
+
+```javascript
+const rule = /good|nice/g;
+const str = "good idea, nice try.";
+console.log(str.match(rule)); // ["good", "nice"]
+```
+
+用 `|` 和 `[]` 的区别，`|` 可以表示多个单词的其中之一，`[]` 只能表示多个字符的其中之一。
+
+注意，多选分子也是有惰性的，当满足 `|` 的匹配时，就不再往下匹配了。
+
+## 回溯
+
+深度优先搜索算法：其中退到之前的某一步这一过程，我们称为“回溯”。
+
+尝试匹配失败时，接下来的一步通常就是回溯。
+
+### 没有回溯的匹配
+
+### 有回溯的匹配
+
+### 常见的回溯形式
+
 ## 常用正则
 
-###
+### 1. 匹配16进制颜色值
+
+表示一个16进制字符，可以用字符组 `[0-9a-fA-F]`。
+
+其中字符可以出现3或6次，需要是用量词和分支结构。
+
+使用分支结构时，需要注意顺序。
+
+```javascript
+const rule = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g;
+const str = "#ffbbad #Fc01DF #FFF #ffE #99";
+console.log(str.match(rule)); // ["#ffbbad", "#Fc01DF", "#FFF", "#ffE"]
+```
+
+### 2. 匹配24小时制时间
+
+如：“23:05, 09:30”
+
+共4位数字，第一位数字可以为`[0-2]`。
+
+当第1位为2时，第2位可以为`[0-3]`，其他情况时，第2位为`[0-9]`。
+
+第3位数字为`[0-5]`，第4位为`[0-9]`。
+
+```javascript
+const rule = /^(0?[01][0-9]|[2][0-3]):(0?[0-9]|[0-5][0-9])$/;
+console.log(rule.test("22:50"), rule.test("25:70"), rule.test("5:7")); // true, false, true
+```
+
+### 3. 年月日
+
+#### 3.1 检测日期格式
+
+如：“2020-05-14”
+
+年，四位数字即可，可用[0-9]{4}。
+
+月，共12个月，分两种情况01、02、……、09和10、11、12，可用(0[1-9]|1[0-2])。
+
+日，最大31天，可用(0[1-9]|[12][0-9]|3[01])。
+
+```javascript
+const rule = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+console.log(rule.test("2020-05-14"), rule.test("2020-13-44")); // true, false
+```
+
+#### 3.2 提取日期数值
+
+```javascript
+const rule = /(\d{4})-(\d{2})-(\d{2})/;
+const str = "2020-05-14"
+const result = {
+  yyyy: str.match(rule)[1],
+  mm: str.match(rule)[2],
+  dd: str.match(rule)[3]
+}
+console.log(result); // {yyyy: "2020", mm: "05", dd: "14"}
+```
+
+#### 3.3 转换格式
+
+```javascript
+const rule = /(\d{4})-(\d{2})-(\d{2})/;
+const str = "2020-05-14"
+console.log(str.replace(rule, "$1年$2月$3日")); // 2020年05月14日
+```
+
+
+### 4. 数字的千分位分隔符表示法
+
+```javascript
+const rule = /(?!\b)(?=(\d{3})+\b)/g;
+const str = "489798266114";
+console.log(str.replace(rule, ',')); // 489,798,266,114
+```
+
+### 5. 验证密码
+
+要求：密码长度6-12位，由数字、小写字母和大写字母组成，必须至少包括2种字符。
+
+```javascript
+// 在实际应用中，需要避免正则过于复杂，可以拆分成几个小的正则，以便阅读
+// const regex1 = /^[0-9A-Za-z]{6,12}$/;
+// const regex2 = /^[0-9]{6,12}$/;
+// const regex3 = /^[A-Z]{6,12}$/;
+// const regex4 = /^[a-z]{6,12}$/;
+const rule = /(?=.*[0-9])(?=.*[a-z])^[0-9A-Za-z]{6,12}$/;
+const str = "66114aaw";
+console.log(rule.test(str)); // true
+```
