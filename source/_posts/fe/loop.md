@@ -1,6 +1,7 @@
 ---
 title: 迭代器、Switch、Array循环
 date: 2020-03-12 11:35:26
+update: 2020-05-15 14:20:00
 tags:
   - javascript
 categories: 前端笔记

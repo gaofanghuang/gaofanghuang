@@ -1,6 +1,7 @@
 ---
 title: angular
 date: 2020-05-14 17:20:00
+update: 2020-05-15 14:20:00
 tags:
   - javascript
   - angular
@@ -17,6 +18,8 @@ categories: 前端笔记
 ```html
 <span>{{year | date:'yyyy'}}</span>
 ```
+
+<!--more-->
 
 #### angular 内置过滤器
 

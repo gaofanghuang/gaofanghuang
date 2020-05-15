@@ -39,6 +39,9 @@ share_enable: true
 # 文章分享文字
 share_text: 分享到
 
+# 是否开启更新时间
+display_updated: true
+
 # 分页文字
 nav_text:
   page_prev: 上一页

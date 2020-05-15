@@ -1,6 +1,7 @@
 ---
 title: javascript 富文本编辑器
 date: 2020-05-14 14:00:00
+update: 2020-05-15 14:20:00
 tags:
   - javascript
   - 富文本编辑器
@@ -19,6 +20,8 @@ categories: 前端笔记
 ```html
 <div class="editor-box" contenteditable></div>
 ```
+
+<!--more-->
 
 ### document.execCommand
 

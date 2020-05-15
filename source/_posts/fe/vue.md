@@ -1,6 +1,7 @@
 ---
 title: Vue 基础入门
 date: 2020-04-22 10:32:00
+update: 2020-05-15 14:15
 tags:
   - Vue
   - VueX
@@ -43,7 +44,7 @@ categories: 前端笔记
 
 ### 安装
 
-to do ……
+to do …… 
 
 ### 集成SASS/SCSS
 

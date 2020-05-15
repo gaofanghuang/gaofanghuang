@@ -10,21 +10,16 @@
     <header class="article-header">
       <%- partial('post/title', {class_name: 'article-title'}) %>
     </header>
-    <% } %> 
-    <% if (index || is_post()) { %>
+    <% } %> <% if (index || is_post()) { %>
     <div class="article-meta flex flex-y">
-      <%- partial('post/category') %>
-      <% if(theme.word_count && theme.word_count.enable && !post.no_word_count){%>
-        <%- partial('post/word') %>
-      <% } %>
-      <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+      <%- partial('post/category') %> <% if(theme.word_count &&
+      theme.word_count.enable && !post.no_word_count){%> <%-
+      partial('post/word') %> <% } %> <%- partial('post/date', {class_name:
+      'article-date', date_format: null}) %>
     </div>
-    <% } %>
-    <% if (theme.excerpt_all&&index){ %>
-      <% }else{ %>
+    <% } %> <% if (theme.excerpt_all&&index){ %> <% }else{ %>
     <div class="article-entry" itemprop="articleBody">
-      <%- partial('post/gallery') %>
-      <% if (post.excerpt && index){ %>
+      <%- partial('post/gallery') %> <% if (post.excerpt && index){ %>
       <div class="markdown-view">
         <%- post.excerpt %>
       </div>
@@ -36,6 +31,11 @@
       <div class="markdown-view">
         <%- post.content %>
       </div>
+      <% } %>
+      <!-- updated -->
+      <% if (theme.display_updated){ %>
+      <%- partial('post/date2', {class_name:
+        'article-date', date_format: null}) %>
       <% } %>
       <!-- reward -->
       <% if ((theme.reward_type === 2 || (theme.reward_type === 1 &&
@@ -66,25 +66,15 @@
     </div>
     <% } %>
     <footer class="article-footer">
-      <%- partial('post/tag') %>
-      
-      <% if (!index && theme.share_enable){ %>
-        <%- partial('post/share') %>
-      <% } %>
+      <%- partial('post/tag') %> <% if (!index && theme.share_enable){ %> <%-
+      partial('post/share') %> <% } %>
     </footer>
   </div>
 
-  <% if (!index){ %>
-    <%- partial('post/nav') %>
-  <% } %>
-
-  <% if (theme.valine && theme.valine.enable && !post.no_valine){ %>
-    <%- partial('post/valine', { key: post.slug, title: post.title, url: config.url+url_for(post.path) }) %>
-  <% } %>
+  <% if (!index){ %> <%- partial('post/nav') %> <% } %> <% if (theme.valine &&
+  theme.valine.enable && !post.no_valine){ %> <%- partial('post/valine', { key:
+  post.slug, title: post.title, url: config.url+url_for(post.path) }) %> <% } %>
 </article>
 
-<% if (theme.toc && is_post()){ %>
-  <% if (post.toc != false && toc(page.content).length!==0){ %>
-    <%- partial('post/tocbot') %>
-  <% } %>
-<% } %>
+<% if (theme.toc && is_post()){ %> <% if (post.toc != false &&
+toc(page.content).length!==0){ %> <%- partial('post/tocbot') %> <% } %> <% } %>

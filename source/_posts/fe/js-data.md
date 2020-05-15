@@ -1,11 +1,21 @@
 ---
-title: javascript 数据处理
+title: javascript 数据
 date: 2020-05-14 11:15:00
 tags:
   - javascript
   - 待填坑
 categories: 前端笔记
 ---
+
+## 数据类型
+
+### 数组、字符串的存储原理
+
+## 二叉树、栈、队列、哈希表
+
+## 图、堆
+
+<!--more-->
 
 ## 对象处理
 
@@ -97,6 +107,8 @@ const fruitsTemp = new Set(fruits)
 console.log('方法一', Array.from(fruitsTemp))
 console.log('方法二', [...fruitsTemp])
 ```
+
+### 扁平化
 
 ### 替换数组中的某些元素
 

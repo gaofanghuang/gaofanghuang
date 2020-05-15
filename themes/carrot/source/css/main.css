@@ -1075,6 +1075,24 @@ a {
 .index-douban-wrap .index-douban-item + .index-douban-item {
   margin-top: 0.4rem; }
 
+/** skill-tree */
+.skill-for-fe {
+  width: 100%;
+  height: 3.6rem;
+  font-size: 1rem;
+  letter-spacing: 2px; }
+  .skill-for-fe a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #999; }
+    .skill-for-fe a:hover {
+      color: #666; }
+      .skill-for-fe a:hover::after {
+        display: none; }
+
 /** 移动端 */
 @media only screen and (max-width: 1024px) {
   .index-wrap .container {
@@ -1302,6 +1320,10 @@ a {
       margin-right: 1rem; }
     .article-wrap .article-meta .article-date {
       color: #999; }
+  .article-wrap .post-update {
+    color: #999;
+    font-size: 0.8rem;
+    margin-top: 2rem; }
   .article-wrap .article-footer .article-tag-wrap .icon {
     margin-right: 0.2rem;
     color: #999; }
