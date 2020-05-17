@@ -2,7 +2,10 @@
 <div class="category-menu-wrap index-box">
   <div class="index-box-title flex flex-y">分类</div>
   <ul class="category-menu-list">
-    <% site.categories.sort('name').each(function(item){ %> <%
+    <% var cateTemp; %>
+    <% cateTemp = site.categories.sort('posts.length') %>
+    <% cateTemp = cateTemp.reverse() %>
+    <% cateTemp.each(function(item){ %> <%
     if(item.posts.length){ %>
 
     <li class="category-menu-list-item">

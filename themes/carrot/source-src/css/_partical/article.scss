@@ -34,6 +34,9 @@
       }
       .article-category-link {
         color: #999;
+        &:hover {
+          color: $primary;
+        }
       }
     }
     .word_count {
@@ -72,7 +75,7 @@
       display: block;
       color: #999;
       padding: 0.36rem 0.8rem;
-      font-size: 0.8rem;
+      font-size: 0.68rem;
       &:hover {
         &::after {
           display: none;

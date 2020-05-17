@@ -7,7 +7,7 @@ tags:
   - Typescript
   - Android
   - 待填坑
-categories: project
+categories: 个人项目
 state: 1
 ---
 

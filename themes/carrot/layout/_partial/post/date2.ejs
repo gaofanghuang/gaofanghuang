@@ -1,4 +1,4 @@
-<% if (post.update){ %>
+<% if (post.update && new Date(post.update).getTime() > 0){ %>
 <div class="post-update">
   <span>更新于：</span>
   <time><%= date(post.update, date_format) %></time>
