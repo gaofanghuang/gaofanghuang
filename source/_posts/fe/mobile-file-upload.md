@@ -3,8 +3,8 @@ title: 移动端图片/文件上传
 date: 2020-04-09 14:53:19
 update: 2020-05-15 14:20:00
 tags:
-  - javascript
-  - html5
+  - Javascript
+  - HTML5
   - 文件上传
   - 图片上传
   - 移动端

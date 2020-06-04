@@ -5,7 +5,7 @@ update: 2020-05-15 14:20:00
 tags:
   - 微信小程序
   - 待填坑
-categories: 前端笔记
+categories: 微信开发
 ---
 
 ## 原生语法

@@ -1,12 +1,11 @@
 ---
-title: CSS 进阶应用 - 纯 css 绘图
+title: CSS 进阶 - 纯 CSS 绘图
 date: 2020-04-26 11:10:00
 update: 2020-05-15 14:20:00
 tags:
-  - css
-  - css3
+  - CSS
   - 待填坑
-categories: 前端笔记
+categories: CSS笔记
 ---
 
 [查看DEMO 纯css绘制图形](https://gaofanghuang.github.io/demo/api/css/demo1)

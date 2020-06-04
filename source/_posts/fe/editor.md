@@ -1,9 +1,9 @@
 ---
-title: javascript 富文本编辑器
+title: Javascript 富文本编辑器
 date: 2020-05-14 14:00:00
 update: 2020-05-15 14:20:00
 tags:
-  - javascript
+  - Javascript
   - 富文本编辑器
   - 待填坑
 categories: 前端笔记

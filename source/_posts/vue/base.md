@@ -1,13 +1,13 @@
 ---
-title: Vue 基础入门
+title: Vue 基础
 date: 2020-04-22 10:32:00
 update: 2020-05-15 14:15
 tags:
   - Vue
   - VueX
-  - Vue-Router
+  - VueRouter
   - 待填坑
-categories: 前端笔记
+categories: Vue开发
 ---
 
 ## Vue 语法

@@ -1,12 +1,12 @@
 ---
-title: javascript 算法
+title: Javascript 算法
 date: 2020-05-14 11:15:00
 update: 2020-05-15 14:50:00
 tags:
-  - javascript
+  - Javascript
   - 算法
   - 待填坑
-categories: 前端笔记
+categories: JS笔记
 ---
 
 ## 全排列算法

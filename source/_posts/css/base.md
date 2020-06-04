@@ -1,12 +1,11 @@
 ---
-title: CSS 基础入门
+title: CSS 基础
 date: 2020-05-9 11:40:00
 update: 2020-05-15 14:20:00
 tags:
-  - css
-  - css3
+  - CSS
   - 待填坑
-categories: 前端笔记
+categories: CSS笔记
 ---
 
 ## 布局

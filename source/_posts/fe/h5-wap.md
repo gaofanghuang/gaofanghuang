@@ -3,8 +3,8 @@ title: 移动 Web 开发问题和优化小结
 date: 2020-05-15 11:55:00
 update: 2020-05-15 14:20:00
 tags:
-  - javascript
-  - html5
+  - Javascript
+  - HTML5
   - 待填坑
 categories: 前端笔记
 ---

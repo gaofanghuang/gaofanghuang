@@ -1,10 +1,10 @@
 ---
-title:  键盘 keyCode 对照表
+title: 键盘 KeyCode 对照表
 date: 2020-03-10 16:56:12
 tags:
-- javascript
-- keyboard
-- keyCode
+- Javascript
+- Keyboard
+- KeyCode
 categories: 编程相关
 ---
 

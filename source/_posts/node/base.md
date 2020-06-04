@@ -1,12 +1,12 @@
 ---
-title: Node.js 基础入门
+title: Node.js 基础
 date: 2020-05-13 11:30:00
 tags:
   - Node
   - Express
   - Koa
   - 待填坑
-categories: 后端笔记
+categories: Node开发
 ---
 
 ## 语法

@@ -1,9 +1,9 @@
 ---
-title: git
+title: Git
 date: 2020-04-07 14:19:57
 tags:
-  - git
-  - github
+  - Git
+  - Github
 categories: 编程相关
 ---
 

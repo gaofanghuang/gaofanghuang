@@ -4,8 +4,8 @@ date: 2020-04-22 10:04:24
 update: 2020-05-15 14:20:00
 tags:
   - HTTP
-  - axios
-  - ajax
+  - Axios
+  - AJAX
 categories: 前端笔记
 ---
 

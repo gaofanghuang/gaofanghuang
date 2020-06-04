@@ -1,12 +1,12 @@
 ---
-title: Promise 基础入门
+title: Promise 基础
 date: 2020-03-09 09:15:46
 update: 2020-05-15 14:20:00
 tags:
   - Promise
   - ES6
   - Javascript
-categories: 前端笔记
+categories: JS笔记
 ---
 
 ## 概念

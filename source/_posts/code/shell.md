@@ -2,8 +2,8 @@
 title: Shell 和 Vim 常用命令
 date: 2020-04-17 14:05:51
 tags:
-  - shell
-  - vim
+  - Shell
+  - Vim
 categories: 编程相关
 ---
 

@@ -1,12 +1,12 @@
 ---
-title: javascript 进阶
+title: Javascript 进阶
 date: 2020-05-15 14:55:00
 update: 2020-05-15 14:55:00
 tags:
-  - javascript
+  - Javascript
   - 概念
   - 待填坑
-categories: 前端笔记
+categories: JS笔记
 ---
 
 ## 闭包

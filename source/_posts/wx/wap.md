@@ -1,12 +1,12 @@
 ---
-title: 微信公众号H5网站开发总结
+title: 微信H5网站开发总结
 date: 2020-04-09 14:39:02
 update: 2020-04-09 14:39:02
 tags:
   - 微信公众号
-  - H5
+  - HTML5
   - 待填坑
-categories: 前端笔记
+categories: 微信开发
 ---
 
 [微信公众号JS-SDK开放文档](https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html)

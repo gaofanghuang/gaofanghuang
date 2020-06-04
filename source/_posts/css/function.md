@@ -1,12 +1,11 @@
 ---
-title: CSS 基础入门 - 函数
+title: CSS 基础 - 函数
 date: 2020-04-26 11:00:00
 update: 2020-05-15 14:20:00
 tags:
-  - css
-  - css3
-  - css函数
-categories: 前端笔记
+  - CSS
+  - CSS函数
+categories: CSS笔记
 ---
 
 简单来说，在 CSS 中只要是带有 () 的属性值，我们就可以把它称为 CSS 函数。

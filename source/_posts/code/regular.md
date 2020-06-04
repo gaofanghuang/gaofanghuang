@@ -4,7 +4,7 @@ date: 2020-05-13 14:15:00
 tags:
   - 正则表达式
   - 待填坑
-categories: 前端笔记
+categories: 编程相关
 ---
 
 正则表达式的基本组成元素可以分为：**字符**和**元字符**。
@@ -394,5 +394,13 @@ console.log(str.replace(rule, ',')); // 489,798,266,114
 // const regex4 = /^[a-z]{6,12}$/;
 const rule = /(?=.*[0-9])(?=.*[a-z])^[0-9A-Za-z]{6,12}$/;
 const str = "66114aaw";
+console.log(rule.test(str)); // true
+```
+
+### 6. 网址
+
+```javascript
+const rule = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\/])+$/;
+const str = "http://huanggaofang.com"
 console.log(rule.test(str)); // true
 ```

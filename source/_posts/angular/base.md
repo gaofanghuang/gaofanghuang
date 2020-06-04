@@ -1,12 +1,12 @@
 ---
-title: angular
+title: Angular 基础
 date: 2020-05-14 17:20:00
 update: 2020-05-15 14:20:00
 tags:
-  - javascript
-  - angular
+  - Javascript
+  - Angular
   - 待填坑
-categories: 前端笔记
+categories: Angular开发
 ---
 
 ## 语法

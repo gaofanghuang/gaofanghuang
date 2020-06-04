@@ -3,7 +3,7 @@ title: H5自适应小结
 date: 2020-04-07 16:48:50
 update: 2020-05-15 14:20:00
 tags:
-  - html5
+  - HTML5
   - 移动端
   - 自适应
 categories: 前端笔记

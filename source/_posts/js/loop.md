@@ -3,8 +3,8 @@ title: 迭代器、Switch、Array循环
 date: 2020-03-12 11:35:26
 update: 2020-05-15 14:20:00
 tags:
-  - javascript
-categories: 前端笔记
+  - Javascript
+categories: JS笔记
 ---
 
 [查看 demo](https://gaofanghuang.github.io/demo/api/loop/demo1)
@@ -88,6 +88,14 @@ for...in 的迭代顺序依赖执行环境，不一定是数组的索引顺序�
 2. 只迭代自身属性
 
 for...in 无法迭代类的原型，只能迭代类的属性。
+
+3. 在 ts 中使用以下方法代替
+
+```typescript
+for (const key of Object.keys(obj)) {
+  console.log(key, obj[key])
+}
+```
 
 ### 应用场景
 

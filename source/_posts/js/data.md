@@ -1,10 +1,10 @@
 ---
-title: javascript 数据
+title: Javascript 数据
 date: 2020-05-14 11:15:00
 tags:
-  - javascript
+  - Javascript
   - 待填坑
-categories: 前端笔记
+categories: JS笔记
 ---
 
 ## 数据类型
