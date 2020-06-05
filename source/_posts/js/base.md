@@ -7,6 +7,8 @@ tags:
 categories: JS笔记
 ---
 
+<!--more-->
+
 ## 运算处理
 
 ### 数学计算
