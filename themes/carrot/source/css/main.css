@@ -528,7 +528,7 @@ a {
   .markdown-view ol {
     counter-reset: sectioncounter; }
     .markdown-view ol > li {
-      padding-left: 2.2rem;
+      padding-left: 1.6rem;
       position: relative;
       list-style: none; }
       .markdown-view ol > li:before {

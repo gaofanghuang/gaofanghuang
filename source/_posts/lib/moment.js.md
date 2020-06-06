@@ -5,8 +5,8 @@ update: 2020-06-04 10:30:00
 tags:
   - Moment.js
   - Javascript
+  - Javascript Lib
   - 时间处理
-  - 待填坑
 categories: 工具库笔记
 ---
 
@@ -136,6 +136,13 @@ moment.locale('zh-cn');
   moment().format('YYYY-MM-DD dddd')
   ```
 
+4. 返回一个包含年月日时分秒毫秒的对象
+
+  ```javascript
+  var timeObj = moment().toObject()
+  console.log(timeObj)
+  ```
+
 ## 取值
 
 ### 获取当前时间
@@ -151,23 +158,73 @@ moment()
 
 1. 本周的第一天
 
+  ```javascript
+  var weekFirstDay = moment().startOf('week')
+  console.log('本周的第一天', weekFirstDay.format('YYYY-MM-DD'))
+  ```
+
 2. 本周的最后一天
+
+  ```javascript
+  var weekLastDay = moment().endOf('week')
+  console.log('本周的最后一天', weekLastDay.format('YYYY-MM-DD'))
+  ```
 
 3. 本月的第一天
 
+  ```javascript
+  var monthFirstDay = moment().startOf('week')
+  console.log('本周的第一天', weekFirstDay.format('YYYY-MM-DD'))
+  ```
+
 4. 本月的最后一天
+
+  ```javascript
+  var monthLastDay = moment().endOf('month')
+  console.log('本月的最后一天', monthLastDay.format('YYYY-MM-DD'))
+  ```
 
 5. 上个月的第一天
 
-6. 上个月的最后一天
+  ```javascript
+  var prevMonthFirstDay = moment().subtract(1, 'months').startOf('month')
+  console.log('上个月的第一天', prevMonthFirstDay.format('YYYY-MM-DD'))
+  ```
+
+6. 下个月的最后一天
+
+  ```javascript
+  var nextMonthLastDay = moment().add(1, 'months').endOf('month')
+  console.log('下个月的最后一天', nextMonthLastDay.format('YYYY-MM-DD'))
+  ```
 
 7. 某年某月的第一天
 
+  ```javascript
+  var someDayFirstDay = moment('2016-09-12').startOf('month')
+  console.log('某年某月月的第一天', someDayFirstDay.format('YYYY-MM-DD'))
+  ```
+
 8. 某年某月的最后一天
+
+  ```javascript
+  var someDayLastDay = moment('2016-09-12').endOf('month')
+  console.log('某年某月月的最后一天', someDayLastDay.format('YYYY-MM-DD'))
+  ```
 
 9. 7天前的日期
 
-10. 30天前的日期
+  ```javascript
+  var DaysBefore7 = moment().subtract(7, 'days')
+  console.log('7天前', DaysBefore7.format('YYYY-MM-DD'))
+  ```
+
+10. 30天后的日期
+
+  ```javascript
+  var DaysAfter30 = moment().add(30, 'days')
+  console.log('30天后', DaysAfter30.format('YYYY-MM-DD'))
+  ```
 
 ### 获取时间间距
 
@@ -197,4 +254,42 @@ moment()
   console.log('时间A距离时间B的间隔', a.from(b, true)) // 1 年
   ```
 
-## 实用函数
+## 查询
+
+1. 时间A是否在时间B之前
+
+  ```javascript
+  var a1 = '2019-06-05'
+  var b1 = '2020/02/09'
+  console.log(moment(a1).isBefore(b1))
+  ```
+
+2. 时间A是和时间B是同一年
+
+  ```javascript
+  var a2 = '2020-06-05'
+  var b2 = '2020/02/09'
+  console.log(moment(a1).isSame(b1, 'year'))
+  ```
+
+3. 查询变量是否为moment对象
+
+  ```javascript
+  var a3 = moment('2015-05-15')
+  var b3 = '2015-05-15'
+  console.log(moment.isMoment(a3), moment.isMoment(b3))
+  ```
+
+4. 查询变量是否为原生 js Date 对象
+
+  ```javascript
+  var a4 = new Date('2015-05-15')
+  var b4 = '2015-05-15'
+  console.log(moment.isDate(a4), moment.isDate(b4))
+  ```
+
+> 参考资料：
+
+1. Github: [Moment](https://github.com/moment/moment)
+
+2. [Moment中文网](http://momentjs.cn/)
