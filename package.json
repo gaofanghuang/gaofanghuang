@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "s": "hexo server",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server"
+    "g": "hexo g",
+    "douban": "hexo douban",
+    "deploy": "hexo deploy"
   },
   "hexo": {
     "version": "4.2.0"

@@ -15,6 +15,8 @@ categories: JS笔记
 
 在 JavaScript 中，共有*7*种基本类型：string，number，bigint，boolean，null，undefined，symbol (ECMAScript 2016新增)。
 
+<!--more-->
+
 1. `string`: 字符串
 
 2. `number`: 数值

@@ -27,6 +27,15 @@
     height: 3rem;
     padding-left: 1rem;
     font-size: 1rem;
+    a {
+      color: #666666;
+      &:hover {
+        color: #666666;
+        &::after {
+          display: none;
+        }
+      }
+    }
   }
 }
 

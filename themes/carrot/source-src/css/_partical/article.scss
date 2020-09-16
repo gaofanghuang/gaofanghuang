@@ -338,7 +338,7 @@
 .title-state-1 {
   margin-left: 1rem;
   &::before {
-    display: inline-block;
+    display: block;
     font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
     border-radius: 0.2rem;

@@ -687,6 +687,9 @@ a {
       color: #28C5C2; }
   .page-nav a:hover::after {
     display: none; }
+  .page-nav .space {
+    color: #d2d2d2;
+    padding: 0 10px; }
 
 .to-top {
   display: none;
@@ -910,6 +913,12 @@ a {
     height: 3rem;
     padding-left: 1rem;
     font-size: 1rem; }
+    .index-box .index-box-title a {
+      color: #666666; }
+      .index-box .index-box-title a:hover {
+        color: #666666; }
+        .index-box .index-box-title a:hover::after {
+          display: none; }
 
 /** author */
 .index-author-wrap .index-author-banner {
@@ -1571,7 +1580,7 @@ a {
   .title-state-3::before,
   .title-state-2::before,
   .title-state-1::before {
-    display: inline-block;
+    display: block;
     font-size: 0.8rem;
     padding: 0.2rem 0.6rem;
     border-radius: 0.2rem;
