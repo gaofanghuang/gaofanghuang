@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel serve source-src/main.js -d source/css",
+    "serve": "parcel serve source-src/main.js -d source/css",
     "build": "parcel build source-src/main.js -d source/css"
   },
   "source": "source-src/main.js",

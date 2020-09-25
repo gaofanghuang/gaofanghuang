@@ -301,6 +301,9 @@
     display: block;
     padding-left: 1rem;
     font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &:hover {
       color: #444;
       &::after {

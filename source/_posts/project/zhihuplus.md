@@ -16,6 +16,8 @@ state: 1
 
   3. 纤细优雅的滚动条。
 
+<!--more-->
+
 ## 插件下载地址
 
 1. [**Greasy Fork**](https://greasyfork.org/zh-CN/scripts/411416-%E7%9F%A5%E4%B9%8Eplus)
