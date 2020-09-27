@@ -164,6 +164,83 @@ Grid 布局，即网格布局，任何一个容器都可以设置为 Grid 布局
   grid-template-rows: repeat(4, 25%);
   grid-template-columns: repeat(4, 25%);
 }
+.gird-16-2 {
+  grid-template-rows: repeat(2, 10px 50px);
+  grid-template-columns: repeat(2, 10px 50px 80px);
+}
+.gird-16-3 {
+  grid-template-rows: repeat(2, 10px 50px);
+  grid-template-columns: repeat(auto-fill, 50px);
+}
+.gird-fr-1-2 {
+  grid-template-rows: repeat(2, 30px);
+  grid-template-columns: repeat(2, 1fr 2fr);
+}
+.gird-fr-50-3-1 {
+  grid-template-rows: repeat(2, 30px);
+  grid-template-columns: 50px 3fr 1fr;
+}
+.gird-minmax-20-50 {
+  grid-template-columns: 1fr 2fr minmax(20px, 50px);
+}
+.gird-r3-minmax-20-50 {
+  grid-template-columns: repeat(3, 1fr 2fr minmax(20px, 50px));
+}
+.gird-auto-1 {
+  grid-template-columns: 1fr auto 2fr;
+}
+.gird-name {
+  grid-template-rows: [r1] 50px [r2] 100px [r3];
+  grid-template-columns: [c1] 50px [c2] 30px [c3] 80px [c4];
+}
+.gird-gap-10-10 {
+  gap: 10px 10px;
+}
+.gird-area-9 {
+  grid-template-areas: 'g1 g2 g3'
+                       'g4 g5 g6'
+                       'g7 g8 g9';
+}
+.gird-flow-row {
+  grid-auto-flow: row;
+}
+.gird-flow-column {
+  grid-auto-flow: column;
+}
+.gird-flow-dense {
+  grid-auto-flow: row dense;
+}
+.gird-flow-dense .base-dot {
+  width: 100%;
+  height: 100%;
+}
+.dot-1 {
+  grid-row-start: 1;
+  grid-row-end: 3;  
+}
+.dot-2 {
+  grid-row-start: 1;
+  grid-row-end: 4;  
+}
+.dot-2 {
+  grid-row-start: 1;
+  grid-row-end: 5;  
+}
+.gird-x-center {
+  justify-items: center;
+}
+.gird-y-center {
+  align-items: center;
+}
+.gird-x-c-center {
+  justify-content: center;
+}
+.gird-y-c-center {
+  align-content: center;
+}
+.gird-auto-row {
+  grid-auto-rows: 20px;
+}
 </style>
 
 ## 1. Flex基础语法
@@ -827,6 +904,10 @@ align-content: `flex-start` | `flex-end` | `center` | `space-between` | `space-a
 
 - `grid-template-rows`：设置网格中每一行的行高。
 
+- `grid-template-columns`：设置网格中每一列的列宽。
+
+**例**：
+
 ```css
 .row-h312 {
   grid-template-rows: 30% 10% 20%;
@@ -838,8 +919,6 @@ align-content: `flex-start` | `flex-end` | `center` | `space-between` | `space-a
   <div class="base-dot color2">2</div>
   <div class="base-dot color3">3</div>
 </div>
-
-- `grid-template-columns`：设置网格中每一列的列宽。
 
 ```css
 .col-w312 {
@@ -876,6 +955,8 @@ align-content: `flex-start` | `flex-end` | `center` | `space-between` | `space-a
 
 - repeat() 自动重复切割
 
+`repeat(<重复次数>, <重复的宽度>)`, *重复宽度*可以设置为多个值为一组，以空格隔开，*重复次数*可以使用`auto-fill`关键字来进行自动计算。
+
 ```css
 .gird-16 {
   grid-template-rows: repeat(4, 25%);
@@ -902,31 +983,423 @@ align-content: `flex-start` | `flex-end` | `center` | `space-between` | `space-a
   <div class="base-dot color3">16</div>
 </div>
 
------------- **to be continue** ------------
-
-#### 2.1.x justify-items
-
-`justify-items`: xxx的对齐方式。
-
-- start 向开始端对齐，默认为左
-- end 向结束端对齐，默认为右
-- center 水平居中对齐
-- stretch 如果项目未设置高度或设为 auto，将占满整个容器的高度
-
-justify-items: `start` | `end` | `center` | `stretch`;
-
-- 向开始端对齐
-
 ```css
-.row-start {
-  justify-content: flex-start;
+.gird-16-2 {
+  grid-template-rows: repeat(2, 10px 50px);
+  grid-template-columns: repeat(2, 10px 50px 80px);
 }
 ```
 
-<div class="base-box base-gird row-start">
+<div class="base-box base-gird gird-16-2">
   <div class="base-dot color1">1</div>
   <div class="base-dot color2">2</div>
   <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+  <div class="base-dot color1">10</div>
+  <div class="base-dot color2">11</div>
+  <div class="base-dot color3">12</div>
+  <div class="base-dot color1">13</div>
+  <div class="base-dot color2">14</div>
+  <div class="base-dot color3">15</div>
+  <div class="base-dot color3">16</div>
+</div>
+
+```css
+.gird-16-3 {
+  grid-template-rows: repeat(2, 10px 50px);
+  grid-template-columns: repeat(auto-fill, 50px);
+}
+```
+
+<div class="base-box base-gird gird-16-3">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+  <div class="base-dot color1">10</div>
+  <div class="base-dot color2">11</div>
+  <div class="base-dot color3">12</div>
+  <div class="base-dot color1">13</div>
+  <div class="base-dot color2">14</div>
+  <div class="base-dot color3">15</div>
+  <div class="base-dot color3">16</div>
+</div>
+
+- fr 网格宽度比例
+
+**Tips**: 使用`fr`作为网格宽度单位，并且使用`auto-fill`设置为`repeat()`的重复次数时，该样式不生效，此时css报错：*Invalid property value*。
+
+```css
+.gird-fr-1-2 {
+  grid-template-rows: repeat(2, 30px);
+  grid-template-columns: repeat(2, 1fr 2fr);
+}
+```
+
+<div class="base-box base-gird gird-fr-1-2">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+```css
+.gird-fr-50-3-1 {
+  grid-template-rows: repeat(2, 30px);
+  grid-template-columns: 50px 3fr 1fr;
+}
+```
+
+这里的意思是说，第一列宽为50px，剩下的宽度为`(100% - 50px)`，然后第二列宽度为 `(100% - 50px)/ (3 + 1) * 3`，第三列宽度为 `(100% - 50px) / (3 + 1) * 1`。
+
+<div class="base-box base-gird gird-fr-50-3-1">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+- minmax() 宽度范围
+
+`minmax(<最小值>, <最大值>)`
+
+```css
+.gird-minmax-20-50 {
+  grid-template-columns: 1fr 2fr minmax(20px, 50px);
+}
+```
+
+<div class="base-box base-gird gird-minmax-20-50">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+```css
+.gird-r3-minmax-20-50 {
+  grid-template-columns: repeat(3, 1fr 2fr minmax(20px, 50px));
+}
+```
+
+**Tips**：这里第7、8、9列的宽度和第1、2、4列的宽度不一致，是因为使用了fr为单位，此时列宽优先为单元格的列宽。
+
+<div class="base-box base-gird gird-r3-minmax-20-50">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+- auto 关键字
+
+```css
+.gird-auto-1 {
+  grid-template-columns: 1fr auto 2fr;
+}
+```
+
+**Tips**：当某列的宽设置为auto时，此时列宽优先为单元格的列宽。
+
+<div class="base-box base-gird gird-auto-1">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+- 网格线的命名
+
+可以使用方括号`[]`，指定每一根网格线的名字。
+
+```css
+.gird-name {
+  grid-template-rows: [r1] 50px [r2] 100px [r3];
+  grid-template-columns: [c1] 50px [c2] 30px [c3] 80px [c4];
+}
+```
+
+<div class="base-box base-gird gird-name">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+#### 2.2.2 row-gap & column-gap & gap
+
+- `row-gap` 行与行之间的间距
+
+- `column-gap` 列与列之间的间距
+
+- `gap` 行间距与列间距的简写 `gap: <row-gap> <column-gap>;`
+
+```css
+.gird-gap-10-10 {
+  gap: 10px 10px;
+}
+```
+
+<div class="base-box base-gird gird-9 gird-gap-10-10">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+</div>
+
+#### 2.2.3 grid-template-areas
+
+`grid-template-areas`指定区域，一个区域由单个或多个单元格组成。
+
+```css
+.gird-area-9 {
+  grid-template-areas: 'g1 g2 g3'
+                       'g4 g5 g6'
+                       'g7 g8 g9';
+}
+```
+
+**Tips**: 区域的命名会影响到网格线，每个区域的起始网格线，会自动命名为`[区域名-start]`，终止网格线自动命名为`[区域名-end]`。
+
+<div class="base-box base-gird gird-9 gird-area-9">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+</div>
+
+**Q**：划分区域和网格线的作用？
+
+TODO
+
+#### 2.2.4 grid-auto-flow
+
+`grid-auto-flow`，指定项目的排列顺序。
+
+- `row` 默认值`row`，先从左到右横排，如果第一行排满就切换到第二行，继续排。
+
+- `column` 先从上到下竖排，如果第一列排满就切换到第二列，继续排。
+
+- `row dense` 横排紧凑模式，如果出现空隙，则调度后面合适的项目填补
+
+- `column dense` 竖排紧凑模式，如果出现空隙，则调度后面合适的项目填补
+
+**Tips**: 使用`row dense`和`column dense`会打乱项目的顺序，适合在瀑布流排版的时候使用。
+
+```css
+.gird-flow-row {
+  grid-auto-flow: row;
+}
+.gird-flow-column {
+  grid-auto-flow: column;
+}
+```
+
+<div class="base-box base-gird gird-9 gird-flow-column">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+</div>
+
+```css
+.gird-flow-dense {
+  grid-auto-flow: row dense;
+}
+```
+<div class="base-box base-gird gird-16 gird-flow-dense gird-gap-10-10">
+  <div class="base-dot color1 dot-1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1 dot-3">4</div>
+  <div class="base-dot color2 dot-2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3 dot-1">9</div>
+</div>
+
+#### 2.1.5 justify-items & align-items & place-items
+
+- `justify-items`: 单元格内容的水平对齐方式。
+
+start 向开始端对齐，默认为左
+end 向结束端对齐，默认为右
+center 水平居中对齐
+stretch 如果项目未设置高度或设为 auto，将占满整个容器的高度
+
+justify-items: `start` | `end` | `center` | `stretch`;
+
+```css
+.gird-x-center {
+  justify-items: center;
+}
+```
+
+<div class="base-box base-gird gird-9 gird-x-center">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+</div>
+
+- `align-items`: 单元格内容的垂直对齐方式。
+
+align-items: `start` | `end` | `center` | `stretch`;
+
+```css
+.gird-y-center {
+  align-items: center;
+}
+```
+
+<div class="base-box base-gird gird-9 gird-y-center">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+</div>
+
+- `place-items`: justify-items 和 align-items 的简写，水平垂直居中的对齐方式
+
+`place-items: start end;`，这里如果省略第二个值，则浏览器认为与第一个值相等。
+
+#### 2.1.6 justify-content & justify-content & place-content
+
+- `justify-content`: 内容区域(网格相对于容器)的水平对齐方式。
+
+justify-content: `start` | `end` | `center` | `stretch` | `space-around` | `space-between` | `space-evenly`;
+
+```css
+.gird-x-c-center {
+  justify-content: center;
+}
+```
+
+<div class="base-box base-gird col-w312 gird-x-c-center">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+</div>
+
+- `align-content`: 内容区域(网格相对于容器)的垂直对齐方式。
+
+align-content: `start` | `end` | `center` | `stretch` | `space-around` | `space-between` | `space-evenly`;
+
+```css
+.gird-y-c-center {
+  align-content: center;
+}
+```
+
+<div class="base-box base-gird col-w312 gird-y-c-center">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+</div>
+
+#### 2.1.7 grid-auto-columns & grid-auto-rows
+
+用来指定浏览器自动创建的多余网格的列宽和行高。
+
+```css
+.gird-auto-row {
+  grid-auto-rows: 20px;
+}
+```
+
+<div class="base-box base-gird gird-9 gird-auto-row">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
+  <div class="base-dot color1">7</div>
+  <div class="base-dot color2">8</div>
+  <div class="base-dot color3">9</div>
+  <div class="base-dot color1">10</div>
+  <div class="base-dot color2">11</div>
+</div>
+
+#### 2.1.8 grid-template & grid
+
+- `grid-template`: grid-template-columns、grid-template-rows 和 grid-template-areas 的简写
+
+- `grid`: grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns 和 grid-auto-flow 的简写 
+
+### 2.2 Grid项目的属性
+
+#### 2.2.1 grid-column-start & grid-column-end & grid-row-start & grid-row-end
+
+- `grid-column-start`: 定位项目左边框所在的垂直线网格
+
+- `grid-column-end`: 定位项目右边框所在的垂直线网格
+
+- `grid-row-start`: 定位项目上边框所在的水平线网格
+
+- `grid-row-end`: 定位项目下边框所在的水平线网格
+
+**例**：
+
+```css
+.dot-1 {
+  grid-row-start: 1;
+  grid-row-end: 3;  
+}
+```
+
+<div class="base-box base-gird gird-9">
+  <div class="base-dot color1 dot-1" style="width: auto; height: auto">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+  <div class="base-dot color1">4</div>
+  <div class="base-dot color2">5</div>
+  <div class="base-dot color3">6</div>
 </div>
 
 ## 参考资料
