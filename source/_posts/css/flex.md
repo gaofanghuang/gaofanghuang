@@ -267,6 +267,27 @@ Grid 布局，即网格布局，任何一个容器都可以设置为 Grid 布局
 .area-5 {
   grid-area: g5;
 }
+.order-9 {
+  order: 9;
+}
+.grow-2 {
+  flex-grow: 2;
+}
+.grow-3 {
+  flex-grow: 3;
+}
+.shrink-0 {
+  flex-shrink: 0;
+}
+.shrink-2 {
+  flex-shrink: 2;
+}
+.basis-1 {
+  flex-basis: 100px;
+}
+.basis-half {
+  flex-basis: 50%;
+}
 </style>
 
 ## 1. Flex 基础语法
@@ -916,15 +937,105 @@ align-content: `flex-start` | `flex-end` | `center` | `space-between` | `space-a
 
 #### 1.2.1 order
 
+`order`: 定义项目的排列顺序，数值小的排前面。默认为 0。
+
+```css
+.order-9 {
+  order: 9;
+}
+```
+
+<div class="base-box base-flex">
+  <div class="base-dot color1 order-9">1</div>
+  <div class="base-dot color2">2</div>
+  <div class="base-dot color3">3</div>
+</div>
+
 #### 1.2.2 flex-grow
+
+`flex-grow`：属性定义项目的放大比例，数字越大占的比例越大。默认为 0。为 0 时，即使存在剩余空间，也不放大。
+
+```css
+.grow-2 {
+  flex-grow: 2;
+}
+.grow-3 {
+  flex-grow: 3;
+}
+```
+
+<div class="base-box base-flex">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2 grow-2">2</div>
+  <div class="base-dot color3 grow-3">3</div>
+</div>
+
 
 #### 1.2.3 flex-shrink
 
+`flex-shrink`：属性定义了项目的缩小比例，默认为 1，即如果空间不足，该项目将缩小。为 0 时，即使空间不足也不缩小。
+
+```css
+.shrink-0 {
+  flex-shrink: 0;
+}
+.shrink-2 {
+  flex-shrink: 2;
+}
+```
+
+<div class="base-box base-flex">
+  <div class="base-dot dot-big color1">1</div>
+  <div class="base-dot dot-big color2">2</div>
+  <div class="base-dot dot-big color3 shrink-2">3</div>
+  <div class="base-dot dot-big color1">4</div>
+  <div class="base-dot dot-big color2">5</div>
+  <div class="base-dot dot-big color3">6</div>
+  <div class="base-dot dot-big color1 shrink-0">7</div>
+  <div class="base-dot dot-big color2">8</div>
+  <div class="base-dot dot-big color3">9</div>
+</div>
+
 #### 1.2.4 flex-basis
+
+`flex-basis`：设置项目的初始大小
+
+**Tips**：当一个元素同时被设置了 flex-basis (除值为 auto 外) 和 width (或者在 flex-direction: column 情况下设置了 height) ，flex-basis 具有更高的优先级。auto 表示项目的原大小。
+
+flex-basis: `<width>` | `auto`
+
+```css
+.basis-1 {
+  flex-basis: 100px;
+}
+.basis-half {
+  flex-basis: 50%;
+}
+```
+
+<div class="base-box base-flex">
+  <div class="base-dot color1">1</div>
+  <div class="base-dot color2 basis-1">2</div>
+  <div class="base-dot color3 basis-half">3</div>
+</div>
 
 #### 1.2.5 flex
 
+`flex`：`<flex-grow>`, `<flex-shrink>` 和 `<flex-basis>` 的简写，默认值为 0 1 auto。后两个属性可选。
+
+两个快捷值：
+
+1. auto (1 1 auto)
+
+2. none (0 0 auto)
+
 #### 1.2.6 align-self
+
+align-self 类似于容器中的 align-items， 作用于项目，并且优先级高于容器中的 align-items。默认值为auto 时表示继承容器中的 align-items 的值，如果没有容器，则等同于 stretch。
+
+align-self: `auto` | `flex-start` | `flex-end` | `center` | `baseline` | `stretch`;
+
+
 
 ## 2. Grid 基础语法
 
@@ -1575,6 +1686,36 @@ grid-row: `<start-line>` / `<end-line>`
 - align-self: `start` | `end` | `center` | `stretch`
 
 - place-self: `<align-self>` `<justify-self>`
+
+## 3. 常用布局
+
+### 3.1 页面布局
+
+#### 3.1.1 单列布局
+
+1. 上中下居中
+
+2. 上下通栏，中间居中
+
+#### 3.1.2 两列布局
+
+1. 左边固定宽度高度（高度为屏幕高度）；右边宽度自适应，高度随内容滚动
+
+2. 左边固定宽度，高度跟随右边；右边宽度自适应，高度随内容滚动
+
+#### 3.1.3 三列布局
+
+1. 左右侧边栏高度跟随中间（等高），左右宽度固定；中间内容高度滚动，中间宽度自适应
+
+2. 左右侧边栏高度跟随中间（等高），中间内容高度滚动，左中右按比例宽度自适应
+
+#### 3.1.4 粘连布局
+
+1. 当container内容高度大于屏幕高度时，footer跟随在内容后面；当container内容高度小于屏幕高度时，footer位于屏幕底部。
+
+### 3.2 组件布局
+
+### 3.3 业务布局
 
 ## 参考资料
 
