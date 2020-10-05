@@ -368,62 +368,29 @@ a {
     .highlight .code .line .bash,
     .highlight .code .line .meta {
       color: #669c78; }
-  .highlight.html {
+  .highlight.lua, .highlight.vue, .highlight.node, .highlight.scss, .highlight.css, .highlight.shell, .highlight.typescript, .highlight.javascript, .highlight.html {
     position: relative; }
-    .highlight.html::before {
+    .highlight.lua::before, .highlight.vue::before, .highlight.node::before, .highlight.scss::before, .highlight.css::before, .highlight.shell::before, .highlight.typescript::before, .highlight.javascript::before, .highlight.html::before {
       position: absolute;
       top: 0.5rem;
       right: 0.8rem;
       content: 'html'; }
-  .highlight.javascript {
-    position: relative; }
-    .highlight.javascript::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'javascript'; }
-  .highlight.typescript {
-    position: relative; }
-    .highlight.typescript::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'typescript'; }
-  .highlight.shell {
-    position: relative; }
-    .highlight.shell::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'shell'; }
-  .highlight.css {
-    position: relative; }
-    .highlight.css::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'css'; }
-  .highlight.scss {
-    position: relative; }
-    .highlight.scss::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'scss'; }
-  .highlight.node {
-    position: relative; }
-    .highlight.node::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'node'; }
-  .highlight.vue {
-    position: relative; }
-    .highlight.vue::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
-      content: 'vue'; }
+  .highlight.javascript::before {
+    content: 'javascript'; }
+  .highlight.typescript::before {
+    content: 'typescript'; }
+  .highlight.shell::before {
+    content: 'shell'; }
+  .highlight.css::before {
+    content: 'css'; }
+  .highlight.scss::before {
+    content: 'scss'; }
+  .highlight.node::before {
+    content: 'node'; }
+  .highlight.vue::before {
+    content: 'vue'; }
+  .highlight.lua::before {
+    content: 'lua'; }
 
 .markdown-view {
   line-height: 1.6; }

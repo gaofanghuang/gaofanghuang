@@ -59,6 +59,14 @@
       }
     }
   }
+  &.lua,
+  &.vue,
+  &.node,
+  &.scss,
+  &.css,
+  &.shell,
+  &.typescript,
+  &.javascript,
   &.html {
     position: relative;
     &::before {
@@ -69,66 +77,43 @@
     }
   }
   &.javascript {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'javascript';
     }
   }
   &.typescript {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'typescript';
     }
   }
   &.shell {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'shell';
     }
   }
   &.css {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'css';
     }
   }
   &.scss {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'scss';
     }
   }
   &.node {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'node';
     }
   }
   &.vue {
-    position: relative;
     &::before {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.8rem;
       content: 'vue';
+    }
+  }
+  &.lua {
+    &::before {
+      content: 'lua';
     }
   }
 }
