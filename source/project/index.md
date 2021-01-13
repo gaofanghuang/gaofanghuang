@@ -3,23 +3,27 @@ title: 个人项目
 date: 2020-03-23 16:38:57
 ---
 
+## 集合
+
+[查看全部个人项目](/categories/个人项目/)
+
 ## Chrome 插件
 
-### Tampermonkey Userscript 油猴脚本
+<div class="project-list">
 
-#### 1. Zhihu Plus 知乎Plus
+  <!-- 一个项目_start -->
+  <div class="project-item">
+    <div class="project-cover">
+      <img src="https://raw.githubusercontent.com/gaofanghuang/chrome-plug-in/main/zhihuPlus/dist/icons/64-zhihu.png">
+    </div>
+    <div class="project-ext">
+      <div class="project-info">
+        <div class="project-name">知乎Plus</div>
+        <div class="project-describe">界面美化去广告</div>
+      </div>
+      <a class="project-link" href="/project/zhihuplus/" target="_blank">详情</a>
+    </div>
+  </div>
+  <!-- 一个项目_end -->
 
-### 功能说明：
-
-  1. 暗色极简阅读模式；
-
-  2. 去除官方或用户插入的广告;
-
-  3. 纤细优雅的滚动条。
-
-### 插件下载地址
-
-1. [**Greasy Fork**](https://greasyfork.org/zh-CN/scripts/411416-%E7%9F%A5%E4%B9%8Eplus)
-
-2. [**Github**](https://github.com/gaofanghuang/tampermonkey-userscript/blob/master/zhihuplus/zhihuplus.js)
-
+</div>

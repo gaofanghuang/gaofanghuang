@@ -368,13 +368,15 @@ a {
     .highlight .code .line .bash,
     .highlight .code .line .meta {
       color: #669c78; }
-  .highlight.lua, .highlight.vue, .highlight.node, .highlight.scss, .highlight.css, .highlight.shell, .highlight.typescript, .highlight.javascript, .highlight.html {
+  .highlight.lua, .highlight.vue, .highlight.node, .highlight.scss, .highlight.css, .highlight.shell, .highlight.typescript, .highlight.javascript, .highlight.json, .highlight.html {
     position: relative; }
-    .highlight.lua::before, .highlight.vue::before, .highlight.node::before, .highlight.scss::before, .highlight.css::before, .highlight.shell::before, .highlight.typescript::before, .highlight.javascript::before, .highlight.html::before {
+    .highlight.lua::before, .highlight.vue::before, .highlight.node::before, .highlight.scss::before, .highlight.css::before, .highlight.shell::before, .highlight.typescript::before, .highlight.javascript::before, .highlight.json::before, .highlight.html::before {
       position: absolute;
       top: 0.5rem;
       right: 0.8rem;
       content: 'html'; }
+  .highlight.json::before {
+    content: 'json'; }
   .highlight.javascript::before {
     content: 'javascript'; }
   .highlight.typescript::before {
@@ -483,9 +485,8 @@ a {
       overflow-x: scroll; }
   .markdown-view blockquote {
     position: relative;
-    padding-left: 2rem;
     background: rgba(255, 198, 26, 0.1);
-    padding: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
     border-left: 3px solid #ffc61a; }
     .markdown-view blockquote p:last-of-type {
       margin-bottom: 0; }
@@ -1838,6 +1839,80 @@ html {
     right: 2rem; }
   .search-result-list li .search-result-title {
     font-size: 1.2rem; } }
+
+.project-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap; }
+
+.project-item {
+  width: calc((100% - 6rem) / 3);
+  height: 4rem;
+  margin-right: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .project-item:nth-of-type(3n) {
+    margin-right: 0; }
+
+.project-cover {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  border-radius: 0.2rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden; }
+  .project-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0; }
+
+.project-ext {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #efefef;
+  border-left: 0 none;
+  border-radius: 0.2rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
+  .project-ext .project-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    height: 100%;
+    margin-left: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem; }
+  .project-ext .project-name {
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600; }
+  .project-ext .project-describe {
+    font-size: 0.4rem;
+    color: #999999; }
+  .project-ext .project-link {
+    display: block;
+    width: 3.6rem;
+    height: 2rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #28C5C2, #28C5C2);
+    border-radius: 0.4rem;
+    font-size: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    transition: 0.2s; }
+    .project-ext .project-link:hover {
+      background: linear-gradient(135deg, #28C5C2, #79E2B7); }
+      .project-ext .project-link:hover::after {
+        display: none; }
 
 
 /*# sourceMappingURL=/main.css.map */

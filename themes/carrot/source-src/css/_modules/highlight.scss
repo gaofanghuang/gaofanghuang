@@ -67,6 +67,7 @@
   &.shell,
   &.typescript,
   &.javascript,
+  &.json,
   &.html {
     position: relative;
     &::before {
@@ -74,6 +75,11 @@
       top: 0.5rem;
       right: 0.8rem;
       content: 'html';
+    }
+  }
+  &.json {
+    &::before {
+      content: 'json';
     }
   }
   &.javascript {
