@@ -14,7 +14,7 @@ date: 2020-03-23 16:38:57
   <!-- 一个项目_start -->
   <div class="project-item">
     <div class="project-cover">
-      <img src="https://raw.githubusercontent.com/gaofanghuang/chrome-plug-in/main/zhihuPlus/dist/icons/64-zhihu.png">
+      <img src="https://raw.githubusercontent.com/gaofanghuang/chrome-plug-in/main/zhihuPlus/dist/icons/128-zhihu.png">
     </div>
     <div class="project-ext">
       <div class="project-info">
@@ -22,6 +22,21 @@ date: 2020-03-23 16:38:57
         <div class="project-describe">界面美化去广告</div>
       </div>
       <a class="project-link" href="/project/zhihuplus/" target="_blank">详情</a>
+    </div>
+  </div>
+  <!-- 一个项目_end -->
+
+  <!-- 一个项目_start -->
+  <div class="project-item">
+    <div class="project-cover">
+      <img src="https://raw.githubusercontent.com/gaofanghuang/easy-api/master/src/assets/icons/icon-128.png">
+    </div>
+    <div class="project-ext">
+      <div class="project-info">
+        <div class="project-name">EasyApi</div>
+        <div class="project-describe">Mock Web 数据接口</div>
+      </div>
+      <a class="project-link" href="/project/easyapi/" target="_blank">详情</a>
     </div>
   </div>
   <!-- 一个项目_end -->
