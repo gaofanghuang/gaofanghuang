@@ -1,7 +1,7 @@
 ---
 title: Angular 基础
 date: 2020-05-14 17:20:00
-update: 2020-05-15 14:20:00
+update: 2021-04-27 14:46:00
 tags:
   - Javascript
   - Angular
@@ -10,6 +10,20 @@ categories: Angular开发
 ---
 
 ## 语法
+
+### 循环
+
+1. 基础循环
+
+  ```html
+  <div *ngFor="let item of list">{{ name }}</div>
+  ```
+
+2. 显示当前是第几个数据
+
+  ```html
+  <div *ngFor="let item of list; let i = index">第{{ i }}名：{{ name }}</div>
+  ```
 
 ### 管道
 

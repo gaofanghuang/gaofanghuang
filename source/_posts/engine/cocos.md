@@ -64,3 +64,5 @@ export default class Player extends cc.Component {
   }
 }
 ```
+
+<!--more-->

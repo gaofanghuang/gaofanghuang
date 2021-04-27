@@ -35,6 +35,7 @@
     padding: 0.2rem 1.4rem;
     border-radius: 1.2rem;
     &:hover {
+      color: $primary;
       &::after {
         display: none;
       }

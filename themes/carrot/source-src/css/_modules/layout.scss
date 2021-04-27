@@ -107,7 +107,7 @@
   text-align: center;
 }
 
-a {
+.layout a {
   color: $primary;
 
   &:hover {
@@ -143,18 +143,34 @@ a {
   display: none !important;
 }
 
+.input-control {
+  border: 0.1rem solid #efefef;
+  padding: 0.6rem 1rem;
+  border-radius: 0.2rem;
+  background-color: #ffffff;
+}
+
 .btn {
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   cursor: pointer;
   transition: 0.2s;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .btn-primary {
   background: linear-gradient(135deg, $primary, $green);
   color: #fff;
+}
+
+.btn-test {
+  border: 0.1rem solid $primary;
+  color: $primary;
   &:hover {
-    box-shadow: none;
+    border: 0.1rem solid $active;
+    color: $active;
   }
 }

@@ -1,6 +1,7 @@
 ---
 title: Node.js 基础
 date: 2020-05-13 11:30:00
+update: 2021-04-17 14:29:00
 tags:
   - Node
   - Express
@@ -8,6 +9,39 @@ tags:
   - 待填坑
 categories: Node开发
 ---
+
+## npm
+
+### 常用命令
+
+1. 查看npm当前镜像源
+
+`npm config get registry`
+
+2. 设置指定镜像源
+
+`npm config set registry https://registry.npmjs.org`
+
+### yarn
+
+yarn 大部分命令和 npm 一样。
+
+两者*区别*：
+
+1. 安装所有依赖
+
+`npm install`
+
+`yarn`
+
+### 常用镜像源
+
+```shell
+npm --- https://registry.npmjs.org/
+taobao --- https://registry.npm.taobao.org/
+cnpm --- https://r.cnpmjs.org/
+yarn --- https://registry.npm.taobao.org/
+```
 
 ## 语法
 

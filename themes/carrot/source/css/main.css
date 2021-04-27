@@ -283,12 +283,12 @@ img {
 .tc {
   text-align: center; }
 
-a {
+.layout a {
   color: #28C5C2; }
-  a:hover {
+  .layout a:hover {
     color: #ff6685;
     position: relative; }
-    a:hover::after {
+    .layout a:hover::after {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -312,18 +312,31 @@ a {
 .hidden {
   display: none !important; }
 
+.input-control {
+  border: 0.1rem solid #efefef;
+  padding: 0.6rem 1rem;
+  border-radius: 0.2rem;
+  background-color: #ffffff; }
+
 .btn {
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   cursor: pointer;
   transition: 0.2s;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); }
+  .btn:hover {
+    box-shadow: none; }
 
 .btn-primary {
   background: linear-gradient(135deg, #28C5C2, #79E2B7);
   color: #fff; }
-  .btn-primary:hover {
-    box-shadow: none; }
+
+.btn-test {
+  border: 0.1rem solid #28C5C2;
+  color: #28C5C2; }
+  .btn-test:hover {
+    border: 0.1rem solid #ff6685;
+    color: #ff6685; }
 
 .highlight {
   background: #333;
@@ -765,8 +778,10 @@ a {
     position: relative;
     padding: 0.2rem 1.4rem;
     border-radius: 1.2rem; }
-    .header-wrap .header-nav-link:hover::after {
-      display: none; }
+    .header-wrap .header-nav-link:hover {
+      color: #28C5C2; }
+      .header-wrap .header-nav-link:hover::after {
+        display: none; }
     .header-wrap .header-nav-link.active {
       background: linear-gradient(135deg, #28C5C2, #79E2B7);
       color: #fff;
