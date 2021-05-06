@@ -1,11 +1,12 @@
 ---
-title: Vue 基础
+title: Vue 2.x 基础
 date: 2020-04-22 10:32:00
 update: 2020-05-15 14:15
 tags:
   - Vue
   - VueX
   - VueRouter
+  - Vue2.x
   - 待填坑
 categories: Vue开发
 ---

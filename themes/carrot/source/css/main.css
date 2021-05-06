@@ -1629,6 +1629,7 @@ img {
     border-radius: 0.4rem; }
   .article-entry #reward-btn:hover,
   .article-entry .article-more-link:hover {
+    color: #fff;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) inset; }
     .article-entry #reward-btn:hover::after,
     .article-entry .article-more-link:hover::after {
@@ -1925,7 +1926,8 @@ html {
     margin-right: 1rem;
     transition: 0.2s; }
     .project-ext .project-link:hover {
-      background: linear-gradient(135deg, #28C5C2, #79E2B7); }
+      background: linear-gradient(135deg, #28C5C2, #79E2B7);
+      color: #ffffff; }
       .project-ext .project-link:hover::after {
         display: none; }
 

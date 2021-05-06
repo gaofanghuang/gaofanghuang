@@ -77,6 +77,7 @@
     transition: 0.2s;
     &:hover {
       background: linear-gradient(135deg, $primary, $green);
+      color: #ffffff;
       &::after {
         display: none;
       }

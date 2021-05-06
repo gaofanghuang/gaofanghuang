@@ -29,6 +29,25 @@ date: 2020-03-23 16:38:57
   <!-- 一个项目_start -->
   <div class="project-item">
     <div class="project-cover">
+      <img src="https://raw.githubusercontent.com/gaofanghuang/chrome-plug-in/main/autoClick/dist/icons/autoClick-128.png">
+    </div>
+    <div class="project-ext">
+      <div class="project-info">
+        <div class="project-name">AutoClick</div>
+        <div class="project-describe">自动点击</div>
+      </div>
+      <a class="project-link" href="/project/autoclick/" target="_blank">详情</a>
+    </div>
+  </div>
+  <!-- 一个项目_end -->
+</div>
+
+## 服务端程序
+
+<div class="project-list">
+  <!-- 一个项目_start -->
+  <div class="project-item">
+    <div class="project-cover">
       <img src="https://raw.githubusercontent.com/gaofanghuang/easy-api/master/src/assets/icons/icon-128.png">
     </div>
     <div class="project-ext">
@@ -40,5 +59,4 @@ date: 2020-03-23 16:38:57
     </div>
   </div>
   <!-- 一个项目_end -->
-
 </div>
