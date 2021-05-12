@@ -570,19 +570,24 @@ img {
   .markdown-view em {
     font-style: normal;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    color: rgba(154, 3, 34, 0.28);
+    font-weight: 600; }
     .markdown-view em::after {
       position: absolute;
       left: 1%;
-      bottom: -1px;
+      bottom: -2px;
       z-index: -1;
       display: inline-block;
       transform: rotate(-2deg);
       background-color: rgba(154, 3, 34, 0.1);
       content: '';
-      width: 98%;
-      height: 50%;
-      border-radius: 0.8rem; }
+      width: 92%;
+      height: 16%;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 0.6rem;
+      border-top-right-radius: 0.6rem;
+      border-bottom-right-radius: 0.4rem; }
   .markdown-view p {
     margin-bottom: 1rem;
     font-size: 1rem; }
@@ -590,7 +595,7 @@ img {
     position: relative;
     z-index: 1;
     font-weight: 600;
-    color: #927828; }
+    color: #c3960c; }
     .markdown-view strong::before {
       position: absolute;
       left: -3%;

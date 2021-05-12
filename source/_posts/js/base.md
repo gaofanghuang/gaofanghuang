@@ -1,6 +1,7 @@
 ---
 title: Javascript 基础
 date: 2020-06-04 09:40:00
+update: 2021-05-11 16:10:00
 tags:
   - Javascript
   - 待填坑
@@ -22,6 +23,16 @@ categories: JS笔记
 ## HTTP请求
 
 <!--more-->
+
+## 优化方法
+
+### 使用 `void 0` 代替 `undefined`
+
+这样做的优点：
+
+1. 避免某些情况下 `undefined` 被重写：局部作用域 或 低版本IE等情况。
+
+2. `void 0` 能减少字节
 
 ## 常见问题
 
